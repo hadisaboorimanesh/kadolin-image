@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="template_artarad_cheque_print">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.basic_layout">
+                        <div class="page" style="width:100%; height:100%; padding: 5mm 10mm 0px 0px; margin:0px 0px 0px 0px; text-align: right; font-family: nazanin !important; direction: rtl;" dir="rtl">
+                            <link rel="stylesheet" href="/artarad_post_dated_cheque/static/src/css/style.css"/>
+
+                            <style>
+                                table {
+                                    border-collapse: collapse;
+                                    width: 100%;
+                                    height:100%;
+                                }
+                            </style>
+
+                            <table class="table-borderless">
+                                <tr>
+                                    <td style="width:170mm; height:10mm" colspan="3"/>
+                                </tr>
+                            </table>
+                            <table class="table-borderless">
+                                <tr>
+                                    <td style="width:17mm; height:5mm" colspan="1"/>
+                                    <td style="width:48mm; height:5mm ; font-size: 25px !important" colspan="1">
+                                        <t t-if="o.cheque_date">
+                                            <span>
+                                                <t t-esc="o.get_jalali_date_string(o.cheque_date)"/>
+                                            </span>
+                                        </t>
+                                    </td>
+                                    <td style="width:114mm; height:5mm" colspan="1"/>
+                                </tr>
+                            </table>
+                            <table class="table-borderless">
+                                <tr>
+                                    <td style="width:19mm; height:12mm"/>
+                                    <td style="text-align: right ; width:154mm; height:12mm ; vertical-align: top ; font-size: 16px !important">
+                                        <t t-if="o.cheque_date">
+                                            <span t-esc="o.get_jalali_date_in_words(o.cheque_date)"/>
+                                        </t>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="table-borderless">
+                                <tr>
+                                    <td style="width:16mm; height:13mm"/>
+                                    <td style="text-align: right ; width:139mm; height:13mm ; vertical-align: top ; font-size: 25px !important;padding-right:2cm;">
+                                        <t t-if="o.amount">
+                                            <span t-esc="o.get_farsi_words(o.amount)"/> ریال///////
+                                        </t>
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="table-borderless">
+                                <tr>
+                                    <td style="text-align: right ; padding-right:8mm; width:76mm; height:13mm ; vertical-align: top ; font-size: 25px !important">
+                                        <span t-field="o.partner_id.display_name"/>
+                                         <span t-field="o.ref"/>
+
+                                    </td>
+                                    <td style="text-align: right ; width:19mm; height:13mm"/>
+                                    <td style="width:45mm; height:13mm;font-size: 25px !important;vertical-align: top ;">
+                                        <span t-field="o.partner_id.national_number"/>
+                                    </td>
+                                    <td style="width:25mm; height:13mm"/>
+                                </tr>
+                            </table>
+                            <table class="table-borderless">
+                                <tr>
+                                    <td style="width:170mm; height:8mm"/>
+                                </tr>
+                            </table>
+                            <table class="table-borderless">
+                                <tr>
+                                    <td style="width:92mm; height:1mm"/>
+                                    <td style="width:68mm; height:6mm ; font-weight:bold;font-size: 30px !important">
+                                        //////
+                                        <span t-esc="'{0:,.0f}'.format(o.amount)"/>ریال
+
+                                    </td>
+                                    <td style="width:10mm; height:6mm"/>
+                                </tr>
+                            </table>
+                            <table class="table-borderless">
+                                <tr>
+                                    <td style="width:170mm; height:20mm"/>
+                                </tr>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

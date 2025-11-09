@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="product_label_styles" inherit_id="website_sale.snippet_options">
+        <xpath expr="//div[@data-name='ribbon_customize_opt']//we-select[1]//we-button[last()]"
+               position="after">
+            <we-button data-set-ribbon-position="o_product_label_style_1_left">Vega Tag
+                Left</we-button>
+            <we-button data-set-ribbon-position="o_product_label_style_1_right">Vega Tag Right</we-button>
+            <we-button data-set-ribbon-position="o_product_label_style_2_left">Vega Square
+                Shadow Left</we-button>
+            <we-button data-set-ribbon-position="o_product_label_style_2_right">Vega Square
+                Shadow Right</we-button>
+            <we-button data-set-ribbon-position="o_product_label_style_3_left">Vega Edge
+                Left</we-button>
+            <we-button data-set-ribbon-position="o_product_label_style_3_right">Vega Edge
+                Right</we-button>
+            <we-button data-set-ribbon-position="o_product_label_style_4_left">Vega Round
+                Left</we-button>
+            <we-button data-set-ribbon-position="o_product_label_style_4_right">Vega Round
+                Right</we-button>
+        </xpath>
+        <xpath expr="//we-checkbox[@id='collapsible_sidebar']" position="after">
+            <we-checkbox
+                id="display_nth_category"
+                string="Display nth Category"
+                data-customize-website-views="theme_clarico_vega.display_nth_category"
+                data-dependencies="categories_opt, attributes_opt"
+                data-no-preview="true"
+                data-reload="/"
+            />
+        </xpath>
+    </template>
+</odoo>

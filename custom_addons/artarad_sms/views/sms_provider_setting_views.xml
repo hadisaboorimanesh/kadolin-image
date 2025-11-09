@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="view_tree_artarad_sms_provider_setting" model="ir.ui.view" >
+            <field name="name">view_tree_artarad_sms_provider_setting</field>
+            <field name="model">artarad.sms.provider.setting</field>
+            <field name="arch" type="xml">
+                <list editable="top">
+                    <field name="sequence" widget="handle"/>
+                    <field name="provider"/>
+                    <field name="api_url" />
+                    <field name="from_number" />
+                    <field name="username" />
+                    <field name="password"/>
+                </list>
+            </field>
+        </record>
+
+    </data>
+</odoo>

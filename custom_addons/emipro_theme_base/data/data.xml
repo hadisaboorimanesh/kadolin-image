@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="dynamic_snippet_discounted_products_action" model="ir.actions.server">
+        <field name="name">Discounted Products</field>
+        <field name="model_id" ref="model_product_product"/>
+        <field name="state">code</field>
+        <field name="code">
+DynamicFilter = model.env['website.snippet.filter']
+response = DynamicFilter._get_products('discount_products')
+        </field>
+    </record>
+
+    <record id="dynamic_filter_latest_sold_products" model="website.snippet.filter">
+        <field name="action_server_id" ref="emipro_theme_base.dynamic_snippet_discounted_products_action"/>
+        <field name="field_names">display_name,description_sale,image_512</field>
+        <field name="limit" eval="16"/>
+        <field name="name">Discounted Products</field>
+    </record>
+
+    <record id="dynamic_snippet_top_sold_products_action" model="ir.actions.server">
+        <field name="name">Top-Selling Products</field>
+        <field name="model_id" ref="model_product_product"/>
+        <field name="state">code</field>
+        <field name="code">
+DynamicFilter = model.env['website.snippet.filter']
+response = DynamicFilter._get_products('top_sold_products')
+        </field>
+    </record>
+
+    <record id="dynamic_filter_top_sold_products" model="website.snippet.filter">
+        <field name="action_server_id" ref="emipro_theme_base.dynamic_snippet_top_sold_products_action"/>
+        <field name="field_names">display_name,description_sale,image_512</field>
+        <field name="limit" eval="16"/>
+        <field name="name">Top-Selling Products</field>
+    </record>
+
+    <record id="emipro_theme_base.s_dynamic_snippet_carousel_000_xml" model="ir.asset">
+        <field name="name">Dynamic snippet owl carousel 000 XML</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">emipro_theme_base/static/src/snippets/dynamic_carousel.xml</field>
+    </record>
+
+    <record id="emipro_theme_base.s_searchbar_000_xml" model="ir.asset">
+        <field name="name">Searchbar Extended 000 XML</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">emipro_theme_base/static/src/snippets/s_searchbar/000.xml</field>
+    </record>
+
+    <record id="emipro_theme_base.s_searchbar_000_js" model="ir.asset">
+        <field name="name">Searchbar Extended 000 JS</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">emipro_theme_base/static/src/snippets/s_searchbar/000.js</field>
+    </record>
+
+    <record id="dynamic_snippet_product_template_ext" model="ir.filters">
+        <field name="name">All Products</field>
+        <field name="model_id">product.template</field>
+        <field name="domain">[]</field>
+    </record>
+
+    <record id="dynamic_filter_product_template" model="website.snippet.filter">
+        <field name="filter_id" ref="emipro_theme_base.dynamic_snippet_product_template_ext"/>
+        <field name="field_names">name</field>
+        <field name="limit" eval="16"/>
+        <field name="name">All Products</field>
+    </record>
+
+    <record id="share_wishlist_collection_email" model="mail.template">
+        <field name="name">Wishlist Collection: Share with the email</field>
+        <field name="model_id" ref="emipro_theme_base.model_wishlist_collection"/>
+        <field name="email_to">{{ ctx['recipient_email'] }}</field>
+        <field name="subject">{{ ctx['subject'] }}</field>
+        <field name="description"></field>
+        <field name="body_html" type="html">
+            <t t-set="collection" t-value="object"/>
+            <t t-set="user" t-value="collection.partner_id.user_id"/>
+            <table border="0" cellpadding="0" cellspacing="0"
+                   style="padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;">
+                <tr>
+                    <td align="center">
+                        <table border="0" cellpadding="0" cellspacing="0" width="590"
+                               style="padding: 16px; background-color: white; color: #454748; border-collapse:separate;">
+                            <tbody>
+                                <!-- HEADER -->
+                                <tr>
+                                    <td align="center" style="min-width: 590px;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                               style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                            <tr>
+                                                <td valign="middle" align="left">
+                                                    <img t-attf-src="/logo.png?company={{ user.company_id.id }}"
+                                                         style="padding: 0px; margin: 0px; height: auto; width: 80px;"
+                                                         t-att-alt="user.company_id.name"/>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="2" style="text-align:center;">
+                                                    <hr width="100%"
+                                                        style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:16px 0px 16px 0px;"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <!-- CONTENT -->
+                                <tr>
+                                    <td align="center" style="min-width: 590px;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                               style="min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                            <tr>
+                                                <td valign="top" style="font-size: 13px;">
+                                                    <div>
+                                                        <t t-if="collection" class="coll">
+                                                            <div class="container wishlist_collection_list">
+                                                                <table class="table table-bordered table-striped text-center mt16 table-comparator"
+                                                                       id="table_collection_rec">
+                                                                    <tbody class="wishlist_collection_tbody">
+                                                                        <tr class="collection_rec"
+                                                                            t-att-data-collection_id="'%s' % collection.id">
+                                                                            <p>
+                                                                                Hi,
+                                                                                <br/>
+                                                                                <br/>
+                                                                                We're excited to share a specially
+                                                                                curated wishlist collection
+                                                                                <i>
+                                                                                    <b t-out="collection.name"/>
+                                                                                </i>
+                                                                                from
+                                                                                <b
+                                                                                        t-out="collection.partner_id.name"/>
+                                                                                , just for you!
+                                                                                <br/>
+                                                                                Explore the handpicked selections
+                                                                                tailored to your preferences and find
+                                                                                the perfect items that match your needs.
+                                                                                <br/>
+                                                                                <br/>
+                                                                                Don't miss out—browse through the
+                                                                                collection today and let us know if
+                                                                                anything catches your eye! We hope you
+                                                                                enjoy exploring these
+                                                                                handpicked selections.
+                                                                            </p>
+                                                                            <br/>
+                                                                            <t t-foreach="collection.product_line_ids"
+                                                                               t-as="product_line">
+                                                                                <tr class="whole_product_line"
+                                                                                    t-att-data-wish-id="product_line.id"
+                                                                                    t-att-data-product-id="product_line.product_id.id"
+                                                                                    t-att-data-ref_collection_id="'%s' % collection.id">
+                                                                                    <td class="" align="left">
+                                                                                        <img t-attf-src="/web/image/product.product/#{product_line.product_id.id}/image_128"
+                                                                                             class="img img-fluid"
+                                                                                             style="margin:auto;"
+                                                                                             alt="Product image"/>
+                                                                                        <span style="vertical-align:top; font-size:16px;">
+                                                                                            <a t-att-href="'/shop/product/%s' % slug(product_line.product_id.product_tmpl_id)">
+                                                                                                <t t-out="product_line.product_id.name"/>
+                                                                                            </a>
+                                                                                        </span>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </t>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </t>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="text-align:center;">
+                                                    <hr width="100%"
+                                                        style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;"/>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <!-- FOOTER -->
+                                <tr>
+                                    <td align="center" style="min-width: 590px;">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="590"
+                                               style="min-width: 590px; background-color: white; font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;">
+                                            <tr>
+                                                <td valign="middle" align="left">
+                                                    <t t-out="user.company_id.name or ''">YourCompany</t>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="middle" align="left" style="opacity: 0.7;">
+                                                    <t t-out="user.company_id.phone or ''">+1 650-123-4567</t>
+                                                    <t t-if="user.company_id.phone and (user.company_id.email or user.company_id.website)">
+                                                        |
+                                                    </t>
+                                                    <t t-if="user.company_id.email">
+                                                        <a t-attf-href="'mailto:%s' % {{ user.company_id.email }}"
+                                                           style="text-decoration:none; color: #454748;"
+                                                           t-out="user.company_id.email or ''">info@yourcompany.com
+                                                        </a>
+                                                    </t>
+                                                    <t t-if="user.company_id.email and user.company_id.website">|</t>
+                                                    <t t-if="user.company_id.website">
+                                                        <a t-attf-href="'%s' % {{ user.company_id.website }}"
+                                                           style="text-decoration:none; color: #454748;"
+                                                           t-out="user.company_id.website or ''">http://www.example.com
+                                                        </a>
+                                                    </t>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                <!-- POWERED BY -->
+                <tr>
+                    <td align="center" style="min-width: 590px;">
+                        <table border="0" cellpadding="0" cellspacing="0" width="590"
+                               style="min-width: 590px; background-color: #F1F1F1; color: #454748; padding: 8px; border-collapse:separate;">
+                            <tr>
+                                <td style="text-align: center; font-size: 13px;">
+                                    Powered by
+                                    <a target="_blank" href="https://www.odoo.com" style="color: #875A7B;">Odoo</a>
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </field>
+    </record>
+</odoo>

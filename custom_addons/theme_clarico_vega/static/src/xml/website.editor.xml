@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="theme_clarico_vega.SnippetsMenu" t-inherit="website.SnippetsMenu" t-inherit-mode="primary">
+        <xpath expr="//button[@t-on-click='_onThemeTabClick']" position="before">
+            <button type="button" tabindex="4" class="o_we_customize_theme_btn text-uppercase"
+                    t-att-class="{ 'active': state.currentTab === constructor.tabs.THEME_EPT }"
+                    t-on-click="_onThemeTabClickEpt"
+                    accesskey="3">
+                <span>Emipro theme</span>
+            </button>
+        </xpath>
+    </t>
+</templates>

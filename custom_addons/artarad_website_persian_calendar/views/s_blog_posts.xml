@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<template id="post_info" inherit_id="website_blog.post_info">
+		<xpath expr="//time[@t-field='blog_post.post_date']" position="replace">
+			<time t-esc="blog_post.get_formatted_date(blog_post.post_date)" class="text-nowrap fw-bold px-2"/>
+		</xpath>
+	</template>
+
+</odoo>

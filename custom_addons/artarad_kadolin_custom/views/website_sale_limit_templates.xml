@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--  <template id="product_max_qty_input_akc" inherit_id="website_sale.product" name="AKC: set max attr on qty input">-->
+<!--    <xpath expr="//input[@name='add_qty']" position="attributes">-->
+<!--      &lt;!&ndash; بدون استفاده از getattr/str، فقط با short-circuit &ndash;&gt;-->
+<!--      <attribute name="t-att-max">-->
+<!--        (-->
+<!--          (-->
+<!--            product._name == 'product.product' and product.product_tmpl_id.akc_max_web_qty-->
+<!--          )-->
+<!--          or-->
+<!--          (-->
+<!--            product._name == 'product.template' and product.akc_max_web_qty-->
+<!--          )-->
+<!--          or 0-->
+<!--        ) &gt; 0-->
+<!--        and-->
+<!--        (-->
+<!--          (-->
+<!--            product._name == 'product.product' and product.product_tmpl_id.akc_max_web_qty-->
+<!--          )-->
+<!--          or-->
+<!--          (-->
+<!--            product._name == 'product.template' and product.akc_max_web_qty-->
+<!--          )-->
+<!--        )-->
+<!--        or None-->
+<!--      </attribute>-->
+<!--    </xpath>-->
+<!--  </template>-->
+</odoo>

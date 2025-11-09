@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="checkout_neshan_map_conditional" inherit_id="website_sale.address" customize_show="True">
+        <xpath expr="//input[@name='required_fields']" position="replace">
+            <!-- لیست را به‌صورت امن به آرایه تبدیل می‌کنیم -->
+            <t t-set="rf_list"
+               t-value="required_fields if isinstance(required_fields, list) else (required_fields or '').split(',')"/>
+            <!-- ایمیل را حذف می‌کنیم -->
+            <input type="hidden" name="required_fields"
+                   t-att-value="','.join([f for f in rf_list if f and f != 'email' and f])"/>
+        </xpath>
+        <xpath expr="//form[contains(@action, '/shop/address/submit')]" position="replace">
+            <form action="/shop/address/submit"
+                  method="post"
+                  class="checkout_autoformat"
+                  t-att-data-company-country-code="res_company.country_id.code">
+
+                <!-- ایمیل فقط برای anonymous -->
+                <t t-if="is_anonymous_cart">
+                    <div id="div_email_public" class="col-lg-6 mb-2">
+                        <label class="col-form-label" for="o_email">Email</label>
+
+                        <input id="o_email" type="email" name="email" class="form-control"
+                               t-att-value="partner_sudo.email"/>
+                    </div>
+                    <h4 class="mb-1 mt-5">Fill in your address</h4>
+                </t>
+
+                <div class="row">
+                    <!-- نام -->
+
+                    <div id="div_name" class="col-lg-6 mb-2">
+                        <label class="col-form-label" for="o_name">Full name</label>
+                        <input id="o_name" type="text" name="name" class="form-control"
+                               t-att-value="partner_sudo.name"/>
+                    </div>
+                    <!-- تلفن -->
+                    <div id="div_phone" class="col-lg-6 mb-2">
+                        <label class="col-form-label" for="o_phone">Mobile</label>
+                        <input id="o_phone" type="tel" name="phone" class="form-control"
+                               t-att-value="partner_sudo.phone"/>
+                    </div>
+
+
+                    <!-- ردیف: کشور / استان -->
+
+                    <!-- کشور همیشه ایران (پنهان) -->
+                    <t t-set="iran"
+                       t-value="request.env.ref('base.ir') or request.env['res.country'].sudo().search([('code','=','IR')], limit=1)"/>
+                    <t t-set="country_id" t-value="iran and iran.id"/>
+                    <input type="hidden" id="o_country_id" name="country_id" t-att-value="iran and iran.id or ''"/>
+
+                    <!-- لیست استان‌ها بر اساس کشور -->
+                    <t t-set="states"
+                       t-value="country_id and request.env['res.country.state'].sudo().search([('country_id','=',country_id)], order='name asc') or request.env['res.country.state']"/>
+
+                    <!-- اگر استان وجود دارد، سِلکت را نمایش بده -->
+                    <div id="div_state" class="col-lg-6 mb-2">
+                        <label class="col-form-label" for="o_state_id">استان</label>
+                        <select id="o_state_id" name="state_id" class="form-select">
+                            <option value="">انتخاب استان...</option>
+                            <t t-if="states and states.ids">
+                                <t t-foreach="states" t-as="s">
+                                    <option t-att-value="s.id"
+                                            t-att-selected="s.id == (state_id or (partner_sudo.state_id and partner_sudo.state_id.id))">
+                                        <t t-esc="s.name"/>
+                                    </option>
+                                </t>
+                            </t>
+                        </select>
+                    </div>
+
+                    <!-- شهر (Select) -->
+                    <div id="div_city_select" class="col-lg-6 mb-2">
+                        <label class="col-form-label" for="o_city_select">شهر</label>
+                        <select id="o_city_select" name="city_id" class="form-select">
+                            <option value="">انتخاب شهر...</option>
+                            <t t-if="state_id">
+                                <t t-foreach="request.env['res.city'].sudo().search([('state_id','=', state_id)], order='name asc')"
+                                   t-as="ct">
+                                    <option t-att-value="ct.id"
+                                            t-att-selected="(partner_sudo.city_id and partner_sudo.city_id.id == ct.id) or (not partner_sudo.city_id and partner_sudo.city == ct.name)">
+                                        <t t-esc="ct.name"/>
+                                    </option>
+                                </t>
+                            </t>
+                        </select>
+                        <input type="hidden" name="city" id="o_city"
+                               t-att-value="partner_sudo.city or (partner_sudo.city_id and partner_sudo.city_id.name) or ''"/>
+                    </div>
+
+
+                    <div id="div_zip" class="col-lg-6 mb-2">
+                        <label class="col-form-label label-optional" for="o_zip">Zip Code</label>
+                        <input id="o_zip" type="text" name="zip" class="form-control"
+                               t-att-value="partner_sudo.zip"/>
+                    </div>
+                    <!-- ایمیل برای کاربران لاگین -->
+                    <div t-if="not is_anonymous_cart" id="div_email" class="col-lg-6 mb-2">
+                        <label class="col-form-label label-optional" for="o_email2">Email</label>
+                        <input id="o_email2" type="email" name="email" class="form-control"
+                               t-att-value="partner_sudo.email"/>
+                    </div>
+
+
+                    <!-- ردیف: خیابان (بدون street2) -->
+
+                    <div id="div_street" class="col-lg-12 mb-2">
+                        <label class="col-form-label" for="o_street">Street</label>
+                        <textarea id="o_street"
+                                  name="street"
+                                  class="form-control"
+                                  rows="3"
+                                  placeholder="خیابان، کوچه، پلاک، واحد"
+                                  dir="rtl"
+                                  style="resize: vertical;">
+                            <t t-esc="partner_sudo.street or ''"/>
+                        </textarea>
+                    </div>
+                </div>
+
+                <!-- hidden ها (ضروری برای JS و کنترلر) -->
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" t-nocache="1"/>
+                <input type="hidden" name="address_type" t-att-value="address_type"/>
+                <input type="hidden" name="use_delivery_as_billing" t-att-value="use_delivery_as_billing"/>
+                <t t-if="partner_id">
+                    <input type="hidden" name="partner_id" t-att-value="partner_id"/>
+                </t>
+                <t t-if="callback">
+                    <input type="hidden" name="callback" t-att-value="callback"/>
+                </t>
+
+                <input type="hidden" name="required_fields"
+                       t-att-value="','.join([
+                           f for f in (
+                               required_fields if isinstance(required_fields, list)
+                               else (required_fields or '').split(',')
+                           )
+                           if f
+                           and f not in ('email','zip')
+                           and not (f == 'state_id' and not (states and states.ids))
+                       ])"/>
+
+
+                <div id="neshan-map-wrapper"
+                     class="mt-3"
+                     style="display:none;"
+                     t-att-data-api-key="request.env['ir.config_parameter'].sudo().get_param('neshan.api_key') or ''"
+                     t-att-data-target-state-name="'تهران'"
+                     t-att-data-target-state-id="request.env['ir.config_parameter'].sudo().get_param('checkout.tehran_state_id') or ''">
+                    <label class="form-label">موقعیت روی نقشه (فقط برای استان تهران)</label>
+                    <div id="neshan-checkout-map"
+                         class="border"
+                         style="width:100%; height:360px; border-radius:8px;"
+                         t-att-data-lat="partner_sudo.partner_latitude or ''"
+                         t-att-data-lng="partner_sudo.partner_longitude or ''">
+                    </div>
+                    <small class="text-danger d-none" id="map-required-msg">
+                        لطفاً موقعیت خود را روی نقشه مشخص کنید.
+                    </small>
+                    <input name="partner_latitude" id="partner_latitude" type="hidden"
+                           t-att-value="partner_sudo.partner_latitude or ''"/>
+                    <input name="partner_longitude" id="partner_longitude" type="hidden"
+                           t-att-value="partner_sudo.partner_longitude or ''"/>
+                </div>
+
+
+                <!-- دکمه‌ها -->
+                <div class="d-flex flex-column flex-md-row align-items-center justify-content-between mt32 mb32">
+                    <a role="button" t-att-href="discard_url"
+                       class="btn btn-outline-secondary w-100 w-md-auto order-md-1 order-3">
+                        <i class="fw-light fa fa-angle-left me-2"/>Discard
+                    </a>
+                    <div class="position-relative w-100 d-flex d-md-none justify-content-center align-items-center order-2 my-2 opacity-75">
+                        <hr class="w-100"/>
+                        <span class="px-3">or</span>
+                        <hr class="w-100"/>
+                    </div>
+                    <button id="save_address" class="btn btn-primary w-100 w-md-auto order-1 order-md-3">
+                        <t t-if="is_anonymous_cart">Continue checkout</t>
+                        <t t-else="">Save address</t>
+                        <i class="fw-light fa fa-angle-right ms-2"/>
+                    </button>
+                </div>
+
+            </form>
+        </xpath>
+    </template>
+
+
+    <template id="website_sale_checkout_delivery_slot" inherit_id="website_sale.checkout" name="Checkout Delivery Slot">
+        <xpath expr="//div[@id='shop_checkout']" position="after">
+            <div class="card-body d-flex align-items-center">
+                <i class="fa fa-truck me-2" aria-hidden="true"/>
+                <strong class="me-2">زمان تحویل برآوردی:</strong>
+                <span t-esc="order.create_uid.get_jalali_date(order.expected_date)"/>
+            </div>
+
+            <t t-set="exp_date" t-value="(order.expected_date or '')"/>
+            <div id="delivery_slot_block"
+                 class="o_not_editable my-3"
+                 t-att-data-expected-date="exp_date"
+                 t-att-data-sale-order-id="order.id"
+                 t-att-data-partner-city="order.partner_shipping_id.city or ''">
+                <h5 class="mb-2">انتخاب تاریخ و بازه تحویل</h5>
+                <div class="card p-3">
+                    <div class="row g-3 align-items-stretch">
+
+                        <!-- ستون تقویم کوتاه -->
+                        <div class="col-12 col-md-8">
+                            <!--                            <div class="d-flex justify-content-between align-items-center mb-2">-->
+                            <!--                                <div class="text-muted small">از-->
+                            <!--                                    <t t-out="order.create_uid.get_jalali_date(exp_date)"/>-->
+
+                            <!--                                </div>-->
+                            <!--                            </div>-->
+                            <div id="ds-days" class="d-grid" style="grid-template-columns: repeat(5, 1fr); gap:.5rem;">
+                                <!-- اینجا با JS پر می‌شود -->
+                            </div>
+                            <input type="hidden" id="delivery_date_input" name="delivery_date"/>
+                            <input type="hidden" id="delivery_slot_input" name="delivery_slot_hidden"/>
+                        </div>
+
+                        <!-- ستون بازه‌ها (فقط اگر شهر = تهران) -->
+                        <div id="delivery_slot_wrapper" class="col-12 col-md-4">
+                            <label class="form-label mb-2 d-block">بازه ساعتی تحویل (فقط تهران)</label>
+                            <div class="btn-group w-100" role="group" aria-label="Delivery slot">
+                                <input type="radio" class="btn-check" name="delivery_slot" id="slot_morning"
+                                       value="morning" autocomplete="off"/>
+                                <label class="btn btn-outline-primary w-50" for="slot_morning">9 - 15</label>
+
+                                <input type="radio" class="btn-check" name="delivery_slot" id="slot_evening"
+                                       value="evening" autocomplete="off"/>
+                                <label class="btn btn-outline-primary w-50" for="slot_evening">15 - 21</label>
+                            </div>
+                            <input type="hidden" id="delivery_slot_input" name="delivery_slot_input" value=""/>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+
+    <template id="product_kadolin" inherit_id="website_sale.product">
+
+        <xpath expr="//h1[@itemprop='name']" position="before">
+            <div class="kadolin-1">
+                <t t-if="product.is_fake">
+                    <div class="my_custom_div fake-product">
+                        غیر اصل
+                    </div>
+                </t>
+                <t t-if="product.list_price &gt; 20000000">
+                    <div class="my_custom_div free-shipping-product">
+                        ارسال رایگان
+                    </div>
+                </t>
+            </div>
+            <div style="display:inline">
+                <t t-if="product.product_brand_id and product.product_brand_id.name or product.product_brand_id.description">
+                    <span class="d-block t-brand mb-2"
+                          t-if="product.product_brand_id.website_id.id == request.website.id or not product.product_brand_id.website_id.id">
+                        <span class="te_brand_name">Brand:</span>
+                        <a t-att-href="'/shop/brands/%s-%s' %(product.product_brand_id.with_context(lang='en_US').name.replace(' ','-'),product.product_brand_id.id)">
+                            <span class="brand_dsc" t-out="product.product_brand_id.name"/>
+                        </a>
+                    </span>
+                </t>
+                <t t-if="product.public_categ_ids">
+                    <span class="d-block" t-if="len(product.public_categ_ids.ids) > 0">
+                        <span>Category:</span>
+                        <t t-set="categ_rec" t-value="product.public_categ_ids[0]"/>
+                        <a t-att-href="'/shop/category/%s' %slug(categ_rec)">
+                            <span t-out="categ_rec.name"/>
+                        </a>
+                    </span>
+                </t>
+            </div>
+        </xpath>
+        <xpath expr="//h1[@itemprop='name']" position="after">
+            <t t-if="product.seo_name">
+                <div class="latin-title">
+                    <t t-esc="product.seo_name"/>
+                </div>
+            </t>
+        </xpath>
+
+
+    </template>
+
+    <template id="product_price_ept" inherit_id="website_sale.product_price">
+        <xpath expr="//div[@itemprop='offers']" position="replace">
+            <!--            <t t-if="product.qty_available &gt; 0 or product.allow_out_of_stock_order">-->
+            <t t-if="combination_info.get('free_qty', 0) > 0 or product.allow_out_of_stock_order">
+                <div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"
+                     t-attf-class="product_price te_prod_bottom_margin {{'d-none' if combination_info['prevent_zero_price_sale'] else 'd-inline-block'}}">
+                    <t t-set="difference"
+                       t-value="round(combination_info['list_price'] - combination_info['price'],2) "/>
+                    <t t-set="discount"
+                       t-value="round(difference*100/combination_info['list_price'],2) if combination_info['list_price'] &gt; 0 else 0"/>
+                    <h3 class="oe_price_h4 main_product_price wish_product_name_and_price css_editable_mode_hidden d-inline-block">
+                        <span class="oe_price text-nowrap" t-out="combination_info['price']"
+                              t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                        <span itemprop="price" style="display:none;" t-out="combination_info['price']"/>
+                        <span itemprop="priceCurrency" style="display:none;" t-out="website.currency_id.name"/>
+                        <span t-attf-class="text-danger text-decoration-line-through text-nowrap oe_default_price h5 fw-normal {{'' if combination_info['has_discounted_price'] and not combination_info['compare_list_price'] else 'd-none'}}"
+                              t-out="combination_info['list_price']"
+                              t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"
+                              itemprop="listPrice"/>
+                        <t t-if="is_view_active('website_sale.tax_indication')"
+                           t-call="theme_clarico_vega.tax_indication_ept"/>
+                        <del t-if="combination_info['compare_list_price'] and (combination_info['compare_list_price'] &gt; combination_info['price'])">
+                            <bdi dir="inherit">
+                                <span t-out="combination_info['compare_list_price']"
+                                      groups="website_sale.group_product_price_comparison"
+                                      t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                            </bdi>
+                        </del>
+                        <t t-if="product.compare_list_price &gt; 0">
+                            <div class="te_percentage ">
+
+                                <span class="percent_val"
+                                      t-out="'%s'%(round((product.compare_list_price-product.list_price)/product.compare_list_price*100))"/>
+                                ٪ تخفیف
+                            </div>
+                        </t>
+                    </h3>
+                    <h3 class="css_non_editable_mode_hidden decimal_precision"
+                        t-att-data-precision="str(website.currency_id.decimal_places)">
+                        <span t-field="product.list_price"
+                              t-options="{'widget': 'monetary', 'display_currency': product.currency_id}"/>
+                        <t t-if="is_view_active('website_sale.tax_indication')"
+                           t-call="theme_clarico_vega.tax_indication_ept"/>
+                        <del t-if="combination_info['compare_list_price'] and (combination_info['compare_list_price'] &gt; combination_info['price'])">
+                            <bdi dir="inherit">
+
+
+                                <span t-field="product.compare_list_price"
+                                      groups="website_sale.group_product_price_comparison"
+                                      t-options="{'widget': 'monetary', 'display_currency': product.currency_id}"/>
+
+
+                            </bdi>
+                        </del>
+                    </h3>
+                    <!--                    <div class="te_percentage ">-->
+
+                    <!--                        <span class="percent_val" t-out="'%s'%(round((product.compare_list_price-product.list_price)/product.compare_list_price*100))"/>-->
+                    <!--٪  تخفیف-->
+                    <!--                    </div>-->
+                    <!--                    <div t-attf-class="te_discount  d-inline-block {{'' if combination_info['has_discounted_price'] else 'd-none'}}">-->
+                    <!--                        <div class="te_percentage ">-->
+                    <!--                            <span class="percent_val" t-out="'%s'%(discount)"/>% Off-->
+                    <!--                        </div>-->
+                    <!--                    </div>-->
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+
+    <template id="cart_lines_kadolin" inherit_id="website_sale.cart_lines">
+        <xpath expr="//div[@name='website_sale_cart_line_price']//t[@t-if='line.discount']" position="after">
+            <t t-if="line.product_id.compare_list_price &gt; 0">
+                <del>
+                    <bdi>
+                        <span t-out="line.product_id.compare_list_price"
+                              groups="website_sale.group_product_price_comparison"
+                              t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                    </bdi>
+                </del>
+                <div class="te_percentage ">
+                    <span class="percent_val"
+                          t-out="'%s'%(round((line.product_id.compare_list_price-line.product_id.list_price)/line.product_id.compare_list_price*100))"/>
+                    ٪ تخفیف
+                </div>
+            </t>
+
+        </xpath>
+    </template>
+
+</odoo>

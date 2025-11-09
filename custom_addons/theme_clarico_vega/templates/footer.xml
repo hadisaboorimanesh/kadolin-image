@@ -1,0 +1,862 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--=============================== Remove odoo logo =============================-->
+    <template id="brand_promotion_ept" inherit_id="web.brand_promotion" name="Brand Promotion">
+        <xpath expr="//div[hasclass('o_brand_promotion')]" position="replace"/>
+    </template>
+    <!--=============================== Footer_style_1 =============================-->
+    <template id="footer_style_1" inherit_id="website.layout" name="customize footer style 1" active="False">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div id="footer" class="oe_structure oe_structure_solo mt-4" t-ignore="true" t-if="not no_footer">
+                <section class="s_text_block" data-snippet="s_text_block" data-name="Text">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12 pb-4 px-4 te_footer_detail">
+                                <div class="te_footer_logo_title_socialicon">
+                                    <a href="/" class="o_footer_logo logo">
+                                        <img src="/website/static/src/img/website_logo.svg" class="img-fluid"
+                                             aria-label="Logo of MyCompany" title="MyCompany" role="img"/>
+                                    </a>
+                                    <div class="te_footer_add_tel_email pt-2">
+                                        <ul class="te_footer_info_text list-unstyled">
+                                            <li t-if="res_company.street or res_company.street2 or res_company.city or res_company.state_id or res_company.zip or res_company.country_id">
+                                                <span class="te_footer_add_tel_email_text_ept d-inline-block align-top ">
+                                                    <span class="fa fa-map-marker"></span>
+                                                </span>
+                                                <span class="te_ftr_text_style d-inline-block ps-2 align-top">
+                                                    <span t-if="res_company.street" t-field="res_company.street"/>
+                                                    <span t-if="res_company.street2" t-field="res_company.street2"/>
+                                                    <span t-if="res_company.city" t-field="res_company.city"/>
+                                                    <span t-if="res_company.state_id"
+                                                          t-field="res_company.state_id.name"/>
+                                                    <span t-if="res_company.zip" t-field="res_company.zip"/>
+                                                    <span t-if="res_company.country_id"
+                                                          t-field="res_company.country_id.name"/>
+                                                </span>
+                                            </li>
+                                            <li t-if="res_company.phone">
+                                                <span class="te_footer_add_tel_email_text_ept d-inline-block align-top ">
+                                                    <span class="fa fa-phone"></span>
+                                                </span>
+                                                <span class="te_ftr_text_style d-inline-block ps-2 align-middle">
+                                                    <a t-att-href="'tel: %s' %res_company.phone" class="align-top"
+                                                       t-out="res_company.phone"/>
+                                                </span>
+                                            </li>
+                                            <li t-if="res_company.email">
+                                                <span class="te_footer_add_tel_email_text_ept d-inline-block align-top ">
+                                                    <span class="fa fa-envelope"></span>
+                                                </span>
+                                                <span class="te_ftr_text_style d-inline-block ps-2 align-middle">
+                                                    <a t-att-href="'mailto: %s' %res_company.email" class="align-top"
+                                                       t-out="res_company.email"/>
+                                                </span>
+                                            </li>
+                                        </ul>
+                                        <span class="s_social_media text-end o_not_editable"
+                                              data-snippet="s_social_media" data-name="Social Media"
+                                              contenteditable="false">
+                                            <h5 class="s_social_media_title d-none" contenteditable="true">Follow Us
+                                            </h5>
+                                            <a href="/website/social/facebook" class="s_social_media_facebook"
+                                               target="_blank">
+                                                <i class="fa fa-1x fa-facebook rounded-circle shadow-sm"/>
+                                            </a>
+                                            <a href="/website/social/twitter" class="s_social_media_twitter"
+                                               target="_blank">
+                                                <i class="fa fa-1x fa-twitter rounded-circle shadow-sm"/>
+                                            </a>
+                                            <a href="/website/social/instagram" class="s_social_media_instagram"
+                                               target="_blank">
+                                                <i class="fa fa-1x fa-instagram rounded-circle shadow-sm"/>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 col-md-12 py-4 px-4 te_informations_s">
+                                <div class="row">
+                                    <div class="col-lg-12 offset-lg-1">
+                                        <p></p>
+                                        <div class="s_rating row">
+                                            <div class="col-sm-4">
+                                                <h3 class="te_block_title mb-3 fw-bold d-inline-block">Useful link</h3>
+                                                <ul class="te_footer_info_ept list-unstyled">
+                                                    <section>
+                                                        <li class="pt-0 d-block">
+                                                            <i class="fa fa-long-arrow-right"></i>
+                                                            <a href="#">Help</a>
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li class="d-block">
+                                                            <i class="fa fa-long-arrow-right"></i>
+                                                            <a href="#">Gift Cards</a>
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li class="d-block">
+                                                            <i class="fa fa-long-arrow-right"></i>
+                                                            <a href="#">Order Status</a>
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li class="d-block">
+                                                            <i class="fa fa-long-arrow-right"></i>
+                                                            <a href="#">Free Shipping</a>
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li class="d-block">
+                                                            <i class="fa fa-long-arrow-right"></i>
+                                                            <a href="#">Returns Exchanges</a>
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li class="d-block">
+                                                            <i class="fa fa-long-arrow-right"></i>
+                                                            <a href="#">International</a>
+                                                        </li>
+                                                    </section>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h3 class="te_block_title mb-3 fw-bold d-inline-block">Take Action</h3>
+                                                <ul class="te_footer_info_ept list-unstyled">
+                                                    <section>
+                                                        <li class="pt-0 d-block">
+                                                            <i class="fa fa-long-arrow-right"></i>
+                                                            <a href="#">Security</a>
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li class="d-block">
+                                                            <i class="fa fa-long-arrow-right"></i>
+                                                            <a href="#">Privacy</a>
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li class="d-block">
+                                                            <i class="fa fa-long-arrow-right"></i>
+                                                            <a href="#">Text Messaging</a>
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li class="d-block">
+                                                            <i class="fa fa-long-arrow-right"></i>
+                                                            <a href="#">Legal</a>
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li class="d-block">
+                                                            <i class="fa fa-long-arrow-right"></i>
+                                                            <a href="#">Supply Chain</a>
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li class="d-block">
+                                                            <i class="fa fa-long-arrow-right"></i>
+                                                            <a href="#">Contact</a>
+                                                        </li>
+                                                    </section>
+                                                </ul>
+                                            </div>
+                                            <div class="col-sm-4">
+                                                <h3 class="te_block_title mb-3 fw-bold d-inline-block">Take Action</h3>
+                                                <ul class="te_footer_info_ept list-unstyled">
+                                                    <section>
+                                                        <li class="pt-0 d-block">
+                                                            <i class="fa fa-long-arrow-right"></i>
+                                                            <a href="#">Security</a>
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li class="d-block">
+                                                            <i class="fa fa-long-arrow-right"></i>
+                                                            <a href="#">Privacy</a>
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li class="d-block">
+                                                            <i class="fa fa-long-arrow-right"></i>
+                                                            <a href="#">Text Messaging</a>
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li class="d-block">
+                                                            <i class="fa fa-long-arrow-right"></i>
+                                                            <a href="#">Legal</a>
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li class="d-block">
+                                                            <i class="fa fa-long-arrow-right"></i>
+                                                            <a href="#">Supply Chain</a>
+                                                        </li>
+                                                    </section>
+                                                    <section>
+                                                        <li class="d-block">
+                                                            <i class="fa fa-long-arrow-right"></i>
+                                                            <a href="#">Contact</a>
+                                                        </li>
+                                                    </section>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="row col-12">
+                                            <p/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+    </template>
+
+    <!--=============================== Footer_style_2 =============================-->
+    <template id="footer_style_2" inherit_id="website.layout" name="customize footer style 2" active="False">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div id="footer" class="oe_structure oe_structure_solo mt-4 footer_2" t-ignore="true" t-if="not no_footer">
+                <section class="s_text_block pt48 pb32" data-snippet="s_text_block" data-name="Text">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-2 te_footer_detail">
+                                <h5 class="mb16">All Policy</h5>
+                                <ul class="list-unstyled">
+                                    <li class="list-item py-1">
+                                        <a href="#">Return Policy</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Return Policy</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Exchange Policy</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Privacy Policy</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-2 te_footer_detail">
+                                <h5 class="mb16">Need help</h5>
+                                <ul class="list-unstyled">
+                                    <li class="list-item py-1">
+                                        <a href="#">FAQs</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Customer Care</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Became a Seller</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Support Center</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-2 te_footer_detail">
+                                <h5 class="mb16">Company</h5>
+                                <ul class="list-unstyled">
+                                    <li class="list-item py-1">
+                                        <a href="#">About us</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Delivery Information</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Your Careers</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Terms &amp; Conditions</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 te_footer_detail">
+                                <h5 class="mb16">Corporate</h5>
+                                <ul class="list-unstyled">
+                                    <li class="list-item py-1">
+                                        <a href="#">Affiliate Program</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Accessibility</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Promotions</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Corporate Business</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 te_footer_detail">
+                                <h5 class="mb16">Stay Connected</h5>
+                                <ul class="list-unstyled">
+                                    <li t-if="res_company.phone" class="list-item py-1">
+                                        <span class="te_footer_add_tel_email_text_ept d-inline-block align-top ">
+                                            <span class="fa fa-phone"></span>
+                                        </span>
+                                        <span class="te_ftr_text_style d-inline-block ps-2 align-middle">
+                                            <a t-att-href="'tel: %s' %res_company.phone" class="align-top"
+                                               t-out="res_company.phone"/>
+                                        </span>
+                                    </li>
+                                    <li t-if="res_company.email" class="list-item py-1">
+                                        <span class="te_footer_add_tel_email_text_ept d-inline-block align-top ">
+                                            <span class="fa fa-envelope"></span>
+                                        </span>
+                                        <span class="te_ftr_text_style d-inline-block ps-2 align-middle">
+                                            <a t-att-href="'mailto: %s' %res_company.email" class="align-top"
+                                               t-out="res_company.email"/>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <hr/>
+                <section class="s_text_block pt16 pb32" data-snippet="s_text_block" data-name="Text">
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-4 pb8 payment_icons my-3">
+                                <h5 class="text-center mb16">Payment Options</h5>
+                                <div class="text-center">
+                                    <span class="img_span">
+                                        <img src="/theme_clarico_vega/static/src/img/product_payment_icons/american-express.jpeg"
+                                             class="img-fluid"
+                                             aria-label="Payment Logo 1" title="MyCompany" role="img"/>
+                                    </span>
+                                    <span class="img_span">
+                                        <img src="/theme_clarico_vega/static/src/img/product_payment_icons/paypal.jpeg"
+                                             class="img-fluid"
+                                             aria-label="Payment Logo 2" title="MyCompany" role="img"/>
+                                    </span>
+                                    <span class="img_span">
+                                        <img src="/theme_clarico_vega/static/src/img/product_payment_icons/master-card.jpeg"
+                                             class="img-fluid"
+                                             aria-label="Payment Logo 3" title="MyCompany" role="img"/>
+                                    </span>
+                                    <span class="img_span">
+                                        <img src="/theme_clarico_vega/static/src/img/product_payment_icons/maestro.jpeg"
+                                             class="img-fluid"
+                                             aria-label="Payment Logo 4" title="MyCompany" role="img"/>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 pb8 website_logo text-center my-3">
+                                <a href="/" class="o_footer_logo logo">
+                                    <img src="/website/static/src/img/website_logo.svg" class="img-fluid"
+                                         aria-label="Logo of MyCompany" title="MyCompany" role="img"/>
+                                </a>
+                            </div>
+                            <div class="col-lg-4 pb8 my-3">
+                                <h5 class="text-center mb16">social media</h5>
+                                <div class="social_media_icons text-center">
+                                    <span class="s_social_media text-end o_not_editable text-center"
+                                          data-snippet="s_social_media"
+                                          data-name="Social Media" contenteditable="false">
+                                        <a href="/website/social/facebook" class="s_social_media_facebook"
+                                           target="_blank">
+                                            <i class="fa fa-1x fa-facebook rounded shadow-sm"/>
+                                        </a>
+                                        <a href="/website/social/twitter" class="s_social_media_twitter"
+                                           target="_blank">
+                                            <i class="fa fa-1x fa-twitter rounded shadow-sm"/>
+                                        </a>
+                                        <a href="/website/social/instagram" class="s_social_media_instagram"
+                                           target="_blank">
+                                            <i class="fa fa-1x fa-instagram rounded shadow-sm"/>
+                                        </a>
+                                        <a href="/website/social/linkedin" class="s_social_media_linkedin"
+                                           target="_blank">
+                                            <i class="fa fa-1x fa-linkedin rounded shadow-sm"/>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_copyright')]//div[hasclass('container')]" position="attributes">
+            <attribute name="class" add="py-4" remove="py-3" separator=" "/>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_copyright')]//div[hasclass('col-sm')]" position="attributes">
+            <attribute name="class" add="text-sm-center" remove="text-sm-start" separator=" "/>
+        </xpath>
+    </template>
+
+    <!--=============================== Footer_style_3 =============================-->
+    <template id="footer_style_3" inherit_id="website.layout" name="customize footer style 3" active="False">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div id="footer" class="oe_structure oe_structure_solo footer_3" t-ignore="true" t-if="not no_footer">
+                <section class="s_text_block" data-snippet="s_text_block" data-name="Text">
+                    <div class="container pt48 pb32">
+                        <div class="row pt16">
+                            <div class="col-lg-3 col-md-12 pb-4 te_footer_detail">
+                                <a href="/" class="o_footer_logo logo">
+                                    <img src="/website/static/src/img/website_logo.svg" class="img-fluid"
+                                         aria-label="Logo of MyCompany" title="MyCompany" role="img"/>
+                                </a>
+                                <ul class="list-unstyled pt16">
+                                    <li class="list-item py-1">
+                                        We are a team of passionate people whose goal is to improve everyone's life
+                                        through disruptive products.
+                                    </li>
+                                    <li class="list-item py-1">
+                                        We build great products to solve your business problems.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-2 col-md-12 pb-4 te_footer_detail">
+                                <h5 class="mb16">Quick Links</h5>
+                                <ul class="list-unstyled">
+                                    <li class="list-item py-1">
+                                        <a href="#">About Us</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Categories</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Services</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Article</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Contact Us</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 col-md-12 pb-4 te_footer_contact_detail">
+                                <h5 class="mb16">Contact Us</h5>
+                                <ul class="te_footer_info_text list-unstyled">
+                                    <li t-if="res_company.street or res_company.street2 or res_company.city or res_company.state_id or res_company.zip or res_company.country_id">
+                                        <span class="te_footer_add_tel_email_text_ept d-inline-block align-top ">
+                                            <span class="fa fa-map-marker"></span>
+                                        </span>
+                                        <span class="te_ftr_text_style d-inline-block ps-2 align-top">
+                                            <span t-if="res_company.street" t-field="res_company.street"/>
+                                            <span t-if="res_company.street2" t-field="res_company.street2"/>
+                                            <span t-if="res_company.city" t-field="res_company.city"/>
+                                            <span t-if="res_company.state_id"
+                                                  t-field="res_company.state_id.name"/>
+                                            <span t-if="res_company.zip" t-field="res_company.zip"/>
+                                            <span t-if="res_company.country_id"
+                                                  t-field="res_company.country_id.name"/>
+                                        </span>
+                                    </li>
+                                    <li t-if="res_company.phone">
+                                        <span class="te_footer_add_tel_email_text_ept d-inline-block align-top ">
+                                            <span class="fa fa-phone"></span>
+                                        </span>
+                                        <span class="te_ftr_text_style d-inline-block ps-2 align-middle">
+                                            <a t-att-href="'tel: %s' %res_company.phone" class="align-top"
+                                               t-out="res_company.phone"/>
+                                        </span>
+                                    </li>
+                                    <li t-if="res_company.email">
+                                        <span class="te_footer_add_tel_email_text_ept d-inline-block align-top ">
+                                            <span class="fa fa-envelope"></span>
+                                        </span>
+                                        <span class="te_ftr_text_style d-inline-block ps-2">
+                                            <a t-att-href="'mailto: %s' %res_company.email"
+                                               t-out="res_company.email"/>
+                                        </span>
+                                    </li>
+                                    <li t-if="res_company.website">
+                                        <span class="te_footer_add_tel_email_text_ept d-inline-block align-top ">
+                                            <span class="fa fa-globe"></span>
+                                        </span>
+                                        <span class="te_ftr_text_style d-inline-block ps-2">
+                                            <a t-att-href="'mailto: %s' %res_company.website"
+                                               t-out="res_company.website"/>
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-4 col-md-12 pb-4 te_footer_follow_detail">
+                                <h5 class="mb16">Follow Us</h5>
+                                <div class="social_media_icons text-left pb32">
+                                    <span class="s_social_media text-end o_not_editable text-center"
+                                          data-snippet="s_social_media"
+                                          data-name="Social Media" contenteditable="false">
+                                        <a href="/website/social/facebook" class="s_social_media_facebook"
+                                           target="_blank">
+                                            <i class="fa fa-1x fa-facebook rounded shadow-sm"/>
+                                        </a>
+                                        <a href="/website/social/twitter" class="s_social_media_twitter"
+                                           target="_blank">
+                                            <i class="fa fa-1x fa-twitter rounded shadow-sm"/>
+                                        </a>
+                                        <a href="/website/social/instagram" class="s_social_media_instagram"
+                                           target="_blank">
+                                            <i class="fa fa-1x fa-instagram rounded shadow-sm"/>
+                                        </a>
+                                        <a href="/website/social/linkedin" class="s_social_media_linkedin"
+                                           target="_blank">
+                                            <i class="fa fa-1x fa-linkedin rounded shadow-sm"/>
+                                        </a>
+                                    </span>
+                                </div>
+                                <h5 class="mb16">Signup Newsletter</h5>
+                                <t t-snippet-call="website_mass_mailing.s_newsletter_subscribe_form"/>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_copyright')]//div[hasclass('container')]" position="attributes">
+            <attribute name="class" add="py-4" remove="py-3" separator=" "/>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_copyright')]//div[hasclass('col-sm')]" position="attributes">
+            <attribute name="class" add="col-sm-6" remove="col-sm" separator=" "/>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_copyright')]//div[hasclass('text-sm-start')]" position="after">
+            <div class="col-sm-6 text-end">
+                <ul class="list-unstyled copyright_links">
+                    <li class="list-item py-1 divider"><a href="#">Terms and Conditions</a> </li>
+                    <li class="list-item py-1"><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </xpath>
+    </template>
+
+    <!--=============================== Footer_style_4 =============================-->
+    <template id="footer_style_4" inherit_id="website.layout" name="customize footer style 4" active="False">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div id="footer" class="oe_structure oe_structure_solo footer_4" t-ignore="true" t-if="not no_footer">
+                <section class="s_text_block pb32" data-snippet="s_text_block" data-name="Text">
+                    <div class="newsletter_top_block pt32 pb32">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-8 newsletter_block_inner d-flex justify-content-between align-self-center">
+                                    <h4 class="text-uppercase d-inline-block mb0 pb0 align-self-center signup_strg">Signup Newsletter</h4>
+                                    <t t-snippet-call="website_mass_mailing.s_newsletter_subscribe_form"/>
+                                </div>
+                                <div class="col-lg-4 social_media_icons text-left text-end">
+                                    <span class="s_social_media text-end o_not_editable text-center"
+                                          data-snippet="s_social_media"
+                                          data-name="Social Media" contenteditable="false">
+                                        <h5 class="s_social_media_title" contenteditable="true">Follow Us</h5>
+                                        <a href="/website/social/facebook" class="s_social_media_facebook"
+                                           target="_blank">
+                                            <i class="fa fa-1x fa-facebook rounded-circle shadow-sm"/>
+                                        </a>
+                                        <a href="/website/social/twitter" class="s_social_media_twitter"
+                                           target="_blank">
+                                            <i class="fa fa-1x fa-twitter rounded-circle shadow-sm"/>
+                                        </a>
+                                        <a href="/website/social/instagram" class="s_social_media_instagram"
+                                           target="_blank">
+                                            <i class="fa fa-1x fa-instagram rounded-circle shadow-sm"/>
+                                        </a>
+                                        <a href="/website/social/linkedin" class="s_social_media_linkedin"
+                                           target="_blank">
+                                            <i class="fa fa-1x fa-linkedin rounded-circle shadow-sm"/>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container pt48">
+                        <div class="col-lg-2 offset-lg-5 pb32">
+                            <a href="/" class="o_footer_logo logo">
+                                <img src="/website/static/src/img/website_logo.svg" class="img-fluid mx-auto"
+                                     aria-label="Logo of MyCompany" title="MyCompany" role="img"/>
+                            </a>
+                        </div>
+                        <div class="row">
+                            <ul class="list-unstyled list-inline text-center footer_links pb16">
+                                <li class="list-inline-item mx-3">
+                                    <a href="#">Home</a>
+                                </li>
+                                <li class="list-inline-item mx-3">
+                                    <a href="#">Elements</a>
+                                </li>
+                                <li class="list-inline-item mx-3">
+                                    <a href="#">Our Shop</a>
+                                </li>
+                                <li class="list-inline-item mx-3">
+                                    <a href="#">About Us</a>
+                                </li>
+                                <li class="list-inline-item mx-3">
+                                    <a href="#">Contact Us</a>
+                                </li>
+                                <li class="list-inline-item mx-3">
+                                    <a href="#">Blog</a>
+                                </li>
+                            </ul>
+                            <div class="payment_icons mb16">
+                                <div class="text-center">
+                                    <span class="img_span">
+                                        <img src="/theme_clarico_vega/static/src/img/footer_icons/Payment.svg"
+                                             class="img-fluid"
+                                             aria-label="Payment Logo" title="Payment Logo" role="img"/>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_copyright')]//div[hasclass('col-sm')]" position="attributes">
+            <attribute name="class" add="text-sm-center" remove="text-sm-start" separator=" "/>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_copyright')]//div[hasclass('container')]" position="attributes">
+            <attribute name="class" add="py-4" remove="py-3" separator=" "/>
+        </xpath>
+    </template>
+
+    <!--=============================== Footer_style_5 =============================-->
+    <template id="footer_style_5" inherit_id="website.layout" name="customize footer style 5" active="False">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div id="footer" class="oe_structure oe_structure_solo footer_5" t-ignore="true" t-if="not no_footer">
+                <section class="s_text_block" data-snippet="s_text_block" data-name="Text">
+                    <div class="container pt64 pb32 bt_ln px-lg-0">
+                        <div class="row">
+                            <div class="col-lg-2 te_footer_detail">
+                                <h5 class="mb16">About Company</h5>
+                                <ul class="list-unstyled">
+                                    <li class="list-item py-1">
+                                        <a href="#">Our Location</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Services</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Our Shop</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Job Opportunities</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Calendar Of Event</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-2 te_footer_detail">
+                                <h5 class="mb16">Useful Link</h5>
+                                <ul class="list-unstyled">
+                                    <li class="list-item py-1">
+                                        <a href="#">About Us</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Terms &amp; Condition</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Privacy Policy</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">News</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Contact Us</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 te_footer_detail">
+                                <h5 class="mb16">My Account</h5>
+                                <ul class="list-unstyled">
+                                    <li class="list-item py-1">
+                                        <a href="#">Gift &amp; Voucher</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Account Info</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Checkout</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Wishlist &amp; Like</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Billing Info</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-5 row">
+                                <a href="/" class="col-lg-5 pt0 pb16 o_footer_logo logo">
+                                    <img src="/website/static/src/img/website_logo.svg" class="img-fluid"
+                                         aria-label="Logo of MyCompany" title="MyCompany" role="img"/>
+                                </a>
+                                <div class="d-block py-1">
+                                    There are many variations of passages of Lorem Ipsum available,
+                                    but the majority have suffered alteration in some form by injected
+                                    humour, or randomised words which look slightly.
+                                </div>
+                                <span class="s_social_media text-left o_not_editable no_icon_color mt8"
+                                      data-snippet="s_social_media"
+                                      data-name="Social Media" contenteditable="false">
+                                    <a href="/website/social/facebook" class="s_social_media_facebook mx-0 pe-2"
+                                       target="_blank">
+                                        <i class="fa fa-2x fa-facebook"/>
+                                    </a>
+                                    <a href="/website/social/twitter" class="s_social_media_twitter mx-0 pe-2"
+                                       target="_blank">
+                                        <i class="fa fa-2x fa-twitter m-1"/>
+                                    </a>
+                                    <a href="/website/social/instagram" class="s_social_media_instagram mx-0 pe-2"
+                                       target="_blank">
+                                        <i class="fa fa-2x fa-instagram m-1"/>
+                                    </a>
+                                    <a href="/website/social/linkedin" class="s_social_media_linkedin mx-0 pe-2"
+                                       target="_blank">
+                                        <i class="fa fa-2x fa-linkedin m-1"/>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_copyright')]//div[hasclass('container')]" position="attributes">
+            <attribute name="class" add="py-4 px-lg-0" remove="py-3" separator=" "/>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_copyright')]//div[hasclass('col-sm')]" position="attributes">
+            <attribute name="class" add="col-sm-7" remove="col-sm" separator=" "/>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_copyright')]//div[hasclass('text-sm-start')]" position="after">
+            <div class="col-sm-5 text-end payment_icons">
+                <span class="img_span">
+                    <img src="/theme_clarico_vega/static/src/img/footer_icons/Payment.png"
+                         class="img-fluid"
+                         aria-label="Payment Logo" title="Payment Logo" role="img"/>
+                </span>
+            </div>
+        </xpath>
+    </template>
+
+    <!--=============================== Footer_style_6 =============================-->
+    <template id="footer_style_6" inherit_id="website.layout" name="customize footer style 6" active="False">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div id="footer" class="oe_structure oe_structure_solo footer_6" t-ignore="true" t-if="not no_footer">
+                <section class="s_text_block" data-snippet="s_text_block" data-name="Text">
+                    <div class="container pt64 pb32 bt_ln px-lg-0">
+                        <div class="row">
+                            <div class="col-lg-2 te_footer_detail">
+                                <h5 class="mb16">Quick Links</h5>
+                                <ul class="list-unstyled">
+                                    <li class="list-item py-1">
+                                        <a href="#">Privacy Policy</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Returns</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Terms &amp; Conditions</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Contact Us</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Latest News</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-2 te_footer_detail">
+                                <h5 class="mb16">Our Services</h5>
+                                <ul class="list-unstyled">
+                                    <li class="list-item py-1">
+                                        <a href="#">Media Promotion</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Infographics Content</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Website Traffic</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Specialist Feedback</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Website Optimization</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3 te_footer_detail">
+                                <h5 class="mb16">Our Projects</h5>
+                                <ul class="list-unstyled">
+                                    <li class="list-item py-1">
+                                        <a href="#">Our Product</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Contact</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Our Services</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">Company</a>
+                                    </li>
+                                    <li class="list-item py-1">
+                                        <a href="#">What We Do?</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-5 newsletter_block">
+                                <h5 class="text-center align-center mx-auto mb32">Sign up to enjoy free shipping and returns on your first order.</h5>
+                                <t t-snippet-call="website_mass_mailing.s_newsletter_subscribe_form"/>
+                                <span class="s_social_media o_not_editable text-center no_icon_color mt16 d-block"
+                                      data-snippet="s_social_media"
+                                      data-name="Social Media" contenteditable="false">
+                                    <a href="/website/social/facebook" class="s_social_media_facebook"
+                                       target="_blank">
+                                        <i class="fa fa-2x m-1 fa-facebook"/>
+                                    </a>
+                                    <a href="/website/social/twitter" class="s_social_media_twitter"
+                                       target="_blank">
+                                        <i class="fa fa-2x m-1 fa-twitter"/>
+                                    </a>
+                                    <a href="/website/social/instagram" class="s_social_media_instagram"
+                                       target="_blank">
+                                        <i class="fa fa-2x m-1 fa-instagram"/>
+                                    </a>
+                                    <a href="/website/social/linkedin" class="s_social_media_linkedin"
+                                       target="_blank">
+                                        <i class="fa fa-2x m-1 fa-linkedin"/>
+                                    </a>
+                                    <a href="/website/social/youtube" class="s_social_media_youtube" target="_blank">
+                                        <i class="fa fa-2x m-1 fa-youtube"/>
+                                    </a>
+                                    <a href="/website/social/github" class="s_social_media_github" target="_blank">
+                                        <i class="fa fa-2x m-1 fa-github"/>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_copyright')]//div[hasclass('container')]" position="attributes">
+            <attribute name="class" add="py-4 px-lg-0" remove="py-3" separator=" "/>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_copyright')]//div[hasclass('col-sm')]" position="attributes">
+            <attribute name="class" add="col-lg-6 copyright_string" remove="col-sm" separator=" "/>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_copyright')]//div[hasclass('text-sm-start')]" position="before">
+            <a href="/" class="col-lg-2 pt0 pb16 o_footer_logo logo">
+                <img src="/website/static/src/img/website_logo.svg" class="img-fluid"
+                     aria-label="Logo of MyCompany" title="MyCompany" role="img"/>
+            </a>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_copyright')]//div[hasclass('text-sm-start')]" position="after">
+            <div class="col-lg-4 text-end payment_icons">
+                <span class="img_span">
+                    <img src="/theme_clarico_vega/static/src/img/footer_icons/Payment.png"
+                         class="img-fluid w-75"
+                         aria-label="Payment Logo" title="Payment Logo" role="img"/>
+                </span>
+            </div>
+        </xpath>
+    </template>
+</odoo>

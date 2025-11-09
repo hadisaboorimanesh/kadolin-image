@@ -1,0 +1,2743 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* theme_clarico_vega
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-08 07:12+0000\n"
+"PO-Revision-Date: 2025-07-08 07:12+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.brand_page_ept
+msgid "\" Brand."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.brand_page_ept
+msgid "\" category."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.cart_popover
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_category_mega_menu
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_price_ept
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_item_ept
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.similar_products_view_container
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_product_price
+msgid "% Off"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.b2b_hide_details_msg
+msgid "&amp;nbsp;"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.b2b_hide_details_msg
+msgid "&amp;nbsp;or&amp;nbsp;"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.share_wishlist
+msgid ""
+"'s wishlist collections, just for you!\n"
+"                                        <br/>\n"
+"                                        Explore the handpicked selections tailored to your preferences and find the\n"
+"                                        perfect items that match your needs.\n"
+"                                        <br/>\n"
+"                                        <br/>\n"
+"                                        Don't miss out—browse through the collection today and let us know if anything\n"
+"                                        catches your eye! <br/>\n"
+"                                        We hope you enjoy exploring these handpicked selections."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.select_collection_popup_tmpl
+msgid "*Either insert some name or use another name!"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_category_mega_menu
+msgid "+ See More"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.login_popup
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.register_popup
+msgid "- or -"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.brand_listing_template
+msgid "0-9"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.offer_siderbar_popup
+msgid "300 Off"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_attributes_ext
+msgid "<b class=\"d-lg-block\">Availability</b>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_attributes_ext
+msgid "<b class=\"d-lg-block\">Brands</b>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_categories_list_collapsible_ext
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_categories_list_ext
+msgid "<b class=\"d-lg-block\">Categories</b>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.filter_products_tags_ext
+msgid "<b class=\"d-lg-block\">Tags</b>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.o_wsale_offcanvas_ext
+msgid "<b>Availability</b>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.o_wsale_offcanvas_ext
+msgid "<b>Brands</b>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "<b>Do you still want to delete it ?</b>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.promocode_ept
+msgid "<b>FREE15FIRST</b>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.filter_products_price_ept
+msgid "<b>Price Range</b>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product
+msgid ""
+"<i class=\"fa fa-bolt me-2\"/>\n"
+"                    Buy now"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.offer_siderbar_popup
+msgid ""
+"<i class=\"fa fa-check-circle\"/>\n"
+"                                    <span>Genuine Products</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.offer_siderbar_popup
+msgid ""
+"<i class=\"fa fa-exchange\"/>\n"
+"                                    <span>Exchanges &amp; Returns</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_add_to_wishlist_ept
+msgid "<i class=\"fa fa-heart-o me-2\" role=\"img\" aria-label=\"Add to wishlist\"/>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.quick_view_template
+msgid ""
+"<i class=\"fa fa-shopping-cart me-2\"/>\n"
+"                                                    Add to cart"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid ""
+"<i class=\"fa fa-shopping-cart mr4\"/>\n"
+"                                                        <span class=\"d-none d-md-inline\">Add to cart</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.filter_sort_by_ext
+msgid ""
+"<i class=\"fa fa-sort-amount-asc d-lg-none\"/>\n"
+"                    <small class=\"sort_by_mobi\">Sort By</small>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product
+msgid "<i class=\"fa fa-th-large\" role=\"img\" aria-label=\"Shop\" title=\"Shop\"/>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid ""
+"<i class=\"fa fa-trash remove mr4\"/>\n"
+"                                                        <span class=\"d-none d-md-inline\">Remove</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.clear_cart_link_ept
+msgid "<i class=\"fa fa-trash-o mr4\"/>Clear Cart"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.cart_popover
+msgid ""
+"<i class=\"fa fa-trash-o\"/>\n"
+"                        Clear Cart"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.filter_sort_by_ext
+msgid "<small class=\"d-none d-lg-inline text-muted\">Sort By:</small>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_10
+msgid "<small>Lorem ipsum dolor sit</small>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.te_header_offer_string
+msgid ""
+"<span class=\"align-middle d-inline-block\">Free Shipping on above "
+"$50</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_ept
+msgid "<span class=\"align-middle pe-2\">Product(s)</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.suggested_products_list_esc
+msgid ""
+"<span class=\"d-md-none fa fa-shopping-cart\"/>\n"
+"                <span class=\"d-none d-md-inline suggest_add_cart\">Add to cart</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "<span class=\"d-none d-md-inline\">Compare</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.promocode_ept
+msgid ""
+"<span class=\"discount_dec\">Super discount for your <b>first "
+"purchase.</b></span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.promocode_ept
+msgid "<span class=\"discount_dec\">Use discount code in checkout!</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.quick_view_template
+msgid "<span class=\"fa fa-bolt\"/> Buy Now"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_sticky_details_container
+msgid "<span class=\"fa fa-bolt\"/>Buy Now"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid ""
+"<span class=\"fa fa-edit\"/>\n"
+"                                                <span class=\"d-none d-md-inline\"/>\n"
+"                                                Rename"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.html_content_tabs_ept
+msgid ""
+"<span class=\"fa fa-file-text me-2\"/>\n"
+"                                                    <span class=\"nav_tab_title\">Documents</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.html_content_tabs_ept
+msgid ""
+"<span class=\"fa fa-file-text me-2\"/>\n"
+"                                                    <span class=\"nav_tab_title\">documents</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_filter_template_product_product_slider_style5
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_slider_btn
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_slider_btn_prod_temp
+msgid "<span class=\"fa fa-heart-o \" role=\"img\" aria-label=\"Add to wishlist\"/>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.te_header_usermenu
+msgid ""
+"<span class=\"fa fa-heart-o me-2\"/>\n"
+"                        <span class=\"te_user_drop_item\">My Wishlist\n"
+"                        </span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_item_ept
+msgid "<span class=\"fa fa-heart-o\" role=\"img\" aria-label=\"Add to wishlist\"/>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.te_header_usermenu
+msgid ""
+"<span class=\"fa fa-pencil-square-o me-2\"/>\n"
+"                        <span class=\"te_user_drop_item\">Edit Profile\n"
+"                        </span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.te_header_usermenu
+msgid ""
+"<span class=\"fa fa-pie-chart me-2\"/>\n"
+"                        <span class=\"te_user_drop_item\">My orders\n"
+"                        </span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid ""
+"<span class=\"fa fa-plus\"/>\n"
+"                            <span class=\"d-none d-md-inline\"/>\n"
+"                            Create"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid ""
+"<span class=\"fa fa-share-alt\"/>\n"
+"                                                <span class=\"d-none d-md-inline\"/>\n"
+"                                                Share"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.te_header_usermenu
+msgid ""
+"<span class=\"fa fa-shield me-2\"/>\n"
+"                        <span class=\"te_user_drop_item\">Change Password\n"
+"                        </span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.te_header_usermenu
+msgid ""
+"<span class=\"fa fa-shopping-basket me-2\"/>\n"
+"                        <span class=\"te_user_drop_item\">My cart\n"
+"                        </span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_item_ept
+msgid ""
+"<span class=\"fa fa-shopping-cart lh-base\"/>\n"
+"                                    <span class=\"\">Add to cart</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_add_to_cart_popover
+msgid ""
+"<span class=\"fa fa-shopping-cart\"/>\n"
+"                                                <span style=\"vertical-align: middle;\">Add to Cart</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_sticky_details_container
+msgid ""
+"<span class=\"fa fa-shopping-cart\"/><span class=\"d-inline-block d-lg-none "
+"d-md-none d-sm-inline-block\">Add to Cart</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_filter_template_product_product_slider_style2
+msgid "<span class=\"fa fa-shopping-cart\"/>Add to Cart"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.te_header_usermenu
+msgid ""
+"<span class=\"fa fa-sign-out me-2\"/>\n"
+"                        <span class=\"te_user_drop_item\">Logout</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.html_content_tabs_ept
+msgid ""
+"<span class=\"fa fa-sliders me-2\"/>\n"
+"                                                <span class=\"nav_tab_title\">Description</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.html_content_tabs_ept
+msgid ""
+"<span class=\"fa fa-sort-amount-desc me-2\"/>\n"
+"                                                    <span class=\"nav_tab_title\">Specification</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.html_content_tabs_ept
+msgid ""
+"<span class=\"fa fa-sort-amount-desc me-2\"/>\n"
+"                                                    <span class=\"nav_tab_title\">Specifications</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.html_content_tabs_ept
+msgid ""
+"<span class=\"fa fa-star me-2\"/>\n"
+"                                                    <span class=\"nav_tab_title\">Ratings and Reviews</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.quick_view_template
+msgid ""
+"<span class=\"fa fa-star\"/>\n"
+"                                <span class=\"product-separator\">|</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_item_ept
+msgid ""
+"<span class=\"fa fa-star\"/>\n"
+"                    <span class=\"product-separator\">|</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid ""
+"<span class=\"fa fa-trash-o\"/>\n"
+"                                                <span class=\"d-none d-md-inline\"/>\n"
+"                                                Delete"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.te_header_usermenu
+msgid ""
+"<span class=\"fa fa-user-o me-2\"/>\n"
+"                        <span class=\"te_user_drop_item\">My Account\n"
+"                        </span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.te_header_usermenu
+msgid ""
+"<span class=\"fa fa-user-o\">\n"
+"                        <span class=\"te_user_drop_item_message\">Hello</span>\n"
+"                    </span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_ept
+msgid "<span class=\"filters-title-ept\">Filters</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_1
+msgid ""
+"<span class=\"o_animated_text o_animate o_anim_slide_in o_anim_from_bottom "
+"o_visible o_animated\" style=\"--wanim-intensity: 100; animation-name: "
+"o_anim_slide_in_up; animation-play-state: running; visibility: "
+"visible;\">Lorem ipsum dolor sit</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_1_carousel
+msgid ""
+"<span class=\"o_animated_text o_animate o_anim_slide_in o_anim_from_bottom "
+"o_visible o_animated\" style=\"--wanim-intensity: 100; animation-name: "
+"o_anim_slide_in_up; animation-play-state: running; visibility: "
+"visible;\">Lorem ipsum</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_1
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_1_carousel
+msgid ""
+"<span class=\"o_animated_text o_animate o_anim_slide_in o_anim_from_bottom "
+"o_visible o_animated\" style=\"--wanim-intensity: 100; animation-name: "
+"o_anim_slide_in_up; animation-play-state: running; visibility: "
+"visible;\">Save upto 20%</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.offer_siderbar_popup
+msgid "<span class=\"offer_section_title_msg\">Avail Flat</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.offer_siderbar_popup
+msgid ""
+"<span class=\"offer_sidebar_code\">Coupon Code:</span>\n"
+"                                    <span class=\"text-uppercase\">Flat300</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product
+msgid ""
+"<span class=\"payment_middle_title text-uppercase\">\n"
+"                            Guaranteed\n"
+"                            <span class=\"text-success\">safe</span>\n"
+"                            checkout\n"
+"                        </span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_tags_ept
+msgid "<span class=\"product_tag_comma\">,</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_custom_polices_text
+msgid ""
+"<span class=\"share_icon fa fa-clock-o text-black mr-1\"/>\n"
+"                        <span class=\"share_dsc\">Shipping: 2-3 Days</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_custom_polices_text
+msgid ""
+"<span class=\"share_icon fa fa-money text-black mr-1\"/>\n"
+"                        <span class=\"share_dsc\">30-day money-back</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_custom_polices_text
+msgid ""
+"<span class=\"share_icon fa fa-undo text-black mr-1\"/>\n"
+"                        <span class=\"share_dsc\">7-day returns</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_filter_template_product_public_category_style_1
+msgid "<span class=\"t4s-count pe-1\">Item(s)</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_filter_template_product_public_category_style_2
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_filter_template_product_public_category_styles_3
+msgid "<span class=\"t4s-count\">Item(s)</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_brand_container
+msgid "<span class=\"te_brand_name\">Brand:</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.web_categories_recursive_style9
+msgid ""
+"<span class=\"te_t_parent_ctg py-1 ps-2 text-start\">Back to main "
+"menu</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.cart_free_shipping_progressbar
+msgid ""
+"<span class=\"text-success\">\n"
+"                    Your order qualifies for free shipping!\n"
+"                </span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.wishlist_toast
+msgid ""
+"<span> <i class=\"fa fa-check-circle me-1\" style=\"color: green;\"/>Added to Wishlist</span>\n"
+"                    <span class=\"btn add_to_collection btn-primary\">\n"
+"                        Add to Collection\n"
+"                    </span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.filter_products_tags_list_ext
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.o_wsale_offcanvas_ext
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_attributes_ext
+msgid "<span>+ See All</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_brand_container
+msgid "<span>Category:</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.template_header_style_5
+msgid "<span>Enter keywords to see quick results</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_item_ept
+msgid "<span>Only</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.html_content_tabs_ept
+msgid "<span>Tags</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_item_ept
+msgid "<span>Units left in stock.</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_filter_template_product_product_slider_style4
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.quick_view_template
+msgid "A short description that will also appear on documents."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+msgid "About Company"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_3
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_4
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+msgid "About Us"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "About us"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Accessibility"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.alternative_products_ept
+msgid "Accessories Products"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+msgid "Account Info"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.cart_popover
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.quick_view_template
+msgid "Add one"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.select_collection_popup_tmpl
+msgid "Add product in collection!"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_filter_template_product_product_slider_style4
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_filter_template_product_product_slider_style5
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_filter_template_product_product_style1
+msgid "Add to Cart"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.select_collection_popup_tmpl
+msgid "Add to Collection"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_item_ept
+msgid "Add to Wishlist"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_filter_template_product_product_slider_style5
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_add_to_wishlist_ept
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_slider_btn
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_slider_btn_prod_temp
+msgid "Add to wishlist"
+msgstr ""
+
+#. module: theme_clarico_vega
+#. odoo-javascript
+#: code:addons/theme_clarico_vega/static/src/xml/cart_notification.xml:0
+msgid "Added to cart"
+msgstr "Zum Warenkorb hinzugefügt"
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Affiliate Program"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.brand_listing_template
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_attributes_ext
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.see_all_attr
+msgid "All"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.brand_page_ept
+msgid "All Brands"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "All Policy"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.alternative_products_ept
+msgid "Alternative Products"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Animation"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Animation Theme"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_3
+msgid "Article"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.web_categories_recursive_style9
+msgid "Back to"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.login_popup
+msgid "Back to Login"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product
+msgid "Back to products"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Became a Seller"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_category_mega_menu
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_title_3_ept
+msgid "Best Seller"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+msgid "Billing Info"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Blink"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_4
+msgid "Blog"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Bottom"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_products_preview_data_brand
+msgid "Brand"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Brand Builder with Banner"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.vega_theme_options
+msgid "Brand Filter"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.vega_theme_options
+msgid "Brand Logo"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Brand Styles"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Brand, Product"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_options_ept
+msgid "Brands"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_ept
+msgid "Brands :"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_options_ept
+msgid "Buttons"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.cart_free_shipping_progressbar
+msgid "Buy"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_7
+msgid "Buy 1 Get 1 Free"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.offer_siderbar_popup
+msgid "Buy now"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+msgid "Calendar Of Event"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Cancel"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Cancel this Delete Collection Operation"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.full_slider_style_1
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_2
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_3
+msgid "Carousel indicator"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_options_ept
+msgid "Cart"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.vega_theme_options
+msgid "Cart Popup"
+msgstr ""
+
+#. module: theme_clarico_vega
+#. odoo-javascript
+#: code:addons/theme_clarico_vega/static/src/js/frontend/categories_popover_view.js:0
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_3
+msgid "Categories"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_category_template_options
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_products_preview_data_category
+msgid "Category"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Category Styles"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Category, Product"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Center"
+msgstr ""
+
+#. module: theme_clarico_vega
+#. odoo-javascript
+#: code:addons/theme_clarico_vega/static/src/xml/cart_notification.xml:0
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+msgid "Checkout"
+msgstr "Zur Kasse"
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Circle"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_category_mega_menu
+msgid "Clarico-Mega Menus Style 2"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_category_mega_menu
+msgid "Clarico-Mega Menus Style 3"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_category_mega_menu
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.full_slider_style_3_carousel
+msgid "Clarico-Mega Menus Style 4"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_ept
+msgid "Clear All"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.cart_popover_offcanvas
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_offcanvas_popup
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.offer_siderbar_popup
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_variant
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.quickview_popup_ept
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.select_collection_popup_tmpl
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.similar_product_offcanvas
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.te_header_usermenu
+msgid "Close"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Collection Name"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Collections"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_options_ept
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.vega_theme_options
+msgid "Color Swatches"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "Company"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_slider_btn_prod_temp
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_options_ept
+msgid "Compare"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.login_popup
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Confirm"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Confirm Delete Collection"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Confirmation"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_1
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "Contact"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_3
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_4
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Contact Us"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Corporate"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Corporate Business"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Create"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Create Collection"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Create collection"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.select_collection_popup_tmpl
+msgid "Create new collection and click Add to Collection to add product in it"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Customer Care"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Dark Theme"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_5
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_7
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_title_2_ept
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_3
+msgid "Deal Of The Day"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_10
+msgid "Deal Of The Week"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Delete this collection"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Delivery Information"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_8
+msgid "Discover More"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.full_slider_style_1_carousel
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_products_preview_data_category
+msgid "Discover Now"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Display Icon?"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Display Preheader"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Display advanced product card"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Display basic product card"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.brand_page_ept
+msgid "Drag building blocks here to customize the Header for \""
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.brand_page_ept
+msgid "Drag building blocks here to customize the footer for \""
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Dynamic Product Style 10"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Dynamic Product Style 5"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Dynamic Product Style 6"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Dynamic Product Style 7"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Dynamic Product Style 8"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Dynamic Product Style 9"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Dynamic Snippets"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "E-commerce Category"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_4
+msgid "Elements"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.login_popup
+msgid "Email"
+msgstr ""
+
+#. module: theme_clarico_vega
+#. odoo-javascript
+#: code:addons/theme_clarico_vega/static/src/xml/website.editor.xml:0
+msgid "Emipro theme"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.small_slider_style_2_carousel
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.small_slider_style_3_carousel
+msgid "End Of Season Sale!"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Exchange Policy"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_filter_template_product_brand_style_1
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_filter_template_product_public_category_styles_3
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_products_preview_data_brand
+msgid "Explore"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "FAQs"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Fade"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Fade In"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.small_slider_style_2_carousel
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.small_slider_style_3_carousel
+msgid "Flat 20% off"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.offer_siderbar_popup
+msgid ""
+"Flat Off 300\n"
+"                        <i class=\"fa fa-angle-left o_not_editable\"/>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_1
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_3
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_4
+msgid "Follow Us"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Footer Style 1"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Footer Style 2"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Footer Style 3"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Footer Style 4"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Footer Style 5"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Footer Style 6"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_1
+msgid "Free Shipping"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.small_slider_style_2_carousel
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.small_slider_style_3_carousel
+msgid "Free Shipping On First Order"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.cart_free_shipping_progressbar
+msgid "Free Shipping for all orders of"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_2
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_3
+msgid "Free Shipping on first order"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Full Slider Style 1"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Full Slider Style 2"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Full Slider Style 3"
+msgstr ""
+
+#. module: theme_clarico_vega
+#. odoo-javascript
+#: code:addons/theme_clarico_vega/static/src/js/editor/snippets.editor.js:0
+msgid "General Settings"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+msgid "Gift &amp; Voucher"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_1
+msgid "Gift Cards"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_7
+msgid "Grab Offer Now!"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Gradient color 1"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Gradient color 2"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_options_ept
+msgid "Grid"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.vega_theme_options
+msgid "Guaranteed Safe Checkout"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Header"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_9
+msgid "Heading"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_1
+msgid "Help"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.share_wishlist
+msgid ""
+"Hi,\n"
+"                                        <br/>\n"
+"                                        <br/>\n"
+"                                        We're excited to share a specially curated wishlist collection"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.o_wsale_offcanvas_ext
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_attributes_ext
+msgid ""
+"Hide Out\n"
+"                                        of Stock"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.vega_theme_options
+msgid "Hide Product Description and Attribute Values"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_4
+msgid "Home"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Hotspot"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Hotspot Action"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Hotspot Animation"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.pre_header_shipping_block
+msgid "Hurry Up..!! Free Returns and Standard Shipping"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_options_ept
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.vega_theme_options
+msgid "Image Flipper"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "Infographics Content"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_1
+msgid "International"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+msgid "Job Opportunities"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid ""
+"Kindly provide the email address of the recipient to share the collections of wishlist\n"
+"                                items."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_2_carousel
+msgid "Know more"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Language & Currency Switcher in"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "Latest News"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_3
+msgid "Learn More"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_1
+msgid "Legal"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Light Theme"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.full_slider_style_1_carousel
+msgid "Limited offer for season sale"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.login_popup
+msgid "Log in"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.login_popup
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.register_popup
+msgid "Log in With :"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.login_popup
+msgid "Log in as superuser"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.b2b_hide_details_msg
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.login_register_popup
+msgid "Login"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.vega_theme_options
+msgid "Login Popup"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_1
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_3
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_4
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "Logo of MyCompany"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.main_banner_style
+msgid "Lorem"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.main_banner_style
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.main_banner_style_content
+msgid "Lorem Ipsum"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_8
+msgid "Lorem Ipsum has been the industry's standard dummy text ever."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_2_carousel
+msgid "Lorem ipsum"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.main_banner_style
+msgid ""
+"Lorem ipsum dolor s it amet, consectetur adipisicing elit, sed do\n"
+"                                eiusmod\n"
+"                                tempor incididunt ut labore et dolore magna ipsum dolor sit amet,"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "Media Promotion"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.vega_theme_options
+msgid "Menu Label"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_options_ept
+msgid "Mode"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Multi Columns with Brand"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Multi Columns with Category"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+msgid "My Account"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.cart_popover_offcanvas
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_cart_link_ept
+msgid "My Cart"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_title_1_ept
+msgid "My Heading 4"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_1
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_3
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_4
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "MyCompany"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Need help"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+msgid "News"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.full_slider_style_2
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.full_slider_style_3
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.next_prev_button
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_products_preview_data_brand
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_products_preview_data_category
+msgid "Next"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product
+msgid "Next Product"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "No"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.brand_listing_template
+msgid "No Brand Found"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "None"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Off"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_add_to_cart_popover
+msgid "Off)"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.vega_theme_options
+msgid "Offer Banner"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Offer Position"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Offer Sidebar"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Offer, Newsletter"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "On"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Open in new window"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_1
+msgid "Order Status"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.brand_listing_template
+msgid "Our Brands"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+msgid "Our Location"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "Our Product"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "Our Projects"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "Our Services"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_4
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+msgid "Our Shop"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.login_popup
+msgid "Password"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_4
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "Payment Logo"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Payment Logo 1"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Payment Logo 2"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Payment Logo 3"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Payment Logo 4"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Payment Options"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Please provide the email address of the recipient."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Pre Header BG Color"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Pre Header Text Color"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Preheader"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.full_slider_style_2
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.full_slider_style_3
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.next_prev_button
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_products_preview_data_brand
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_products_preview_data_category
+msgid "Previous"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product
+msgid "Previous Product"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_1
+msgid "Privacy"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_3
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "Privacy Policy"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.cart_popover
+msgid "Proceed to Checkout"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Product Brands"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Product Builder With Banner"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Product Builder with Banner"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Product Builder with Brand"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Product Builder with Category"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_brand_template_options
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_category_template_options
+msgid "Product Count"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_sticky_details_container
+msgid "Product Image"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_options_ept
+msgid "Product Label"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_sticky_details_container
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.quick_view_template
+msgid "Product Name"
+msgstr ""
+
+#. module: theme_clarico_vega
+#. odoo-javascript
+#: code:addons/theme_clarico_vega/static/src/js/editor/snippets.editor.js:0
+msgid "Product Page"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.vega_theme_options
+msgid "Product Sticky Details"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_compare_ext
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.share_wishlist
+msgid "Product image"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_options_ept
+msgid "Products"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Promo code"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Promocode, Discount"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Promotions"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.vega_theme_options
+msgid "Quantity selector"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_3
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "Quick Links"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_slider_btn
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_slider_btn_prod_temp
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.quick_view_button
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_options_ept
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.vega_theme_options
+msgid "Quick View"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_options_ept
+msgid "Rating"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.main_banner_style
+msgid "Read More"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Redirect URL"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Redirect on product"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Redirect the user elsewhere when he clicks on the media."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.b2b_hide_details_msg
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.login_register_popup
+msgid "Register"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.cart_lines_ept
+msgid "Remove <i class=\"fa fa-trash-o\"/>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.cart_lines_ept
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.cart_popover
+msgid "Remove from cart"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.cart_popover
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.quick_view_template
+msgid "Remove one"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Rename Collection"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Rename Collections"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Rename this collection"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.login_popup
+msgid "Reset Password"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Return Policy"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "Returns"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_1
+msgid "Returns Exchanges"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.quick_view_template
+msgid "SKU:"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_filter_template_blog_post_style_template_3
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_filter_template_blog_post_style_template_5
+msgid "Sample"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_10
+msgid "Save upto 20%"
+msgstr ""
+
+#. module: theme_clarico_vega
+#. odoo-javascript
+#: code:addons/theme_clarico_vega/static/src/js/frontend/search_popover_view.js:0
+#: code:addons/theme_clarico_vega/static/src/xml/search_sidebar.xml:0
+msgid "Search"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.brand_listing_template
+msgid "Search Brand"
+msgstr ""
+
+#. module: theme_clarico_vega
+#. odoo-javascript
+#: code:addons/theme_clarico_vega/static/src/xml/search_sidebar.xml:0
+msgid "Search..."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_1
+msgid "Security"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.select_collection_popup_tmpl
+msgid "Select Collection"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Send"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_3
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+msgid "Services"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Shadow"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Shape"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Share Collections of Wishlist Items"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Share this collection"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_1_carousel
+msgid "Shop Collection <i class=\"fa fa-arrow-right ms-2\"/>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_2
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_3
+msgid "Shop Now"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.small_slider_style_2_carousel
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.small_slider_style_3_carousel
+msgid ""
+"Shop Now\n"
+"                                    <i class=\"fa fa fa-angle-right\"/>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_1
+msgid "Shop Now <i class=\"fa fa-arrow-right ms-2\"/>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#. odoo-javascript
+#: code:addons/theme_clarico_vega/static/src/js/editor/snippets.editor.js:0
+msgid "Shop Page"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_10
+msgid "Shop now <i class=\"fa fa-long-arrow-right ms-2\"/>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_title_3_ept
+msgid ""
+"Shop the Latest Styles: Stay ahead of the curve with our newest arrivals"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_item_ept
+msgid "Shopping cart"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.signin_block_content
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.user_sign_in_ept
+msgid "Sign in"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.register_popup
+msgid "Sign up"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "Sign up to enjoy free shipping and returns on your first order."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_3
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_4
+msgid "Signup Newsletter"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_filter_template_product_product_slider_style5
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.similar_button
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.vega_theme_options
+msgid "Similar Products"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Skew"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Slide Down"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Slide Up"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_options_ept
+msgid "Slider"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Slider Style 1"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Slider Style 2"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Slider Style 3"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Sliders, Full screen 1"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Sliders, Full screen 2"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Sliders, Full screen 3"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Sliders, Slider style 1"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Sliders, Slider style 2"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Sliders, Slider style 3"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "Specialist Feedback"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.full_slider_style_1_carousel
+msgid "Spring Sale 30% Off"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Square"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Static Snippets"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Stay Connected"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.snippets
+msgid "Structure"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.full_slider_style_1_carousel
+msgid "Summer 2024"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_2
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_3
+msgid "Super discount for you"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_1
+msgid "Supply Chain"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Support Center"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_ept
+msgid "Tags :"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_tags_ept
+msgid "Tags:"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_1
+msgid "Take Action"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+msgid "Terms &amp; Condition"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "Terms &amp; Conditions"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_3
+msgid "Terms and Conditions"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Text Color"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Text Hover color"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_1
+msgid "Text Messaging"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Theme"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Theme Banner"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Theme Snippet"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Theme Snippets"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model:ir.model,name:theme_clarico_vega.model_theme_utils
+msgid "Theme Utils"
+msgstr "Designwerkzeuge"
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.select_collection_popup_tmpl
+msgid "There are currently no collections for your account."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+msgid ""
+"There are many variations of passages of Lorem Ipsum available,\n"
+"                                    but the majority have suffered alteration in some form by injected\n"
+"                                    humour, or randomised words which look slightly."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_8
+msgid "There are many variations of passages of Lorem Ipsum available."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "This collection contains some products!"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.quick_view_template
+msgid "This combination does not exist."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.quick_view_template
+msgid "This product has no valid combination."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.select_collection_popup_tmpl
+msgid ""
+"This product is already exist in selected collection\n"
+"                                                !"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.quick_view_template
+msgid ""
+"This product is no longer\n"
+"                            available."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_item_ept
+msgid "This product is unpublished."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Title"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Title, Title Style 1"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Title, Title Style 2"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "Title, Title Style 3"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Top"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_6
+msgid ""
+"Trending\n"
+"                                <i class=\"fa fa-circle ps-2\"/>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.html_content_tabs_ept
+msgid "Uncategorized"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_item_ept
+msgid "Unpublished"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Update"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+msgid "Useful Link"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_1
+msgid "Useful link"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.tax_indication_ept
+msgid "VAT Excluded"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.tax_indication_ept
+msgid "VAT Included"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_label_styles
+msgid ""
+"Vega Edge\n"
+"                Left"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_label_styles
+msgid ""
+"Vega Edge\n"
+"                Right"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_label_styles
+msgid ""
+"Vega Round\n"
+"                Left"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_label_styles
+msgid ""
+"Vega Round\n"
+"                Right"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_label_styles
+msgid ""
+"Vega Square\n"
+"                Shadow Left"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_label_styles
+msgid ""
+"Vega Square\n"
+"                Shadow Right"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Vega Style 1"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Vega Style 2"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Vega Style 3"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Vega Style 4"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Vega Style 5"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_label_styles
+msgid ""
+"Vega Tag\n"
+"                Left"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_label_styles
+msgid "Vega Tag Right"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_7
+msgid "View All Products"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_7
+msgid "View All Products <i class=\"fa fa-long-arrow-right ms-2\"/>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#. odoo-javascript
+#: code:addons/theme_clarico_vega/static/src/xml/cart_notification.xml:0
+msgid "View cart"
+msgstr "Warenkorb ansehen"
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.quick_view_template
+msgid ""
+"View full details\n"
+"                                            <i class=\"fa fa-long-arrow-right\"/>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_9
+msgid "View more"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_9
+msgid "View more <i class=\"fa fa-long-arrow-right ms-2\"/>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_3
+msgid ""
+"We are a team of passionate people whose goal is to improve everyone's life\n"
+"                                        through disruptive products."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_3
+msgid "We build great products to solve your business problems."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "Website Optimization"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "Website Traffic"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_6
+msgid "What We Do?"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_options_ept
+msgid "Wishlist"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_5
+msgid "Wishlist &amp; Like"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "With Gradient"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "Yes"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.login_popup
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.reacaptcha_signup
+msgid "You are successfully logged in"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.register_popup
+msgid "You are successfully register your account"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.similar_product_offcanvas
+msgid "You may also like this products"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "Your Careers"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.alternative_products_ept
+msgid ""
+"Your Dynamic Snippet will be displayed here...\n"
+"                                                                This message is displayed because youy did not\n"
+"                                                                provide\n"
+"                                                                both\n"
+"                                                                a\n"
+"                                                                filter and a template to use."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_9
+msgid ""
+"Your Dynamic Snippet will be displayed here...\n"
+"                                            This message is displayed because you did not provide both a filter and a\n"
+"                                            template to use."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_multi_columns_brand
+msgid ""
+"Your Dynamic Snippet will be displayed here...\n"
+"                                            This message is displayed because you did not provide both a filter and a template to use."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_multi_columns_category
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_10
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_5
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_6
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_7
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_product_style_8
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_builder_banner
+msgid ""
+"Your Dynamic Snippet will be displayed here...\n"
+"                                        This message is displayed because you did not provide both a filter and a\n"
+"                                        template to use."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.dynamic_multi_columns_brand
+msgid ""
+"Your Dynamic Snippet will be displayed here...\n"
+"                                        This message is displayed because you did not provide both a filter and a template to use."
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.login_popup
+msgid "Your Email"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "Your URL"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.cart_popover
+msgid "Your cart is empty!"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.filter_products_tags_ext
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.o_wsale_offcanvas_ext
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.products_attributes_ext
+msgid "[Clear]"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_brand_template_options
+msgid "brand"
+msgstr ""
+
+#. module: theme_clarico_vega
+#. odoo-javascript
+#: code:addons/theme_clarico_vega/static/src/js/editor/snippets.editor.js:0
+msgid "cart Page"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "drop"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_cart_link_ept
+msgid "eCommerce cart"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.share_wishlist
+msgid "from"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.theme_vega_snippets
+msgid "hero, jumbotron"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.brand_product_count
+msgid "item(s)"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.cart_free_shipping_progressbar
+msgid ""
+"more to enjoy\n"
+"                    <span class=\"h6 fw-bold\">Free Shipping</span>"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.slider_style_2_carousel
+msgid "oblique<br/>pertinacia"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.html_content_tabs_ept
+msgid "or"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.product_wishlist_ept
+msgid "product_line.product_id.display_name"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.vega_theme_options
+msgid "show product count"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.footer_style_2
+msgid "social media"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.header_custom_options
+msgid "www.example.com"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_options_ept
+msgid "⌙ Desktop"
+msgstr ""
+
+#. module: theme_clarico_vega
+#: model_terms:theme.ir.ui.view,arch:theme_clarico_vega.s_dynamic_snippet_options_ept
+msgid "⌙ Mobile"
+msgstr ""

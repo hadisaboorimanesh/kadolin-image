@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="pdc_state_ready" model="artarad.pdc.st">
+            <field name="name">Ready</field>
+            <field name="code">REA</field>
+            <field name="company_id" ref="base.main_company" />
+        </record>
+
+        <record id="pdc_state_in_cash" model="artarad.pdc.st">
+            <field name="name">In Cash</field>
+            <field name="code">ICA</field>
+            <field name="company_id" ref="base.main_company" />
+        </record>
+
+        <record id="pdc_state_partner_deposited" model="artarad.pdc.st">
+            <field name="name">Partner Deposited</field>
+            <field name="code">PDE</field>
+            <field name="company_id" ref="base.main_company" />
+        </record>
+
+        <record id="pdc_state_in_progress" model="artarad.pdc.st">
+            <field name="name">In Progress</field>
+            <field name="code">IPR</field>
+            <field name="company_id" ref="base.main_company" />
+        </record>
+
+        <record id="pdc_state_receipted" model="artarad.pdc.st">
+            <field name="name">Receipted</field>
+            <field name="code">REC</field>
+            <field name="company_id" ref="base.main_company" />
+            <field name="is_receipted">True</field>
+        </record>
+
+        <record id="pdc_state_claimed" model="artarad.pdc.st">
+            <field name="name">Claimed</field>
+            <field name="code">CLA</field>
+            <field name="company_id" ref="base.main_company" />
+        </record>
+
+        <record id="pdc_state_rejected" model="artarad.pdc.st">
+            <field name="name">Rejected</field>
+            <field name="code">REJ</field>
+            <field name="company_id" ref="base.main_company" />
+            <field name="is_returned">True</field>
+        </record>
+
+        <record id="pdc_state_canceled" model="artarad.pdc.st">
+            <field name="name">Canceled</field>
+            <field name="code">CAN</field>
+            <field name="company_id" ref="base.main_company" />
+        </record>
+
+        <record id="pdc_state_spent" model="artarad.pdc.st">
+            <field name="name">Spent</field>
+            <field name="code">SPE</field>
+            <field name="company_id" ref="base.main_company" />
+            <field name="is_spent">True</field>
+        </record>
+
+        <record id="pdc_state_spent_no_receipt_tracking" model="artarad.pdc.st">
+            <field name="name">Spent (No Receipt Tracking)</field>
+            <field name="code">SPE-NRC</field>
+            <field name="company_id" ref="base.main_company" />
+            <field name="is_spent_no_receipt_tracking">True</field>
+        </record>
+
+        #############################################################################
+
+        <record id="pdc_initial_sale_state" model="artarad.pdc.init.st">
+            <field name="type">IIS</field>
+            <field name="state" ref="artarad_post_dated_cheque.pdc_state_in_cash" />
+        </record>
+
+        <record id="pdc_initial_purchase_state" model="artarad.pdc.init.st">
+            <field name="type">IIP</field>
+            <field name="state" ref="artarad_post_dated_cheque.pdc_state_partner_deposited" />
+        </record>
+
+        #############################################################################
+
+        <record id="account_payment_method_cheque_in" model="account.payment.method">
+            <field name="name">Cheque</field>
+            <field name="code">cheque</field>
+            <field name="payment_type">inbound</field>
+        </record>
+
+        <record id="account_payment_method_cheque_out" model="account.payment.method">
+            <field name="name">Cheque</field>
+            <field name="code">cheque</field>
+            <field name="payment_type">outbound</field>
+        </record>
+
+        <record id="account_payment_method_line_cheque_in" model="account.payment.method.line">
+            <field name="name">Cheque</field>
+            <field name="payment_method_id" ref="account_payment_method_cheque_in" />
+        </record>
+
+        <record id="account_payment_method_line_cheque_out" model="account.payment.method.line">
+            <field name="name">Cheque</field>
+            <field name="payment_method_id" ref="account_payment_method_cheque_out" />
+        </record>
+
+        <record id="account_journal_pdc" model="account.journal">
+            <field name="name">Post Dated Cheque</field>
+            <field name="type">post_dated_cheque</field>
+            <field name="code">PDC</field>
+            <field name="inbound_payment_method_line_ids"
+                eval="[(4, ref('artarad_post_dated_cheque.account_payment_method_line_cheque_in'))]" />
+            <field name="outbound_payment_method_line_ids"
+                eval="[(4, ref('artarad_post_dated_cheque.account_payment_method_line_cheque_out'))]" />
+        </record>
+        #############################################################################
+
+        <record id="pdc_state_change_in_cash_to_in_progress" model="artarad.pdc.st.chg">
+            <field name="from_state" ref="artarad_post_dated_cheque.pdc_state_in_cash" />
+            <field name="to_state" ref="artarad_post_dated_cheque.pdc_state_in_progress" />
+            <field name="default_debit_account"></field>
+            <field name="default_credit_account"></field>
+        </record>
+
+        <record id="pdc_state_change_in_progress_to_receipted" model="artarad.pdc.st.chg">
+            <field name="from_state" ref="artarad_post_dated_cheque.pdc_state_in_progress" />
+            <field name="to_state" ref="artarad_post_dated_cheque.pdc_state_receipted" />
+            <field name="default_debit_account"></field>
+            <field name="default_credit_account"></field>
+        </record>
+
+        <record id="pdc_state_change_in_progress_to_rejected" model="artarad.pdc.st.chg">
+            <field name="from_state" ref="artarad_post_dated_cheque.pdc_state_in_progress" />
+            <field name="to_state" ref="artarad_post_dated_cheque.pdc_state_rejected" />
+            <field name="default_debit_account"></field>
+            <field name="default_credit_account"></field>
+        </record>
+
+        <record id="pdc_state_change_rejected_to_claimed" model="artarad.pdc.st.chg">
+            <field name="from_state" ref="artarad_post_dated_cheque.pdc_state_rejected" />
+            <field name="to_state" ref="artarad_post_dated_cheque.pdc_state_claimed" />
+            <field name="default_debit_account"></field>
+            <field name="default_credit_account"></field>
+        </record>
+
+        <record id="pdc_state_change_rejected_to_in_cash" model="artarad.pdc.st.chg">
+            <field name="from_state" ref="artarad_post_dated_cheque.pdc_state_rejected" />
+            <field name="to_state" ref="artarad_post_dated_cheque.pdc_state_in_cash" />
+            <field name="default_debit_account"></field>
+            <field name="default_credit_account"></field>
+        </record>
+
+        <record id="pdc_state_change_rejected_to_in_progress" model="artarad.pdc.st.chg">
+            <field name="from_state" ref="artarad_post_dated_cheque.pdc_state_rejected" />
+            <field name="to_state" ref="artarad_post_dated_cheque.pdc_state_in_progress" />
+            <field name="default_debit_account"></field>
+            <field name="default_credit_account"></field>
+        </record>
+
+        <record id="pdc_state_change_in_cash_to_canceled" model="artarad.pdc.st.chg">
+            <field name="from_state" ref="artarad_post_dated_cheque.pdc_state_in_cash" />
+            <field name="to_state" ref="artarad_post_dated_cheque.pdc_state_canceled" />
+            <field name="default_debit_account"></field>
+            <field name="default_credit_account"></field>
+        </record>
+
+        <record id="pdc_state_change_in_cash_to_partner_deposited" model="artarad.pdc.st.chg">
+            <field name="from_state" ref="artarad_post_dated_cheque.pdc_state_in_cash" />
+            <field name="to_state" ref="artarad_post_dated_cheque.pdc_state_partner_deposited" />
+            <field name="default_debit_account"></field>
+            <field name="default_credit_account"></field>
+        </record>
+
+        <record id="pdc_state_change_partner_deposited_to_receipted" model="artarad.pdc.st.chg">
+            <field name="from_state" ref="artarad_post_dated_cheque.pdc_state_partner_deposited" />
+            <field name="to_state" ref="artarad_post_dated_cheque.pdc_state_receipted" />
+            <field name="default_debit_account"></field>
+            <field name="default_credit_account"></field>
+        </record>
+
+        <record id="pdc_state_change_partner_deposited_to_rejected" model="artarad.pdc.st.chg">
+            <field name="from_state" ref="artarad_post_dated_cheque.pdc_state_partner_deposited" />
+            <field name="to_state" ref="artarad_post_dated_cheque.pdc_state_rejected" />
+            <field name="default_debit_account"></field>
+            <field name="default_credit_account"></field>
+        </record>
+
+        <record id="pdc_state_change_partner_deposited_to_claimed" model="artarad.pdc.st.chg">
+            <field name="from_state" ref="artarad_post_dated_cheque.pdc_state_partner_deposited" />
+            <field name="to_state" ref="artarad_post_dated_cheque.pdc_state_claimed" />
+            <field name="default_debit_account"></field>
+            <field name="default_credit_account"></field>
+        </record>
+
+        <record id="pdc_state_change_partner_deposited_to_in_cash" model="artarad.pdc.st.chg">
+            <field name="from_state" ref="artarad_post_dated_cheque.pdc_state_partner_deposited" />
+            <field name="to_state" ref="artarad_post_dated_cheque.pdc_state_in_cash" />
+            <field name="default_debit_account"></field>
+            <field name="default_credit_account"></field>
+        </record>
+
+    </data>
+</odoo>

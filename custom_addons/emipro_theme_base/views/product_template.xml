@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_form_view_ept" model="ir.ui.view">
+        <field name="name">product.template.product.website.form.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='website_sequence']" position="after">
+                <field name="product_brand_id"/>
+            </xpath>
+            <xpath expr="//page[@name='sales']" position="after">
+                <page name="product_tabs" string="Product Tabs">
+                    <field name="tab_line_ids" context="{'default_tab_type': 'specific product'}">
+                        <list>
+                            <field name="sequence" widget="handle"/>
+                            <field name="tab_name"/>
+                            <field name="tab_type"/>
+                        </list>
+                        <form string="Product Tab">
+                            <sheet>
+                                <group>
+                                    <field name="tab_name" string="Name"
+                                           readonly="tab_type == 'global'"/>
+                                    <field name="tab_type" widget="radio" invisible="1"/>
+                                    <field name="website_ids" options="{'no_create': True}" widget="many2many_tags"
+                                           domain="[('theme_id.author','like','Emipro Technologies Pvt. Ltd.')]"
+                                           groups="website.group_multi_website"
+                                           readonly="tab_type == 'global'"/>
+                                    <field name="sequence" readonly="tab_type == 'global'"/>
+                                </group>
+                                <notebook>
+                                    <page string="Content">
+                                        <field name="tab_content" string="Content" widget="html"/>
+                                    </page>
+                                </notebook>
+                            </sheet>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

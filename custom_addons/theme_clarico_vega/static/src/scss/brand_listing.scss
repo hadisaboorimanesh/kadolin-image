@@ -1,0 +1,99 @@
+.ept_brands_sticky_header{
+    .ept_brands_sticky_header_btns{
+        @include media-breakpoint-down(md){
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+    }
+}
+.featured-all-brands{
+    .ept_brands{
+        @include media-breakpoint-down(sm){
+            .te_search{
+                width: 100% !important;
+            }
+        }
+    }
+    #search_box{
+        @include border-radius(30px);
+        border-color: nth($f_color,27);
+        border: 2px solid #eaeff3;
+        height:40px;
+        padding:0 20px;
+        outline:unset;
+    }
+    #close-button{
+        @include position(absolute, 0, 15px, 0);
+        z-index: 9;
+        border-top-right-radius: 30px;
+        border-bottom-right-radius: 30px;
+        padding: 10px 24px;
+        line-height: 1;
+        box-shadow:unset;
+    }
+    #all-brands{
+        color:#777;
+    }
+    .has-brands {
+        border: 1px solid nth($f_color,15);
+        @include border-radius(8px);
+        float: left;
+        font-size:15px;
+        height: 35px;
+        margin: 10px 10px 10px 0;
+        text-align: center;
+        width: 35px;
+        line-height: 34px;
+        text-transform: uppercase;
+        cursor: pointer;
+        &.disabled {
+            border: 1px solid nth($f_color,11);
+            pointer-events: none;
+            .brand-alpha {
+                color: nth($f_color,11);
+            }
+        }
+    }
+    .brand-main{
+        border-top: 1px solid #ededed;
+        @include media-breakpoint-down(sm){
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+    }
+    .brand-alpha {
+        color: nth($f_color,15);
+        &.selected{
+            color: nth($f_color,19);
+            height: 100%;
+            background: #efefef;
+            border-radius: 8px;
+        }
+    }
+    .brand-item {
+        border: 1px solid nth($f_color,17);
+        margin: 0 8px 10px 0;
+        padding: 5px 2px 0 2px;
+        text-align: center;
+        width: 130px;
+        font-size:13px;
+        .brand-logo {
+            display: inline-block;
+            height: 90px;
+            line-height: 90px;
+            img{
+                max-width: 90px;
+                max-height: 90px;
+            }
+        }
+    }
+}
+.brand_listing_buttons{
+    @include media-breakpoint-down(sm){
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}

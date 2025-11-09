@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_order_form_inherit_sale_from" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.sale.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='team_id']" position="after">
+                <field name="settle_status" readonly="1"/>
+            </xpath>
+
+             <xpath expr="//header/button[@name='action_cancel']" position="after">
+                    <button name="snapp_inquery" string="Snapp Inquery" groups="base.group_system" invisible="state in ('cancel','draft','sent' )"
+                            type="object" class="btn-secondary"/>
+                  <button name="update_snapp" string="Update Snapp Pay" groups="base.group_system" invisible="state in ('cancel','draft','sent' )"
+                            type="object" class="btn-secondary"/>
+                   <button name="cancel_snapp" string="Cancel Snapp Pay" groups="base.group_system" invisible="state != 'cancel'"
+                            type="object" class="btn-secondary"/>
+             </xpath>
+
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="template_sale_order">
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+                <t t-call="web.basic_layout">
+                    <div class="header"
+                         style="margin:0px 0px 0px 0px; font-size:16px; font-family:nazanin; "
+                         dir="rtl">
+                        <link rel="stylesheet" href="/artarad_kadolin_custom/static/src/css/akc_frontend.css"/>
+                        <style>
+                            table {
+                            border-collapse: collapse;
+                            width: 100%;
+                            }
+
+                            .artarad-heading td {
+                            text-align: center;
+                            vertical-align: middle;
+                            }
+
+
+                            .artarad-info td {
+                            text-align: right;
+                            vertical-align: middle;
+                            padding: 5px;
+                            }
+                            table {
+                            border-collapse: collapse;
+                            width: 100%;
+                            }
+                            .artarad-footer td {
+                            text-align: center;
+                            vertical-align: bottom;
+                            border: 1px solid black;
+                            padding: 5px;
+                            height: 75px;
+                            width: 50%;
+                            }
+                            .artarad-content td {
+                            text-align: center;
+                            vertical-align: middle;
+                            border: 1px solid black;
+                            height: 25px;
+
+                            }
+
+                            .artarad-h2 td {
+                            text-align: center;
+                            vertical-align: middle;
+                            border: 1px solid black;
+                            font-weight: bold;
+                            background-color:'light-gray';
+
+                            }
+                        </style>
+                        <table class="table-borderless">
+                            <tr class="artarad-heading">
+                                <td style="width: 25%;">
+                                    <img t-if="doc.company_id.logo"
+                                         t-att-src="image_data_uri(doc.company_id.logo)"
+                                         style="width: auto; height: auto; max-height: 100px;" alt="Logo"/>
+                                </td>
+                                <td style="width: 50%;">
+                                    <div>
+                                        <h2>
+                                            پیش فاکتور فروش کالا و خدمات
+                                        </h2>
+                                    </div>
+                                </td>
+                                <td style="width: 25%; text-align: right !important;">
+                                    <div>
+                                        شماره سریال:
+                                        <span t-field="doc.name"/>
+                                    </div>
+                                    <div>
+                                        تاریخ:
+                                        <span t-esc="user.get_jalali_date(doc.date_order)"/>
+                                    </div>
+                                    <div>
+                                        تاریخ اعتبار:
+                                        <span t-esc="user.get_jalali_date(doc.validity_date)"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+                    <div class="page rtl" style="margin:0px 0px 0px 0px; font-size:16px; font-family:nazanin;"
+                         dir="rtl">
+                        <link rel="stylesheet" href="/artarad_kadolin_custom/static/src/css/akc_frontend.css"/>
+                        <div class="oe_structure"/>
+                        <style>
+                            table {
+                            border-collapse: collapse;
+                            width: 100%;
+                            }
+
+                            .artarad-info td {
+                            text-align: right;
+                            vertical-align: middle;
+                            padding: 5px;
+                            }
+
+                            .artarad-content td {
+                            text-align: center;
+                            vertical-align: middle;
+                            border: 1px solid black;
+                            height: 25px;
+                            }
+
+                            .artarad-total td {
+                            text-align: center;
+                            vertical-align: middle;
+                            border: 1px solid black;
+
+                            }
+                            table {
+                            border-collapse: collapse;
+                            width: 100%;
+                            }
+
+                            .table-up table {
+                            border: 1px solid #000;
+                            }
+
+                            .table-up tr {
+                            border-top: 1px solid #000;
+                            }
+
+                            .table-up tr + tr {
+                            border-top: 1px solid black;
+                            }
+
+                            .table-up td {
+                            border-left: 1px solid #000;
+                            }
+
+                            .table-up td + td {
+                            border-left: 1px solid black;
+                            }
+
+                        </style>
+                        <table>
+
+
+                            <tr class="artarad-info" style="border: 1px solid black;">
+                                <td colspan="10" style="text-align:center;background-color: #d3d3d3;">
+                                    مشخصات فروشنده
+                                    <span t-field="doc.partner_id.name"/>
+                                </td>
+                            </tr>
+
+                            <tr class="artarad-info" style="border-right:1px solid black;">
+
+                                <td>
+                                    نام شخص حقیقی/حقوقی:
+                                    <span t-field="doc.company_id.partner_id.name"/>
+                                </td>
+                                <td>
+                                    شماره اقتصادی:
+                                    <span t-field="doc.company_id.partner_id.economic_number"/>
+                                </td>
+                                <td>
+                                    شماره ثیت/شماره ملی:
+                                    <span t-field="doc.company_id.partner_id.national_number"/>
+                                </td>
+                                <td style="border-left:1px solid black;">
+                                    شناسه ملی:
+                                    <span t-field="doc.company_id.partner_id.national_number"/>
+                                </td>
+                            </tr>
+                            <tr class="artarad-info"
+                                style="border-right:1px solid black;border-bottom:1px solid black;">
+                                <td>
+                                    نشانی:
+                                    <span t-field="doc.company_id.partner_id.city"/>
+                                    <span t-field="doc.company_id.partner_id.street"/>
+                                    <span t-field="doc.company_id.partner_id.street2"/>
+                                </td>
+                                <td>
+                                    کد پستی:
+                                    <span t-field="doc.company_id.partner_id.zip"/>
+                                </td>
+                                <td>
+                                    شماره تلفن:
+                                    <span t-field="doc.company_id.partner_id.phone"/>
+                                </td>
+                                <td style="border-left:1px solid black;">
+                                    شماره فکس:
+                                    <!--                                    <span t-field="doc.company_id.partner_id.phone"/>-->
+                                </td>
+                            </tr>
+
+
+                            <tr class="artarad-info" style="border:1px solid black;">
+                                <td colspan="10" style="text-align:center;background-color: #d3d3d3;">
+                                    مشخصات خریدار
+                                    <span t-field="doc.partner_id.name"/>
+                                </td>
+                            </tr>
+                            <tr class="artarad-info" style="border-right:1px solid black;">
+                                <td>
+                                    نام شخص حقیقی / حقوقی:
+                                    <span t-field="doc.partner_id.name"/>
+                                </td>
+                                <td>
+                                    شماره اقتصادی:
+                                    <span t-field="doc.company_id.partner_id.economic_number"/>
+                                </td>
+                                <td colspan="6" style="border-left:1px solid black;">
+                                    شماره ثیت/شماره ملی:
+                                    <span t-field="doc.company_id.partner_id.national_number"/>
+                                </td>
+
+                            </tr>
+                            <tr class="artarad-info" style="border-right:1px solid black;">
+                                <td>
+                                    نشانی کامل استان:
+                                    <span t-field="doc.partner_id.state_id.name"/>
+
+                                </td>
+                                <td>
+                                    کد پستی:
+                                    <span t-field="doc.partner_id.zip"/>
+                                </td>
+                                <td colspan="6" style="border-left:1px solid black;">
+                                    شهر :
+                                    <span t-field="doc.partner_id.city"/>
+                                </td>
+                            </tr>
+
+
+                            <tr class="artarad-info"
+                                style="border-right:1px solid black;border-bottom:1px solid black;">
+                                <td>
+                                    نشانی:
+                                    <span t-field="doc.partner_id.street"/>
+                                    <span t-field="doc.partner_id.street2"/>
+                                </td>
+                                <td colspan="6" style="border-left:1px solid black;">
+                                    شماره تلفن:
+                                    <span t-field="doc.partner_id.phone"/>
+                                </td>
+                            </tr>
+                            <!-- تیتر بخش -->
+                            <tr class="artarad-info" style="border: 1px solid #000;">
+                                <td colspan="10" style="text-align:center;background-color:#d3d3d3;">
+                                    مشخصات کالا یا خدمات مورد معامله:
+                                </td>
+                            </tr>
+
+                            <!-- جدول خطوط؛ ساختار تمیز: thead / tbody / tfoot -->
+                            <table class="table-lines" style="width:100%; border-collapse: collapse; font-size:16px;">
+                                <colgroup>
+                                    <col width="3%"/>
+                                    <col width="4%"/>
+                                    <col width="8%"/>
+                                    <col width="18%"/>
+                                    <col width="6%"/>
+                                    <col width="10%"/>
+                                    <col width="9%"/>
+                                    <col width="9%"/>
+                                    <col width="9%"/>
+                                    <col width="9%"/>
+                                    <col width="9%"/>
+                                </colgroup>
+
+                                <thead>
+                                    <tr>
+                                        <th>ردیف</th>
+                                        <th>هدیه</th>
+                                        <th>کد کالا</th>
+                                        <th>شرح کالا/خدمت</th>
+                                        <th>تعداد/مقدار</th>
+                                        <th>واحد</th>
+                                        <th>مبلغ واحد</th>
+                                        <th>مبلغ کل</th>
+                                        <th>تخفیف</th>
+                                        <th>اضافات</th>
+                                        <th>پس از تخفیف و اضافات</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <t t-set="i" t-value="0"/>
+                                    <t t-foreach="doc.order_line" t-as="line">
+                                        <t t-set="i" t-value="i + 1"/>
+                                        <tr>
+                                            <td>
+                                                <t t-esc="i"/>
+                                            </td>
+                                            <td><!-- هدیه؟ اگر فیلدی داری اینجا بگذار --></td>
+                                            <td style="text-align:right;">
+                                                <span t-field="line.product_id.default_code"/>
+                                            </td>
+                                            <td style="text-align:right;">
+                                                <span t-field="line.product_id.display_name"/>
+                                            </td>
+
+                                            <td dir="ltr">
+                                                <t t-esc="'{0:,.0f}'.format(line.product_uom_qty)"/>
+                                            </td>
+                                            <td>
+                                                <span t-field="line.product_uom.display_name"/>
+                                            </td>
+
+                                            <td dir="ltr">
+                                                <t t-esc="'{0:,.0f}'.format(line.price_unit)"/>
+                                            </td>
+                                            <td dir="ltr">
+                                                <t t-esc="'{0:,.0f}'.format(line.product_uom_qty * line.price_unit)"/>
+                                            </td>
+                                            <td dir="ltr">
+                                                <t t-esc="'{0:,.0f}'.format(line.product_uom_qty * line.price_unit * (line.discount or 0)/100)"/>
+                                            </td>
+
+                                            <!-- اضافات اگر فیلدی نداری، خالی بگذار یا محاسبه‌ات را جایگزین کن -->
+                                            <td dir="ltr"></td>
+
+                                            <td dir="ltr">
+                                                <t t-esc="'{0:,.0f}'.format(line.price_subtotal)"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="6" style="text-align:left;">جمع کل‌ها:</td>
+
+                                        <td dir="ltr">
+                                            <t t-esc="'{0:,.0f}'.format(sum([l.price_unit for l in doc.order_line]))"/>
+                                        </td>
+
+                                        <td dir="ltr">
+                                            <t t-esc="'{0:,.0f}'.format(sum([l.product_uom_qty * l.price_unit for l in doc.order_line]))"/>
+                                        </td>
+
+                                        <td dir="ltr">
+                                            <t t-esc="'{0:,.0f}'.format(sum([l.product_uom_qty * l.price_unit * (l.discount or 0)/100 for l in doc.order_line]))"/>
+                                        </td>
+
+                                        <td><!-- اضافات کل (اگر داری) --></td>
+
+                                        <td dir="ltr">
+                                            <t t-esc="'{0:,.0f}'.format(sum([l.price_subtotal for l in doc.order_line]))"/>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                            <!-- استایل حداقلی مخصوص pdf/wkhtmltopdf -->
+                            <style>
+                                .table-lines,
+                                .table-lines th,
+                                .table-lines td {
+                                border: 1px solid #000;
+                                }
+                                .table-lines th,
+                                .table-lines td {
+                                padding: 4px 6px;
+                                vertical-align: middle;
+                                text-align: center;
+                                }
+                                .table-lines thead th {
+                                background-color: #d3d3d3;
+                                font-weight: bold;
+                                }
+                            </style>
+                        </table>
+
+                    </div>
+                    <div class="footer"
+                         style="font-family:nazanin; text-align: right; vertical-align: top; padding: 5px; height: 75px;"
+                         dir="rtl">
+                        <link rel="stylesheet" href="/artarad_kadolin_custom/static/src/css/akc_frontend.css"/>
+                        <style>
+
+                        </style>
+
+                        صفحه:
+                        <span class="page"/>
+                        <span class="topage"/>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+    </data>
+</odoo>

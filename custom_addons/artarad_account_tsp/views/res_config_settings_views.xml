@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.account.tsp</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="41" />
+            <field name="inherit_id" ref="account.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//app[@name='account']" position="inside">
+                    <block title="TSP">
+                        <setting help="">
+                            <field name="tsp_unique_id" string="Unique ID"/>
+                        </setting>
+                        <setting help="">
+                            <field name="tsp_private_key" string="Private Key"/>
+                        </setting>
+                        <setting help="Include Product Description">
+                            <field name="tsp_include_description" string="Product Description"/>
+                        </setting>
+                        <setting help="Include Product UOM">
+                            <field name="tsp_include_uom" string="UOM"/>
+                        </setting>
+                        <setting help="">
+                            <field name="tsp_product_code_reference" string="Read Product Code From"/>
+                        </setting>
+                        <setting help="">
+                            <field name="tsp_server_mode" string="Server Mode"/>
+                        </setting>
+                    </block>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

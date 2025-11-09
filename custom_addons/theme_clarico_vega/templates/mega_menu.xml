@@ -1,0 +1,868 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="dynamic_category_mega_menu">
+		<t t-set="website_id"
+           t-value="website_id if website_id else request.env['website'].get_current_website().id"/>
+        <t t-set="category_fetch"
+           t-value="request.env['product.public.category'].search([('parent_id', '=', False), ('website_id', 'in', (False, website_id))])"/>
+        <t t-set="specific_multiple_category" t-value="menu.ecom_category"/>
+        <!-- Dynamic Mega Menu Style 1 -->
+        <section t-if="category_menu_styles == 'style1'"
+                 class="te_menu_style_1 s_mega_menu_style_1 container-fluid py-3 px-3 te_img_hide_small_devices dynamic_menu lh-base bg-white"
+                 t-att-menu_id="menu.id">
+            <a t-out="menu.name" class="te_menu_name d-block d-md-none bg-white"
+               t-att-href="menu.category_selection == 'specific' and menu.url or '#'"/>
+            <div class="container w-100 p-0">
+            <ul class="menu-items p-0 list-unstyled">
+                <t t-set="selected_category" t-value="menu.category_selection"/>
+                <t t-if="selected_category == 'all'">
+                    <t t-set="parent_menu" t-value="category_fetch"/>
+                </t>
+                <t t-elif="(len(menu.ecom_category) &gt; 1)">
+                    <t t-set="parent_menu" t-value="specific_multiple_category"/>
+                </t>
+                <t t-else="">
+                    <t t-set="parent_menu" t-value="menu.ecom_category.child_id"/>
+                </t>
+                <t t-if="parent_menu"
+                   t-foreach="parent_menu"
+                   t-as="parent_child">
+                    <li class="te_category-heading-center overflow-hidden">
+                        <t t-set="category_url" t-value="'/shop/category/%s' %slug(parent_child)"/>
+                        <a
+                                class="te_menu_category_heading position-relative nav-link d-inline-block border-bottom-0 text-break fst-normal"
+                           t-att-href="category_url" t-field="parent_child.name">
+                            <span class="cat_badge text-ws badge-pill text-center align-middle d-inline-block position-relative"
+                                  t-if="parent_child.menu_label_id" t-field="parent_child.menu_label_id.name"
+                                  t-att-style="'background-color: %s;color: %s;' % (parent_child.menu_label_id.label_background_color, parent_child.menu_label_id.label_text_color)"
+                            />
+                        </a>
+                        <hr/>
+                        <ul class="category_child p-0 list-unstyled">
+                            <t t-foreach="parent_child.child_id"
+                               t-as="child_of_child">
+                                <li class="te_menu_category_item w-100 text-ws">
+                                    <t t-set="category_url" t-value="'/shop/category/%s' %slug(child_of_child)"/>
+                                    <a t-att-href="category_url"
+                                       class="te_menu_item nav-link d-inline-block border-bottom-0 lh-base text-break position-relative text-ws">
+                                        <span t-field="child_of_child.name"/>
+                                        <span class="cat_badge text-ws badge-pill text-center align-middle d-inline-block position-relative"
+                                              t-if="child_of_child.menu_label_id" t-field="child_of_child.menu_label_id.name"
+                                              t-att-style="'background-color: %s;color: %s;' % (child_of_child.menu_label_id.label_background_color, child_of_child.menu_label_id.label_text_color)"
+                                        />
+                                    </a>
+                                </li>
+                            </t>
+                        </ul>
+                    </li>
+                    <t t-if="len(parent_child.child_id) &gt; 6">
+                        <div class="see_all_subcate">
+                            <label class="form-check-label fw-normal mb-2 mt-2">
+                                <a t-att-href="'/shop/category/%s' %(parent_child.id)" t-if="parent_child"
+                                   class="text-decoration-none">
+                                    <p class="d-inline-block">+ See More</p>
+                                </a>
+                            </label>
+                        </div>
+                    </t>
+                </t>
+            </ul>
+            <!-- Brands owl carousel for Mega Menu Style 1 -->
+            <t t-set="website"
+               t-value="request.env['website'].search([('id', '=', website_id)]) if website_id else request.website"/>
+            <t t-set="product_brands" t-value="menu.product_brand_ids"/>
+                <div class="te_menu_brand_img owl-carousel row pt16 pb8">
+                    <t t-if="product_brands"
+                       t-foreach="product_brands"
+                       t-as="pro_brand">
+                        <div class="item">
+                            <a t-attf-href="/shop/brands/#{pro_brand.id}" class="brand_link">
+                                <div class="mega_menu_img col-3 col-md-6 mx-md-auto">
+                                    <div class="brand_card_media mx-auto">
+                                        <t t-if="website.is_lazy_load">
+                                            <img t-attf-data-original="/web/image/product.brand/#{pro_brand.id}/image_128"
+                                                 t-attf-src="/web/image/website/#{website.id}/lazy_load_image"
+                                                 t-attf-class="img img-fluid brand_image lazyload mx-auto"
+                                                 t-att-alt="pro_brand.name"/>
+                                        </t>
+                                        <t t-else="">
+                                            <img t-att-alt="pro_brand.name"
+                                                 class="brand_image d-block img img-fluid mx-auto"
+                                                 t-attf-src="/web/image/product.brand/#{pro_brand.id}/image_128"/>
+                                        </t>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Mega Menu Style 2 -->
+        <section t-if="category_menu_styles == 'style2'"
+                 class="te_menu_style_2 s_mega_menu_style_2 container-fluid dynamic_menu lh-base bg-white"
+                 t-att-menu_id="menu.id">
+            <a t-out="menu.name" class="te_menu_name d-block d-md-none pt-3 bg-white"
+               t-att-href="menu.category_selection == 'specific' and menu.url or '#'"/>
+            <div class="container w-100">
+                <div class="row d-flex pt16">
+                    <t t-set="selected_category" t-value="menu.category_selection"/>
+                    <t t-if="selected_category == 'all'">
+                        <t t-set="parent_menu" t-value="category_fetch"/>
+                    </t>
+                    <t t-elif="(len(menu.ecom_category) &gt; 1)">
+                        <t t-set="parent_menu" t-value="specific_multiple_category"/>
+                    </t>
+                    <t t-else="">
+                        <t t-set="parent_menu" t-value="menu.ecom_category.child_id"/>
+                    </t>
+                    <t t-if="parent_menu"
+                       t-foreach="parent_menu"
+                       t-as="parent_child">
+                        <section class="col-xxl-2 col-xl-3 col-lg-3 col-md-4 col-sm-6 cat-column">
+                            <t t-set="category_url"
+                               t-value="'/shop/category/%s' %slug(parent_child)"/>
+                            <a t-att-href="category_url">
+                                <section class="te_image overflow-hidden position-relative mb16">
+                                    <span t-if="parent_child.image_1920"
+                                          t-field="parent_child.image_1920"
+                                          class="demo-icon"
+                                          t-options="{'widget': 'image', 'alt-field': 'name', 'itemprop': 'image', 'class': 'img img-responsive img-fluid d-block mx-auto w-100'}"/>
+                                    <img t-if="not parent_child.image_1920"
+                                         class="img img-responsive img-fluid d-block mx-auto w-100"
+                                         alt="Clarico-Mega Menus Style 2"
+                                         src="/theme_clarico_vega/static/src/img/snippets/menu_snippets/style_2/340_500.jpg"/>
+                                    <section class="te_menu_content text-center align-middel justify-content-center">
+                                        <h6 class="mb0">
+                                            <div class="d-block">
+                                                <a t-att-href="category_url"
+                                                   class="nav-link d-inline-block break_word border-0 p-0"
+                                                   t-field="parent_child.name"/>
+                                            </div>
+                                            <span class="cat_badge text-ws badge-pill text-center align-middle d-inline-block"
+                                                  t-if="parent_child.menu_label_id"
+                                                  t-field="parent_child.menu_label_id.name"
+                                                  t-att-style="'background-color: %s;color: %s;border-top-color: %s;' % (parent_child.menu_label_id.label_background_color, parent_child.menu_label_id.label_text_color, parent_child.menu_label_id.label_background_color)"
+                                            />
+                                        </h6>
+                                    </section>
+                                </section>
+                            </a>
+                        </section>
+                    </t>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Mega Menu Style 3 -->
+        <section t-if="category_menu_styles == 'style3'"
+                 class="te_menu_style_3 s_mega_menu_style_3 container-fluid te_icons_menu_main py-3 px-3 dynamic_menu lh-base bg-white"
+                 t-att-menu_id="menu.id">
+            <a t-out="menu.name" class="te_menu_name mt-0 d-block d-md-none pb-1 bg-white"
+               t-att-href="menu.category_selection == 'specific' and menu.url or '#'"/>
+            <div class="container w-100">
+                <div class="row">
+                    <t t-set="selected_category" t-value="menu.category_selection"/>
+                    <t t-if="selected_category == 'all'">
+                        <t t-set="parent_menu" t-value="category_fetch"/>
+                    </t>
+                    <t t-elif="(len(menu.ecom_category) &gt; 1)">
+                        <t t-set="parent_menu" t-value="specific_multiple_category"/>
+                    </t>
+                    <t t-else="">
+                        <t t-set="parent_menu" t-value="menu.ecom_category.child_id"/>
+                    </t>
+                    <t t-if="parent_menu" t-foreach="parent_menu" t-as="parent_child">
+                        <section class="col-8 te_menu_flip_box col-8-row">
+                            <div class="align-items-center">
+                                <t t-set="category_url"
+                                   t-value="'/shop/category/%s' %slug(parent_child)"/>
+                                <section class="text-center col-12 te_icon_text">
+                                    <div class="te_menu_flip_box_inner w-100 text-center z-index-1 position-relative">
+                                        <a t-att-href="category_url"
+                                           class="text-center position-relative">
+                                            <span t-if="parent_child.image_1920"
+                                                  t-field="parent_child.image_1920"
+                                                  class="demo-icon"
+                                                  t-options="{'widget': 'image', 'preview_image': 'image_128', 'alt-field': 'name', 'itemprop': 'image', 'class': 'img img-responsive img-fluid d-block mx-auto'}"/>
+                                            <img t-if="not parent_child.image_1920"
+                                                 class="img img-responsive img-fluid d-block mx-auto"
+                                                 alt="Clarico-Mega Menus Style 3"
+                                                 src="/theme_clarico_vega/static/src/img/snippets/menu_snippets/style_4/100_100.png"/>
+                                        </a>
+                                    </div>
+                                </section>
+                                <section class="py-3 text-center col-12 te_icon_text">
+                                    <span
+                                            class="cat_badge text-ws badge-pill text-center align-middle d-inline-block position-absolute"
+                                          t-if="parent_child.menu_label_id"
+                                          t-field="parent_child.menu_label_id.name"
+                                          t-att-style="'background-color: %s;color: %s;border-top-color: %s;' % (parent_child.menu_label_id.label_background_color, parent_child.menu_label_id.label_text_color, parent_child.menu_label_id.label_background_color)"
+                                    />
+                                    <div class="d-block mt8">
+                                        <a t-att-href="category_url"
+                                           class="nav-link m-0 text-ws d-inline-block align-middle overflow-hidden p-0 text-break text-center"
+                                           t-field="parent_child.name"/>
+                                    </div>
+
+                                </section>
+                            </div>
+                        </section>
+                    </t>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Mega Menu Style 4 -->
+        <section t-if="category_menu_styles == 'style4'"
+                 class="te_menu_style_4 s_mega_menu_style_4 container-fluid py-3 px-3 te_catalog_menu_main te_img_hide_small_devices dynamic_menu lh-base bg-white"
+                 t-att-menu_id="menu.id">
+            <a t-out="menu.name" class="te_menu_name d-block d-md-none bg-white"
+               t-att-href="menu.category_selection == 'specific' and menu.url or '#'"/>
+            <div class="container w-100">
+                <div class="row">
+                    <t t-set="selected_category" t-value="menu.category_selection"/>
+                    <t t-if="selected_category == 'all'">
+                        <t t-set="parent_menu" t-value="category_fetch"/>
+                    </t>
+                    <t t-elif="(len(menu.ecom_category) &gt; 1)">
+                        <t t-set="parent_menu" t-value="specific_multiple_category"/>
+                    </t>
+                    <t t-else="">
+                        <t t-set="parent_menu" t-value="menu.ecom_category.child_id"/>
+                    </t>
+                    <t t-if="parent_menu" t-foreach="parent_menu" t-as="parent_child">
+                    <t t-set="category_url" t-value="'/shop/category/%s' %slug(parent_child)"/>
+                        <section class="col-lg-2 col-md-4 col-sm-6">
+                            <div class="img_container position-relative">
+                                <div class="te_border_div position-relative mw-100 text-center d-inline-block">
+                                    <a t-att-href="category_url">
+                                        <span t-if="parent_child.image_1920"
+                                              t-field="parent_child.image_1920"
+                                              class="demo-icon"
+                                              t-options="{'widget': 'image', 'preview_image': 'image_1920', 'alt-field': 'name', 'itemprop': 'image', 'class': 'img img-responsive img-fluid d-block mx-auto w-100'}"/>
+                                        <img t-if="not parent_child.image_1920"
+                                             class="img img-responsive img-fluid d-block mx-auto"
+                                             alt="Clarico-Mega Menus Style 4"
+                                             src="/theme_clarico_vega/static/src/img/snippets/menu_snippets/style_5/290_210.jpg"/>
+                                    </a>
+                                </div>
+                            </div>
+                            <section class="py-lg-3 py-md-3 py-sm-3 py-2">
+                                <div class="d-inline-block parent_cat mb8">
+                                    <a class="te_menu_ctg_main d-inline text-break mb-2 fw-normal"
+                                       t-att-href="category_url">
+                                        <span t-field="parent_child.name"/>
+                                    </a>
+                                    <span class="cat_badge text-ws badge-pill text-center align-middle d-inline-block position-relative"
+                                          t-if="parent_child.menu_label_id"
+                                          t-field="parent_child.menu_label_id.name"
+                                          t-att-style="'background-color: %s;color: %s;' % (parent_child.menu_label_id.label_background_color, parent_child.menu_label_id.label_text_color)"
+                                    />
+                                </div>
+                                <ul class="list-unstyled m-0">
+                                    <section class="subcate_height overflow-hidden">
+                                        <t t-foreach="parent_child.child_id" t-as="child_of_child">
+                                            <li>
+                                                <div class="d-inline-block mb4">
+                                                    <t t-set="category_url"
+                                                       t-value="'/shop/category/%s' %slug(child_of_child)"/>
+                                                    <a
+                                                            class="te_menu_sub nav-link m-0 d-inline-block text-break p-0 text-ws"
+                                                       t-att-href="category_url">
+                                                        <span t-field="child_of_child.name"/>
+                                                    </a>
+                                                    <span class="cat_badge text-ws badge-pill text-center align-middle d-inline-block position-relative"
+                                                          t-if="child_of_child.menu_label_id"
+                                                          t-field="child_of_child.menu_label_id.name"
+                                                          t-att-style="'background-color: %s;color: %s;' % (child_of_child.menu_label_id.label_background_color, child_of_child.menu_label_id.label_text_color)"
+                                                    />
+                                                </div>
+                                            </li>
+                                        </t>
+                                    </section>
+                                    <div class="see_all_subcate">
+                                        <t t-if="len(parent_child.child_id) &gt; 6">
+                                            <label class="form-check-label fw-normal mb-2">
+                                                <a t-att-href="'/shop/category/%s' %(parent_child.id)"
+                                                   t-if="parent_child" class="text-decoration-none">
+                                                    <p class="d-inline-block">+ See More</p>
+                                                </a>
+                                            </label>
+                                        </t>
+                                    </div>
+                                </ul>
+                            </section>
+                        </section>
+                    </t>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Mega Menu Style 5 -->
+        <div t-if="category_menu_styles == 'style5'" id="all_dynamic_menu"
+             class="menu-categories-container te_custom_submenu dynamic_menu lh-base bg-white d-md-position-relative d-sm-100"
+             t-att-menu_id="menu.id">
+            <t t-set="selected_category" t-value="menu.category_selection"/>
+            <t t-if="selected_category == 'all'">
+                <t t-set="parent_menu" t-value="category_fetch"/>
+            </t>
+            <t t-elif="(len(menu.ecom_category) &gt; 1)">
+                <t t-set="parent_menu" t-value="specific_multiple_category"/>
+            </t>
+            <t t-else="">
+                <t t-set="parent_menu" t-value="menu.ecom_category.child_id"/>
+            </t>
+            <div class="container px-0">
+                <a t-out="menu.name" class="te_menu_name p-3 d-block d-md-none bg-white"
+                   t-att-href="menu.category_selection == 'specific' and menu.url or '#'"/>
+                <ul id="menu-categories" class="list-unstyled ">
+                    <t t-if="parent_menu" t-foreach="parent_menu" t-as="c">
+                        <t t-set="category_url" t-value="'/shop/category/%s' %slug(c)"/>
+                        <li class="nav-item parent-category cursor-pointer" t-att-data-id="c.id">
+                            <a t-att-href="category_url"
+                               t-attf-class="nav-link m-0 te_main_a main_category_child m-0 text-ws position-relative #{' active' if c.id == int(category or 0) else ''} #{'mobile_cate_child' if c.child_id else ''}">
+                                <img class="img align-middle"
+                                     t-attf-src="/web/image/#{c._name}/#{c.id}/icon/30x30"/>
+                                <span class="ms-2 d-block">
+                                    <span class="category_name text-break align-middle" t-field="c.name"></span>
+                                    <span class="cat_badge text-ws badge-pill text-center align-middle d-inline-block position-relative"
+                                          t-if="c.menu_label_id"
+                                          t-field="c.menu_label_id.name"
+                                          t-att-style="'background-color: %s;color: %s;' % (c.menu_label_id.label_background_color, c.menu_label_id.label_text_color)"
+                                    />
+                                </span>
+                                <span class="fa fa-angle-right"
+                                      t-if="c.child_id"/>
+                            </a>
+                            <t t-if="c.child_id">
+                                <section
+                                        class="sub-menu-dropdown">
+                                    <div class="sub-menu-dropdown-content">
+                                        <div class="dynamic_mega_menu_child" t-att-menu_id="current_menu">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <t t-set="child_ids" t-value="c.child_id"/>
+                                                    <a class="te_menu_name p-3 d-block d-md-none bg-white"
+                                                       t-field="c.name" t-att-href="category_url"/>
+                                                    <t t-if="child_ids" t-foreach="child_ids" t-as="child_id">
+                                                        <div
+                                                                class="col-xl-3 col-lg-4 col-md-6 col-6 category_column mb-0 position-relative">
+                                                            <t t-set="category_url"
+                                                               t-value="'/shop/category/%s' %slug(child_id)"/>
+                                                            <a t-att-href="category_url">
+                                                                <span t-if="child_id and child_id.image_128"
+                                                                      t-field="child_id.image_128" class="demo-icon d-flex"
+                                                                      t-options="{'widget': 'image', 'alt-field': 'name','class': 'w-auto d-flex align-self-end', 'itemprop': 'image'}"/>
+                                                                <span t-if="child_id and not child_id.image_128"
+                                                                      t-field="child_id.image_128" class="demo-icon d-flex"
+                                                                      t-options="{'widget': 'image', 'alt-field': 'name', 'class': 'w-auto d-flex align-self-end', 'itemprop': 'image'}">
+                                                                </span>
+                                                            </a>
+                                                            <div class="category_heading position-relative mb8 lh-base ">
+                                                                <a t-att-href="category_url" t-field="child_id.name"
+                                                                   class="w-auto position-relative d-inline overflow-hidden text-decoration-none"/>
+                                                                <span class="cat_badge text-ws badge-pill text-center align-middle d-inline-block position-relative"
+                                                                      t-if="child_id.menu_label_id"
+                                                                      t-field="child_id.menu_label_id.name"
+                                                                      t-att-style="'background-color: %s;color: %s;' % (child_id.menu_label_id.label_background_color, child_id.menu_label_id.label_text_color)"
+                                                                />
+                                                            </div>
+                                                            <ul class="list-unstyled category_ul overflow-y-auto">
+                                                                <t t-foreach="child_id.child_id" t-as="c">
+                                                                    <t t-call="theme_clarico_vega.web_categories_recursive"/>
+                                                                </t>
+                                                            </ul>
+                                                        </div>
+                                                    </t>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </t>
+                            <t t-else="">
+                                <section class="sub-menu-dropdown"/>
+                            </t>
+                        </li>
+                    </t>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Dynamic Mega Menu Style 6 (Nested Menu) -->
+        <section t-if="category_menu_styles == 'style6'" id="custom_menu"
+                 class="te_custom_submenu dynamic_menu lh-base bg-white shadow-none w-100"
+                 t-att-menu_id="menu.id">
+            <a t-out="menu.name" class="te_menu_name p-3 d-block d-md-none bg-white"
+               t-att-href="menu.category_selection == 'specific' and menu.url or '#'"/>
+            <ul id="te_main_ul" class="list-unstyled p-0">
+                <t t-set="selected_category" t-value="menu.category_selection"/>
+                <t t-if="selected_category == 'all'">
+                    <t t-set="parent_menu" t-value="category_fetch"/>
+                </t>
+                <t t-elif="(len(menu.ecom_category) &gt; 1)">
+                    <t t-set="parent_menu" t-value="specific_multiple_category"/>
+                </t>
+                <t t-else="">
+                    <t t-set="parent_menu" t-value="menu.ecom_category.child_id"/>
+                </t>
+                <t t-if="parent_menu" t-foreach="parent_menu" t-as="c">
+                    <t t-call="theme_clarico_vega.web_dynamic_categories_recursive"></t>
+                </t>
+            </ul>
+        </section>
+
+        <section t-if="category_menu_styles == 'style7'"
+                 class="te_menu_style_1 s_mega_menu_style_1 container-fluid py-3 px-3 te_img_hide_small_devices dynamic_menu lh-base bg-white te_menu_style_7"
+                 t-att-menu_id="menu.id">
+            <a t-out="menu.name" class="te_menu_name d-block d-md-none bg-white"
+               t-att-href="menu.category_selection == 'specific' and menu.url or '#'"/>
+            <div class="container w-100 p-0">
+                <div t-attf-class="#{'d-lg-flex gap-lg-1' if menu.mega_menu_content_ids else ''}">
+                    <ul t-attf-class="menu-items p-0 list-unstyled #{'col-12 col-lg-6' if menu.mega_menu_content_ids else ''}">
+                        <t t-set="selected_category" t-value="menu.category_selection"/>
+                        <t t-if="selected_category == 'all'">
+                            <t t-set="parent_menu" t-value="category_fetch"/>
+                        </t>
+                        <t t-elif="(len(menu.ecom_category) &gt; 1)">
+                            <t t-set="parent_menu" t-value="specific_multiple_category"/>
+                        </t>
+                        <t t-else="">
+                            <t t-set="parent_menu" t-value="menu.ecom_category.child_id"/>
+                        </t>
+                        <t t-if="parent_menu"
+                           t-foreach="parent_menu"
+                           t-as="parent_child">
+                            <li class="te_category-heading-center overflow-hidden">
+                                <t t-set="category_url" t-value="'/shop/category/%s' %slug(parent_child)"/>
+                                <a
+                                        class="te_menu_category_heading position-relative nav-link d-inline-block border-bottom-0 text-break fst-normal"
+                                   t-att-href="category_url" t-field="parent_child.name">
+                                    <span class="cat_badge text-ws badge-pill text-center align-middle d-inline-block position-relative"
+                                          t-if="parent_child.menu_label_id" t-field="parent_child.menu_label_id.name"
+                                          t-att-style="'background-color: %s;color: %s;' % (parent_child.menu_label_id.label_background_color, parent_child.menu_label_id.label_text_color)"
+                                    />
+                                </a>
+                                <ul class="category_child p-0 list-unstyled">
+                                    <t t-foreach="parent_child.child_id"
+                                       t-as="child_of_child">
+                                        <li class="te_menu_category_item w-100 text-ws">
+                                            <t t-set="category_url" t-value="'/shop/category/%s' %slug(child_of_child)"/>
+                                            <a t-att-href="category_url"
+                                               class="te_menu_item nav-link d-inline-block border-bottom-0 lh-base text-break position-relative text-ws">
+                                                <span t-field="child_of_child.name"/>
+                                                <span class="cat_badge text-ws badge-pill text-center align-middle d-inline-block position-relative"
+                                                      t-if="child_of_child.menu_label_id" t-field="child_of_child.menu_label_id.name"
+                                                      t-att-style="'background-color: %s;color: %s;' % (child_of_child.menu_label_id.label_background_color, child_of_child.menu_label_id.label_text_color)"
+                                                />
+                                            </a>
+                                        </li>
+                                    </t>
+                                </ul>
+                            </li>
+                            <t t-if="len(parent_child.child_id) &gt; 6">
+                                <div class="see_all_subcate">
+                                    <label class="form-check-label fw-normal mb-2 mt-2">
+                                        <a t-att-href="'/shop/category/%s' %(parent_child.id)" t-if="parent_child"
+                                           class="text-decoration-none">
+                                            <p class="d-inline-block">+ See More</p>
+                                        </a>
+                                    </label>
+                                </div>
+                            </t>
+                        </t>
+                    </ul>
+                    <div class="col-lg-6 d-lg-flex justify-content-between gap-lg-3 main" t-if="menu.mega_menu_content_ids">
+                        <t t-foreach="menu.mega_menu_content_ids[:2]" t-as="content">
+                            <div class="col-lg-6 overflow-hidden main_img_div">
+                                <a t-att-href="content.url" class="position-relative main_img me-sm-2">
+                                    <span t-if="content.image" t-field="content.image" class="demo-icon"
+                                      t-options="{'widget': 'image', 'alt-field': 'name', 'itemprop': 'image', 'class': 'img img-responsive img-fluid d-block mx-auto w-100'}"/>
+                                    <img t-if="not content.image"
+                                         class="img img-responsive img-fluid d-block mx-auto w-100"
+                                         alt="Clarico-Mega Menus Style 2"
+                                         src="/theme_clarico_vega/static/src/img/snippets/menu_snippets/style_2/340_500.jpg"/>
+                                </a>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section t-if="category_menu_styles == 'style8'"
+                 class="te_menu_style_1 s_mega_menu_style_1 container-fluid py-3 px-3 te_img_hide_small_devices dynamic_menu lh-base bg-white te_menu_style_8"
+                 t-att-menu_id="menu.id">
+            <a t-out="menu.name" class="te_menu_name d-block d-md-none bg-white"
+               t-att-href="menu.category_selection == 'specific' and menu.url or '#'"/>
+            <div class="container w-100 p-0">
+                <div t-attf-class="#{'d-lg-flex gap-lg-1' if menu.product_template_ids else ''}">
+                    <ul t-attf-class="menu-items p-0 list-unstyled #{'col-12 col-lg-6' if menu.product_template_ids else ''}">
+                        <t t-set="selected_category" t-value="menu.category_selection"/>
+                        <t t-if="selected_category == 'all'">
+                            <t t-set="parent_menu" t-value="category_fetch"/>
+                        </t>
+                        <t t-elif="(len(menu.ecom_category) &gt; 1)">
+                            <t t-set="parent_menu" t-value="specific_multiple_category"/>
+                        </t>
+                        <t t-else="">
+                            <t t-set="parent_menu" t-value="menu.ecom_category.child_id"/>
+                        </t>
+                        <t t-if="parent_menu"
+                           t-foreach="parent_menu"
+                           t-as="parent_child">
+                            <li class="te_category-heading-center overflow-hidden">
+                                <t t-set="category_url" t-value="'/shop/category/%s' %slug(parent_child)"/>
+                                <a
+                                        class="te_menu_category_heading position-relative nav-link d-inline-block border-bottom-0 text-break fst-normal"
+                                   t-att-href="category_url" t-field="parent_child.name">
+                                    <span class="cat_badge text-ws badge-pill text-center align-middle d-inline-block position-relative"
+                                          t-if="parent_child.menu_label_id" t-field="parent_child.menu_label_id.name"
+                                          t-att-style="'background-color: %s;color: %s;' % (parent_child.menu_label_id.label_background_color, parent_child.menu_label_id.label_text_color)"
+                                    />
+                                </a>
+                                <ul class="category_child p-0 list-unstyled">
+                                    <t t-foreach="parent_child.child_id"
+                                       t-as="child_of_child">
+                                        <li class="te_menu_category_item w-100 text-ws">
+                                            <t t-set="category_url" t-value="'/shop/category/%s' %slug(child_of_child)"/>
+                                            <a t-att-href="category_url"
+                                               class="te_menu_item nav-link d-inline-block border-bottom-0 lh-base text-break position-relative text-ws">
+                                                <span t-field="child_of_child.name"/>
+                                                <span class="cat_badge text-ws badge-pill text-center align-middle d-inline-block position-relative"
+                                                      t-if="child_of_child.menu_label_id" t-field="child_of_child.menu_label_id.name"
+                                                      t-att-style="'background-color: %s;color: %s;' % (child_of_child.menu_label_id.label_background_color, child_of_child.menu_label_id.label_text_color)"
+                                                />
+                                            </a>
+                                        </li>
+                                    </t>
+                                </ul>
+                            </li>
+                            <t t-if="len(parent_child.child_id) &gt; 6">
+                                <div class="see_all_subcate">
+                                    <label class="form-check-label fw-normal mb-2 mt-2">
+                                        <a t-att-href="'/shop/category/%s' %(parent_child.id)" t-if="parent_child"
+                                           class="text-decoration-none">
+                                            <p class="d-inline-block">+ See More</p>
+                                        </a>
+                                    </label>
+                                </div>
+                            </t>
+                        </t>
+                    </ul>
+                    <div class="col-lg-6">
+                        <h5 class="text-uppercase pt-3 heading">Best Seller</h5>
+                        <div class="d-lg-flex justify-content-between gap-lg-3 main" t-if="menu.product_template_ids">
+                            <t t-foreach="menu.product_template_ids[:2]" t-as="product">
+                                <div class="col-lg-6 overflow-hidden main_img_div position-relative">
+                                    <section class="te_slider_img">
+                                        <div>
+                                            <a t-att-href="product.website_url" class="main_img">
+                                                <img t-att-alt="product.name" class="product_image d-block img img-fluid mx-auto"
+                                                     t-attf-src="/web/image/product.template/#{product.id}/image_1024"/>
+                                            </a>
+                                        </div>
+                                        <div class="d-flex justify-content-between pt-1">
+                                            <div class="overflow-hidden text-truncate">
+                                                <a class="m-0 text-decoration-none product_name text-black" t-att-href="product.website_url" t-out="product.name"/>
+                                                <t t-set="combination_info" t-value="product.sudo()._get_combination_info()"/>
+                                                <div t-attf-class="te_discount pt-1">
+                                                    <t t-set="difference" t-value="round(combination_info['list_price'] - combination_info['price'],2)"/>
+                                                    <t t-set="discount" t-value="round(difference*100/combination_info['list_price']) if combination_info['list_price'] &gt; 0 else 0"/>
+                                                    <div class="te_percentage small">
+                                                        <span class="h6 mb-0 text-black">
+                                                            <t t-out="combination_info['currency'].symbol"/>
+                                                            <span class="oe_currency_value" t-out="combination_info['price']"/>
+                                                        </span>
+                                                        <t t-if="combination_info['has_discounted_price']">
+                                                            <del t-attf-class="text-muted me-1 h6 mb-0" style="white-space: nowrap;">
+                                                                <t t-out="combination_info['currency'].symbol"/>
+                                                                <em class="small" t-out="combination_info['list_price']"/>
+                                                            </del>
+                                                            <span class="percent_val" t-out="'%s'%(discount)"/>% Off
+                                                        </t>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <t t-set="colors"
+                                               t-value="product.attribute_line_ids.search([('product_tmpl_id', '=', product.id), ('attribute_id.display_type', '=', 'color')], limit=1)"/>
+                                            <!--If more then one color is set then only color swatch display-->
+                                            <t t-if="colors and len(colors.value_ids) > 1">
+                                            <t t-set="count" t-value="0"/>
+                                                <div class="d-flex">
+                                                    <div class="color-changer d-flex overflow-y-hidden w-100 justify-content-end">
+                                                        <div class="color_scrollbar">
+                                                            <t t-foreach="colors.value_ids" t-as="ptav" t-if="count &lt; 3">
+                                                                <t t-set="count" t-value="count + 1"/>
+                                                                <t t-set="img_style"
+                                                                   t-value="'background:url(/web/image/product.attribute.value/%s/image/30x30); background-size:cover;' % ptav.id if ptav.image else ''"/>
+                                                                <t t-set="color_style"
+                                                                   t-value="'background:' + str(ptav.html_color or ptav.name if not ptav.is_custom else '')"/>
+                                                                <span class="te-color-attr-pil d-inline-block overflow-hidden">
+                                                                    <label t-attf-style="#{img_style or color_style};"
+                                                                           t-attf-class="#{'custom_value' if ptav.is_custom else ''} #{'transparent' if (not ptav.is_custom and not ptav.html_color) else ''} w-100 h-100 mb-0 cursor-pointer attribute_color rounded-circle d-inline-block"
+                                                                           t-att-data-attribute-value-id="ptav.id" t-att-data-product-id="product.id" t-attf-data-original="/web/image/product.template/#{product.id}/image_1024"/>
+                                                                </span>
+                                                            </t>
+                                                        </div>
+                                                    </div>
+                                                    <t t-if="len(colors.value_ids) &gt; 3">
+                                                        <span class="color_swatch_count ps-1">+<t t-out="int(len(colors.value_ids)) - 3"/></span>
+                                                    </t>
+                                                </div>
+                                            </t>
+                                            <t t-else="">
+                                                <div class="color-changer-not-available"/>
+                                            </t>
+                                        </div>
+                                    </section>
+                                </div>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div t-if="category_menu_styles == 'style9'" id="all_dynamic_menu"
+             class="menu-categories-container te_custom_submenu dynamic_menu lh-base bg-white d-md-position-relative d-sm-100 mega_menu9"
+             t-att-menu_id="menu.id">
+            <t t-set="selected_category" t-value="menu.category_selection"/>
+            <t t-if="selected_category == 'all'">
+                <t t-set="parent_menu" t-value="category_fetch"/>
+            </t>
+            <t t-elif="(len(menu.ecom_category) &gt; 1)">
+                <t t-set="parent_menu" t-value="specific_multiple_category"/>
+            </t>
+            <t t-else="">
+                <t t-set="parent_menu" t-value="menu.ecom_category.child_id"/>
+            </t>
+            <div class="container px-0">
+                <ul id="menu-categories" class="list-unstyled d-none d-lg-block">
+                    <t t-if="parent_menu" t-foreach="parent_menu" t-as="c">
+                        <t t-set="category_url" t-value="'/shop/category/%s' %slug(c)"/>
+                        <li class="nav-item parent-category cursor-pointer" t-att-data-id="c.id">
+                            <a t-att-href="category_url"
+                               t-attf-class="nav-link m-0 te_main_a main_category_child m-0 text-ws position-relative #{' active' if c.id == int(category or 0) else ''} #{'mobile_cate_child' if c.child_id else ''}">
+                                <img class="img align-middle img_categ_2"
+                                     t-attf-src="/web/image/#{c._name}/#{c.id}/image_128"/>
+                                <span class="ms-2 d-block">
+                                    <span class="category_name text-break align-middle" t-field="c.name"/>
+                                    <span class="cat_badge text-ws badge-pill text-center align-middle d-inline-block position-relative"
+                                          t-if="c.menu_label_id" t-field="c.menu_label_id.name"
+                                          t-att-style="'background-color: %s;color: %s;' % (c.menu_label_id.label_background_color, c.menu_label_id.label_text_color)"
+                                    />
+                                </span>
+                                <span class="fa fa-angle-right" t-if="c.child_id"/>
+                            </a>
+                            <t t-if="c.child_id">
+                                <section class="sub-menu-dropdown">
+                                    <div class="sub-menu-dropdown-content">
+                                        <div class="dynamic_mega_menu_child" t-att-menu_id="current_menu">
+                                            <div class="container-fluid">
+                                                <div class="row pt-2">
+                                                    <t t-set="child_ids" t-value="c.child_id"/>
+                                                    <t t-if="child_ids" t-foreach="child_ids" t-as="child_id">
+                                                        <t t-set="category_url" t-value="'/shop/category/%s' %slug(child_id)"/>
+                                                        <a class="t_custom_subctg_3 list-unstyled col-3 col-md-2 px-3 pb16 text-decoration-none" t-att-href="category_url">
+                                                            <div class="text-center border p-3 sub_categ">
+                                                                <img t-attf-src="/web/image/product.public.category/#{child_id.id}/image_128"
+                                                                     class="align-self-start o_image_64_contain"
+                                                                     loading="lazy"
+                                                                />
+                                                                <p t-attf-id="nav_main_{{child_id.id}}" t-att-href="category_url" class="small text-black">
+                                                                    <span t-out="child_id.name"/>
+                                                                    <span class="cat_badge text-ws badge-pill text-center align-middle d-inline-block position-relative"
+                                                                        t-if="child_id.menu_label_id" t-field="child_id.menu_label_id.name"
+                                                                        t-att-style="'background-color: %s;color: %s;' % (child_id.menu_label_id.label_background_color, child_id.menu_label_id.label_text_color)" />
+                                                                </p>
+                                                            </div>
+                                                        </a>
+                                                    </t>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                            </t>
+                            <t t-else="">
+                                <section class="sub-menu-dropdown"/>
+                            </t>
+                        </li>
+                    </t>
+                </ul>
+
+                <ul id="custom_menu_ept" class="py-0 dropdown-menu te_custom_submenu d-block d-lg-none show_1022 position-static">
+                    <t t-if="parent_menu" t-foreach="parent_menu" t-as="c">
+                        <t t-call="theme_clarico_vega.web_categories_recursive_style9"/>
+                    </t>
+                </ul>
+            </div>
+        </div>
+    </template>
+
+    <!-- Dynamic Mega Menu Style 5 Recursive Category Block -->
+    <template id="web_categories_recursive">
+        <li t-att-id="'custom_menu_li_%s' % c.id" class="nav-item">
+            <t t-set="category_url" t-value="'/shop/category/%s' %slug(c)"/>
+            <div class="child_categories position-relative">
+                <a t-attf-id="nav_main_{{c.id}}" t-att-href="category_url"
+                   t-attf-class="nav-link te_main_a position-relative text-nowrap m-0 bg-transparent #{' active' if c.id == int(category or 0) else ''}">
+                    <span t-field="c.name"/>
+                    <span class="cat_badge text-ws text-ws badge-pill text-center align-middle d-table position-relative"
+                          t-if="c.menu_label_id"
+                          t-field="c.menu_label_id.name"
+                          t-att-style="'background-color: %s;color: %s;' % (c.menu_label_id.label_background_color, c.menu_label_id.label_text_color)"
+                    />
+                </a>
+            </div>
+            <ul t-if="c.child_id" t-att-id="'custom_recursive_%s' % c.id"
+                class="collapse t_custom_subctg list-unstyled">
+                <t t-foreach="c.child_id" t-as="c">
+                    <t t-call="theme_clarico_vega.web_categories_recursive"/>
+                </t>
+            </ul>
+        </li>
+    </template>
+
+    <!-- Nested Menu (style 6) Recursive Category Block -->
+    <template id="web_dynamic_categories_recursive">
+		<li id="custom_menu_li" class="nav-item d-block bg-white">
+            <t t-set="category_url" t-value="'/shop/category/%s' %slug(c)"/>
+			<a t-att-href="category_url"
+               t-attf-class="nav-link align-middle m-0 d-inline-block text-ws border-bottom-0 text-dark #{' active' if c.id == int(category or 0) else ''}">
+				<span t-field="c.name"/>
+				<span class="cat_badge text-ws badge-pill text-center align-middle d-inline-block position-relative"
+					  t-if="c.menu_label_id" t-field="c.menu_label_id.name"
+					  t-att-style="'background-color: %s;color: %s;' % (c.menu_label_id.label_background_color, c.menu_label_id.label_text_color)"
+				/>
+			</a>
+			<t t-set="c_level" t-value="c_level and c_level or 1"/>
+			<t t-if="c_level&lt;3">
+				<span t-if="c.child_id" class='ctg_arrow cursor-pointer w-auto text-center align-middle float-lg-end fa fa-angle-right'/>
+				<ul t-if="c.child_id" id="custom_recursive" class="t_custom_subctg border-0 margin-0 p-0 text-left w-100 mh-100 list-unstyled">
+					<t t-foreach="c.child_id" t-as="c">
+						<t t-if="c_level&lt;3">
+							<t t-set="c_level" t-value="c_level+1"/>
+							<t t-call="theme_clarico_vega.web_dynamic_categories_recursive"/>
+							<t t-set="c_level" t-value="c_level - 1"/>
+						</t>
+					</t>
+				</ul>
+			</t>
+		</li>
+	</template>
+
+    <template id="website_submenu_label_ept" inherit_id="website.submenu"></template>
+
+    <template id="submenu_ept" inherit_id="website.submenu">
+        <xpath expr="//li[@t-elif='show_dropdown']" position="attributes">
+			<attribute name="t-att-id">submenu.id</attribute>
+		</xpath>
+        <xpath expr="//t[@t-set='show_dropdown']" position="after">
+            <t t-set="item_class"
+               t-value="(submenu.dynamic_mega_menu and submenu.category_menu_styles == 'style6') and (item_class and item_class or '') + ' m_custom te_dynamic_ept' or item_class"/>
+            <t t-set="item_class"
+               t-value="(submenu.dynamic_mega_menu and submenu.category_menu_styles == 'style5' or submenu.dynamic_mega_menu and submenu.category_menu_styles == 'style9') and (item_class and item_class or '') + ' m_custom te_all_dynamic_ept' or item_class"/>
+            <t t-set="item_class"
+               t-value="(submenu.dynamic_mega_menu) and (item_class and item_class or '') + ' te_mega_menu_ept' or item_class"/>
+        </xpath>
+
+        <xpath expr="//li[@t-if='submenu.is_visible and not (submenu.child_id or submenu.is_mega_menu)']//span[@t-field='submenu.name']" position="after">
+			<t t-if="request.website.viewref('theme_clarico_vega.website_submenu_label_ept').active">
+				<span id="menu_label_tx_span" class="text-center" t-if="submenu.menu_label_id">
+					<span class="te_custom_menu_label label_tx d-block fw-bold text-center text-break" t-field="submenu.menu_label_id.name"
+						  t-att-style="'background-color: %s;color: %s;border-top-color: %s;' % (submenu.menu_label_id.label_background_color, submenu.menu_label_id.label_text_color, submenu.menu_label_id.label_background_color)"/>
+				</span>
+			</t>
+		</xpath>
+
+        <xpath expr="//li[@t-elif='show_dropdown']//a" position="replace">
+
+            <a t-if="submenu.dynamic_mega_menu"
+               t-attf-class="#{link_class or ''} dropdown-toggle #{submenu.is_mega_menu and 'o_mega_menu_toggle'} #{submenu._is_active() and 'active'} #{dropdown_toggler_classes}"
+               t-att-href="submenu.category_selection == 'specific' and submenu.url or '#'"
+			   data-bs-toggle="dropdown"
+               t-att-data-id="submenu.id"
+               t-att-data-bs-display="'static' if submenu.is_mega_menu else None"
+               role="menuitem">
+                <span t-field="submenu.name" t-attf-class="#{'te_highlighted_menu_span' if submenu.is_highlight_menu else ''}"/>
+                <t t-if="request.website.viewref('theme_clarico_vega.website_submenu_label_ept').active">
+					<span id="menu_label_tx_span" class="text-center" t-if="submenu.menu_label_id">
+						<span class="te_custom_menu_label label_tx d-block fw-bold text-center text-break" t-field="submenu.menu_label_id.name"
+							  t-att-style="'background-color: %s;color: %s;border-top-color: %s;' % (submenu.menu_label_id.label_background_color, submenu.menu_label_id.label_text_color, submenu.menu_label_id.label_background_color)"/>
+					</span>
+				</t>
+            </a>
+            <a t-else=""
+               t-attf-class="#{link_class or ''} dropdown-toggle #{submenu.is_mega_menu and 'o_mega_menu_toggle'} #{submenu._is_active() and 'active'} #{dropdown_toggler_classes}"
+               data-bs-toggle="dropdown"
+               href="#"
+               t-att-data-bs-display="'static' if submenu.is_mega_menu else None"
+               role="menuitem">
+                <span t-field="submenu.name"
+                      t-attf-class="#{'te_highlighted_menu_span' if submenu.is_highlight_menu else ''}"/>
+                <t t-if="request.website.viewref('theme_clarico_vega.website_submenu_label_ept').active">
+                    <span id="menu_label_tx_span" class="text-center" t-if="submenu.menu_label_id">
+                        <span class="te_custom_menu_label label_tx d-block fw-bold text-center text-break"
+                              t-field="submenu.menu_label_id.name"
+                              t-att-style="'background-color: %s;color: %s;border-top-color: %s;' % (submenu.menu_label_id.label_background_color, submenu.menu_label_id.label_text_color, submenu.menu_label_id.label_background_color)"/>
+                    </span>
+                </t>
+            </a>
+		</xpath>
+
+        <xpath expr="//li[@t-if='submenu.is_visible and not (submenu.child_id or submenu.is_mega_menu)']//span[@t-field='submenu.name']"
+               position="attributes">
+            <attribute name="t-attf-class">
+                #{'te_highlighted_menu_span' if submenu.is_highlight_menu else ''}
+            </attribute>
+        </xpath>
+        <xpath expr="//li[@t-elif='show_dropdown']//a//span" position="attributes">
+            <attribute name="t-attf-class">
+                #{'te_highlighted_menu_span' if submenu.is_highlight_menu else ''}
+            </attribute>
+        </xpath>
+    </template>
+
+    <template id="web_categories_recursive_style9">
+         <li id="custom_menu_li_style9" class="nav-item">
+            <a t-att-href="'/shop/category/%s' %slug(c)" t-attf-class="nav-link categ_ept text-dark #{' active' if c.id == int(category or 0) else ''}">
+                <img t-attf-src="/web/image/product.public.category/#{c.id}/image_128"
+                     class="align-self-start img_categ_2"
+                     loading="lazy"
+                />
+                <t t-out="c.name"/>
+                <span class="cat_badge text-ws badge-pill text-center align-middle d-inline-block position-relative ms-1"
+                    t-if="c.menu_label_id"
+                    t-field="c.menu_label_id.name"
+                    t-att-style="'background-color: %s;color: %s;' % (c.menu_label_id.label_background_color, c.menu_label_id.label_text_color)"
+                    />
+            </a>
+            <ul t-if="len(c.child_id) > 0" id="custom_recursive_ept" class="t_custom_subctg">
+                <li class="te_prent_ctg_heading">
+                    <a class="text-black text-decoration-none" href="#">
+                        <span class="fa fa-angle-left float-start py-1 mt-1"/>
+                        <t t-if="c.name">
+                            <span class="te_t_parent_ctg py-1 ps-2 text-start">Back to <t t-out="c.name"/></span>
+                        </t>
+                        <t t-else="">
+                            <span class="te_t_parent_ctg py-1 ps-2 text-start">Back to main menu</span>
+                        </t>
+                    </a>
+                </li>
+                <li class="py-2 px-4 border-bottom">
+                    <a t-att-href="'/shop/category/%s' %slug(c)" t-attf-class="nav-link categ_ept text-dark h5 fw-normal mb-0 #{' active' if c.id == int(category or 0) else ''}">
+                        <t t-out="c.name"/>
+                    </a>
+                </li>
+                <t t-foreach="c.child_id" t-as="c">
+                    <t t-call="theme_clarico_vega.web_categories_recursive_style9" />
+                </t>
+            </ul>
+
+        </li>
+    </template>
+</odoo>

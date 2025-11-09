@@ -1,0 +1,173 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* artarad_sms
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e-20250308\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-29 05:40+0000\n"
+"PO-Revision-Date: 2025-04-29 09:17+0330\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Generator: Poedit 3.6\n"
+
+#. module: artarad_sms
+#: model:ir.model.fields,field_description:artarad_sms.field_artarad_sms_provider_setting__api_url
+msgid "API URL"
+msgstr "آدرس API"
+
+#. module: artarad_sms
+#: model:ir.model.fields.selection,name:artarad_sms.selection__artarad_sms_provider_setting__provider__ahra
+msgid "Ahra"
+msgstr "اهرا"
+
+#. module: artarad_sms
+#: model:ir.model.fields.selection,name:artarad_sms.selection__artarad_sms_provider_setting__provider__amoot
+msgid "AmootSMS"
+msgstr "آموت"
+
+#. module: artarad_sms
+#: model:ir.model.fields,field_description:artarad_sms.field_sms_template__model_id
+msgid "Applies to"
+msgstr "اعمال می‌شود به"
+
+#. module: artarad_sms
+#: model:ir.model.fields.selection,name:artarad_sms.selection__artarad_sms_provider_setting__provider__asanak
+msgid "Asanak"
+msgstr "آسانک"
+
+#. module: artarad_sms
+#: model:ir.model.fields.selection,name:artarad_sms.selection__artarad_sms_provider_setting__provider__adp
+msgid "Atieh Dadeh Pardaz"
+msgstr "آتیه داده پرداز"
+
+#. module: artarad_sms
+#: model:ir.model.fields,help:artarad_sms.field_sms_template__mobile_to
+msgid "Comma-separated recipient mobile numbers (placeholders may be used here)"
+msgstr "شماره موبایل گیرنده که با کاما از هم جدا شده است (در اینجا می‌توان از متغیرها استفاده کرد)"
+
+#. module: artarad_sms
+#: model:ir.model.fields,field_description:artarad_sms.field_artarad_sms_provider_setting__create_uid
+msgid "Created by"
+msgstr "ایجاد شده توسط"
+
+#. module: artarad_sms
+#: model:ir.model.fields,field_description:artarad_sms.field_artarad_sms_provider_setting__create_date
+msgid "Created on"
+msgstr "ایجاد شده در"
+
+#. module: artarad_sms
+#: model:ir.model.fields,field_description:artarad_sms.field_artarad_sms_provider_setting__display_name
+msgid "Display Name"
+msgstr "نام نمایشی"
+
+#. module: artarad_sms
+#: model:ir.model.fields.selection,name:artarad_sms.selection__artarad_sms_provider_setting__provider__farapayamak
+msgid "Farapayamak"
+msgstr "فراپیامک"
+
+#. module: artarad_sms
+#: model:ir.model.fields.selection,name:artarad_sms.selection__artarad_sms_provider_setting__provider__faraz
+msgid "FarazSMS"
+msgstr "فراز"
+
+#. module: artarad_sms
+#: model:ir.model.fields,field_description:artarad_sms.field_artarad_sms_provider_setting__from_number
+msgid "From Number"
+msgstr "از شماره"
+
+#. module: artarad_sms
+#: model:ir.model.fields,field_description:artarad_sms.field_artarad_sms_provider_setting__id
+msgid "ID"
+msgstr "شناسه"
+
+#. module: artarad_sms
+#: model:ir.model,name:artarad_sms.model_artarad_sms_provider_setting
+msgid "Iranian SMS Provider Setting"
+msgstr "تنظیمات ارایه کننده خدمات پیامک ایرانی"
+
+#. module: artarad_sms
+#: model:ir.ui.menu,name:artarad_sms.menu_artarad_sms_provider_setting
+msgid "Iranian SMS Providers"
+msgstr "ارایه کننده خدمات پیامک ایرانی"
+
+#. module: artarad_sms
+#: model:ir.model.fields,field_description:artarad_sms.field_artarad_sms_provider_setting__write_uid
+msgid "Last Updated by"
+msgstr "آخرین به روز رسانی توسط"
+
+#. module: artarad_sms
+#: model:ir.model.fields,field_description:artarad_sms.field_artarad_sms_provider_setting__write_date
+msgid "Last Updated on"
+msgstr "آخرین به روز رسانی در"
+
+#. module: artarad_sms
+#: model:ir.model.fields.selection,name:artarad_sms.selection__artarad_sms_provider_setting__provider__mavi
+msgid "MaviSMS"
+msgstr "ماوی"
+
+#. module: artarad_sms
+#: model:ir.model.fields,field_description:artarad_sms.field_artarad_sms_provider_setting__password
+msgid "Password"
+msgstr "کلمه عبور"
+
+#. module: artarad_sms
+#: model:ir.model.fields,field_description:artarad_sms.field_artarad_sms_provider_setting__provider
+msgid "Provider"
+msgstr "ارائه دهنده"
+
+#. module: artarad_sms
+#: model:ir.actions.act_window,name:artarad_sms.action_menu_artarad_sms_provider_setting
+msgid "SMS Provider Setting"
+msgstr "تنظیمات ارایه کننده خدمات پیامک"
+
+#. module: artarad_sms
+#: model:ir.model,name:artarad_sms.model_sms_template
+msgid "SMS Templates"
+msgstr "قالب پیامک"
+
+#. module: artarad_sms
+#: model:ir.model.fields.selection,name:artarad_sms.selection__artarad_sms_provider_setting__provider__smsir
+msgid "SMS.IR"
+msgstr ""
+
+#. module: artarad_sms
+#: model:ir.model.fields.selection,name:artarad_sms.selection__artarad_sms_provider_setting__provider__hooshmand
+msgid "SMSHooshmand"
+msgstr "هوشمند"
+
+#. module: artarad_sms
+#: model:ir.model.fields.selection,name:artarad_sms.selection__artarad_sms_provider_setting__provider__sepahansms
+msgid "SepahanSMS"
+msgstr "سپاهان"
+
+#. module: artarad_sms
+#: model:ir.model.fields,field_description:artarad_sms.field_artarad_sms_provider_setting__sequence
+msgid "Sequence"
+msgstr "دنباله"
+
+#. module: artarad_sms
+#: model:ir.model,name:artarad_sms.model_ir_actions_server
+msgid "Server Action"
+msgstr "اقدام سرور"
+
+#. module: artarad_sms
+#: model:ir.model.fields,help:artarad_sms.field_sms_template__model_id
+msgid "The type of document this template can be used with"
+msgstr "نوع سندی که این الگو با آن قابل استفاده است"
+
+#. module: artarad_sms
+#: model:ir.model.fields,field_description:artarad_sms.field_sms_template__mobile_to
+msgid "To (Numbers)"
+msgstr "به (شماره)"
+
+#. module: artarad_sms
+#: model:ir.model.fields,field_description:artarad_sms.field_artarad_sms_provider_setting__username
+msgid "Username"
+msgstr "نام کاربری"

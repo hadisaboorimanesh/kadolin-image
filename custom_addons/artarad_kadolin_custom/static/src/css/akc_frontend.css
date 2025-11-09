@@ -1,0 +1,22 @@
+/* AKC frontend styles */
+@font-face {
+	font-family: 'nazanin';
+	src: url('/artarad_kadolin_custom/static/src/fonts/BNazanin.ttf')format('truetype');
+}
+
+
+#ds-days .ds-day {
+  border-radius: .75rem;
+}
+#ds-days .ds-day.active {
+  border-color: var(--o-brand-2);
+  background: var(--o-brand-2);
+  color: #fff;
+}
+
+#delivery_slot_block .ds-day.active {
+  border-color: var(--o-brand-600);
+  color: var(--btn-active-color);
+background-color: var(--btn-active-bg);
+border-color: var(--btn-active-border-color);
+}

@@ -1,0 +1,56 @@
+<odoo>
+  <record id="view_delivery_carrier_form_post" model="ir.ui.view">
+    <field name="name">delivery.carrier.form.post</field>
+    <field name="model">delivery.carrier</field>
+    <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//sheet/notebook" position="inside">
+        <page string="Post" invisible="delivery_type != 'post'">
+          <group>
+            <group string="Connection">
+              <field name="post_base_url" placeholder="http://poffice.post.ir/restservice/api"/>
+              <field name="post_contract_code"/>
+              <field name="post_username"/>
+              <field name="post_password" password="True"/>
+            </group>
+            <group string="Sender / Origin">
+              <field name="post_source_city_code"/>
+              <field name="post_sender_name"/>
+              <field name="post_sender_postalcode"/>
+              <field name="post_sender_national_id"/>
+              <field name="post_sender_mobile"/>
+              <field name="post_sender_address"/>
+            </group>
+          </group>
+
+          <group string="Defaults">
+            <group>
+              <field name="post_postnodecode"/>
+              <field name="post_typecode"/>
+              <field name="post_servicetype"/>
+              <field name="post_parceltype"/>
+              <field name="post_boxsize"/>
+              <field name="post_contents"/>
+            </group>
+            <group>
+              <field name="post_postalcostcategoryid"/>
+              <field name="post_postalcosttypeflag"/>
+              <field name="post_insurancetype"/>
+              <field name="post_insuranceamount"/>
+              <field name="post_tlsservicetype"/>
+              <field name="post_sendplacetype"/>
+            </group>
+            <group>
+              <field name="post_tworeceiptant"/>
+              <field name="post_electroreceiptant"/>
+              <field name="post_iscot"/>
+              <field name="post_smsservice"/>
+              <field name="post_isnonstandard"/>
+              <field name="post_contractorportion"/>
+            </group>
+          </group>
+        </page>
+      </xpath>
+    </field>
+  </record>
+</odoo>

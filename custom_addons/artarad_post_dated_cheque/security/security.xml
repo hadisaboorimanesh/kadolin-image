@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="rule_pdc_state" model="ir.rule">
+            <field name="name">PDC State multi-company</field>
+            <field name="model_id" ref="artarad_post_dated_cheque.model_artarad_pdc_st" />
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_unlink" eval="True" />
+        </record>
+
+        <record id="rule_pdc_initial_state" model="ir.rule">
+            <field name="name">PDC Initial State multi-company</field>
+            <field name="model_id" ref="artarad_post_dated_cheque.model_artarad_pdc_init_st" />
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_unlink" eval="True" />
+        </record>
+
+        <record id="rule_pdc_state_change" model="ir.rule">
+            <field name="name">PDC State Change multi-company</field>
+            <field name="model_id" ref="artarad_post_dated_cheque.model_artarad_pdc_st_chg" />
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_unlink" eval="True" />
+        </record>
+
+        <record id="rule_pdc_state_change_transaction" model="ir.rule">
+            <field name="name">PDC State Change Transaction multi-company</field>
+            <field name="model_id" ref="artarad_post_dated_cheque.model_artarad_pdc_st_chg_trans" />
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_unlink" eval="True" />
+        </record>
+
+        <record id="rule_pdc_book" model="ir.rule">
+            <field name="name">PDC Book multi-company</field>
+            <field name="model_id" ref="artarad_post_dated_cheque.model_artarad_pdc_book" />
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_unlink" eval="True" />
+        </record>
+
+        <record id="rule_pdc_sheet" model="ir.rule">
+            <field name="name">PDC Sheet multi-company</field>
+            <field name="model_id" ref="artarad_post_dated_cheque.model_artarad_pdc_sheet" />
+            <field name="domain_force">['|',('company_id','=',False),('company_id', 'in', company_ids)]</field>
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_unlink" eval="True" />
+        </record>
+
+    </data>
+</odoo>

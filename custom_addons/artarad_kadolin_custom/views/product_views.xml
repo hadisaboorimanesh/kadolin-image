@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_product_template_form_akc" model="ir.ui.view">
+        <field name="name">product.template.form.akc.slug.english</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <div name="options" position='inside'>
+                <span class="d-inline-flex">
+                    <field name="is_fake"/>
+                    <label for="is_fake"/>
+                </span>
+                <span class="d-inline-flex">
+                    <field name="is_installment_snapp_pay"/>
+                    <label for="is_installment_snapp_pay"/>
+                </span>
+            </div>
+
+
+        </field>
+    </record>
+
+    <record id="view_product_template_form_seo" model="ir.ui.view">
+        <field name="name">product.template.form.seo.slug.english</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//label[@for='compare_list_price']" position="replace"/>
+            <xpath expr="//div[@groups='website_sale.group_product_price_comparison']" position="replace"/>
+            <xpath expr="//label[@for='list_price']" position="before">
+                <label for="compare_list_price" groups="website_sale.group_product_price_comparison"/>
+                <div class="o_row" groups="website_sale.group_product_price_comparison">
+                    <del class="oe_read_only">
+                        <field name="compare_list_price" nolabel="1" widget="monetary"
+                               options="{'currency_field': 'currency_id', 'field_digits': True}"/>
+                    </del>
+                    <field name="compare_list_price" nolabel="1" widget="monetary"
+                           options="{'currency_field': 'currency_id', 'field_digits': True}" class="oe_edit_only"/>
+                </div>
+            </xpath>
+            <xpath expr="//field[@name='default_code']" position="after">
+                <field name="seo_name"/>
+            </xpath>
+            <xpath expr="//page[@name='sales']" position="inside">
+                <group string="Lead Time (No Stock)">
+                    <field name="backorder_lead_days" widget="float_time"/>
+                    <label for="backorder_lead_days"/>
+                    <p class="text-muted">
+                        مدت زمان انتظار به‌روزشده برای وقتی که موجودی کافی نیست. اگر خالی باشد، مقدار پیش‌فرض شرکت
+                        استفاده می‌شود.
+                    </p>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

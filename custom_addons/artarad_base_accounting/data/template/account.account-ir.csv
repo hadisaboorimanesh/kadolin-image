@@ -1,0 +1,265 @@
+id,name,code,account_type,tag_ids,reconcile
+account_account_template_1,بانک ریالی,11101,asset_cash,,0
+account_account_template_2,بانک ارزی,11201,asset_cash,,0
+account_account_template_3,معلق بانک ریالی,11401,asset_current,,0
+account_account_template_4,حساب معلق عمومی,11499,asset_current,,0
+account_account_template_5,وجوه دریافتی  بانک ریالی,11501,asset_current,,1
+account_account_template_6,وجوه دریافتی بدون تطبیق، عمومی,11599,asset_current,,1
+account_account_template_7,وجوه پرداختی بانک ریالی,11601,asset_current,,1
+account_account_template_8,وجوه پرداختی بدون تطبیق، عمومی,11699,asset_current,,1
+account_account_template_9,حساب معلق اول دوره,11799,asset_current,,0
+account_account_template_10,انتقال نقدینگی,11901,asset_current,,1
+account_account_template_11,تنخواه,12101,asset_cash,,0
+account_account_template_12,صندوق شرکت,12201,asset_cash,,0
+account_account_template_13,صندوق ارزی,12202,asset_cash,,0
+account_account_template_14,حساب های دریافتنی,13101,asset_receivable,,1
+account_account_template_15,مالیات دریافتنی,13104,asset_receivable,,1
+account_account_template_16,اسناد دریافتنی,13202,asset_current,,1
+account_account_template_17,حسابهای دریافتنی - صرافی,13301,asset_receivable,,1
+account_account_template_18,سپرده بانک,14101,asset_receivable,,1
+account_account_template_19,اوراق بهادار,14201,asset_cash,,0
+account_account_template_20,ضمانت نامه بانک,14301,asset_cash,,0
+account_account_template_21,پیش پرداخت اینترنت,15102,asset_prepayments,,0
+account_account_template_22,پیش پرداخت خرید کالا,15201,asset_prepayments,,0
+account_account_template_23,پیش پرداخت بیمه وسایط نقلیه,15202,asset_prepayments,,0
+account_account_template_24,پیش پرداخت بیمه تکمیلی,15203,asset_prepayments,,0
+account_account_template_25,پیش پرداخت بیمه آتش سوزی,15204,asset_prepayments,,0
+account_account_template_26,پیش پرداخت بیمه مسئولیت مدنی,15205,asset_prepayments,,0
+account_account_template_27,پیش پرداخت رستوران ها,15219,asset_prepayments,,0
+account_account_template_28,پیش پرداخت مالیات,15301,asset_prepayments,,0
+account_account_template_29,پیش پرداخت خرید دارایی / زمین,15401,asset_prepayments,,0
+account_account_template_30,سایر پیش پرداخت ها,15901,asset_prepayments,,0
+account_account_template_31,سپرده حسن انجام کار,15902,asset_prepayments,,0
+account_account_template_32,سپرده بیمه پیمانکاران,15903,asset_prepayments,,0
+account_account_template_33,بیمه تکمیلی,15912,asset_prepayments,,0
+account_account_template_34,بیمه آتش سوزی,15913,asset_prepayments,,0
+account_account_template_35,پیش پرداخت رفاه,15914,asset_prepayments,,0
+account_account_template_36,موجودی محصول,16101,asset_current,,0
+account_account_template_37,برگشت از خرید و تخفیفات,16102,asset_current,,0
+account_account_template_38,موجودی مواد,16201,asset_current,,0
+account_account_template_39,موجودی قطعات,16301,asset_current,,0
+account_account_template_40,موجودی کالا و اموال سرمایه ای,16401,asset_current,,0
+account_account_template_41,کالای در جریان ساخت,16501,asset_current,,0
+account_account_template_42,موجودی ضایعات,16601,asset_current,,0
+account_account_template_43,بهره سنوات آتی,17101,asset_current,,0
+account_account_template_44,موجودی وارده فاکتور نشده,17201,asset_current,,1
+account_account_template_45,موجودی صادره  فاکتور نشده,17202,asset_current,,1
+account_account_template_46,موجودی اول دوره,17203,asset_current,,1
+account_account_template_47,سرمایه گذاری ها,18101,asset_current,,0
+account_account_template_48,دارایی ثابت غیر منقول - زمین,21101,asset_non_current,,0
+account_account_template_49,دارایی ثابت غیر منقول / ساختمان درحال احداث,21201,asset_non_current,,0
+account_account_template_50,استهلاک انباشته ساختمان,21299,asset_non_current,,0
+account_account_template_51,استهلاک انباشته ماشین آلات تولیدی,21300,asset_non_current,,0
+account_account_template_52,استهلاک انباشته ابزار و لوازم فنی,21301,asset_non_current,,0
+account_account_template_53,استهلاک انباشته اثاثه و منصوبات,21302,asset_non_current,,0
+account_account_template_54,استهلاک انباشته وسایط نقلیه,21303,asset_non_current,,0
+account_account_template_55,استهلاک انباشته تاسیسات,21304,asset_non_current,,0
+account_account_template_56,دارایی ثابت منقول - ماشین آلات و تجهیزات تولید,21501,asset_non_current,,0
+account_account_template_57,دارایی ثابت منقول - وسایل نقلیه,21502,asset_non_current,,0
+account_account_template_58,دارایی ثابت منقول - اثاثه و منصوبات,21503,asset_non_current,,0
+account_account_template_59,دارایی ثابت منقول - ابزارآلات و لوازم فنی,21504,asset_non_current,,0
+account_account_template_60,دارایی ثابت وسایط نقلیه,21505,asset_non_current,,0
+account_account_template_61,دارایی - برند,21506,asset_non_current,,0
+account_account_template_62,دارایی ثابت منقول - تاسیسات,21507,asset_non_current,,0
+account_account_template_63,استهلاک انباشته دارایی های نامشهود,21598,asset_current,,0
+account_account_template_64,استهلاک انباشته دارای ثابت منقول,21599,asset_non_current,,0
+account_account_template_65,دارایی های ثابت نا مشهود,22101,asset_non_current,,0
+account_account_template_66,نرم افزار,22201,asset_non_current,,0
+account_account_template_67,انشعاب آب,22301,asset_non_current,,0
+account_account_template_68,سرقفلی,22401,asset_non_current,,0
+account_account_template_69,حسابهای پرداختنی,31101,liability_payable,,1
+account_account_template_70,مالیات پرداختنی - عملکرد,31102,liability_payable,,1
+account_account_template_71,اعتبار مالیاتی,31103,liability_payable,,1
+account_account_template_72,اعتبار ارزش افزوده,31104,liability_payable,,1
+account_account_template_73,مالیات حقوق,31105,liability_payable,,1
+account_account_template_74,مالیات اجاره,31106,liability_payable,,1
+account_account_template_75,اسناد پرداختنی,32101,liability_current,,1
+account_account_template_76,پیش دریافت فروش خدمات,33101,liability_current,,0
+account_account_template_77,پیش دریافت فروش کالا,33201,liability_current,,0
+account_account_template_78,پیش دریافت مالیات,33301,liability_current,,0
+account_account_template_79,پیش دریافت دارایی ها,33401,liability_current,,0
+account_account_template_80,سایر پیش دریافت ها,33999,liability_current,,0
+account_account_template_81,تسهیلات مالی بانکی,34101,liability_payable,,1
+account_account_template_82,تسهیلات مالی غیر بانکی,34201,liability_payable,,1
+account_account_template_83,ذخیره هزینه های معوق,35101,liability_payable,,1
+account_account_template_84,ذخیره سنوات پرسنل,35201,liability_payable,,1
+account_account_template_85,ذخیره عیدی پرسنل,35202,liability_payable,,1
+account_account_template_86,سایر ذخایر,35901,liability_payable,,1
+account_account_template_87,جاری شرکا,36101,liability_payable,,1
+account_account_template_88,حقوق پرداختنی,37101,liability_payable,,1
+account_account_template_89,بیمه پرداختنی,37102,asset_current,,0
+account_account_template_90,عیدی پرداختنی,37103,liability_payable,,1
+account_account_template_91,سنوات پرداختنی,37104,liability_payable,,1
+account_account_template_92,مساعده پرداختنی,37105,liability_payable,,1
+account_account_template_93,وام ضروری,37106,liability_payable,,1
+account_account_template_94,سایر بدهی های جاری,39999,liability_payable,,1
+account_account_template_95,حسابهای پرداختنی بلند مدت,41101,liability_payable,,1
+account_account_template_96,اسناد پرداختنی بلند مدت,41201,liability_current,,0
+account_account_template_97,تسهیلات پرداختنی بلند مدت بانکی,41301,liability_payable,,1
+account_account_template_98,سرمایه,51101,equity,,0
+account_account_template_99,اندوخته قانونی,52101,equity,,0
+account_account_template_100,اندوخته احتیاطی,53101,equity,,0
+account_account_template_101,سودوزیان انباشته,54101,equity,,0
+account_account_template_102,مازاد تجدید ارزیابی دارایی های ثابت مشهود,55101,equity,,0
+account_account_template_103,اندوخته طرح و توسعه,59999,equity,,0
+account_account_template_104,فروش محصولات,61101,income,,0
+account_account_template_105,فروش مواد اولیه,61102,income,,0
+account_account_template_106,فروش ضایعات,61103,income,,0
+account_account_template_107,برگشت از فروش و تخفیفات,61104,income,,0
+account_account_template_108,فروش خدمات,61201,income,,0
+account_account_template_109,بهای تمام شده کالای فروش رفته,62101,expense_direct_cost,,0
+account_account_template_110,حساب تفاوت قیمت,62199,expense,,1
+account_account_template_111,دستمزد مستقیم - حقوق پایه,62201,expense,,0
+account_account_template_112,دستمزد مستقیم - حق مسكن و خواربار,62202,expense,,0
+account_account_template_113,دستمزد مستقیم - حق اولاد,62203,expense,,0
+account_account_template_114,دستمزد مستقیم - بن كارگری,62204,expense,,0
+account_account_template_115,دستمزد مستقیم - اضافه كاری,62205,expense,,0
+account_account_template_116,دستمزد مستقیم - حق شیفت,62206,expense,,0
+account_account_template_117,دستمزد مستقیم - ماموریت,62207,expense,,0
+account_account_template_118,دستمزد مستقیم - كارانه(پاداش بهره وری تولید),62208,expense,,0
+account_account_template_119,دستمزد مستقیم - پاداش,62209,expense,,0
+account_account_template_120,دستمزد مستقیم - حق سرپرستی,62210,expense,,0
+account_account_template_121,دستمزد مستقیم - كمك های غیر نقدی,62211,expense,,0
+account_account_template_122,دستمزد مستقیم - عیدی,62212,expense,,0
+account_account_template_123,سربار مستقیم - آموزش,62213,expense,,0
+account_account_template_124,دستمزد مستقیم - هزینه بیمه 23% سهم كارفرما,62214,expense,,0
+account_account_template_125,دستمزد مستقیم - مرخصی استفاده نشده,62215,expense,,0
+account_account_template_126,دستمزد مستقیم - باز خرید خدمت (سنوات),62216,expense,,0
+account_account_template_127,دستمزد مستقیم - پایه سنواتی,62217,expense,,0
+account_account_template_128,دستمزد مستقیم - هزینه های دستمزد,62218,expense,,0
+account_account_template_129,دستمزد مستقیم - جمعه کاری,62219,expense,,0
+account_account_template_130,سربار مستقیم - هزینه تعمیر و نگهداری ماشین آلات,62301,expense,,0
+account_account_template_131,سربار مستقیم - هزینه حمل مواد اولیه,62302,expense,,0
+account_account_template_132,سربار مستقیم - تعمیر و نگهداری وسایط نقلیه,62303,expense,,0
+account_account_template_133,سربار مستقیم - تعمیر و نگهداری اثاثه,62304,expense,,0
+account_account_template_134,سربار مستقیم - تعمیر و نگهداری ساختمان,62305,expense,,0
+account_account_template_135,سربار مستقیم - ابزار مصرفی,62306,expense,,0
+account_account_template_136,سربار مستقیم - مواد ولوازم مصرفی,62307,expense,,0
+account_account_template_137,سربار مستقیم - تست و سنجش وازمایش,62309,expense,,0
+account_account_template_138,سربار مستقیم - تشریفات,62310,expense,,0
+account_account_template_139,سربار مستقیم - هزینه پوشاک و ایمنی,62311,expense,,0
+account_account_template_140,سربار مستقیم - هزینه ایاب و ذهاب,62312,expense,,0
+account_account_template_141,سربار مستقیم - هزینه سوخت و شارژ گاز وسایط نقلیه,62313,expense,,0
+account_account_template_142,سربار مستقیم - سایر هزینه های تولید,62314,expense,,0
+account_account_template_143,سربار مستقیم - هزینه اجاره,62315,expense,,0
+account_account_template_144,سربار مستقیم - آب مصرفی,62316,expense,,0
+account_account_template_145,سربار مستقیم - انرژی,62317,expense,,0
+account_account_template_146,سربار مستقیم - گاز مصرفی,62318,expense,,0
+account_account_template_147,سربار مستقیم - هزینه بیمه,62319,expense,,0
+account_account_template_148,سربار مستقیم - هزینه استهلاك,62320,expense,,0
+account_account_template_149,سربار مستقیم - هزینه استهلاك تاسیسات,62321,expense,,0
+account_account_template_150,سربار مستقیم - هزینه آبدارخانه,62322,expense,,0
+account_account_template_151,سربار مستقیم - هزینه كاغذمصرفی,62323,expense,,0
+account_account_template_152,سربار مستقیم - هزینه چاپ,62324,expense,,0
+account_account_template_153,سربار مستقیم - نگهداری ساختمان های استیجاری,62325,expense,,0
+account_account_template_154,سربار مستقیم - هزینه های واحد ایمنی و بهداشت,62326,expense,,0
+account_account_template_155,سربار غیر مستقیم - هزینه های فاوا,62328,expense,,0
+account_account_template_156,سربار مستقیم - هزینه ملزومات و نوشت افزار اداری,62329,expense,,0
+account_account_template_157,هزینه کسورات و اضافات انبار,62330,expense,,0
+account_account_template_158,سربار مستقیم - هزینه بسته بندی,62331,expense,,0
+account_account_template_159,سربار غیر مستقیم - هزینه های تخفیفات فروشگاهای زنجیره ای,62332,expense,,0
+account_account_template_160,سربار مستقیم - واردات,62333,expense,,0
+account_account_template_161,هزینه های حقوق و دستمزد,630000,expense,,0
+account_account_template_162,دستمزد غیر مستقیم - حقوق پایه,63101,expense,,0
+account_account_template_163,دستمزد غیر مستقیم - حق مسكن و خواربار,63102,expense,,0
+account_account_template_164,دستمزد غیر مستقیم - حق اولاد,63103,expense,,0
+account_account_template_165,دستمزد غیر مستقیم - بن كارگری,63104,expense,,0
+account_account_template_166,دستمزد غیر مستقیم - اضافه كاری,63105,expense,,0
+account_account_template_167,دستمزد غیر مستقیم - حق شیفت,63106,expense,,0
+account_account_template_168,دستمزد غیر مستقیم - ماموریت,63107,expense,,0
+account_account_template_169,دستمزد غیر مستقیم - كارانه(پاداش بهره وری تولید),63108,expense,,0
+account_account_template_170,دستمزد غیر مستقیم - پاداش,63109,expense,,0
+account_account_template_171,دستمزد غیر مستقیم - حق سرپرستی,63110,expense,,0
+account_account_template_172,دستمزد غیر مستقیم - كمك های غیر نقدی,63111,expense,,0
+account_account_template_173,دستمزد غیر مستقیم - عیدی,63112,expense,,0
+account_account_template_174,سربار غیر مستقیم - آموزش,63113,expense,,0
+account_account_template_175,دستمزد غیر مستقیم - هزینه بیمه 23% سهم كارفرما,63114,expense,,0
+account_account_template_176,دستمزد غیر مستقیم - مرخصی استفاده نشده,63115,expense,,0
+account_account_template_177,دستمزد غیر مستقیم - باز خرید خدمت (سنوات),63116,expense,,0
+account_account_template_178,دستمزد غیر مستقیم - پایه سنواتی,63117,expense,,0
+account_account_template_179,دستمزد غیر مستقیم - هزینه های دستمزد,63118,expense,,0
+account_account_template_180,سربار غیر مستقیم - تعمیر و نگهداری تاسیسات,63201,expense,,0
+account_account_template_181,سربار غیر مستقیم - تعمیر و نگهداری ماشین الات,63202,expense,,0
+account_account_template_182,سربار غیر مستقیم - تعمیر و نگهداری وسایط نقلیه,63203,expense,,0
+account_account_template_183,سربار غیر مستقیم - تعمیر و نگهداری اثاثه,63204,expense,,0
+account_account_template_184,سربار غیر مستقیم - تعمیر و نگهداری ساختمان,63205,expense,,0
+account_account_template_185,سربار غیر مستقیم - ابزار مصرفی,63206,expense,,0
+account_account_template_186,سربار غیر مستقیم - مواد ولوازم مصرفی,63207,expense,,0
+account_account_template_187,سربار غیر مستقیم - هزینه حمل و كرایه مواد اولیه,63208,expense,,0
+account_account_template_188,سربار غیر مستقیم - تست و سنجش وازمایش,63209,expense,,0
+account_account_template_189,سربار غیر مستقیم - تشریفات اداری,63210,expense,,0
+account_account_template_190,سربار غیر مستقیم - هزینه پوشاک و ایمنی,63211,expense,,0
+account_account_template_191,سربار غیر مستقیم - هزینه ایاب و ذهاب,63212,expense,,0
+account_account_template_192,سربار غیر مستقیم - هزینه سوخت و شارژ گاز وسایط نقلیه,63213,expense,,0
+account_account_template_193,سربار غیر مستقیم - سایر هزینه های تولید,63214,expense,,0
+account_account_template_194,سربار غیر مستقیم - هزینه اجاره,63215,expense,,0
+account_account_template_195,سربار غیر مستقیم - آب مصرفی,63216,expense,,0
+account_account_template_196,سربار غیر مستقیم - برق مصرفی,63217,expense,,0
+account_account_template_197,سربار غیر مستقیم - گاز مصرفی,63218,expense,,0
+account_account_template_198,سربار غیر مستقیم - هزینه بیمه,63219,expense,,0
+account_account_template_199,سربار غیر مستقیم - هزینه استهلاك,63220,expense,,0
+account_account_template_200,سربار غیر مستقیم - هزینه استهلاك تاسیسات,63221,expense,,0
+account_account_template_201,سربار غیر مستقیم - هزینه آبدارخانه,63222,expense,,0
+account_account_template_202,سربار غیر مستقیم - هزینه كاغذمصرفی,63223,expense,,0
+account_account_template_203,سربار غیر مستقیم - هزینه چاپ جت پرینتر,63224,expense,,0
+account_account_template_204,سربار غیر مستقیم - نگهداری ساختمان های استیجاری,63225,expense,,0
+account_account_template_205,سربار غیر مستقیم - هزینه های واحد ایمنی و بهداشت,63226,expense,,0
+account_account_template_206,سربار غیر مستقیم - تلفن - موبایل و اینترنت,63228,expense,,0
+account_account_template_207,سربار غیر مستقیم - هزینه ملزومات و نوشت افزار اداری,63229,expense,,0
+account_account_template_208,سربار غیر مستقیم - چاپ و تكثیر - پست و اگهی,63230,expense,,0
+account_account_template_209,سربار غیر مستقیم - حق الثبت - حق عضویت,63231,expense,,0
+account_account_template_210,سربار غیر مستقیم - هزینه ایزو,63232,expense,,0
+account_account_template_211,سربار غیر مستقیم - هزینه شارژ كاتریج و تونر,63233,expense,,0
+account_account_template_212,سربار غیر مستقیم - هزینه حمل محصول,63234,expense,,0
+account_account_template_213,سربار غیر مستقیم - آگهی و تبلیغات,63235,expense,,0
+account_account_template_214,سربار غیر مستقیم - هزینه های جانبی,63236,expense,,0
+account_account_template_215,سربار غیر مستقیم - هزینه پاداش تارگت,63237,expense,,0
+account_account_template_216,سربار غیر مستقیم - هزینه رفاهیات پرسنل,63238,expense,,0
+account_account_template_217,سربار غیر مستقیم - حق العمل كاری,63239,expense,,0
+account_account_template_218,سربار غیر مستقیم - حق الوكاله و مشاوره,63240,expense,,0
+account_account_template_219,سربار غیر مستقیم - حق الزحمه حسابرسی,63241,expense,,0
+account_account_template_220,سربار غیر مستقیم - هزینه ضایعات,63243,expense,,0
+account_account_template_221,سربار غیر مستقیم - هزینه حق حضور در جلسات هیئت مدیره,63244,expense,,0
+account_account_template_222,سربار غیر مستقیم - تبلیغات و روابط عمومی برون سازمانی,63245,expense,,0
+account_account_template_223,سربار غیر مستقیم - تبلیغات آفلاین,63246,expense,,0
+account_account_template_224,سربار غیر مستقیم - تولید محتوا و طراحی گرافیكی,63247,expense,,0
+account_account_template_225,سربار غیر مستقیم - تولید انواع مدیا,63248,expense,,0
+account_account_template_226,سربار غیر مستقیم - تبلیغات محیطی,63249,expense,,0
+account_account_template_227,سربار غیر مستقیم - صدا و سیما,63250,expense,,0
+account_account_template_228,سربار غیر مستقیم - مطبوعات و خبرگزاری ها,63251,expense,,0
+account_account_template_229,سربار غیر مستقیم - عكسبرداری از محصول,63252,expense,,0
+account_account_template_230,سربار غیر مستقیم - مسابقات و قرعه كشیها,63253,expense,,0
+account_account_template_231,سربار غیر مستقیم - هدایای تبلیغاتی,63254,expense,,0
+account_account_template_232,سربار غیر مستقیم - اقلام تبلیغاتی وارتباطی,63255,expense,,0
+account_account_template_233,سربار غیر مستقیم - دیجیتال مارکتینگ,63256,expense,,0
+account_account_template_234,سربار غیر مستقیم - نمایشگاه ها,63257,expense,,0
+account_account_template_235,سربار غیر مستقیم - دورهمی ها,63258,expense,,0
+account_account_template_236,سربار غیر مستقیم - همایش ها,63259,expense,,0
+account_account_template_237,سربار غیر مستقیم - اجاره شلف,63260,expense,,0
+account_account_template_238,سربار غیر مستقیم - سمپلینگ,63261,expense,,0
+account_account_template_239,سربار غیر مستقیم - تحقیق و توسعه,63262,expense,,0
+account_account_template_240,سربار غیر مستقیم - تولید محتوا,63263,expense,,0
+account_account_template_241,سربار غیر مستقیم - خدمات مشتریان,63264,expense,,0
+account_account_template_242,سربار غیر مستقیم - پشتیبانی نرم افزار,63265,expense,,0
+account_account_template_243,سربار غیر مستقیم - ارتقا نرم افزار,63266,expense,,0
+account_account_template_244,سربار غیر مستقیم - توسعه نرم افزار,63267,expense,,0
+account_account_template_245,سربار غیر مستقیم - شبكه و ارتباطات,63268,expense,,0
+account_account_template_246,سربار غیر مستقیم - هزینه سفر و ماموریت,63269,expense,,0
+account_account_template_247,سربار غیر مستقیم-هزینه حمل محصولات صادراتی,63270,expense,,0
+account_account_template_248,سربار غیر مستقیم-هزینه حمل قطعات وخدمات,63271,expense,,0
+account_account_template_249,سربار غیر مستقیم-هزینه حمل محصول- فروشگاه های زنجیره ای,63272,expense,,0
+account_account_template_250,سربار غیر مستقیم- هزینه عوارض و کوتاژ,63273,expense,,0
+account_account_template_251,سربار غیر مستقیم - هزینه حمل صادراتی غیر از عراق و افغانستان,63274,expense,,0
+account_account_template_252,سربار غیر مستقیم - هزینه علائم تجاری,63275,expense,,0
+account_account_template_253,سربار غیرمستقیم - هزینه آگهی - جذب - استخدام,63276,expense,,0
+account_account_template_254,سربار غیرمستقیم - ارسال نمونه به نمایندگان,63277,expense,,0
+account_account_template_255,سود سپرده بانکی,64101,income,,0
+account_account_template_256,سود سهام,64201,income,,0
+account_account_template_257,سودتسعیر ارز,64301,income,,0
+account_account_template_258,زیان تسعیر ارز,64302,expense,,0
+account_account_template_259,هزینه های مالی - بهره,65101,expense,,0
+account_account_template_260,هزینه های مالی - کارمزد,65201,expense,,0
+account_account_template_261,حسابهای انتظامی  دیگران نزد ما,91101,asset_current,,1
+account_account_template_262,حسابهای انتظامی ما نزد دیگران,91201,asset_current,,1
+account_account_template_263,طرف حسابهای انتظامی دیگران نزد ما,92101,asset_current,,0
+account_account_template_264,طرف حسابهای انتظامی ما نزد دیگران,92201,asset_current,,0

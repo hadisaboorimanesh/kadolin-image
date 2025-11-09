@@ -1,0 +1,31 @@
+<?xml version="1.0" ?>
+<odoo>
+  <data noupdate="1">
+
+    <record id="seq_tsp_invoice_serial" model="ir.sequence">
+        <field name="name">TSP Invoice Serial</field>
+        <field name="code">tsp.invoice.serial</field>
+        <field name="padding">0</field>
+		<field name="company_id" eval="False"/>
+    </record>
+
+    <record id="cron_artarad_account_tsp_inquiry" model="ir.cron">
+      <field name="interval_type">hours</field>
+      <field name="name">TSP Inquiry</field>
+      <field name="priority">0</field>
+      <field name="active">True</field>
+      <field name="interval_number">1</field>
+	  <field name="nextcall" eval="(DateTime.now()).strftime('%Y-%m-%d 19:30:00')"/>
+      <field name="model_id" ref="model_account_move"/>
+      <field name="state">code</field>
+      <field name="code">
+for rec in model.search([('tsp_state', 'in', ['pending_send', 'pending_edit', 'pending_cancel'])]):
+	try:
+		rec.tsp_sync_inquiry()
+	except:
+		pass
+      </field>
+    </record>
+
+  </data>
+</odoo>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="template_artarad_cheque_print">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <link rel="stylesheet" href="/artarad_post_dated_cheque/static/src/css/artarad_style.css"/>
+
+                <div class="page" style="width:100%; height:100%; padding: 0px 0px 0px 0px; margin:0px 0px 0px 0px; text-align: right; font-family: nazanin !important; font-size: 18px !important; direction: rtl; " dir="rtl">
+
+                     <table style="padding: 0px 0px 0px 0px; margin:0px 0px 0px 0px; width:100%; height:100%;">
+                        <tr>
+                            <td style="width:170mm; height:11mm" colspan="43"></td>
+                        </tr>
+                        <tr>
+                            <td style="width:24mm; height:5mm" colspan="6"></td>
+                            <td style="width:32mm; height:5mm">
+                                <span t-esc="user.get_jalali_date(o.payment_date)" />
+                            </td>
+                            <td style="width:114mm; height:5mm" colspan="29"></td>
+                        </tr>
+                        <tr>
+                            <td style="width:32mm; height:8mm" colspan="8"></td>
+                            <td style="text-align: right ; width:138mm; height:8mm" colspan="35">
+                                <span t-esc="user.get_farsi_words(user.get_jalali_date_obj(o.payment_date))" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:48mm; height:13mm" colspan="12"></td>
+                            <td style="text-align: right ; width:122mm; height:13mm" colspan="31">
+                                <span t-esc="user.get_farsi_words(o.amount)" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="width:16mm; height:10mm" colspan="4"></td>
+                            <td style="text-align: right ; width:76mm; height:10mm" colspan="19">
+                                <span t-field="o.partner_id"/>
+                            </td>
+                            <td style="text-align: right ; width:28mm; height:10mm" colspan="7"></td>
+                            <td style="text-align: right ; width:20mm; height:10mm" colspan="5"></td>
+                            <td style="width:32mm; height:10mm" colspan="8"></td>
+                        </tr>
+                        <tr>
+                            <td style="width:170mm; height:10mm" colspan="43"></td>
+                        </tr>
+                        <tr>
+                            <td style="width:100mm; height:6mm" colspan="25"></td>
+                            <td style="width:60mm; height:6mm" colspan="15">
+                                <span t-field="o.amount"/>
+                            </td>
+                            <td style="width:10mm; height:6mm" colspan="3"></td>
+                        </tr>
+                        <tr>
+                            <td style="width:170mm; height:22mm" colspan="43"></td>
+                        </tr>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
+
+
+
+
+

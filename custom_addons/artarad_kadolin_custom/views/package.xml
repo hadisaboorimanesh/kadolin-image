@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="view_quant_package_form">
+        <field name="name">stock.quant.package.form</field>
+        <field name="model">stock.quant.package</field>
+        <field eval="10" name="priority"/>
+        <field name="inherit_id" ref="stock.view_quant_package_form"/>
+        <field name="arch" type="xml">
+
+                <header>
+                    <button name="akc_mark_free" string="Free Package" type="object"/>
+                </header>
+            <xpath expr="//group" position="inside">
+                <group string="AKC">
+                    <field name="akc_reusable"/>
+                    <field name="akc_in_use"/>
+                    <field name="new_location_id" widget="many2one" options="{'no_create': False}" />
+                </group>
+            </xpath>
+
+
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="action_menu_artarad_sms_provider_setting" model="ir.actions.act_window" >
+            <field name="name">SMS Provider Setting</field>
+            <field name="res_model">artarad.sms.provider.setting</field>
+            <field name='view_mode'>list</field>
+        </record>
+
+        <menuitem
+            id="menu_artarad_sms_provider_setting"
+            name="Iranian SMS Providers"
+            parent="phone_validation.phone_menu_main"
+            action="action_menu_artarad_sms_provider_setting"
+            sequence="0"/>
+
+    </data>
+</odoo>

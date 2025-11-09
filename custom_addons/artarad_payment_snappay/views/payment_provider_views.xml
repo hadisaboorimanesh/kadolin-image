@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <!-- views/payment_provider_views.xml -->
+  <record id="payment_snappay_provider_form" model="ir.ui.view">
+    <field name="name">SnappPay Provider Form</field>
+    <field name="model">payment.provider</field>
+    <field name="inherit_id" ref="payment.payment_provider_form"/>
+    <field name="arch" type="xml">
+
+      <!-- اضافه‌کردن فیلدهای SnappPay در بخش کرنشیال‌ها -->
+      <group name="provider_credentials" position="inside">
+        <group invisible="code != 'snappay'">
+          <field name="snappay_base_url"
+                 string="Base URL"
+                 placeholder="https://{url}"
+                 required="code == 'snappay' and state != 'disabled'"/>
+          <field name="snappay_client_id"
+                 string="Client ID"
+                 required="code == 'snappay' and state != 'disabled'"/>
+          <field name="snappay_client_secret"
+                 string="Client Secret"
+                 password="True"
+                 required="code == 'snappay' and state != 'disabled'"/>
+          <field name="snappay_username"
+                 string="Username"
+                 required="code == 'snappay' and state != 'disabled'"/>
+          <field name="snappay_password"
+                 string="Password"
+                 password="True"
+                 required="code == 'snappay' and state != 'disabled'"/>
+          <field name="snappay_return_url"
+                 string="Return URL (POST)"
+                 placeholder="/payment/snappay/return"
+                 required="code == 'snappay' and state != 'disabled'"/>
+        </group>
+      </group>
+
+      <!-- وادارکردن انتخاب ارز برای این پرووایدر (IRR) وقتی فعال است -->
+      <field name="available_currency_ids" position="attributes">
+        <attribute name="required" separator="or" add="(code == 'snappay' and state != 'disabled')"/>
+      </field>
+
+    </field>
+  </record>
+
+</odoo>

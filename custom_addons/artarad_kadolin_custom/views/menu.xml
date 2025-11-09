@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<!--    <menuitem id="menu_akc_root" name="کادولین" sequence="10"/>-->
+<!--    <menuitem id="menu_akc_quality" name="کنترل کیفیت" parent="menu_akc_root" sequence="30"/>-->
+<!--    <menuitem id="menu_akc_quality_checks" name="Quality Checks (AKC)" parent="menu_akc_quality"-->
+<!--              action="action_quality_checks_akc" sequence="10"/>-->
+</odoo>

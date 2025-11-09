@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- نمایش فیلد پیش‌فرض شرکت در تنظیمات فروش -->
+    <record id="view_res_config_settings_backorder_lead" model="ir.ui.view">
+        <field name="name">res.config.settings.backorder.lead</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+
+            <setting id="online_signature" position="after">
+                <setting id="single_line_route_id_setting" company_dependent="1">
+                    <field name="single_line_route_id"/>
+
+                </setting>
+            </setting>
+            <!-- در بخش Sales Settings یک گروه کوچک اضافه می‌کنیم -->
+            <xpath expr="//setting[@id='delivery']" position="before">
+                <div class="mt16">
+                    <field name="single_line_route_id"/>
+                </div>
+                <setting id="backorder_lead_days">
+
+                    <div title="Backorder Lead Time">
+                        <label for="sale_backorder_lead_days"/>
+                        <field name="sale_backorder_lead_days" class="text-center" style="width: 3rem;"/>
+                        <div class="d-inline-block">days</div>
+
+                    </div>
+                    <div class="text-muted">
+                        مدت زمان انتظار (روز) وقتی کالا موجود نیست و روی خود کالا مقداری تعیین نشده باشد.
+                    </div>
+
+
+                </setting>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

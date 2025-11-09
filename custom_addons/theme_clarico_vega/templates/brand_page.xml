@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <template id="brand_page_ept" inherit_id="website_sale.products">
+        <!--======= Header & Footer description in Brand/Category Page =======-->
+        <xpath expr="//div[@id='products_grid']//div[hasclass('o_wsale_products_grid_table_wrapper')]"
+               position="before">
+        </xpath>
+        <xpath expr="//div[@id='products_grid']//div[hasclass('products_pager')]" position="after">
+            <t t-if="brand_val">
+                <t t-set="title" t-value="brand_val and brand_val.name"/>
+                <t t-set="default_title" t-value="brand_val and brand_val.meta_title"/>
+                <t t-set="website_meta_description" t-value="brand_val and brand_val.meta_description"/>
+            </t>
+
+            <t t-if="brand_val">
+                <div class="brand_page_footer mt-3">
+                    <t t-if="brand_val">
+                        <t t-set='editor_msg'>Drag building blocks here to customize the footer for "<t
+                                t-out='brand_val.name'/>" Brand.
+                        </t>
+                        <div class="mb16" id="category_header" t-att-data-editor-message="editor_msg"
+                             t-field="brand_val.footer_description"/>
+                    </t>
+                </div>
+            </t>
+            <t t-elif="category">
+                <div class="category_page_footer mt-3">
+                    <t t-if="category">
+                        <t t-set='editor_msg'>Drag building blocks here to customize the footer for "<t
+                                t-out='category.name'/>" category.
+                        </t>
+                        <div class="mb16" id="category_header" t-att-data-editor-message="editor_msg"
+                             t-field="category.footer_description"/>
+                    </t>
+                </div>
+            </t>
+        </xpath>
+
+        <!--======= Breadcrumb for Brand Page =======-->
+        <xpath expr="//t[@t-if='opt_wsale_categories_top']" position="replace">
+            <t t-if="brand_val">
+                <ol t-attf-class="breadcrumb #{_classes}">
+                    <li class="breadcrumb-item">
+                        <a href="/brands">All Brands</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <span class="d-inline-block" t-field="brand_val.name"/>
+                    </li>
+                </ol>
+                <div class="brands d-flex">
+                    <div class="col-lg-4 brands_img d-flex justify-content-center w-auto">
+                        <div class="img_div">
+                            <img class="oe_img_bg o_bg_img_center rounded-3 brand_image"
+                                 t-attf-src="/web/image/product.brand/{{ brand_val.id }}/image_128"
+                                 t-att-alt="brand_val.name" t-att-title="brand_val.name"/>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 brand_desc">
+                        <h1 class="brand_name" t-out="brand_val.name"/>
+                        <t t-set='editor_msg'>Drag building blocks here to customize the Header for "<t
+                                t-out='brand_val.name'/>" Brand.
+                        </t>
+                        <div class="mb16" id="category_header" t-att-data-editor-message="editor_msg"
+                             t-field="brand_val.description"/>
+                    </div>
+                </div>
+            </t>
+            <t t-else="">
+                <t t-if="opt_wsale_categories_top" t-call="website_sale.filmstrip_categories"/>
+            </t>
+        </xpath>
+    </template>
+</odoo>

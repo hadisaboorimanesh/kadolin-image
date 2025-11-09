@@ -1,0 +1,82 @@
+<odoo>
+
+    <record id="view_delivery_carrier_form_inherit_capacity" model="ir.ui.view">
+        <field name="name">delivery.carrier.form.capacity</field>
+        <field name="model">delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tracking_url']" position="after">
+                    <field name="daily_capacity"/>
+            </xpath>
+        </field>
+    </record>
+
+
+  <record id="view_delivery_carrier_log_tree" model="ir.ui.view">
+    <field name="name">delivery.carrier.log.tree</field>
+    <field name="model">delivery.carrier.log</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="create_date"/>
+        <field name="picking_id"/>
+        <field name="carrier_id"/>
+        <field name="status"/>
+        <field name="error_text"/>
+      </list>
+    </field>
+  </record>
+
+  <record id="view_delivery_carrier_log_form" model="ir.ui.view">
+    <field name="name">delivery.carrier.log.form</field>
+    <field name="model">delivery.carrier.log</field>
+    <field name="arch" type="xml">
+      <form>
+        <group>
+          <field name="picking_id"/>
+          <field name="carrier_id"/>
+          <field name="status"/>
+        </group>
+        <notebook>
+          <page string="Request">
+            <field name="request_payload" widget="text"/>
+          </page>
+          <page string="Response">
+            <field name="response_text" widget="text"/>
+            <field name="error_text" widget="text"/>
+          </page>
+        </notebook>
+      </form>
+    </field>
+  </record>
+
+  <record id="action_delivery_carrier_log" model="ir.actions.act_window">
+    <field name="name">Carrier Logs</field>
+    <field name="res_model">delivery.carrier.log</field>
+    <field name="view_mode">list,form</field>
+  </record>
+
+  <menuitem id="menu_delivery_carrier_log_root"
+            name="Carrier Logs"
+            parent="stock.menu_stock_root"
+            action="action_delivery_carrier_log"
+            sequence="9999"/>
+
+
+     <record id="view_picking_form_inherit_deliver_button" model="ir.ui.view">
+      <field name="name">stock.picking.form.deliver.button</field>
+      <field name="model">stock.picking</field>
+      <field name="inherit_id" ref="stock.view_picking_form"/>
+      <field name="arch" type="xml">
+        <!-- دکمه را در button_box می‌گذاریم -->
+        <xpath expr="//header" position="inside">
+          <button name="submit_delivery"
+                  type="object"
+                  string="Submit Deliver"
+                  class="oe_highlight"
+                  groups="stock.group_stock_user"
+                  />
+        </xpath>
+      </field>
+    </record>
+
+</odoo>

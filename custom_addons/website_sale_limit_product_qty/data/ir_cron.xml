@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="autovacuum_product_qty_restrictions" model="ir.cron">
+        <field name="name">Product Quantity Restrictions: Auto-vacuum</field>
+        <field name="model_id" ref="model_partner_product_limit"/>
+        <field name="state">code</field>
+        <field name="code">model._run_restriction_cleaner()</field>
+        <field name='interval_number'>1</field>
+        <field name='interval_type'>days</field>
+    </record>
+</odoo>

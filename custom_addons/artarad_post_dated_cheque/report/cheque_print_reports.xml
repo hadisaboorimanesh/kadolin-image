@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="paperformat_artarad_cheque_print_portrait"
+            model="report.paperformat">
+        <field name="name">Aratarad Cheque Print</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">170</field>
+        <field name="page_width">85</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <report
+        id="report_artarad_cheque_print"
+        model="account.payment"
+        string="Aratarad Cheque Print"
+        report_type="qweb-html"
+        name="artarad_post_dated_cheque.template_artarad_cheque_print"
+        file="artarad_post_dated_cheque.template_artarad_cheque_print"
+        paperformat="artarad_post_dated_cheque.paperformat_artarad_cheque_print_portrait"
+
+    />
+</odoo>

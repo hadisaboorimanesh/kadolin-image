@@ -1,0 +1,1000 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* artarad_post_dated_cheque
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e-20240814\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-08-01 07:26+0000\n"
+"PO-Revision-Date: 2025-08-01 11:02+0330\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Generator: Poedit 3.6\n"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.actions.report,print_report_name:artarad_post_dated_cheque.report_artarad_cheque_print
+msgid "'Cheque - %s' % (object.name)"
+msgstr ""
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/account_payment.py:0
+#, python-format
+msgid "A payment must always belongs to a bank or cash journal."
+msgstr "یک پرداخت باید همیشه متعلق به یک دفتر روزنامه بانکی یا نقدی باشد."
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__active
+msgid "Active"
+msgstr "فعال"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_sheet__amount
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__cheque_amount
+msgid "Amount"
+msgstr "مقدار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment__available_cheque_book_ids
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment_register__available_cheque_book_ids
+msgid "Available Cheque Book"
+msgstr "دسته چک های در دسترس"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment__available_cheque_sheet_ids
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment_register__available_cheque_sheet_ids
+msgid "Available Cheque Sheet"
+msgstr "برگه های در دسترس"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_book__available_journal_ids
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__available_journal_ids
+msgid "Available Journal"
+msgstr "دفترروزنامه موجود"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__available_new_cheque_state_ids
+msgid "Available New Cheque State"
+msgstr "وضعیت های جدید در دسترس"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment__cheque_bank_id
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment_register__cheque_bank_id
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__cheque_bank_id
+msgid "Bank"
+msgstr "بانک"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_book__bank
+msgid "Bank Name"
+msgstr "نام بانک"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model,name:artarad_post_dated_cheque.model_account_bank_statement_line
+msgid "Bank Statement Line"
+msgstr "سطر صورتحساب بانک"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/account_journal_dashboard.py:0
+#, python-format
+msgid "Bank: Balance"
+msgstr "بانک: تراز"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/account_journal_dashboard.py:0
+#, python-format
+msgid "Bills to pay"
+msgstr "قبوض برای پرداخت"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_sheet__book
+msgid "Book"
+msgstr "دسته‌چک"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.ui.menu,name:artarad_post_dated_cheque.menu_artarad_pdc_book
+msgid "Books"
+msgstr "دسته‌چک‌ها"
+
+#. module: artarad_post_dated_cheque
+#: model:artarad.pdc.st,name:artarad_post_dated_cheque.pdc_state_canceled
+msgid "Canceled"
+msgstr "لغو شده"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/account_journal_dashboard.py:0
+#, python-format
+msgid "Cash: Balance"
+msgstr "نقدی: تراز"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields.selection,name:artarad_post_dated_cheque.selection__artarad_pdc_sheet__state__cashed
+msgid "Cashed"
+msgstr "پاس شده"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.actions.server,name:artarad_post_dated_cheque.action_check_cheque_status
+msgid "Check Cheque Status"
+msgstr "استعلام وضعیت چک صیادی"
+
+#. module: artarad_post_dated_cheque
+#: model:account.payment.method,name:artarad_post_dated_cheque.account_payment_method_cheque_in
+#: model:account.payment.method,name:artarad_post_dated_cheque.account_payment_method_cheque_out
+msgid "Cheque"
+msgstr "چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment__cheque_book
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment_register__cheque_book
+msgid "Cheque Book"
+msgstr "دسته‌چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment__cheque_date
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment_register__cheque_date
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__cheque_date
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.search_artarad_pdc_st_chg_trans
+msgid "Cheque Date"
+msgstr "تاریخ چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.form_artarad_account_payment
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.view_form_artarad_account_payment_register_inherit
+msgid "Cheque Fields"
+msgstr "فیلدهای چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.ui.menu,name:artarad_post_dated_cheque.menu_artarad_pdc_list_ent
+msgid "Cheque List"
+msgstr "لیست چک ها"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.actions.report,name:artarad_post_dated_cheque.report_artarad_cheque_print
+msgid "Cheque Print"
+msgstr "پرینت چک"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment__cheque_sheet
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment_register__cheque_sheet
+msgid "Cheque Sheet"
+msgstr "برگه چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment__cheque_state
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment_register__cheque_state
+msgid "Cheque State"
+msgstr "وضعیت چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment__sayadi_cheque_status
+msgid "Cheque Status"
+msgstr "وضعیت صیادی"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/account_payment.py:0
+#, python-format
+msgid "Cheque number field should only contain digits!"
+msgstr "فیلد شماره چک مدت‌دار باید تنها شامل ارقام باشد!"
+
+#. module: artarad_post_dated_cheque
+#: model:artarad.pdc.st,name:artarad_post_dated_cheque.pdc_state_claimed
+msgid "Claimed"
+msgstr "عودت شده"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment__cheque_number_description
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment_register__cheque_number_description
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__cheque_number_description
+msgid "Class"
+msgstr "شرح شماره چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st__code
+msgid "Code"
+msgstr "کد"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_book__company_id
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_init_st__company_id
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_sheet__company_id
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st__company_id
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg__company_id
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__company_id
+msgid "Company"
+msgstr "شرکت"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,help:artarad_post_dated_cheque.field_artarad_pdc_book__company_id
+#: model:ir.model.fields,help:artarad_post_dated_cheque.field_artarad_pdc_sheet__company_id
+msgid "Company related to this journal"
+msgstr "شرکت مربوط به این روزنامه"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model,name:artarad_post_dated_cheque.model_res_config_settings
+msgid "Config Settings"
+msgstr "تنظیمات پیکربندی"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.actions.server,name:artarad_post_dated_cheque.action_confirm
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.form_artarad_pdc_st_chg_trans
+msgid "Confirm"
+msgstr "تایید"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_book__count_of_sheets
+msgid "Count of Sheets"
+msgstr "تعداد برگه‌ها"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_book__create_uid
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_init_st__create_uid
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_sheet__create_uid
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st__create_uid
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg__create_uid
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__create_uid
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_payment_ras_wizard__create_uid
+msgid "Created by"
+msgstr "ایجاد شده توسط"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_book__create_date
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_init_st__create_date
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_sheet__create_date
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st__create_date
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg__create_date
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__create_date
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_payment_ras_wizard__create_date
+msgid "Created on"
+msgstr "ایجاد شده در"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__credit_account
+msgid "Credit Account"
+msgstr "حساب بستانکار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__currency_id
+msgid "Currency"
+msgstr "ارز"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields.selection,name:artarad_post_dated_cheque.selection__artarad_pdc_sheet__state__damaged
+msgid "Damaged"
+msgstr "مخدوش"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_sheet__date
+msgid "Date"
+msgstr "تاریخ"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__debit_account
+msgid "Debit Account"
+msgstr "حساب بدهکار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg__default_credit_account
+msgid "Default Credit Account"
+msgstr "حساب بستانکار پیش‌فرض"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/account_payment.py:0
+#, python-format
+msgid "Default Debit & Credit Accounts of PDC journals are not set!"
+msgstr ""
+"حساب‌های پیشفرض بستانکار و بدهکار دفتر روزنامه چک مدت‌دار تنظیم نشده اند!"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg__default_debit_account
+msgid "Default Debit Account"
+msgstr "حساب بدهکار پیش‌فرض"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__description
+msgid "Description"
+msgstr "توضیحات"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_book__display_name
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_init_st__display_name
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_sheet__display_name
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st__display_name
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg__display_name
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__display_name
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_payment_ras_wizard__display_name
+msgid "Display Name"
+msgstr "نام نمایشی"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields.selection,name:artarad_post_dated_cheque.selection__artarad_pdc_st_chg_trans__transaction_state__draft
+msgid "Draft"
+msgstr "پیش‌نویس"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields.selection,name:artarad_post_dated_cheque.selection__account_payment__cheque_outbound_mode__draw
+#: model:ir.model.fields.selection,name:artarad_post_dated_cheque.selection__account_payment_register__cheque_outbound_mode__draw
+msgid "Draw"
+msgstr "کشیدن چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields.selection,name:artarad_post_dated_cheque.selection__artarad_pdc_sheet__state__drawn
+msgid "Drawn"
+msgstr "چک مدت‌دار کشیده شده"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/account_payment.py:0
+#, python-format
+msgid "Duplicate Cheque!"
+msgstr "تکثیر چک مدت‌دار!"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/cheque_initial_state.py:0
+#, python-format
+msgid ""
+"Each company should not have more than one initial state for sale or "
+"purchase"
+msgstr "هر شرکت نباید بیش از یک وضعیت اولیه برای فروش یا خرید داشته باشد"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/cheque_state_change.py:0
+#: code:addons/artarad_post_dated_cheque/models/cheque_state_change_transaction.py:0
+#, python-format
+msgid "Either both or none of accounts must be filled!"
+msgstr "یا هردو حساب و یا هیچکدام باید تنظیم شده باشند!"
+
+#. module: artarad_post_dated_cheque
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.res_config_settings_view_form_finnotech
+msgid "Finnotech API"
+msgstr "وب سرویس فینوتک"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_res_config_settings__finnotech_client_id
+msgid "Finnotech Client ID"
+msgstr "شناسه مشتری"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_res_config_settings__finnotech_client_secret
+msgid "Finnotech Client Secret"
+msgstr "رمز عبور"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_res_config_settings__finnotech_subscription_id
+msgid "Finnotech Subscription ID"
+msgstr "شماره قرارداد"
+
+#. module: artarad_post_dated_cheque
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.res_config_settings_view_form_finnotech
+msgid "Finnotech Web Service Settings"
+msgstr "تنطیمات وب سرویس فینوتک"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg__from_state
+msgid "From State"
+msgstr "از وضعیت"
+
+#. module: artarad_post_dated_cheque
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.search_artarad_pdc_st_chg_trans
+msgid "Group By"
+msgstr "گروه‌بندی برمبنای"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_book__id
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_init_st__id
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_sheet__id
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st__id
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg__id
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__id
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_payment_ras_wizard__id
+msgid "ID"
+msgstr "شناسه"
+
+#. module: artarad_post_dated_cheque
+#: model:artarad.pdc.st,name:artarad_post_dated_cheque.pdc_state_in_cash
+msgid "In Cash"
+msgstr "در صندوق"
+
+#. module: artarad_post_dated_cheque
+#: model:artarad.pdc.st,name:artarad_post_dated_cheque.pdc_state_in_progress
+msgid "In Progress"
+msgstr "در جریان"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.ui.menu,name:artarad_post_dated_cheque.menu_artarad_pdc_init_st_conf
+msgid "Initial States"
+msgstr "وضعیت‌های اولیه"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields.selection,name:artarad_post_dated_cheque.selection__artarad_pdc_init_st__type__iip
+msgid "Initial in Purchase"
+msgstr "وضعیت اولیه در خرید"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields.selection,name:artarad_post_dated_cheque.selection__artarad_pdc_init_st__type__iis
+msgid "Initial in Sale"
+msgstr "وضعیت اولیه در فروش"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/account_journal_dashboard.py:0
+#, python-format
+msgid "Invoices owed to you"
+msgstr "فاکتورهای شما"
+
+#. module: artarad_post_dated_cheque
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.view_form_artarad_pdc_book
+msgid "Is Damaged"
+msgstr "مخدوش شده"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st__is_receipted
+msgid "Is Receipted"
+msgstr "وصول شده؟"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st__is_returned
+msgid "Is Returned"
+msgstr "برگشت خورده"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st__is_spendable
+msgid "Is Spendable"
+msgstr "قابل خرج"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st__is_spent
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__new_cheque_state_is_spent
+msgid "Is Spent"
+msgstr "خرج شده"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st__is_spent_no_receipt_tracking
+msgid "Is Spent (No Receipt Tracking)"
+msgstr "خرج شده با وصول"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model,name:artarad_post_dated_cheque.model_account_journal
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment_register__journal_id
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_book__journal_id
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__journal_id
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.search_artarad_pdc_st_chg_trans
+msgid "Journal"
+msgstr "روزنامه"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model,name:artarad_post_dated_cheque.model_account_move
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__move
+msgid "Journal Entry"
+msgstr "داده روزنامه"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/account_payment.py:0
+#, python-format
+msgid ""
+"Journal Entry %s is not valid. In order to proceed, the journal items must "
+"include one and only one outstanding payments/receipts account."
+msgstr ""
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/account_payment.py:0
+#, python-format
+msgid ""
+"Journal Entry %s is not valid. In order to proceed, the journal items must "
+"include one and only one receivable/payable account (with an exception of "
+"internal transfers)."
+msgstr ""
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/account_payment.py:0
+#, python-format
+msgid ""
+"Journal Entry %s is not valid. In order to proceed, the journal items must "
+"share the same currency."
+msgstr ""
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/account_payment.py:0
+#, python-format
+msgid ""
+"Journal Entry %s is not valid. In order to proceed, the journal items must "
+"share the same partner."
+msgstr ""
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_book__write_uid
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_init_st__write_uid
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_sheet__write_uid
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st__write_uid
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg__write_uid
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__write_uid
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_payment_ras_wizard__write_uid
+msgid "Last Updated by"
+msgstr "آخرین تغییر توسط"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_book__write_date
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_init_st__write_date
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_sheet__write_date
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st__write_date
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg__write_date
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__write_date
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_payment_ras_wizard__write_date
+msgid "Last Updated on"
+msgstr "آخرین به روز رسانی در"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__move_partner
+msgid "Move Partner"
+msgstr "مخاطب سند"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st__name
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__name
+msgid "Name"
+msgstr "نام"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__new_cheque_state
+msgid "New Cheque State"
+msgstr "وضعیت جدید چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_sheet__number
+msgid "Number"
+msgstr "شماره"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__old_cheque_state
+msgid "Old Cheque State"
+msgstr "وضعیت قدیمی چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/account_payment.py:0
+#, python-format
+msgid "One or more spending cheques are receipted!"
+msgstr "یک یا چند چک مدت‌دار وصول شده‌اند!"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields.selection,name:artarad_post_dated_cheque.selection__account_move__payment_state__pdc
+#: model:ir.ui.menu,name:artarad_post_dated_cheque.menu_artarad_pdc_conf
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.form_artarad_account_move
+msgid "PDC"
+msgstr "چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.form_artarad_account_journal
+msgid "PDC Account"
+msgstr "حساب چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model,name:artarad_post_dated_cheque.model_artarad_pdc_book
+msgid "PDC Book"
+msgstr "مدل دسته‌چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.actions.act_window,name:artarad_post_dated_cheque.action_artarad_pdc_book
+msgid "PDC Books"
+msgstr "دسته‌چک‌‌ها"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model,name:artarad_post_dated_cheque.model_artarad_pdc_init_st
+msgid "PDC Initial State"
+msgstr "وضعیت اولیه چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.actions.act_window,name:artarad_post_dated_cheque.action_artarad_pdc_init_st_conf
+msgid "PDC Initial States Configuration"
+msgstr "تنظیم وضعیت اولیه چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.actions.act_window,name:artarad_post_dated_cheque.action_artarad_pdc_list_ent
+msgid "PDC Payments"
+msgstr "لیست چک ها"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model,name:artarad_post_dated_cheque.model_artarad_pdc_sheet
+msgid "PDC Sheet"
+msgstr "مدل برگه چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model,name:artarad_post_dated_cheque.model_artarad_pdc_st
+msgid "PDC State"
+msgstr "وضعیت چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model,name:artarad_post_dated_cheque.model_artarad_pdc_st_chg
+msgid "PDC State Change"
+msgstr "تغییر وضعیت چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model,name:artarad_post_dated_cheque.model_artarad_pdc_st_chg_trans
+msgid "PDC State Change Transaction"
+msgstr "تراکنش تغییر وضعیت چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.actions.act_window,name:artarad_post_dated_cheque.action_artarad_pdc_st_chg_trans
+#: model:ir.actions.act_window,name:artarad_post_dated_cheque.action_artarad_pdc_state_change_trans
+msgid "PDC State Change Transactions"
+msgstr "تراکنش‌های تغییر وضعیت چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.actions.act_window,name:artarad_post_dated_cheque.action_artarad_pdc_st_chg_conf
+msgid "PDC State Changes Configuration"
+msgstr "تنظیم تغییر وضعیت‌های چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.form_artarad_account_payment
+msgid "PDC States"
+msgstr "وضعیت‌های چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.actions.act_window,name:artarad_post_dated_cheque.action_artarad_pdc_st_conf
+msgid "PDC States Configuration"
+msgstr "تنظیم وضعیت‌های چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/account_journal_dashboard.py:0
+#, python-format
+msgid "PDC: Balance"
+msgstr "چک مدت دار: تراز"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.ui.menu,name:artarad_post_dated_cheque.menu_artarad_pdc_ent
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.search_artarad_account_payment_pdc
+msgid "PDCs"
+msgstr "چک‌های مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields.selection,name:artarad_post_dated_cheque.selection__account_move__payment_state__partial_pdc
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.form_artarad_account_move
+msgid "Partial PDC"
+msgstr "نیمه چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:artarad.pdc.st,name:artarad_post_dated_cheque.pdc_state_partner_deposited
+msgid "Partner Deposited"
+msgstr "نزد طرف حساب"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_sheet__pay_to
+msgid "Pay to"
+msgstr "در وجه"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_sheet__payment
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__payment
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.search_artarad_pdc_st_chg_trans
+msgid "Payment"
+msgstr "پرداخت"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment_method_line__payment_account_id
+msgid "Payment Account"
+msgstr "حساب پرداخت"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__payment_move
+msgid "Payment Journal Entry"
+msgstr "سند حسابداری پرداخت"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model,name:artarad_post_dated_cheque.model_account_payment_method
+#: model:ir.model,name:artarad_post_dated_cheque.model_account_payment_method_line
+msgid "Payment Methods"
+msgstr "روش های پرداخت"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model,name:artarad_post_dated_cheque.model_payment_ras_wizard
+msgid "Payment RAS Result"
+msgstr "نتیحه راس گیری"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_bank_statement_line__payment_state
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_move__payment_state
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment__payment_state
+msgid "Payment Status"
+msgstr "وضعیت پرداخت"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__payment_type
+msgid "Payment Type"
+msgstr "نوع پرداخت"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model,name:artarad_post_dated_cheque.model_account_payment
+msgid "Payments"
+msgstr "پرداخت‌ها"
+
+#. module: artarad_post_dated_cheque
+#: model:account.journal,name:artarad_post_dated_cheque.account_journal_pdc
+#: model:ir.model.fields.selection,name:artarad_post_dated_cheque.selection__account_journal__type__post_dated_cheque
+msgid "Post Dated Cheque"
+msgstr "چک مدت‌دار"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields.selection,name:artarad_post_dated_cheque.selection__artarad_pdc_st_chg_trans__transaction_state__posted
+msgid "Posted"
+msgstr "قطعی"
+
+#. module: artarad_post_dated_cheque
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.search_artarad_account_payment_pdc
+msgid "Purchase PDCs"
+msgstr "چک‌های مدت‌دار خرید"
+
+#. module: artarad_post_dated_cheque
+#: model:artarad.pdc.st,name:artarad_post_dated_cheque.pdc_state_ready
+msgid "Ready"
+msgstr "آماده"
+
+#. module: artarad_post_dated_cheque
+#: model:artarad.pdc.st,name:artarad_post_dated_cheque.pdc_state_receipted
+msgid "Receipted"
+msgstr "وصول شده"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model,name:artarad_post_dated_cheque.model_account_payment_register
+msgid "Register Payment"
+msgstr "ثبت پرداخت"
+
+#. module: artarad_post_dated_cheque
+#: model:artarad.pdc.st,name:artarad_post_dated_cheque.pdc_state_rejected
+msgid "Rejected"
+msgstr "برگشت خورده"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/account_journal_dashboard.py:0
+#, python-format
+msgid "Residual amount"
+msgstr "مبلغ باقیمانده"
+
+#. module: artarad_post_dated_cheque
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.search_artarad_account_payment_pdc
+msgid "Sale PDCs"
+msgstr "چک‌های مدت‌دار فروش"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment__cheque_sayadi_number
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment_register__cheque_sayadi_number
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__cheque_sayadi_number
+msgid "Sayadi Number"
+msgstr "شماره صیادی"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,help:artarad_post_dated_cheque.field_account_journal__type
+msgid ""
+"Select 'Sale' for customer invoices journals.\n"
+"Select 'Purchase' for vendor bills journals.\n"
+"Select 'Cash' or 'Bank' for journals that are used in customer or vendor "
+"payments.\n"
+"Select 'General' for miscellaneous operations journals."
+msgstr ""
+"برای روزنامه صورتحساب مشتری، «فروش» را انتخاب کنید.\n"
+"برای روزنامه صورتحساب تامین کننده، «خرید» را انتخاب کنید.\n"
+"برای روزنامه ای که در پرداخت های مشتری یا تامین کننده استفاده می شود، «نقد» "
+"یا «بانک» را انتخاب کنید.\n"
+"برای روزنامه عملیات متفرقه، \"عمومی\" را انتخاب کنید."
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_book__sequence_numbers_prefix
+msgid "Sequence Numbers Prefix"
+msgstr "پیشوند شماره‌های سری"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_book__sequence_numbers_start
+msgid "Sequence Numbers Start"
+msgstr "آغاز شماره‌های سری"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment__cheque_number
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment_register__cheque_number
+msgid "Serial"
+msgstr "سریال"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_book__sheets
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.view_form_artarad_pdc_book
+msgid "Sheets"
+msgstr "برگه‌ها"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields.selection,name:artarad_post_dated_cheque.selection__account_payment__cheque_outbound_mode__spend
+#: model:ir.model.fields.selection,name:artarad_post_dated_cheque.selection__account_payment_register__cheque_outbound_mode__spend
+msgid "Spend"
+msgstr "خرج کردن"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment__spending_cheques
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment_register__spending_cheques
+msgid "Spending Cheques"
+msgstr "چک‌های مدت‌دار خرج شده"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/account_payment.py:0
+#, python-format
+msgid "Spending of cheques: "
+msgstr "خرج چک‌های مدت‌دار: "
+
+#. module: artarad_post_dated_cheque
+#: model:artarad.pdc.st,name:artarad_post_dated_cheque.pdc_state_spent
+msgid "Spent"
+msgstr "خرج شده"
+
+#. module: artarad_post_dated_cheque
+#: model:artarad.pdc.st,name:artarad_post_dated_cheque.pdc_state_spent_no_receipt_tracking
+msgid "Spent (No Receipt Tracking)"
+msgstr "خرج شده بدون وصول"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment__spent_for
+msgid "Spent For"
+msgstr "خرج شده برای"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_init_st__state
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_sheet__state
+msgid "State"
+msgstr "وضعیت"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.ui.menu,name:artarad_post_dated_cheque.menu_artarad_pdc_state_change_trans
+msgid "State Change Trans."
+msgstr "تراکنش های تغییر وضعیت"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment__cheque_state_change_transactions
+msgid "State Change Transactions"
+msgstr "تراکنش‌های تغییر وضعیت"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.ui.menu,name:artarad_post_dated_cheque.menu_artarad_pdc_st_chg_conf
+msgid "State Changes"
+msgstr "تغییرات وضعیت"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.ui.menu,name:artarad_post_dated_cheque.menu_artarad_pdc_st_conf
+msgid "States"
+msgstr "وضعیت"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/cheque_book.py:0
+#, python-format
+msgid "The book  has used sheet!"
+msgstr "دسته‌چک دارای برگه استفاده شده است!"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg__to_state
+msgid "To State"
+msgstr "به وضعیت"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__transaction_date
+msgid "Transaction Date"
+msgstr "تاریخ تراکنش"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_st_chg_trans__transaction_state
+msgid "Transaction State"
+msgstr "وضعیت تراکنش"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_journal__type
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_artarad_pdc_init_st__type
+msgid "Type"
+msgstr "نوع"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields.selection,name:artarad_post_dated_cheque.selection__artarad_pdc_sheet__state__unused
+msgid "Unused"
+msgstr "استفاده نشده"
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment__cheque_outbound_mode
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_account_payment_register__cheque_outbound_mode
+msgid "Via"
+msgstr "از طریق"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/cheque_state_change_transaction.py:0
+#, python-format
+msgid "You can not choose a cheque journal!"
+msgstr ""
+"شما باید برای وصول روزنامه ای غیر از چک مدت دار انتخاب کنید(بانک یا صندوق)"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/cheque_state_change_transaction.py:0
+#, python-format
+msgid ""
+"You can not delete a transaction that is already posted! Archive it instead."
+msgstr ""
+"شما امکان حذف یک تراکنش قطعی شده را ندارید. می‌توانید به جای حذف، آن را "
+"بایگانی کنید."
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/cheque_state_change_transaction.py:0
+#, python-format
+msgid "You can not modify a transaction that is already posted"
+msgstr "شما امکان تغییر در یک تراکنش قطعی شده را ندارید"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/cheque_state_change_transaction.py:0
+#, python-format
+msgid "You can not unarchive a transaction!"
+msgstr "شما امکان بازگشت از بایگانی یک تراکنش را ندارید!"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/cheque_state_change_transaction.py:0
+#, python-format
+msgid "You can only archive one transaction at a time!"
+msgstr "شما در هر لحظه تنها امکان بایگانی یک تراکنش را دارید!"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/cheque_state_change_transaction.py:0
+#, python-format
+msgid "You can only archive the last active transaction!"
+msgstr "شما تنها امکان بایگانی آخرین تراکنش را دارید!"
+
+#. module: artarad_post_dated_cheque
+#. odoo-python
+#: code:addons/artarad_post_dated_cheque/models/cheque_state_change_transaction.py:0
+#, python-format
+msgid "You must first confirm older transactions!"
+msgstr "شما ابتدا باید تراکنش‌های قدیمی‌تر را تایید کنید!"
+
+#. module: artarad_post_dated_cheque
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.view_payment_ras_wizard
+msgid "بستن"
+msgstr ""
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_payment_ras_wizard__ras_date
+msgid "تاریخ راس"
+msgstr ""
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_payment_ras_wizard__base_date
+msgid "تاریخ مبنا"
+msgstr ""
+
+#. module: artarad_post_dated_cheque
+#: model:ir.actions.act_window,name:artarad_post_dated_cheque.action_open_payment_ras_wizard
+#: model:ir.actions.server,name:artarad_post_dated_cheque.payment_ras_action_server
+msgid "محاسبه راس پرداخت"
+msgstr ""
+
+#. module: artarad_post_dated_cheque
+#: model_terms:ir.ui.view,arch_db:artarad_post_dated_cheque.view_payment_ras_wizard
+msgid "نتیجه تاریخ راس"
+msgstr ""
+
+#. module: artarad_post_dated_cheque
+#: model:ir.model.fields,field_description:artarad_post_dated_cheque.field_payment_ras_wizard__payment_ids
+msgid "پرداخت‌ها"
+msgstr ""

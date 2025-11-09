@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="form_artarad_account_move" model="ir.ui.view">
+        <field name="name">form.artarad.account.move</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_register_payment']" position="attributes">
+                <attribute name="invisible">state != 'posted' or payment_state not in ('not_paid', 'partial', 'partial_pdc') or move_type not in ('out_invoice', 'out_refund', 'in_invoice', 'in_refund', 'out_receipt', 'in_receipt')</attribute>
+            </xpath>
+
+            <xpath expr="/form/sheet/widget[2]" position="after">
+                <widget name="web_ribbon" title="PDC" bg_color="bg-danger"
+                    invisible="payment_state != 'pdc' or move_type not in ('out_invoice', 'out_refund', 'in_invoice', 'in_refund', 'out_receipt', 'in_receipt')" />
+                <widget name="web_ribbon" title="Partial PDC" bg_color="bg-danger"
+                    invisible="payment_state != 'partial_pdc' or move_type not in ('out_invoice', 'out_refund', 'in_invoice', 'in_refund', 'out_receipt', 'in_receipt')" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

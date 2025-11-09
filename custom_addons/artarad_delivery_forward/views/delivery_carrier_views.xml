@@ -1,0 +1,30 @@
+<odoo>
+  <record id="view_delivery_carrier_form_forward" model="ir.ui.view">
+    <field name="name">delivery.carrier.form.forward</field>
+    <field name="model">delivery.carrier</field>
+    <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+    <field name="arch" type="xml">
+      <xpath expr="//sheet/notebook" position="inside">
+        <page string="Forward" invisible="delivery_type != 'forward'">
+          <group>
+            <group string="Credentials Base">
+              <field name="forward_base_url" placeholder="https://api.forward.ir"/>
+              <field name="forward_username"/>
+              <field name="forward_password" password="True"/>
+            </group>
+            <group string="Defaults">
+              <field name="forward_sender_address_id"/>
+              <field name="forward_box_size"/>
+              <field name="forward_box_content_id"/>
+            </group>
+            <group string="Token Cache (readonly)">
+              <field name="forward_token_value" readonly="1"/>
+              <field name="forward_token_cached_at" readonly="1"/>
+              <field name="forward_token_ttl"/>
+            </group>
+          </group>
+        </page>
+      </xpath>
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,52 @@
+<odoo>
+    <record id="action_open_payment_ras_wizard" model="ir.actions.act_window">
+        <field name="name">محاسبه راس پرداخت</field>
+        <field name="res_model">payment.ras.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record id="payment_ras_action_server" model="ir.actions.server">
+        <field name="name">محاسبه راس پرداخت</field>
+        <field name="model_id" ref="account.model_account_payment"/>
+        <field name="binding_model_id" ref="account.model_account_payment"/>
+        <field name="state">code</field>
+        <field name="binding_type">action</field>
+        <field name="code">
+            action = {
+            "type": "ir.actions.act_window",
+            "res_model": "payment.ras.wizard",
+            "view_mode": "form",
+            "target": "new",
+            "context": {
+            "active_ids": records.ids,
+            }
+            }
+        </field>
+    </record>
+
+
+    <!-- account_payment_views.xml -->
+    <record id="action_check_cheque_status" model="ir.actions.server">
+        <field name="name">Check Cheque Status</field>
+        <field name="model_id" ref="account.model_account_payment"/>
+        <field name="binding_model_id" ref="account.model_account_payment"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = env['account.payment'].browse(records.ids)._check_cheque_status()
+        </field>
+    </record>
+
+    <!-- در view مربوط به لیست پرداخت‌ها -->
+<!--    <record id="view_account_payment_tree" model="ir.ui.view">-->
+<!--        <field name="model">account.payment</field>-->
+<!--        <field name="inherit_id" ref="account.view_account_payment_tree"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//tree" position="attributes">-->
+<!--                <attribute name="multi_edit">1</attribute>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+</odoo>

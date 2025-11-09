@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="redirect_form">
+        <t t-if="api_base">
+            <form t-att-action="api_base" method="GET" id="o_payment_redirection_form">
+                <t t-foreach="url_params.items()" t-as="it">
+                    <input type="hidden" t-att-name="it[0]" t-att-value="it[1]"/>
+                </t>
+            </form>
+        </t>
+
+    </template>
+</odoo>

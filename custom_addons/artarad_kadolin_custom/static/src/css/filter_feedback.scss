@@ -1,0 +1,21 @@
+#akc-filter-flash {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: rgba(40, 160, 40, 0.92);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 120ms ease, transform 120ms ease;
+  z-index: 2200;
+}
+#akc-filter-flash.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(4px);
+}

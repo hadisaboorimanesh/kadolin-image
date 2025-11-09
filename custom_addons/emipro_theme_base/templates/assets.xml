@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="layout" name="Main layout" inherit_id="portal.frontend_layout">
+        <xpath expr="//head" position="inside">
+            <t t-set="is_pwa" t-value="request.website.is_pwa"/>
+            <t t-if="is_pwa">
+                <link rel="manifest" t-attf-href="/pwa_ept/manifest/#{website.id}"/>
+                <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+                <meta name="apple-mobile-web-app-title" content="PWA"/>
+                <meta name="theme-color" content="black"/>
+                <t t-set="website"
+                   t-value="request.env['website'].search([('id', '=', website_id)]) if website_id else request.website"/>
+                <link rel="apple-touch-icon"
+                      t-att-href="'/web/image/website/%s/app_image_512/152x152' % (website.id) if website.app_image_512 else '/emipro_theme_base/static/src/img/152x152.png'"/>
+                <meta name="apple-mobile-web-app-capable" content="yes"/>
+                <!-- iPhone Xs Max (1242px x 2688px) -->
+                <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 3)" href="/theme_clarico_vega/static/src/img/splashscreens/iphonexsmax_splash.png" />
+                <!-- iPhone Xr (828px x 1792px) -->
+                <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 896px) and (-webkit-device-pixel-ratio: 2)" href="/theme_clarico_vega/static/src/img/splashscreens/iphonexr_splash.png" />
+                <!-- iPhone X, Xs (1125px x 2436px) -->
+                <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3)" href="/theme_clarico_vega/static/src/img/splashscreens/iphonex_splash.png" />
+                <!-- iPhone 8 Plus, 7 Plus, 6s Plus, 6 Plus (1242px x 2208px) -->
+                <link rel="apple-touch-startup-image" media="(device-width: 414px) and (device-height: 736px) and (-webkit-device-pixel-ratio: 3)" href="/theme_clarico_vega/static/src/img/splashscreens/iphoneplus_splash.png" />
+                <!-- iPhone 8, 7, 6s, 6 (750px x 1334px) -->
+                <link rel="apple-touch-startup-image" media="(device-width: 375px) and (device-height: 667px) and (-webkit-device-pixel-ratio: 2)" href="/theme_clarico_vega/static/src/img/splashscreens/iphone6_splash.png" />
+                <!-- iPhone 5 (640px x 1136px) -->
+                <link rel="apple-touch-startup-image" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" href="/theme_clarico_vega/static/src/img/splashscreens/iphone5_splash.png" />
+                <!-- iPad Pro 12.9" (2048px x 2732px) -->
+                <link rel="apple-touch-startup-image" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" href="/theme_clarico_vega/static/src/img/splashscreens/ipadpro2_splash.png" />
+                <!-- iPad Pro 11” (1668px x 2388px) -->
+                <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" href="/theme_clarico_vega/static/src/img/splashscreens/ipadpro3_splash.png" />
+                <!-- iPad Pro 10.5" (1668px x 2224px) -->
+                <link rel="apple-touch-startup-image" media="(device-width: 834px) and (device-height: 1112px) and (-webkit-device-pixel-ratio: 2)" href="/theme_clarico_vega/static/src/img/splashscreens/ipadpro1_splash.png" />
+                <!-- iPad Mini, Air (1536px x 2048px) -->
+                <link rel="apple-touch-startup-image" media="(device-width: 768px) and (device-height: 1024px) and (-webkit-device-pixel-ratio: 2)" href="/theme_clarico_vega/static/src/img/splashscreens/ipad_splash.png" />
+            </t>
+        </xpath>
+    </template>
+
+    <template id="lazyload_activate" inherit_id="website.layout">
+        <xpath expr="//div[@id='wrapwrap']" position="inside">
+            <input id="id_lazyload" type="hidden" name="is_lazyload" value="true"/>
+        </xpath>
+    </template>
+
+    <template id="quick_view_container" name="Quick View Container">
+        <div class="quick_view_content"/>
+    </template>
+
+    <template id="similar_products_view_container" name="Quick View Container">
+        <div class="similar_products_view_content scrollbar"/>
+    </template>
+
+    <template id="portal_my_details_fields_ext" inherit_id="portal.portal_my_details_fields">
+        <xpath expr="//option[@t-att-value='country.id']" position="attributes">
+            <attribute name="t-att-selected">country.id == partner.country_id.id if partner and partner.country_id else
+                country.id == default_country_id.id if default_country_id else country.id == partner.country_id.id
+            </attribute>
+        </xpath>
+    </template>
+
+    <template id="address_ext" inherit_id="website_sale.address">
+        <xpath expr="//option[@t-att-value='c.id']" position="attributes">
+            <attribute name="t-att-selected">
+                c.id == default_country_id.id if default_country_id else c.id == country.id
+            </attribute>
+        </xpath>
+    </template>
+
+    <template id="product_price_table" name="Product: Price Table">
+        <section class="pricelist_table_main mb-0 align-middle" t-if="pricelist_items and show_qty">
+            <section class="mt-2">
+                <i class="fa fa-solid fa-tags d-inline-block"/>
+                <h6 class="fw-normal d-inline-block mb-0">Big savings with bulk buys.</h6>
+            </section>
+            <div class="pricelist_table_row">
+                <t t-foreach="pricelist_items" t-as="item" t-if="item['qty'] &gt; 1">
+                    <div t-att-class="item_first and 'table_content price_rule_box bg-white position-relative cursor-pointer active' or 'table_content price_rule_box bg-white position-relative cursor-pointer'" t-att-qty="item['qty']">
+                        <div class="quantity cursor-pointer">
+                            <span class="price_table_content"> <span class="text-muted">Buy</span>  <span class="text-black product_qty_span" t-out="item['qty']"></span><span class="text-muted product_bold_span"> at </span> <span class="text-black product_bold_span" t-out="item['price']"
+                                  t-options="{'widget': 'monetary','display_currency': currency_id}"
+                                  style="white-space: nowrap;"/> <span class="text-muted">/ Unit</span> </span>
+                        </div>
+                        <i style="font-size:12px;top:-5px;right:-5px;" class="fa bg-white text-primary position-absolute fa-check-circle d-none"/>
+                    </div>
+                </t>
+            </div>
+        </section>
+    </template>
+
+    <template id="cart_popover" name="Cart Popover">
+        <div class="cart_popover_content"/>
+    </template>
+
+    <!-- Mobile Header Dynamic option container -->
+    <template id="mobile_header_search_option_view_container" name="Mobile Header Search Option View Container">
+        <div class="mobile_header_search_option_view_content scrollbar"/>
+    </template>
+
+     <template id="mobile_header_categories_option_view_container" name="Mobile Header Categories Option View Container">
+        <div class="mobile_header_categories_option_view_content scrollbar"/>
+    </template>
+
+    <!-- Dynamic Brand Slider -->
+    <record id="emipro_theme_base.s_dynamic_snippet_brand_000_js_ext" model="ir.asset">
+        <field name="name">Dynamic snippet brand 000 JS</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">emipro_theme_base/static/src/snippets/s_dynamic_snippet_brand/000.js</field>
+    </record>
+
+    <record id="dynamic_snippet_brand_ext" model="ir.filters">
+        <field name="name">All Product Brands</field>
+        <field name="model_id">product.brand</field>
+        <field name="user_id" eval="False"/>
+        <field name="domain">[]</field>
+    </record>
+
+    <record id="dynamic_filter_brand" model="website.snippet.filter">
+        <field name="filter_id" ref="emipro_theme_base.dynamic_snippet_brand_ext"/>
+        <field name="field_names">name</field>
+        <field name="limit" eval="16"/>
+        <field name="name">All Product Brands</field>
+    </record>
+
+    <!-- Dynamic eCommerce Category Slider -->
+    <record id="emipro_theme_base.s_dynamic_snippet_category_000_js_ext" model="ir.asset">
+        <field name="name">Dynamic snippet Category 000 JS</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">emipro_theme_base/static/src/snippets/s_dynamic_snippet_category/000.js</field>
+    </record>
+
+    <record id="dynamic_snippet_category_ext" model="ir.filters">
+        <field name="name">All Category</field>
+        <field name="model_id">product.public.category</field>
+        <field name="user_id" eval="False"/>
+        <field name="domain">[]</field>
+    </record>
+
+    <record id="dynamic_filter_category" model="website.snippet.filter">
+        <field name="filter_id" ref="emipro_theme_base.dynamic_snippet_category_ext"/>
+        <field name="field_names">name,product_tmpl_ids,image_512</field>
+        <field name="limit" eval="16"/>
+        <field name="name">All Category</field>
+    </record>
+
+    <record id="emipro_theme_base.s_dynamic_snippet_product_template_000_js_ext" model="ir.asset">
+        <field name="name">Dynamic snippet Product Template 000 JS</field>
+        <field name="bundle">web.assets_frontend</field>
+        <field name="path">emipro_theme_base/static/src/snippets/s_dynamic_snippet_product_template/000.js</field>
+    </record>
+</odoo>

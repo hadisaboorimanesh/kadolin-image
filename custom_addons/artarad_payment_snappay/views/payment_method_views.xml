@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<template id="artarad_payment_snappay.method_form" inherit_id="payment.method_form">
+    <xpath expr="//label[hasclass('o_payment_option_label')]" position="replace">
+        <t>
+            <!-- ✅ SnappPay -->
+            <t t-if="provider_sudo._get_code() == 'snappay'">
+                <div class="d-flex flex-column align-items-start w-100">
+                    <label class="o_payment_option_label mb-1 text-break fw-semibold"
+                           t-attf-for="o_payment_method_{{pm_sudo.id}}">
+                        <t t-out="provider_sudo.snappay_title_message or pm_sudo.name"/>
+                    </label>
+                    <div t-if="provider_sudo.snappay_description_message"
+                         class="small text-muted lh-sm">
+                        <t t-out="provider_sudo.snappay_description_message"/>
+                    </div>
+                </div>
+            </t>
+
+            <!-- ✅ سایر درگاه‌ها -->
+            <t t-else="">
+                <label class="o_payment_option_label mb-0 text-break"
+                       t-attf-for="o_payment_method_{{pm_sudo.id}}">
+                    <t t-out="pm_sudo.name"/>
+                </label>
+            </t>
+        </t>
+    </xpath>
+</template>
+</odoo>

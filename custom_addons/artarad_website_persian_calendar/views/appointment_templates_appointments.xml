@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="appointment_calendar" inherit_id="appointment.appointment_calendar">
+        <xpath expr="//td" position="replace">
+            <td t-attf-class="text-center#{day['slots'] and ' o_day' or ''} #{day['weekend_cls']} #{day['today_cls']}"
+                t-attf-title="#{day['today_cls'] and 'Today' or ''}">
+                <t t-if="day['slots']">
+                    <div t-att-id="day['day']" t-attf-class="o_day_wrapper o_slot_button btn btn-outline-primary d-block position-relative m-1 p-2 border"
+                        t-out="day['j_day'] if day.get('j_day') else day['day'].day"
+                        t-att-data-available-slots="json.dumps(day['slots'])"
+                        t-att-data-slot-date="day['day']"/>
+                </t>
+                <t t-if="not day['slots']">
+                    <div t-out="day['j_day'] if day.get('j_day') else day['day'].day" t-attf-class="o_day_wrapper border border-transparent #{day['mute_cls']} position-relative m-1 p-2"/>
+                </t>
+            </td>
+        </xpath>
+    </template>
+
+</odoo>

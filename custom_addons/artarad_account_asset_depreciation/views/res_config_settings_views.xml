@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_form_res_config_settings_artarad_inherit" model="ir.ui.view">
+            <field name="name">view.form.res.config.settings.artarad.inherit</field>
+            <field name="model">res.config.settings</field>
+            <field name="priority" eval="75" />
+            <field name="inherit_id" ref="account.res_config_settings_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//app[@name='account']" position="inside">
+					<block title="Asset Depreciation">
+						<setting help="Calendar type using for creation of depreciations">
+							<field name="account_asset_depreciation_calendar_type" string="Calendar Type"/>
+						</setting>
+					</block>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

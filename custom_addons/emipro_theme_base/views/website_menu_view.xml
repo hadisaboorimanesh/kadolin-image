@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- ============= Added is_dynamic_menu in form view  =========== -->
+    <record id="website_menus_form_inherit" model="ir.ui.view">
+        <field name="name">website.menus.form.inherit</field>
+        <field name="model">website.menu</field>
+        <field name="inherit_id" ref="website.website_menus_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/group/group[2]" position="inside">
+                <field name="parent_id" context="{'display_website': True}"/>
+                <field name="is_highlight_menu"/>
+                <field name="menu_label_id"/>
+            </xpath>
+            <xpath expr="//form/sheet/group/group[3]" position="replace">
+                <group>
+                    <field name="dynamic_mega_menu" invisible="is_mega_menu != True"/>
+                    <field name="category_selection" invisible="is_mega_menu != True or dynamic_mega_menu != True"
+                           required="dynamic_mega_menu == True"/>
+                    <field name="ecom_category"
+                           invisible="is_mega_menu != True or dynamic_mega_menu != True or category_selection == 'all'"
+                           required="dynamic_mega_menu == True and category_selection == 'specific'"  widget="many2many_tags" />
+                    <field name="category_menu_styles"
+                           invisible="is_mega_menu != True or dynamic_mega_menu != True"
+                           required="dynamic_mega_menu != False"/>
+                    <field name="product_brand_ids" invisible="category_menu_styles != 'style1'" widget="many2many_tags"/>
+                    <field name="product_template_ids" invisible="category_menu_styles != 'style8'" widget="many2many_tags"/>
+                    <div invisible="category_menu_styles != 'style8'">
+                        <span class="text-danger">
+                            <p>Note: According to sequence, the first two products will be shown.</p>
+                        </span>
+                    </div>
+                    <field name="mega_menu_content_ids"
+                           invisible="not category_menu_styles == 'style7'"
+                           required="dynamic_mega_menu != False">
+                        <list>
+                            <field name="sequence" widget="handle"/>
+                            <field name="url"/>
+                            <field name="image"  widget="image" class="oe_avatar"/>
+                        </list>
+                        <form>
+                            <sheet>
+                                <field name="image" widget="image" class="oe_avatar"/>
+                                <group>
+                                    <group>
+                                        <field name="url"/>
+                                    </group>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                    <div invisible="not category_menu_styles == 'style7'">
+                        <span class="text-danger">
+                            <p>Note: According to sequence, the first two records will be shown.</p>
+                        </span>
+                    </div>
+                </group>
+            </xpath>
+            <xpath expr="//form/sheet/group" position="after">
+                <form string="Mega Menu Style Images">
+                    <p>
+                        <img
+                                invisible="not (is_mega_menu == True and dynamic_mega_menu == True and category_menu_styles == 'style1')"
+                                alt="Mega Menu Style 1" class="mw-100"
+                                src="/emipro_theme_base/static/src/img/mega_menu_style/mm1.png"/>
+                        <img
+                                invisible="not (is_mega_menu == True and dynamic_mega_menu == True and category_menu_styles == 'style2')"
+                                alt="Mega Menu Style 2" class="mw-100"
+                                src="/emipro_theme_base/static/src/img/mega_menu_style/mm2.png"/>
+                        <img
+                                invisible="not (is_mega_menu == True and dynamic_mega_menu == True and category_menu_styles == 'style3')"
+                                alt="Mega Menu Style 3" class="mw-100"
+                                src="/emipro_theme_base/static/src/img/mega_menu_style/mm3.png"/>
+                        <img
+                                invisible="not (is_mega_menu == True and dynamic_mega_menu == True and category_menu_styles == 'style4')"
+                                alt="Mega Menu Style 4" class="mw-100"
+                                src="/emipro_theme_base/static/src/img/mega_menu_style/mm4.png"/>
+                        <img
+                                invisible="not (is_mega_menu == True and dynamic_mega_menu == True and category_menu_styles == 'style5')"
+                                alt="Mega Menu Style 5" class="mw-100"
+                                src="/emipro_theme_base/static/src/img/mega_menu_style/mm6.png"/>
+                        <img
+                                invisible="not (is_mega_menu == True and dynamic_mega_menu == True and category_menu_styles == 'style6')"
+                                alt="Mega Menu Style 6" class="mw-100"
+                                src="/emipro_theme_base/static/src/img/mega_menu_style/mm5.png"/>
+                        <img
+                                invisible="not (is_mega_menu == True and dynamic_mega_menu == True and category_menu_styles == 'style7')"
+                                alt="Mega Menu Style 7" class="mw-100"
+                                src="/emipro_theme_base/static/src/img/mega_menu_style/mm7.jpg"/>
+                        <img
+                                invisible="not (is_mega_menu == True and dynamic_mega_menu == True and category_menu_styles == 'style8')"
+                                alt="Mega Menu Style 8" class="mw-100"
+                                src="/emipro_theme_base/static/src/img/mega_menu_style/mm8.jpg"/>
+                        <img
+                                invisible="not (is_mega_menu == True and dynamic_mega_menu == True and category_menu_styles == 'style9')"
+                                alt="Mega Menu Style 9" class="mw-100"
+                                src="/emipro_theme_base/static/src/img/mega_menu_style/mm9.png"/>
+                    </p>
+                </form>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- ============= Added is_dynamic_menu in list view  =========== -->
+    <record id="website_menu_tree_inherit" model="ir.ui.view">
+        <field name="name">website.menu.list.inherit</field>
+        <field name="model">website.menu</field>
+        <field name="inherit_id" ref="website.menu_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_mega_menu']" position="after">
+                <field name="dynamic_mega_menu"/>
+                <field name="ecom_category"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

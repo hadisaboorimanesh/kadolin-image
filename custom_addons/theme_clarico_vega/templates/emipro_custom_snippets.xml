@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--Theme vega snippets settings-->
+    <template id="theme_vega_snippets" inherit_id="website.snippets">
+        <xpath expr="//t[@id='default_snippets']//snippets[@id='snippet_groups']" position="before">
+            <!-- Snippet groups -->
+            <snippets id="snippet_groups" string="Theme Snippets">
+                <t snippet-group="theme" t-snippet="website.s_snippet_group" string="Theme"
+                    t-thumbnail="/theme_clarico_vega/static/src/img/snippets/theme-snippet.jpg"/>
+                <t snippet-group="static-snippet" t-snippet="website.s_snippet_group" string="Static Snippets"
+                    t-thumbnail="/theme_clarico_vega/static/src/img/snippets/static_snippet.jpg"/>
+            </snippets>
+        </xpath>
+        <xpath expr="//t[@id='default_snippets']" position="after">
+            <t id="default_snippets">
+                <snippets id="snippet_structure" string="Theme Snippet">
+                    <t t-snippet="theme_clarico_vega.main_banner_style" string="Theme Banner" group="theme">
+                        <keywords>hero, jumbotron</keywords>
+                    </t>
+                    <t t-snippet="theme_clarico_vega.full_slider_style_1" string="Full Slider Style 1" group="theme">
+                        <keywords>Sliders, Full screen 1</keywords>
+                    </t>
+                    <t t-snippet="theme_clarico_vega.full_slider_style_2" string="Full Slider Style 2" group="theme">
+                        <keywords>Sliders, Full screen 2</keywords>
+                    </t>
+                    <t t-snippet="theme_clarico_vega.full_slider_style_3" string="Full Slider Style 3" group="theme">
+                        <keywords>Sliders, Full screen 3</keywords>
+                    </t>
+                    <t t-snippet="theme_clarico_vega.s_title_1_ept" string="Title" group="theme">
+                        <keywords>Title, Title Style 1</keywords>
+                    </t>
+                    <t t-snippet="theme_clarico_vega.s_title_2_ept" string="Title" group="theme">
+                        <keywords>Title, Title Style 2</keywords>
+                    </t>
+                    <t t-snippet="theme_clarico_vega.s_title_3_ept" string="Title" group="theme">
+                        <keywords>Title, Title Style 3</keywords>
+                    </t>
+                    <t t-snippet="theme_clarico_vega.offer_siderbar_popup" string="Offer Sidebar" group="theme">
+                        <keywords>Offer, Newsletter</keywords>
+                    </t>
+                    <t t-snippet="theme_clarico_vega.promocode_ept" string="Promo code" group="theme">
+                        <keywords>Promocode, Discount</keywords>
+                    </t>
+                    <t t-snippet="theme_clarico_vega.slider_style_1" string="Slider Style 1" group="static-snippet">
+                        <keywords>Sliders, Slider style 1</keywords>
+                    </t>
+                    <t t-snippet="theme_clarico_vega.slider_style_2" string="Slider Style 2" group="static-snippet">
+                        <keywords>Sliders, Slider style 2</keywords>
+                    </t>
+                    <t t-snippet="theme_clarico_vega.slider_style_3" string="Slider Style 3" group="static-snippet">
+                        <keywords>Sliders, Slider style 3</keywords>
+                    </t>
+                </snippets>
+            </t>
+        </xpath>
+    </template>
+
+
+    <!--=================== Main Banner =================-->
+    <template id="main_banner_style" name="Main Banner Style">
+        <section class="te_banner_s3">
+            <section class="pt32 oe_img_bg oe_custom_bg"
+                     style="background-image: url('/theme_clarico_vega/static/src/img/snippets/banner.jpg'); background-position: center">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 te_banner_s3_content">
+                            <div class="te_banner_sub_heading fw-bold">Lorem</div>
+                            <div class="te_banner_main_heading fw-bold">Lorem Ipsum</div>
+                            <p class="">
+                                Lorem ipsum dolor s it amet, consectetur adipisicing elit, sed do
+                                eiusmod
+                                tempor incididunt ut labore et dolore magna ipsum dolor sit amet,
+                            </p>
+                            <section class="s_btn pt32 pb16" data-name="Buttons">
+                                <a href="#" class="btn btn-primary shop_now_btn te_theme_button o_default_snippet_text">
+                                    Read More
+                                </a>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="container">
+                <div class="te_category_banner_block">
+                    <div class="row">
+                        <t t-call="theme_clarico_vega.main_banner_style_content">
+                            <t t-set="items" t-value="5"/>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+    <template id="main_banner_style_content">
+        <t t-foreach="items" t-as="item">
+            <t t-if="item &gt; 0">
+                <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12 d-inline-block">
+                    <div class="te_banner_categ_block">
+                        <section class="te_categ_content">
+                            <a href="#" class="d-flex align-middle text-decoration-none justify-content-center align-items-center">
+                                <img class="img img-fluid"
+                                     src="/theme_clarico_vega/static/src/img/snippets/insurance.webp"/>
+                                <div class="te_banner_categ_name d-inline-block align-middle align-items-center">
+                                    Lorem Ipsum
+                                </div>
+                            </a>
+                        </section>
+                    </div>
+                </div>
+            </t>
+            <t t-set="item" t-value="item-1"/>
+        </t>
+    </template>
+
+    <!--=================== Blog Post Style 1 =================-->
+    <template id="dynamic_filter_template_blog_post_style_template_3" name="Blog Template Style 1"
+              inherit_id="website_blog.dynamic_filter_template_blog_post_list">
+        <xpath expr="//div[hasclass('s_blog_posts_post')]" position="attributes">
+            <attribute name="class">d-flex s_blog_posts_post position-relative w-100</attribute>
+        </xpath>
+        <xpath expr="//a[hasclass('text-decoration-none')]" position="replace">
+            <a class="s_blog_posts_post_cover flex-grow-0 flex-shrink-0 align-self-baseline position-relative" t-att-href="data['call_to_action_url']" t-att-title="'Read' + data['name']">
+                <t t-call="website.record_cover">
+                    <t t-set="_record" t-value="record"/>
+                    <t t-set="_resize_height" t-value="512"/>
+                    <t t-set="_resize_width" t-value="512"/>
+                    <t t-set="additionnal_classes" t-value="'w-100 h-100 bg-200 position-absolute'"/>
+                </t>
+            </a>
+            <div class="ps-2">
+                <div class="te_blog_post_date s_blog_posts_post">
+                    <i class="fa fa-clock-o"/>
+                    <span t-field="record.post_date" t-options='{"format": "MMMM dd, yyyy"}'/>
+                </div>
+                <a class="text-decoration-none" t-att-title="'Read' + data['name']" t-att-href="data['call_to_action_url']">
+                    <div class="s_blog_posts_post_title mb-1">
+                        <span t-if="is_sample" class="bg-primary text-uppercase px-1">Sample</span>
+                        <span t-field="record.name"/>
+                    </div>
+                </a>
+                <div class="s_blog_posts_post_subtitle mb-1 d-none d-sm-block" t-field="record.subtitle"/>
+            </div>
+        </xpath>
+    </template>
+
+    <!--=================== Blog Post Style 2 =================-->
+    <template id="dynamic_filter_template_blog_post_style_template_5" name="Blog Template Style 2"
+              inherit_id="website_blog.dynamic_filter_template_blog_post_big_picture">
+        <xpath expr="//div[hasclass('s_blog_posts_post')]" position="replace">
+            <figure t-foreach="records" t-as="data" class="my-3 w-100 s_blog_posts_post" data-number-of-elements="3">
+                <t t-set="record" t-value="data['_record']"/>
+                <a class="s_blog_posts_post_cover d-flex flex-column shadow-sm overflow-hidden rounded text-decoration-none" t-att-href="data['call_to_action_url']">
+                    <t t-call="website.record_cover">
+                        <t t-set="_record" t-value="record"/>
+                        <t t-set="_resize_height" t-value="512"/>
+                        <t t-set="_resize_width" t-value="512"/>
+                        <t t-set="use_filters" t-value="True"/>
+                        <t t-set="additionnal_classes" t-value="'h-100 w-100 bg-600 position-absolute'"/>
+                    </t>
+                    <figcaption class="text-center w-100 h-100 px-3 d-flex flex-column flex-grow-1">
+                        <div t-if="is_sample" class="h5 o_ribbon_right bg-primary text-uppercase">Sample</div>
+                        <div class="s_blog_posts_post_title text-white" t-field="record.name"/>
+                        <div class="s_blog_posts_post_subtitle text-white" t-field="record.subtitle"/>
+                        <div class="te_blog_post_date">
+                            <span t-field="record.post_date" t-options='{"format": "MMMM dd, yyyy"}'/>
+                        </div>
+                    </figcaption>
+                    <span class="te_icon_r_more text-center fw-normal">
+                        <span class="fa fa-arrow-right"/>
+                    </span>
+                </a>
+            </figure>
+        </xpath>
+    </template>
+
+    <!--====================== Full Slider Style 2 ============================-->
+    <template id="full_slider_style_2" name="Full screen 2">
+        <section class="s_carousel_wrapper te_slider_full_screen_5" data-vxml="001">
+            <div id="myCarousel" class="s_carousel s_carousel_default carousel carousel-fade slide d-flex" data-bs-ride="carousel" data-bs-interval="10000">
+                <ol class="carousel-indicators d-md-flex d-none">
+                    <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"/>
+                    <li data-bs-target="#myCarousel" data-bs-slide-to="1"/>
+                </ol>
+                <div class="carousel-inner te_arrow_small">
+                    <t t-call="theme_clarico_vega.slider_style_2_carousel">
+                        <t t-set="_item_class" t-value="'active'"/>
+                    </t>
+                    <t t-call="theme_clarico_vega.slider_style_2_carousel"/>
+                    <!-- Controls -->
+                    <div class="carousel-control-prev" data-bs-target="#myCarousel" data-bs-slide="prev" role="img" aria-label="Previous" title="Previous">
+                        <span class="carousel-control-prev-icon"/>
+                    </div>
+                    <div class="carousel-control-next" data-bs-target="#myCarousel" data-bs-slide="next" role="img" aria-label="Next" title="Next">
+                        <span class="carousel-control-next-icon"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="slider_style_2_carousel">
+        <div t-attf-class="#{_item_class} carousel-item oe_custom_bg oe_img_bg pt16 pb16" style="background-color:rgb(239,239,239);" data-name="Slide">
+            <div class="container">
+                <div class="row align-items-center">
+                    <section class="te_slider_left_content col-lg-6 col-md-6 t_img_hover_1">
+                        <img class="img img-fluid o_animate o_animate_preview o_anim_zoom_in img_hotspot_setting" src="/theme_clarico_vega/static/src/img/snippets/modern-comfortable.jpg"/>
+                    </section>
+                    <section class="te_slider_right_content col-lg-5 col-md-5">
+                        <div class="te_sub_title o_animated_text o_animate o_anim_slide_in o_anim_from_top o_visible o_animated">Lorem ipsum</div>
+                        <div class="te_main_title">oblique<br/>pertinacia</div>
+                        <section class="s_btn"><a href="#" class="btn btn-primary te_theme_button te_slider_9_btn o_animate o_anim_slide_in o_anim_from_bottom o_visible o_animated">Know more</a></section>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!--============== next/prev button =================-->
+    <template id="next_prev_button" name="next prev">
+        <div class="carousel-control-prev" data-bs-target="#myCarousel" data-bs-slide="prev" role="img" aria-label="Previous" title="Previous">
+            <span class="carousel-control-prev-icon"/>
+        </div>
+        <div class="carousel-control-next" data-bs-target="#myCarousel" data-bs-slide="next" role="img" aria-label="Next" title="Next">
+            <span class="carousel-control-next-icon"/>
+        </div>
+    </template>
+
+    <!--=============== Full Slider style 1 ================== -->
+    <template id="full_slider_style_1" name="Full screen 1">
+        <section class="s_carousel_wrapper" data-vxml="001" data-vcss="001">
+            <t t-set="uniq" t-value="datetime.datetime.now().microsecond"/>
+            <div t-attf-id="fullSliderCarousel{{uniq}}" class="s_carousel s_carousel_default carousel slide d-flex" data-bs-ride="true" data-interval="10000">
+                <div class="carousel-inner te_arrow_small te_slider_13_main">
+                    <t t-call="theme_clarico_vega.full_slider_style_1_carousel">
+                        <t t-set="is_active" t-valuef="active"/>
+                    </t>
+                    <t t-call="theme_clarico_vega.full_slider_style_1_carousel"/>
+                    <t t-call="theme_clarico_vega.full_slider_style_1_carousel"/>
+                </div>
+                <!-- Indicators -->
+                <div class="carousel-indicators o_not_editable">
+                    <button type="button" t-attf-data-bs-target="#fullSliderCarousel{{uniq}}" data-bs-slide-to="0"
+                            class="active" aria-label="Carousel indicator"/>
+                    <button type="button" t-attf-data-bs-target="#fullSliderCarousel{{uniq}}" data-bs-slide-to="1"
+                            aria-label="Carousel indicator"/>
+                    <button type="button" t-attf-data-bs-target="#fullSliderCarousel{{uniq}}" data-bs-slide-to="2"
+                            aria-label="Carousel indicator"/>
+                </div>
+            </div>
+        </section>
+    </template>
+    <template id="full_slider_style_1_carousel">
+        <div t-attf-class="carousel-item #{is_active} px-0" data-name="Slide" >
+            <section t-attf-class="oe_img_bg oe_custom_bg pt96 pb96 oe_custom_bg te_slider_13_sub"
+                     data-scroll-background-ratio="1"
+                     style="background-image: url('/theme_clarico_vega/static/src/img/snippets/banner-3.jpg'); background-size: cover;">
+                <span class="s_parallax_filter"></span>
+                <div class="container pb96 pt96 my-lg-4">
+                    <div class="row content te_text_img_left_right t_zoom_img_effect align-items-center">
+                        <div class="carousel-content col-lg-5 py-5 py-sm-3 te_slider13_content">
+                            <h6 class="te_slider13_sub_heading text-uppercase o_animated_text o_animate o_visible mb-3 o_default_snippet_text o_animate_both_scroll o_anim_slide_in o_anim_from_right o_animated">
+                                Summer 2024
+                            </h6>
+                            <h2 class="te_carousel_text text-black mb-3 te_slider13_heading fw-bold d-block text-uppercase o_animated_text o_animate o_visible o_default_snippet_text o_anim_slide_in o_anim_from_right o_animated o_animate_both_scroll">
+                                Spring Sale 30% Off
+                            </h2>
+                            <h5 class="t_carousel_subtext te_slider13_text mb-3 fw-normal o_animated_text o_animate o_visible o_default_snippet_text o_anim_slide_in o_anim_from_right o_animated o_animate_both_scroll">
+                                Limited offer for season sale
+                            </h5>
+                            <section class="te_slider13_button" data-name="Buttons">
+                                <a href="#"
+                                   class="btn btn-primary mt-1 rounded-0 te_theme_button text-uppercase mt-1 px-4 py-3 o_default_snippet_text o_animate o_anim_rotate_in o_animate_both_scroll o_visible o_animated">
+                                    Discover Now
+                                </a>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </template>
+
+    <!--=============== Full Slider style 3 ================== -->
+    <template id="full_slider_style_3" name="Full screen 3">
+        <section class="s_carousel_wrapper slider_style_3" data-vxml="001">
+            <div id="myCarousel3" class="s_carousel s_carousel_default carousel slide d-flex carousel-fade" data-bs-ride="carousel" data-bs-interval="10000">
+                <ol class="carousel-indicators d-md-flex d-none">
+                    <li data-bs-target="#myCarousel3" data-bs-slide-to="0" class="active"/>
+                    <li data-bs-target="#myCarousel3" data-bs-slide-to="1"/>
+                </ol>
+                <div class="carousel-inner te_arrow_small">
+                    <t t-call="theme_clarico_vega.full_slider_style_3_carousel">
+                        <t t-set="_item_class" t-value="'active'"/>
+                    </t>
+                    <t t-call="theme_clarico_vega.full_slider_style_3_carousel"/>
+                    <!-- Controls -->
+                    <div class="carousel-control-prev" data-bs-target="#myCarousel3" data-bs-slide="prev" role="img" aria-label="Previous" title="Previous">
+                        <span class="carousel-control-prev-icon"/>
+                    </div>
+                    <div class="carousel-control-next" data-bs-target="#myCarousel3" data-bs-slide="next" role="img" aria-label="Next" title="Next">
+                        <span class="carousel-control-next-icon"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+    <template id="full_slider_style_3_carousel">
+        <div t-attf-class="carousel-item #{_item_class} px-0" data-name="Slide">
+            <section t-attf-class="oe_img_bg oe_custom_bg oe_custom_bg te_slider_13_sub">
+                <img class="img img-responsive img-fluid d-block mx-auto" data-scroll-background-ratio="1" alt="Clarico-Mega Menus Style 4"
+                     src="/theme_clarico_vega/static/src/img/snippets/banner-3.jpg"/>
+            </section>
+        </div>
+    </template>
+
+    <!--======================== Title =====================-->
+    <template id="s_title_1_ept" name="Title style 1">
+        <section class="s_title_2_ept">
+            <div class="container">
+                <div class="row s_nb_column_fixed">
+                    <div class="col-lg-12 te_title_2 text-center pt32">
+                        <div class="te_title_sub_div position-relative d-inline-block ps72">
+                            <h4 class="te_s_title_default te_title_style2 position-relative d-block">My Heading 4</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="s_title_2_ept" name="Title style 2">
+        <section class="s_title_2">
+            <div class="container">
+                <div class="row s_nb_column_fixed">
+                    <div class="col-lg-12 te_title_2 text-center pt32">
+                        <div class="heading_txt text-uppercase">Deal Of The Day</div>
+                        <hr/>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="s_title_3_ept" name="Title style 3">
+        <section class="s_title_3">
+            <div class="container">
+                <div class="row s_nb_column_fixed">
+                    <div class="col-lg-12 te_title_2 text-center pt32 pb32">
+                        <h2 class="heading_txt pb-2">Best Seller</h2>
+                        <p>Shop the Latest Styles: Stay ahead of the curve with our newest arrivals</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="offer_siderbar_popup" name="Offer Siderbar Popup">
+        <section class="offer_sidebar_offcanvas_main" data-name="Newsletter Popup">
+            <div>
+                <div class="offer_sidebar_offcanvas_button">
+                    <button class="btn btn-primary rounded-0 offer_sidebar_btn" data-bs-toggle="offcanvas"
+                            data-bs-target="#custom_offer_popup_button"
+                            aria-controls="custom_offer_popup_button">
+                        Flat Off 300
+                        <i class="fa fa-angle-left o_not_editable"/>
+                    </button>
+                </div>
+                <section class="offcanvas offcanvas-end offcanvas_offer_popup" tabindex="-1"
+                         id="custom_offer_popup_button" aria-labelledby="attribute_popup_backdrop">
+                    <div class="offcanvas-header">
+                        <button type="button" class="te_cross" data-bs-dismiss="offcanvas"
+                                    aria-label="Close"> </button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div class="container mb-2">
+                            <div class="row justify-content-center align-items-center">
+                                <div class="col-6 offer_section_title">
+                                    <span class="offer_section_title_msg">Avail Flat</span>
+                                    <h4 class="fw-bold">300 Off</h4>
+                                    <span class="offer_sidebar_code">Coupon Code:</span>
+                                    <span class="text-uppercase">Flat300</span>
+                                </div>
+                                <div class="col-6 offer_section_image text-center">
+                                    <img class="img" src="/theme_clarico_vega/static/src/img/offer.png"/>
+                                    <button class="btn btn-outline-primary bg-white">
+                                        Buy now
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="row offer_section_product_info border-top pt-2">
+                                <div class="col-6 p-0">
+                                    <i class="fa fa-check-circle"></i>
+                                    <span>Genuine Products</span>
+                                </div>
+                                <div class="col-6 p-0">
+                                    <i class="fa fa-exchange"></i>
+                                    <span>Exchanges &amp; Returns</span>
+                                </div>
+                            </div>
+                            <h3/>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </template>
+
+    <template id="promocode_ept" name="Promo code">
+        <section class="promocode_ept container p0_sm">
+            <div class="oe_img_bg oe_custom_bg pt32 pb32" style="background-image: url('/theme_clarico_vega/static/src/img/promo.jpg'); background-size: auto; background-position: center;">
+                <div class="row s_nb_column_fixed">
+                    <div class="col-lg-12 te_title_2 text-center">
+                        <div class="d-flex justify-content-center align-items-center flex-wrap">
+                            <span class="discount_dec">Super discount for your <b>first purchase.</b></span>
+                            <div class="code">
+                                <b>FREE15FIRST</b>
+                            </div>
+                            <span class="discount_dec">Use discount code in checkout!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="slider_style_1" name="Static slider 1">
+        <section class="container te_slider_screen_1">
+            <div class="row">
+                <section class="s_carousel_wrapper col-lg-8" data-vxml="001">
+                    <div id="myCarousel" class="s_carousel s_carousel_default carousel carousel-fade slide d-flex h-100" data-interval="10000">
+                        <ol class="carousel-indicators d-md-flex justify-content-end pe-5">
+                            <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"/>
+                            <li data-bs-target="#myCarousel" data-bs-slide-to="1"/>
+                        </ol>
+                        <div class="carousel-inner te_arrow_small">
+                            <t t-call="theme_clarico_vega.slider_style_1_carousel">
+                                <t t-set="_item_class" t-value="'active'"/>
+                            </t>
+                            <t t-call="theme_clarico_vega.slider_style_1_carousel"/>
+                        </div>
+                    </div>
+                </section>
+                <section class="col-lg-4">
+                    <div class="d-flex flex-column">
+                        <div class="position-relative" style="padding: 15px 0;">
+                            <img class="img img-fluid" src="/theme_clarico_vega/static/src/img/snippets/banner_8.jpg"/>
+                            <div class="position-absolute top-0 p-5 h-100 pe-0 pb-0">
+                                <p class="h4 mb-3">
+                                    <span class="o_animated_text o_animate o_anim_slide_in o_anim_from_bottom o_visible o_animated" style="--wanim-intensity: 100; animation-name: o_anim_slide_in_up; animation-play-state: running; visibility: visible;">Lorem ipsum dolor sit</span>
+                                </p>
+                                <p class="h5 mb-4">
+                                    <span class="o_animated_text o_animate o_anim_slide_in o_anim_from_bottom o_visible o_animated" style="--wanim-intensity: 100; animation-name: o_anim_slide_in_up; animation-play-state: running; visibility: visible;">Save upto 20%</span>
+                                </p>
+                                <a href="#" class="btn rounded-0 border-bottom position-absolute bottom-0 mb-5 px-0 o_default_snippet_text o_animate o_anim_slide_in o_anim_from_bottom o_visible o_animated" style="--wanim-intensity: 100; animation-name: o_anim_slide_in_up; animation-play-state: running; visibility: visible;">Shop Now <i class="fa fa-arrow-right ms-2"/></a>
+                            </div>
+                        </div>
+                        <div class="position-relative" style="padding: 15px 0;">
+                            <img class="img img-fluid" src="/theme_clarico_vega/static/src/img/snippets/banner_9.jpg"/>
+                            <div class="position-absolute top-0 p-5 h-100 pe-0 pb-0">
+                                <p class="h4 mb-3">
+                                    <span class="o_animated_text o_animate o_anim_slide_in o_anim_from_bottom o_visible o_animated" style="--wanim-intensity: 100; animation-name: o_anim_slide_in_up; animation-play-state: running; visibility: visible;">Lorem ipsum dolor sit</span>
+                                </p>
+                                <p class="h5 mb-4">
+                                    <span class="o_animated_text o_animate o_anim_slide_in o_anim_from_bottom o_visible o_animated" style="--wanim-intensity: 100; animation-name: o_anim_slide_in_up; animation-play-state: running; visibility: visible;">Save upto 20%</span>
+                                </p>
+                                <a href="#" class="btn rounded-0 border-bottom position-absolute bottom-0 mb-5 px-0 o_default_snippet_text o_animate o_anim_slide_in o_anim_from_bottom o_visible o_animated" style="--wanim-intensity: 100; animation-name: o_anim_slide_in_up; animation-play-state: running; visibility: visible;">Shop Now <i class="fa fa-arrow-right ms-2"/></a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </template>
+
+    <template id="slider_style_1_carousel">
+        <div t-attf-class="#{_item_class} carousel-item oe_custom_bg oe_img_bg pt16 pb16" style="" data-name="Slide">
+                <section class="col-12 t_img_hover_1">
+                    <img class="img img-fluid" src="/theme_clarico_vega/static/src/img/snippets/banner_7.jpg"/>
+                    <div class="position-absolute p-5 bottom-0">
+                        <p class="h2 mb-4">
+                            <span class="o_animated_text o_animate o_anim_slide_in o_anim_from_bottom o_visible o_animated" style="--wanim-intensity: 100; animation-name: o_anim_slide_in_up; animation-play-state: running; visibility: visible;">Lorem ipsum</span>
+                        </p>
+                        <p class="h4 mb-4">
+                            <span class="o_animated_text o_animate o_anim_slide_in o_anim_from_bottom o_visible o_animated" style="--wanim-intensity: 100; animation-name: o_anim_slide_in_up; animation-play-state: running; visibility: visible;">Save upto 20%</span>
+                        </p>
+                        <a href="#" class="btn btn-outline-primary mb-5 btn_wish o_default_snippet_text o_animate o_anim_slide_in o_anim_from_bottom o_visible o_animated" style="--wanim-intensity: 100; animation-name: o_anim_slide_in_up; animation-play-state: running; visibility: visible;">Shop Collection <i class="fa fa-arrow-right ms-2"/></a>
+                    </div>
+                </section>
+        </div>
+    </template>
+
+    <!-- Slider Style 2-->
+    <template id="slider_style_2" name="Slider style 2">
+        <section class="container simple_slider_style_2">
+            <div class="row align-items-center">
+                <section class="s_carousel_wrapper col-md-9 slider_style_2_left" data-vxml="001" data-vcss="001">
+                    <div id="myCarousel" class="s_carousel_default s_carousel carousel slide carousel-dark d-flex"
+                         data-interval="10000">
+                        <div class="s_carousel_indicators_dots carousel-indicators">
+                            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Carousel indicator"/>
+                            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Carousel indicator"/>
+                        </div>
+                        <div class="carousel-inner te_arrow_small">
+                            <t t-call="theme_clarico_vega.small_slider_style_2_carousel">
+                                <t t-set="_item_class" t-value="'active'"/>
+                            </t>
+                            <t t-call="theme_clarico_vega.small_slider_style_2_carousel"/>
+                        </div>
+                    </div>
+                </section>
+                <section class="col-md-3 slider_style_1_right">
+                    <div class="d-flex flex-column slider_style_right_content pt16 pb16">
+                        <div class="position-relative slider_style_right_content_text">
+                            <img class="img w-100" src="/theme_clarico_vega/static/src/img/snippets/static_sliders/banner_2.jpg"/>
+                            <div class="position-absolute top-0 p-3">
+                                <h5>Free Shipping on first order </h5>
+                                <a class="text-black text-decoration-none right_content_link text-uppercase">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="position-relative slider_style_right_content_text">
+                            <img class="img w-100" src="/theme_clarico_vega/static/src/img/snippets/static_sliders/banner_3.jpg"/>
+                             <div class="position-absolute top-0 p-3">
+                                <h5>Super discount for you</h5>
+                                <a class="text-black text-decoration-none right_content_link text-uppercase">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </template>
+
+    <template id="small_slider_style_2_carousel">
+        <div t-attf-class="#{_item_class} carousel-item oe_custom_bg oe_img_bg pt16 pb16 px-0" style="" data-name="Slide">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <section class="col-12">
+                        <img class="img img-fluid main_img_left" src="/theme_clarico_vega/static/src/img/snippets/static_sliders/banner_1.jpg"/>
+                        <div class="p-3 main_content_left">
+                            <h2>
+                                <p class="h2 mb-3 d-block o_animated_text o_animate o_anim_slide_in o_anim_from_top o_visible o_animated">End Of Season Sale!</p>
+                                <p class="h2 mb-3 d-block o_animated_text o_animate o_anim_slide_in o_anim_from_top o_visible o_animated">Flat 20% off</p>
+                            </h2>
+                            <p class="slider_left_text my-4 d-block o_animated_text o_animate o_anim_slide_in o_anim_from_top o_visible o_animated">Free Shipping On First Order</p>
+                            <a>
+                                <button class="btn btn-primary rounded-pill o_default_snippet_text o_animate o_anim_slide_in o_anim_from_top o_visible o_animated">
+                                    Shop Now
+                                    <i class="fa fa fa-angle-right"/>
+                                </button>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Slider Style 3-->
+    <template id="slider_style_3" name="Slider style 3">
+        <section class="container simple_slider_style_3">
+            <div class="row align-items-center">
+                <section class="s_carousel_wrapper col-lg-8 slider_style_3_left" data-vxml="001" data-vcss="001">
+                    <div id="myCarousel" class="s_carousel_default s_carousel carousel slide carousel-dark d-flex"
+                         data-interval="10000">
+                        <div class="s_carousel_indicators_dots carousel-indicators">
+                            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Carousel indicator"/>
+                            <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Carousel indicator"/>
+                        </div>
+                        <div class="carousel-inner te_arrow_small">
+                            <t t-call="theme_clarico_vega.small_slider_style_3_carousel">
+                                <t t-set="_item_class" t-value="'active'"/>
+                            </t>
+                            <t t-call="theme_clarico_vega.small_slider_style_3_carousel"/>
+                        </div>
+                    </div>
+                </section>
+                <section class="col-lg-4 slider_style_1_right">
+                    <!--Nested rows within a column-->
+                    <div class="row pb32">
+                        <div class="col-12">
+                            <div class="text-white position-relative slider_style_right_content_text">
+                                <img class="img w-100" src="/theme_clarico_vega/static/src/img/snippets/static_sliders/banner_11.jpg"/>
+                                <div class="position-absolute top-0 p-3">
+                                    <h5>Free Shipping on first order </h5>
+                                    <a class="text-white text-decoration-none right_content_link text-uppercase">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="text-white text-center position-relative slider_style_right_content_text">
+                                <img class="img w-100" src="/theme_clarico_vega/static/src/img/snippets/static_sliders/banner_12.jpg"/>
+                                 <div class="position-absolute top-0 p-3">
+                                    <h5>Super discount for you</h5>
+                                    <a class="text-white text-decoration-none right_content_link text-uppercase">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="text-white text-center position-relative slider_style_right_content_text">
+                                <img class="img w-100" src="/theme_clarico_vega/static/src/img/snippets/static_sliders/banner_13.jpg"/>
+                                 <div class="position-absolute top-0 p-3">
+                                    <h5>Deal Of The Day</h5>
+                                    <a class="text-white text-decoration-none right_content_link text-uppercase">Learn More</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </template>
+
+    <template id="small_slider_style_3_carousel">
+        <div t-attf-class="#{_item_class} carousel-item oe_custom_bg oe_img_bg pt16 pb16 px-0" style="" data-name="Slide">
+            <div class="container-fluid">
+                <div class="row align-items-center">
+                    <section class="col-12">
+                        <img class="img img-fluid main_img_left" src="/theme_clarico_vega/static/src/img/snippets/static_sliders/banner_10.jpg"/>
+                        <div class="p-3 main_content_left">
+                            <h2>
+                                <p class="h2 mb-3 d-block o_animated_text o_animate o_visible o_default_snippet_text o_anim_slide_in o_anim_from_right o_animated">End Of Season Sale!</p>
+                                <p class="h2 mb-3 d-block o_animated_text o_animate o_visible o_default_snippet_text o_anim_slide_in o_anim_from_right o_animated">Flat 20% off</p>
+                            </h2>
+                            <p class="slider_left_text my-4 d-block o_animated_text o_animate o_anim_slide_in o_visible o_default_snippet_text o_anim_from_right o_animated">Free Shipping On First Order</p>
+                            <a>
+                                <button class="btn btn-primary slider_left_btn o_default_snippet_text o_animate o_anim_slide_in o_visible o_anim_from_right o_animated">
+                                    Shop Now
+                                    <i class="fa fa fa-angle-right"/>
+                                </button>
+                            </a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </template>
+
+</odoo>

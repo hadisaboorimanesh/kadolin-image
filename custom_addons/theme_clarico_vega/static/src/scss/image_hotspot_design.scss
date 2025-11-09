@@ -1,0 +1,165 @@
+.hotspot_element {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 50%;
+    top: 50%;
+    margin: auto;
+    position:absolute;
+    z-index: 3;
+    cursor: pointer;
+    a.btn{
+        padding: 0 !important;
+    }
+    .hotspot_dot{
+        background-color: #ffffff;
+        padding: 8px;
+        animation: animate-light 2s linear infinite;
+        display: flex;
+        cursor: pointer;
+    }
+    &.circle {
+        a:not(.hotspot_add_to_cart_btn){
+            border-radius: 50%;
+        }
+        .hotspot_dot{
+            border-radius: 50%;
+        }
+    }
+    &.square{
+        border-radius: unset !important;
+        a{
+            border-radius: unset !important;
+        }
+        .hotspot_dot{
+            border-radius: unset !important;
+        }
+    }
+    &.drop{
+        .hotspot_dot{
+            border-radius: 50% 50% 0% 50% !important;
+            transform: translateY(10px) rotate(45deg) !important;
+            background-color: #ffffff !important;
+            &:before{
+                transform: rotate(315deg) !important;
+            }
+        }
+        &:before{
+            content: unset !important;
+        }
+    }
+    &.fade_hotspot {
+        .hotspot_dot {
+            animation: animate-light 2s linear infinite;
+        }
+     }
+    &.blink{
+        a:not(.hotspot_add_to_cart_btn){
+            padding: 0px;
+        }
+        .hotspot_dot{
+            background-color: transparent;
+            animation: none;
+        }
+        &:before{
+            content: "";
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            background-color: white;
+            animation: zoom-in-zoom-out 1s ease infinite !important;
+        }
+    }
+    &.blink.circle{
+        &:before{
+            border-radius: 50%;
+        }
+    }
+     &.light_theme{
+        .hotspot_dot {
+            animation: animate-light 2s linear infinite;
+        }
+    }
+    &.dark_theme{
+        .hotspot_dot {
+            animation: animate 5s linear infinite;
+        }
+    }
+}
+/* ----------------Add Hotspot animations--------------- */
+@keyframes animate-light {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7), 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+    40% {
+        box-shadow: 0 0 0 0 rgba(53, 151, 156, 0), 0 0 0 0 rgba(255, 255, 255, 0.7);
+    }
+    80% {
+        box-shadow: 0 0 0 10px rgba(53, 151, 156, 0), 0 0 0 10px rgba(53, 151, 156, 0);
+    }
+    100%{
+        box-shadow: 0 0 0 0 rgba(53, 151, 156, 0), 0 0 0 10px rgba(53, 151, 156, 0);
+    }
+}
+
+@keyframes zoom-in-zoom-out {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.1, 1.1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+/* ----------------hotspot popup--------------- */
+.hotspot-popover {
+    box-shadow: rgba(0, 0, 0, 0.20) 0px 1px 10px;
+    border-radius: 8px;
+    outline: 0px;
+    .modal.o_legacy_dialog{
+        display: none !important;
+    }
+    img {
+        max-width: 96px !important;
+        max-height: 100px !important;
+        height:100px;
+    }
+    .product_price {
+        border-top: 2px solid #ededed;
+        padding-top: 5px;
+        .text-danger.oe_default_price {
+            width: auto;
+            display: inline-block;
+            @include media-breakpoint-down(sm) {
+                font-size: $font-size-base - 0.25; /* Reduced 4px */
+            }
+        }
+        del {
+            color:#969696 !important;
+            display: inline-block;
+            span {
+                font-weight: normal;
+            }
+        }
+    }
+
+    .hotspot_add_to_cart_btn {
+        display: inline-block;
+        margin-top: 5px;
+        padding: 0.25rem 0.75rem;
+        width: auto;
+        .fa {
+            font-size: 1rem;
+            padding-right: 0.25rem;
+            vertical-align: middle;
+        }
+    }
+    .border_custom{
+         border-top: 2px solid #ededed;
+    }
+    .custom_width{
+        width: 253px;
+    }
+}

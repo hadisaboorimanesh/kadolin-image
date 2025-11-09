@@ -1,0 +1,1999 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* emipro_theme_base
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-08 07:13+0000\n"
+"PO-Revision-Date: 2025-07-08 07:13+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"            \"description\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"            \"icons\": [{ \"src\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"            \"short_name\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"            \"url\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"        \"display\": \"standalone\",\n"
+"        \"background_color\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"        \"icons\": [{\n"
+"        \"sizes\": \"48x48\",\n"
+"        \"src\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"        \"short_name\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"        \"shortcuts\": ["
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"        \"theme_color\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"        \"type\": \"image/png\"\n"
+"        }, {\n"
+"        \"sizes\": \"144x144\",\n"
+"        \"src\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"        \"type\": \"image/png\"\n"
+"        }, {\n"
+"        \"sizes\": \"152x152\",\n"
+"        \"src\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"        \"type\": \"image/png\"\n"
+"        }, {\n"
+"        \"sizes\": \"168x168\",\n"
+"        \"src\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"        \"type\": \"image/png\"\n"
+"        }, {\n"
+"        \"sizes\": \"192x192\",\n"
+"        \"src\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"        \"type\": \"image/png\"\n"
+"        }, {\n"
+"        \"sizes\": \"256x256\",\n"
+"        \"src\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"        \"type\": \"image/png\"\n"
+"        }, {\n"
+"        \"sizes\": \"384x384\",\n"
+"        \"src\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"        \"type\": \"image/png\"\n"
+"        }, {\n"
+"        \"sizes\": \"512x512\",\n"
+"        \"src\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"        \"type\": \"image/png\"\n"
+"        }, {\n"
+"        \"sizes\": \"72x72\",\n"
+"        \"src\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"        \"type\": \"image/png\"\n"
+"        }, {\n"
+"        \"sizes\": \"96x96\",\n"
+"        \"src\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\",\n"
+"        \"type\": \"image/png\"\n"
+"        }],\n"
+"        \"start_url\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"\", \"sizes\": \"192x192\"}]\n"
+"            }"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.service_worker
+msgid ""
+"';\n"
+"        var urlsToCache = [\n"
+"        '/',\n"
+"        '/pwa/offline',\n"
+"        '/emipro_theme_base/static/src/img/offline_app.png',\n"
+"        '/emipro_theme_base/static/src/img/pwa_offline.jpg',\n"
+"        ];\n"
+"\n"
+"        // Service worker installation event, prefetch some data\n"
+"        // during installation of service worker\n"
+"        self.addEventListener('install', function(event) {\n"
+"        event.waitUntil(\n"
+"        caches.open(CACHE_NAME)\n"
+"        .then(function(cache) {\n"
+"        return cache.addAll(urlsToCache);\n"
+"        })\n"
+"        );\n"
+"        });\n"
+"        self.addEventListener('activate', function(evt) {\n"
+"        evt.waitUntil(\n"
+"        caches.keys().then(function(keyList) {\n"
+"        return Promise.all(keyList.map(function(key) {\n"
+"        if (key !== CACHE_NAME) {\n"
+"        return caches.delete(key);\n"
+"        }\n"
+"        }));\n"
+"        })\n"
+"        );\n"
+"        self.clients.claim();\n"
+"        });\n"
+"        // override request fetch event so that we can manipulate it and respond data from cache\n"
+"        self.addEventListener('fetch', function(event) {\n"
+"\n"
+"        // check if request is made by chrome extensions or web page\n"
+"        // if request is made for web page url must contains http.\n"
+"        if (!(event.request.url.indexOf('http') === 0)) return;\n"
+"        // skip the request. if request is not made with http protocol\n"
+"\n"
+"        event.respondWith(\n"
+"        fetch(event.request) // Request from network\n"
+"        .then(function(response) {\n"
+"        // Check if we received a valid response\n"
+"        if(!response || response.status !== 200 || response.type !== 'basic') {\n"
+"        return response;\n"
+"        }\n"
+"        var requestMethod = event.request.method\n"
+"        if(!requestMethod || requestMethod != 'POST'){\n"
+"        var responseToCache = response.clone();\n"
+"        caches.open(CACHE_NAME)\n"
+"        .then(function(cache) {\n"
+"        cache.put(event.request, responseToCache);\n"
+"        });\n"
+"        }\n"
+"        return response;\n"
+"        })\n"
+"        .catch(function(err) {\n"
+"        return caches.open(CACHE_NAME) // Search request from cache\n"
+"        .then(function(cache) {\n"
+"        return cache.match(event.request)\n"
+"        .then(function(response) {\n"
+"        if(response){\n"
+"        return response\n"
+"        }\n"
+"        return cache.match('/pwa/offline') || Promise.resolve()\n"
+"        })\n"
+"        });\n"
+"        })\n"
+"        );\n"
+"        });"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.actions.act_window,help:emipro_theme_base.action_search_keyword_report
+msgid "1) There are no keyword searched on website."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.actions.act_window,help:emipro_theme_base.action_search_keyword_report
+msgid ""
+"2) There are no keyword searched on website according to applied filter."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.actions.act_window,help:emipro_theme_base.action_search_keyword_report
+msgid "3) All searched keyword records are removed."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_brand_config_form_view
+msgid ""
+"<small class=\"text-danger fw-bold\">If any other brand set on select product list\n"
+"                        will replace on save.\n"
+"                    </small>"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_label_config_form_view
+msgid ""
+"<small class=\"text-danger fw-bold\">If any other label set on select "
+"product list will replace on save.</small>"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_price_table
+msgid "<span class=\"text-muted product_bold_span\"> at </span>"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_price_table
+msgid "<span class=\"text-muted\">/ Unit</span>"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_price_table
+msgid "<span class=\"text-muted\">Buy</span>"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.actions.act_window,help:emipro_theme_base.action_search_keyword_report
+msgid "<span>There are few possibility you are seeing this message:</span>"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:mail.template,body_html:emipro_theme_base.share_wishlist_collection_email
+msgid ""
+"<t t-set=\"collection\" t-value=\"object\"/>\n"
+"            <t t-set=\"user\" t-value=\"collection.partner_id.user_id\"/>\n"
+"            <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" style=\"padding-top: 16px; background-color: #F1F1F1; font-family:Verdana, Arial,sans-serif; color: #454748; width: 100%; border-collapse:separate;\">\n"
+"                <tr>\n"
+"                    <td align=\"center\">\n"
+"                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"padding: 16px; background-color: white; color: #454748; border-collapse:separate;\">\n"
+"                            <tbody>\n"
+"                                <!-- HEADER -->\n"
+"                                <tr>\n"
+"                                    <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
+"                                            <tr>\n"
+"                                                <td valign=\"middle\" align=\"left\">\n"
+"                                                    <img t-attf-src=\"/logo.png?company={{ user.company_id.id }}\" style=\"padding: 0px; margin: 0px; height: auto; width: 80px;\" t-att-alt=\"user.company_id.name\"/>\n"
+"                                                </td>\n"
+"                                            </tr>\n"
+"                                            <tr>\n"
+"                                                <td colspan=\"2\" style=\"text-align:center;\">\n"
+"                                                    <hr width=\"100%\" style=\"background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:16px 0px 16px 0px;\"/>\n"
+"                                                </td>\n"
+"                                            </tr>\n"
+"                                        </table>\n"
+"                                    </td>\n"
+"                                </tr>\n"
+"                                <!-- CONTENT -->\n"
+"                                <tr>\n"
+"                                    <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: white; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
+"                                            <tr>\n"
+"                                                <td valign=\"top\" style=\"font-size: 13px;\">\n"
+"                                                    <div>\n"
+"                                                        <t t-if=\"collection\" class=\"coll\">\n"
+"                                                            <div class=\"container wishlist_collection_list\">\n"
+"                                                                <table class=\"table table-bordered table-striped text-center mt16 table-comparator\" id=\"table_collection_rec\">\n"
+"                                                                    <tbody class=\"wishlist_collection_tbody\">\n"
+"                                                                        <tr class=\"collection_rec\" t-att-data-collection_id=\"'%s' % collection.id\">\n"
+"                                                                            <p>\n"
+"                                                                                Hi,\n"
+"                                                                                <br/>\n"
+"                                                                                <br/>\n"
+"                                                                                We're excited to share a specially\n"
+"                                                                                curated wishlist collection\n"
+"                                                                                <i>\n"
+"                                                                                    <b t-out=\"collection.name\"/>\n"
+"                                                                                </i>\n"
+"                                                                                from\n"
+"                                                                                <b t-out=\"collection.partner_id.name\"/>\n"
+"                                                                                , just for you!\n"
+"                                                                                <br/>\n"
+"                                                                                Explore the handpicked selections\n"
+"                                                                                tailored to your preferences and find\n"
+"                                                                                the perfect items that match your needs.\n"
+"                                                                                <br/>\n"
+"                                                                                <br/>\n"
+"                                                                                Don't miss out—browse through the\n"
+"                                                                                collection today and let us know if\n"
+"                                                                                anything catches your eye! We hope you\n"
+"                                                                                enjoy exploring these\n"
+"                                                                                handpicked selections.\n"
+"                                                                            </p>\n"
+"                                                                            <br/>\n"
+"                                                                            <t t-foreach=\"collection.product_line_ids\" t-as=\"product_line\">\n"
+"                                                                                <tr class=\"whole_product_line\" t-att-data-wish-id=\"product_line.id\" t-att-data-product-id=\"product_line.product_id.id\" t-att-data-ref_collection_id=\"'%s' % collection.id\">\n"
+"                                                                                    <td class=\"\" align=\"left\">\n"
+"                                                                                        <img t-attf-src=\"/web/image/product.product/#{product_line.product_id.id}/image_128\" class=\"img img-fluid\" style=\"margin:auto;\" alt=\"Product image\"/>\n"
+"                                                                                        <span style=\"vertical-align:top; font-size:16px;\">\n"
+"                                                                                            <a t-att-href=\"'/shop/product/%s' % slug(product_line.product_id.product_tmpl_id)\">\n"
+"                                                                                                <t t-out=\"product_line.product_id.name\"/>\n"
+"                                                                                            </a>\n"
+"                                                                                        </span>\n"
+"                                                                                    </td>\n"
+"                                                                                </tr>\n"
+"                                                                            </t>\n"
+"                                                                        </tr>\n"
+"                                                                    </tbody>\n"
+"                                                                </table>\n"
+"                                                            </div>\n"
+"                                                        </t>\n"
+"                                                    </div>\n"
+"                                                </td>\n"
+"                                            </tr>\n"
+"                                            <tr>\n"
+"                                                <td style=\"text-align:center;\">\n"
+"                                                    <hr width=\"100%\" style=\"background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 16px 0px;\"/>\n"
+"                                                </td>\n"
+"                                            </tr>\n"
+"                                        </table>\n"
+"                                    </td>\n"
+"                                </tr>\n"
+"                                <!-- FOOTER -->\n"
+"                                <tr>\n"
+"                                    <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: white; font-size: 11px; padding: 0px 8px 0px 8px; border-collapse:separate;\">\n"
+"                                            <tr>\n"
+"                                                <td valign=\"middle\" align=\"left\">\n"
+"                                                    <t t-out=\"user.company_id.name or ''\">YourCompany</t>\n"
+"                                                </td>\n"
+"                                            </tr>\n"
+"                                            <tr>\n"
+"                                                <td valign=\"middle\" align=\"left\" style=\"opacity: 0.7;\">\n"
+"                                                    <t t-out=\"user.company_id.phone or ''\">+1 650-123-4567</t>\n"
+"                                                    <t t-if=\"user.company_id.phone and (user.company_id.email or user.company_id.website)\">\n"
+"                                                        |\n"
+"                                                    </t>\n"
+"                                                    <t t-if=\"user.company_id.email\">\n"
+"                                                        <a t-attf-href=\"'mailto:%s' % {{ user.company_id.email }}\" style=\"text-decoration:none; color: #454748;\" t-out=\"user.company_id.email or ''\">info@yourcompany.com\n"
+"                                                        </a>\n"
+"                                                    </t>\n"
+"                                                    <t t-if=\"user.company_id.email and user.company_id.website\">|</t>\n"
+"                                                    <t t-if=\"user.company_id.website\">\n"
+"                                                        <a t-attf-href=\"'%s' % {{ user.company_id.website }}\" style=\"text-decoration:none; color: #454748;\" t-out=\"user.company_id.website or ''\">http://www.example.com\n"
+"                                                        </a>\n"
+"                                                    </t>\n"
+"                                                </td>\n"
+"                                            </tr>\n"
+"                                        </table>\n"
+"                                    </td>\n"
+"                                </tr>\n"
+"                            </tbody>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"                <!-- POWERED BY -->\n"
+"                <tr>\n"
+"                    <td align=\"center\" style=\"min-width: 590px;\">\n"
+"                        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"min-width: 590px; background-color: #F1F1F1; color: #454748; padding: 8px; border-collapse:separate;\">\n"
+"                            <tr>\n"
+"                                <td style=\"text-align: center; font-size: 13px;\">\n"
+"                                    Powered by\n"
+"                                    <a target=\"_blank\" href=\"https://www.odoo.com\" style=\"color: #875A7B;\">Odoo</a>\n"
+"                                </td>\n"
+"                            </tr>\n"
+"                        </table>\n"
+"                    </td>\n"
+"                </tr>\n"
+"            </table>\n"
+"        "
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.actions.act_window,help:emipro_theme_base.action_synonym_group
+msgid "Add new synonym group for searching on website."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.ui.menu,name:emipro_theme_base.menu_advanced_search
+msgid "Advance Search"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__enable_smart_search
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_website_form
+msgid "Advanced Search"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__website_menu__category_selection__all
+msgid "All Categories"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:website.snippet.filter,name:emipro_theme_base.dynamic_filter_category
+msgid "All Category"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:website.snippet.filter,name:emipro_theme_base.dynamic_filter_brand
+msgid "All Product Brands"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:website.snippet.filter,name:emipro_theme_base.dynamic_filter_product_template
+msgid "All Products"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__allow_countries
+msgid "Allow Countries"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.pwa_ios_popup
+msgid "App offline"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__app_image_512
+msgid "Application Image(512x512)"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_product_ribbon_form_ept
+msgid "Are you sure to clear all products ?"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_attribute_popup
+msgid "Attribute Measure"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.actions.act_window,name:emipro_theme_base.action_attribute_popup
+#: model:ir.actions.act_window,name:emipro_theme_base.action_open_attribute_popup
+#: model:ir.ui.menu,name:emipro_theme_base.attribute_popup
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.attribute_popup_tree
+msgid "Attribute Popup"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_attribute__attribute_popup_id
+msgid "Attribute popup"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__website__button_or_scroll__automatic
+msgid "Automatic- on page scroll"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_website_form
+msgid "B2B Features"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.pwa_offline
+msgid "BACK TO HOME"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_menu_label__label_background_color
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__pwa_bg_color
+msgid "Background Color"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_price_table
+msgid "Big savings with bulk buys."
+msgstr ""
+
+#. module: emipro_theme_base
+#. odoo-javascript
+#: code:addons/emipro_theme_base/static/src/snippets/s_searchbar/000.xml:0
+#: model:ir.actions.act_window,name:emipro_theme_base.action_product_brand
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand_config__brand_id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_product__product_brand_id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_template__product_brand_id
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_brand_config_form_view
+msgid "Brand"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__meta_description
+msgid "Brand Meta Description"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__meta_title
+msgid "Brand Meta Title"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__name
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_brand_form
+msgid "Brand Name"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.actions.act_window,name:emipro_theme_base.action_open_brand_products
+msgid "Brand Products"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_product_product__product_brand_id
+#: model:ir.model.fields,help:emipro_theme_base.field_product_template__product_brand_id
+msgid "Brand for this product"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.brand_listing_template
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_brand_tree
+msgid "Brands"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__website__button_or_scroll__button
+msgid "Button- on click button"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__can_publish
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__can_publish
+msgid "Can Publish"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_brand_config_form_view
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_label_config_form_view
+msgid "Cancel"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_website_form
+msgid "Card Layout"
+msgstr ""
+
+#. module: emipro_theme_base
+#. odoo-javascript
+#: code:addons/emipro_theme_base/static/src/snippets/s_searchbar/000.xml:0
+msgid "Categories"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__mobile_header_icon__dynamic_opt_type__categories_opt
+msgid "Categories List"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_public_category__icon
+msgid "Category Icon"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_menu_label__category_ids
+msgid "Category Ids"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website_menu__category_selection
+msgid "Category Selection"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_product_ribbon_form_ept
+msgid "Clear All"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_wishlist_collection__name
+msgid "Collection"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_product_line__collection_id
+msgid "Collection in which this product line belongs"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_menu_label__label_text_color
+msgid "Color"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_brand_config_form_view
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_label_config_form_view
+msgid "Configure"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_brand_form
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_product_ribbon_form_ept
+msgid "Configure Products"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_attribute_popup__content
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_tab_line_form
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_template_form_view_ept
+msgid "Content"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_attribute_popup__style
+msgid "Content Style"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_website_form
+msgid "Country for Customer Billing & Shipping Address"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_attribute_popup__create_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mega_menu_content__create_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_menu_label__create_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mobile_header_icon__create_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__create_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand_config__create_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_label_config__create_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_line__create_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__create_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_pwa_app_shortcut_ept__create_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_search_keyword_report__create_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_synonym_group__create_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_wishlist_collection__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_attribute_popup__create_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mega_menu_content__create_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_menu_label__create_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mobile_header_icon__create_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__create_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand_config__create_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_label_config__create_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_line__create_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__create_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_pwa_app_shortcut_ept__create_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_search_keyword_report__create_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_synonym_group__create_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_wishlist_collection__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_wishlist_collection__partner_id
+msgid "Customer"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_search_keyword_report_search
+msgid "Date"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__default_country_id
+msgid "Default Country"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__description
+#: model:ir.model.fields,field_description:emipro_theme_base.field_pwa_app_shortcut_ept__description
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_brand_form
+msgid "Description"
+msgstr ""
+
+#. module: emipro_theme_base
+#. odoo-python
+#: code:addons/emipro_theme_base/models/website.py:0
+msgid "Discount"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.actions.server,name:emipro_theme_base.dynamic_snippet_discounted_products_action
+#: model:website.snippet.filter,name:emipro_theme_base.dynamic_filter_latest_sold_products
+msgid "Discounted Products"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__option_out_of_stock
+msgid "Display Label on Out of Stock Products"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__is_b2b_message
+msgid "Display Message?"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_attribute_popup__display_name
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mega_menu_content__display_name
+#: model:ir.model.fields,field_description:emipro_theme_base.field_menu_label__display_name
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mobile_header_icon__display_name
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__display_name
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand_config__display_name
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_label_config__display_name
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_line__display_name
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__display_name
+#: model:ir.model.fields,field_description:emipro_theme_base.field_pwa_app_shortcut_ept__display_name
+#: model:ir.model.fields,field_description:emipro_theme_base.field_search_keyword_report__display_name
+#: model:ir.model.fields,field_description:emipro_theme_base.field_synonym_group__display_name
+#: model:ir.model.fields,field_description:emipro_theme_base.field_wishlist_collection__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__display_out_of_stock
+msgid "Display Out of Stock Products"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_product_pricelist__enable_price_table
+msgid "Display Price table for more than one minimum quantity rule"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.clarico_vega_pricelist_form_view
+msgid "Display Product Price on Website"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__is_free_shipping
+msgid "Display free shipping offer in cart"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__is_card_layout
+msgid "Display the product card layout."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_website__lazy_load_image
+msgid "Display this image while lazy load applies."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_website__load_more_image
+msgid "Display this image while load more applies."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website_menu__dynamic_mega_menu
+msgid "Dynamic Mega Menu"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.synonym_group_view_form
+msgid "Eg. Kids, Child, Children"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_website__is_pwa
+msgid "Enable Progressive Web Application"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_website__enable_smart_search
+msgid "Enable it to activate search synonyms and search keywords reporting."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__footer_description
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_public_category__footer_description
+msgid "Footer Description"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_website_form
+msgid "Free Shipping"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__free_shipping_price
+msgid "Free Shipping Price"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_product_tab_line__sequence
+msgid "Gives the sequence order when displaying."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__product_tab_line__tab_type__global
+msgid "Global"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.actions.act_window,help:emipro_theme_base.action_search_keyword_report
+msgid "Go to website and search something, you'll have new record here!"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_search_keyword_report_search
+msgid "Group By"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_ir_http
+msgid "HTTP Routing"
+msgstr "HTTP-Routing"
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mobile_header_icon__name
+msgid "Header Icon Name"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_menu_label__label_background_color
+msgid ""
+"Here you can set a specific HTML color index (e.g. #ff0000) to display the "
+"menu label background color"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_menu_label__label_text_color
+msgid ""
+"Here you can set a specific HTML color index (e.g. #ff0000) to display the "
+"text color of menu label."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_product_attribute__icon_style
+msgid "Here, Icon size is 40*40"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__b2b_hide_add_to_cart
+msgid "Hide Add to Cart Feature"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__b2b_hide_price
+msgid "Hide Product Price"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website_menu__is_highlight_menu
+msgid "Highlight Menu"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__homepage_id
+msgid "Homepage"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_attribute_popup__id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mega_menu_content__id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_menu_label__id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mobile_header_icon__id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand_config__id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_label_config__id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_line__id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_pwa_app_shortcut_ept__id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_search_keyword_report__id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_synonym_group__id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_wishlist_collection__id
+msgid "ID"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_pwa_app_shortcut_ept__icon
+msgid "Icon"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__icon_content
+msgid "Icon Content"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_attribute__icon_style
+msgid "Icon Style"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_website__option_out_of_stock
+msgid ""
+"If Yes, then message/text will be displayed for out of stock products on "
+"shop page"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mega_menu_content__image
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__image_1920
+msgid "Image"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__image_1024
+msgid "Image 1024"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__image_128
+msgid "Image 128"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__image_256
+msgid "Image 256"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__image_512
+msgid "Image 512"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mega_menu_content__url
+msgid "Image/Button URL"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mobile_header_icon__is_dynamic_option
+msgid "Is Dynamic Option"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_website_form
+msgid "Is Free Shipping"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__is_modified
+msgid "Is Modified"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__is_published
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__is_published
+msgid "Is Published"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_product_pricelist_item__is_display_timer
+msgid "It shows the offer timer on the product page."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_website__pwa_short_name
+msgid "It will be used in a browser pop-up and the app shortcut name."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_website__app_image_512
+msgid ""
+"It will be used in an app launcher, home screen, splash screen icons. "
+"(Required 512x512)"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_website__pwa_name
+msgid "It will be used in the splash screen and Add To Home Screen’ pop-up."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_label_config__label_id
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_label_config_form_view
+msgid "Label"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__next_button_label
+msgid "Label for the Next Button"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__prev_button_label
+msgid "Label for the Prev Button"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_search_keyword_report_search
+msgid "Last 30 Days"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_attribute_popup__write_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mega_menu_content__write_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_menu_label__write_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mobile_header_icon__write_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__write_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand_config__write_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_label_config__write_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_line__write_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__write_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_pwa_app_shortcut_ept__write_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_search_keyword_report__write_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_synonym_group__write_uid
+#: model:ir.model.fields,field_description:emipro_theme_base.field_wishlist_collection__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_attribute_popup__write_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mega_menu_content__write_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_menu_label__write_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mobile_header_icon__write_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__write_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand_config__write_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_label_config__write_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_line__write_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__write_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_pwa_app_shortcut_ept__write_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_search_keyword_report__write_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_synonym_group__write_date
+#: model:ir.model.fields,field_description:emipro_theme_base.field_wishlist_collection__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_website_form
+msgid "Lazy Load"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_website__is_lazy_load
+msgid "Lazy load will be enabled"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__is_lazy_load
+msgid "Lazyload"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__lazy_load_image
+msgid "Lazyload Image"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_product_ribbon_form_ept
+msgid "Left"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mobile_header_icon__link_url
+msgid "Link URL"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__is_load_more
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_website_form
+msgid "Load More"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__load_more_image
+msgid "Load More Image"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_website__is_load_more
+msgid "Load more will be enabled"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__button_or_scroll
+msgid "Loading type for products"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_pricelist_item_offer_ept
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_pricelist_item_offer_form
+msgid "Max 35 characters for Message..."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_mega_menu_content
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website_menu__mega_menu_content
+msgid "Mega Menu Content"
+msgstr "Mega-Menü-Inhalt"
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website_menu__category_menu_styles
+msgid "Mega Menu Style"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.website_menus_form_inherit
+msgid "Mega Menu Style 1"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.website_menus_form_inherit
+msgid "Mega Menu Style 2"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.website_menus_form_inherit
+msgid "Mega Menu Style 3"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.website_menus_form_inherit
+msgid "Mega Menu Style 4"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.website_menus_form_inherit
+msgid "Mega Menu Style 5"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.website_menus_form_inherit
+msgid "Mega Menu Style 6"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.website_menus_form_inherit
+msgid "Mega Menu Style 7"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.website_menus_form_inherit
+msgid "Mega Menu Style 8"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.website_menus_form_inherit
+msgid "Mega Menu Style 9"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.website_menus_form_inherit
+msgid "Mega Menu Style Images"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_menu_label
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_public_category__menu_label_id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website_menu__menu_label_id
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.menu_label_form_view
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.menu_label_tree_view
+msgid "Menu Label"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.actions.act_window,name:emipro_theme_base.action_menu_label
+#: model:ir.ui.menu,name:emipro_theme_base.menu_labels
+msgid "Menu Labels"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.actions.act_window,name:emipro_theme_base.action_open_mobile_header_icon
+#: model:ir.model,name:emipro_theme_base.model_mobile_header_icon
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mobile_header_icon__header_icon
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.mobile_header_icon_form
+msgid "Mobile Header Icon"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.ui.menu,name:emipro_theme_base.mobile_header_icon
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.mobile_header_icon_list
+msgid "Mobile Header Icons"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_attribute_popup__name
+#: model:ir.model.fields,field_description:emipro_theme_base.field_menu_label__name
+#: model:ir.model.fields,field_description:emipro_theme_base.field_pwa_app_shortcut_ept__name
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__pwa_name
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_brand_tree
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_tab_line_form
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_template_form_view_ept
+msgid "Name"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_wishlist_collection__name
+msgid "Name of Collection"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_mobile_header_icon__name
+msgid "Name of Icon"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_menu_label__name
+msgid "Name of the menu label"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__website_menu__category_menu_styles__style6
+msgid "Nested menu"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.actions.act_window,help:emipro_theme_base.action_synonym_group
+msgid "No Synonym Group Found !"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.actions.act_window,help:emipro_theme_base.action_search_keyword_report
+msgid "No search keyword found."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.website_menus_form_inherit
+msgid "Note: According to sequence, the first two products will be shown."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.website_menus_form_inherit
+msgid "Note: According to sequence, the first two records will be shown."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_search_keyword_report__no_of_products_in_result
+msgid "Number of Products in Result"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_product_brand__products_count
+msgid "Number of product counts that configured to brand"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_product_ribbon__products_count
+msgid "Number of product counts that configured to label"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_search_keyword_report__no_of_products_in_result
+msgid ""
+"Number of products which are returned in result of search using this keyword"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_pricelist_item__offer_msg
+msgid "Offer Message"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_website_form
+msgid "Out of Stock"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__text_out_of_stock
+msgid "Out of Stock Label Text"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__is_pwa
+msgid "PWA"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_pwa_app_shortcut_ept
+msgid "PWA App Shortcut"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__pwa_shortcuts_ids
+msgid "PWA Shortcuts"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__parent_id
+msgid "Parent Tab"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__attribute_popup__style__popup
+msgid "Popup"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_ribbon__position
+msgid "Position"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_pricelist__enable_price_table
+msgid "Price Table?"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_product_pricelist
+msgid "Pricelist"
+msgstr "Preisliste"
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_product_pricelist_item
+msgid "Pricelist Rule"
+msgstr "Preislistenregel"
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_product_template
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand_config__product_ids
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_label_config__product_ids
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_line__product_id
+msgid "Product"
+msgstr "Produkt"
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_product_attribute
+msgid "Product Attribute"
+msgstr "Produktattribut"
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_product_brand
+msgid "Product Brand"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_product_brand_config
+msgid "Product Brand Configuration Wizard"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.ui.menu,name:emipro_theme_base.menu_product_brand
+msgid "Product Brands"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__products_count
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_ribbon__products_count
+msgid "Product Count"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_product_label_config
+msgid "Product Label Configuration Wizard"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_product_line
+#: model:ir.model.fields,field_description:emipro_theme_base.field_wishlist_collection__product_line_ids
+msgid "Product Line"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_product_ribbon_form_ept
+msgid "Product Ribbon Style Images"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_template_form_view_ept
+msgid "Product Tab"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_product_tab_line
+msgid "Product Tab Line"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.actions.act_window,name:emipro_theme_base.action_product_tab_line
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_product__tab_line_ids
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_template__tab_line_ids
+#: model:ir.ui.menu,name:emipro_theme_base.menu_product_tab_line
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_tab_line
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_template_form_view_ept
+msgid "Product Tabs"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__product_id
+msgid "Product Template"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_product_product
+msgid "Product Variant"
+msgstr "Produktvariante"
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_product_ribbon
+msgid "Product ribbon"
+msgstr "Produktband"
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__product_ids
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_ribbon__product_ids
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_brand_config_form_view
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_brand_form
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_label_config_form_view
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_product_ribbon_form_ept
+msgid "Products"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_website_form
+msgid "Progressive Web App(PWA)"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_line__quantity
+msgid "Quantity"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_product_line__quantity
+msgid "Quantity of Product"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_product_brand__website_id
+msgid "Restrict to a specific website."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_ribbon__html
+msgid "Ribbon html"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_product_ribbon_form_ept
+msgid "Right"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__product_attribute__icon_style__round
+msgid "Round"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_search_keyword_report__search_term
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_search_keyword_report_search
+msgid "Search Keyword"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.actions.act_window,name:emipro_theme_base.action_search_keyword_report
+#: model:ir.model,name:emipro_theme_base.model_search_keyword_report
+#: model:ir.ui.menu,name:emipro_theme_base.menu_search_keyword_report
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_search_keyword_report_tree
+msgid "Search Keyword Report"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__mobile_header_icon__dynamic_opt_type__search_opt
+msgid "Search Sidebar"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.ui.menu,name:emipro_theme_base.menu_search_synonyms
+msgid "Search Synonyms"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.actions.act_window,name:emipro_theme_base.action_synonym_group
+msgid "Search Synonyms Groups"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_search_keyword_report__search_term
+msgid "Search term used while searching on website."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__search_in_attributes_and_values
+msgid "Search with Attributes"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__search_in_brands
+msgid "Search with Brands"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_search_keyword_report_search
+msgid "Searched Today"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__see_all
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_website_form
+msgid "See All"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mobile_header_icon__dynamic_opt_type
+msgid "Select Any Option"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website_menu__product_brand_ids
+msgid "Select Brands"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website_menu__ecom_category
+msgid "Select Category"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website_menu__product_template_ids
+msgid "Select Products"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_product_public_category__menu_label_id
+#: model:ir.model.fields,help:emipro_theme_base.field_website_menu__menu_label_id
+msgid "Select a menu label for this category"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_attribute_popup__style
+msgid "Select style of content to render"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mega_menu_content__sequence
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mobile_header_icon__sequence
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__sequence
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_ribbon__sequence
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__sequence
+msgid "Sequence"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_product_product__tab_line_ids
+#: model:ir.model.fields,help:emipro_theme_base.field_product_template__tab_line_ids
+msgid "Set the product tabs"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_website_form
+msgid "Shop Page Layout"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__pwa_short_name
+msgid "Short Name"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_pricelist_item__is_display_timer
+msgid "Show Offer Timer"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_website_form
+msgid "Show See All ?"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__show_stock_filter
+msgid "Show Stock Filter in Shop Page"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_product_attribute__attribute_popup_id
+msgid "Show attribute popup on product page"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__attribute_popup__style__sidebar
+msgid "Sidebar"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__website_menu__category_selection__specific
+msgid "Specific Category"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__product_tab_line__tab_type__specific_product
+msgid "Specific Product"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__product_attribute__icon_style__square
+msgid "Square"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__pwa_start_url
+msgid "Start URL"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__website_menu__category_menu_styles__style1
+msgid "Style 1"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__website_menu__category_menu_styles__style2
+msgid "Style 2"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__website_menu__category_menu_styles__style3
+msgid "Style 3"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__website_menu__category_menu_styles__style4
+msgid "Style 4"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__website_menu__category_menu_styles__style5
+msgid "Style 5"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__website_menu__category_menu_styles__style7
+msgid "Style 7"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__website_menu__category_menu_styles__style8
+msgid "Style 8"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__website_menu__category_menu_styles__style9
+msgid "Style 9"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_synonym_group
+msgid "Synonym Group"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_synonym_group__name
+msgid "Synonyms Group"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_synonym_group__name
+msgid ""
+"Synonyms Group with comma separated keywords(Eg., Mobile, Smartphone, "
+"Cellphone)"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__tab_content
+msgid "Tab Content"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__tab_name
+msgid "Tab Name"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__tab_type
+msgid "Tab Type"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__text_b2b_hide_details
+msgid "Text for Details"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_website__pwa_theme_color
+msgid "The color is used to customize the look of the browser."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_website__pwa_bg_color
+msgid ""
+"The color used to customize the splash screen when launching from the home "
+"screen shortcut."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_public_category_form_view_extend
+msgid ""
+"The footer description appears at the bottom of the eCommerce categories "
+"page."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_product_brand__website_url
+#: model:ir.model.fields,help:emipro_theme_base.field_product_tab_line__website_url
+msgid "The full URL to access the document through the website."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_website_form
+msgid "Theme Clarico Vega"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__pwa_theme_color
+msgid "Theme Color"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_synonym_group__website_id
+msgid ""
+"This group will only accessible for specified website. Accessible for all "
+"websites if not specified!"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_website__pwa_start_url
+msgid ""
+"This is the URL on which the user will be landed when they add this app to "
+"the home screen and click on it."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.product_tab_line_form
+msgid ""
+"This tab will be displayed on website product page for all the products."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.pwa_ios_popup
+msgid "To install this Web App in your iPhone/iPad press"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_product_pricelist_item__offer_msg
+msgid "To set the message in the product offer timer."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website__show_attr_value
+msgid "Total Attributes Value"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_pwa_app_shortcut_ept__url
+msgid "URL"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_search_keyword_report__user_id
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_search_keyword_report_search
+msgid "User"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_wishlist_collection__partner_id
+msgid "User to which this collection belongs"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_search_keyword_report__user_id
+msgid "User who searched performed this search operation."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__product_ribbon__position__o_product_label_style_3_left
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_product_ribbon_form_ept
+msgid "Vega Edge Left"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__product_ribbon__position__o_product_label_style_3_right
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_product_ribbon_form_ept
+msgid "Vega Edge Right"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__product_ribbon__position__o_product_label_style_4_left
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_product_ribbon_form_ept
+msgid "Vega Round Left"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__product_ribbon__position__o_product_label_style_4_right
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_product_ribbon_form_ept
+msgid "Vega Round Right"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__product_ribbon__position__o_product_label_style_2_left
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_product_ribbon_form_ept
+msgid "Vega Square Shadow Left"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__product_ribbon__position__o_product_label_style_2_right
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_product_ribbon_form_ept
+msgid "Vega Square Shadow Right"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__product_ribbon__position__o_product_label_style_1_left
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_product_ribbon_form_ept
+msgid "Vega Tag Left"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields.selection,name:emipro_theme_base.selection__product_ribbon__position__o_product_label_style_1_right
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.view_emipro_theme_base_product_ribbon_form_ept
+msgid "Vega Tag Right"
+msgstr ""
+
+#. module: emipro_theme_base
+#. odoo-javascript
+#: code:addons/emipro_theme_base/static/src/snippets/s_searchbar/000.xml:0
+msgid ""
+"View all\n"
+"                    products\n"
+"                    with"
+msgstr ""
+
+#. module: emipro_theme_base
+#. odoo-javascript
+#: code:addons/emipro_theme_base/static/src/snippets/s_searchbar/000.xml:0
+msgid "View all products"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__website_published
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__website_published
+msgid "Visible on current website"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_website
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__website_id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__website_ids
+#: model:ir.model.fields,field_description:emipro_theme_base.field_pwa_app_shortcut_ept__website_id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_synonym_group__website_id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website_menu__website_id
+msgid "Website"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_website_menu
+msgid "Website Menu"
+msgstr "Website-Menü"
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_product_public_category
+msgid "Website Product Category"
+msgstr "Website-Produktkategorien"
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_website_snippet_filter
+msgid "Website Snippet Filter"
+msgstr "Website-Snippet-Filter"
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_brand__website_url
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_tab_line__website_url
+msgid "Website URL"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model,name:emipro_theme_base.model_wishlist_collection
+#: model:ir.model.fields,field_description:emipro_theme_base.field_product_line__collection_id
+msgid "Wishlist Collection"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:mail.template,name:emipro_theme_base.share_wishlist_collection_email
+msgid "Wishlist Collection: Share with the email"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_website_menu__product_brand_ids
+msgid "You can set product brands on mega menu style 1."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_website_menu__product_template_ids
+msgid "You can set product on mega menu style 8."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,help:emipro_theme_base.field_product_tab_line__website_ids
+msgid "You can set the description in particular website."
+msgstr ""
+
+#. module: emipro_theme_base
+#. odoo-python
+#: code:addons/emipro_theme_base/models/website.py:0
+msgid ""
+"You cannot enabled \"Display Message?\" without using \"Hide Add to Cart\" "
+"or \"Hide Product Price\"."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.pwa_ios_popup
+msgid "and then Add to Home Screen."
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.service_worker
+msgid "const CACHE_NAME = '"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:ir.model.fields,field_description:emipro_theme_base.field_mega_menu_content__website_menu_id
+#: model:ir.model.fields,field_description:emipro_theme_base.field_website_menu__mega_menu_content_ids
+msgid "website menu"
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid ""
+"{\n"
+"        \"name\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model_terms:ir.ui.view,arch_db:emipro_theme_base.manifest
+msgid "{\"name\": \""
+msgstr ""
+
+#. module: emipro_theme_base
+#: model:mail.template,subject:emipro_theme_base.share_wishlist_collection_email
+msgid "{{ ctx['subject'] }}"
+msgstr ""

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Popup to render when clicking add to collection button -->
+    <template id="product_add_to_collection_popup" inherit_id="website.layout">
+        <xpath expr="//div[@id='wrapwrap']" position="inside">
+            <!-- Logged-in user collection popup -->
+            <div id="select_collection_modal"/>
+        </xpath>
+    </template>
+
+    <!-- Select collection popup for login user -->
+    <template id="select_collection_popup_tmpl">
+        <div class="modal fade select_collection_popup" id="select_collection_popup" tabindex="-1" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="renameColLable">Select Collection</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"/>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" class="selected_product" name="selected_product"/>
+                        <input type="hidden" class="product_qty" name="product_qty"/>
+                        <t t-set="collections"
+                           t-value="request.env['wishlist.collection'].sudo().search([('partner_id', '=', request.website.env.user.partner_id.id)])"
+                           class="colls"/>
+                        <t t-if="not collections">
+                            <p>There are currently no collections for your account.</p>
+                            <br/>
+                        </t>
+                        <div id="wrapwrap">
+                            <div class="oe_structure">
+                                <div class="container collection_creation px-0 mb-3">
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <input type='text' name='collection_name'
+                                                   placeholder="Create new collection and click Add to Collection to add product in it"
+                                                   t-att-value="collection_name"
+                                                   class="form-control collection_name"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <p name="collection_name_message" role="alert"
+                                           class="alert alert-warning collection_name_message d-none">
+                                            *Either insert some name or use another name!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="collections_and_message">
+                            <t t-if="collections">
+                                <div t-attf-class="table-responsive">
+                                    <table class="table rounded mb-0 bg-white">
+                                        <div class="collection_list">
+                                            <t t-foreach="collections" t-as="collection">
+                                                <div class="list-group-item">
+                                                    <label class="form-check-label d-block"
+                                                           t-att-for="'coll_radio_box_' + str(collection.id)">
+                                                        <div class="form-check colls">
+                                                            <input class="coll_radio_box"
+                                                                   t-att-id="'coll_radio_box_' + str(collection.id)"
+                                                                   t-att-data-id="collection.id"
+                                                                   type="radio"
+                                                                   name="coll_radio_box"/>
+                                                            <span t-out="collection.name"/>
+                                                        </div>
+                                                    </label>
+                                                </div>
+                                            </t>
+                                        </div>
+                                        <br/>
+                                        <div>
+                                            <p name="product_exist_message" role="alert"
+                                               class="alert alert-info product_exist_message d-none">
+                                                This product is already exist in selected collection
+                                                !
+                                            </p>
+                                        </div>
+                                    </table>
+                                </div>
+                            </t>
+                        </div>
+                        <div class="text-end">
+                            <button type="button" class="btn btn-primary btn_select_coll"
+                                    disabled="True" data-bs-dismiss="modal"
+                                    title="Add product in collection!">Add to Collection
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="share_wishlist">
+        <t t-call="web.layout">
+            <div class="page">
+                <t t-if="collection" class="coll">
+                    <div class="container wishlist_collection_list">
+                        <table class="table table-bordered table-striped text-center mt16 table-comparator"
+                               id="table_collection_rec">
+                            <tbody class="wishlist_collection_tbody">
+                                <tr class="collection_rec" t-att-data-collection_id="'%s' % collection.id">
+                                    <p>
+                                        Hi,
+                                        <br/>
+                                        <br/>
+                                        We're excited to share a specially curated wishlist collection
+                                        <b t-out="collection.name"/>
+                                        from <b t-out="collection.partner_id.name"/>'s wishlist collections, just for you!
+                                        <br/>
+                                        Explore the handpicked selections tailored to your preferences and find the
+                                        perfect items that match your needs.
+                                        <br/>
+                                        <br/>
+                                        Don't miss out—browse through the collection today and let us know if anything
+                                        catches your eye! <br/>
+                                        We hope you enjoy exploring these handpicked selections.
+                                    </p>
+                                    <br/>
+                                    <t t-foreach="collection.product_line_ids" t-as="product_line">
+                                        <tr class="whole_product_line" t-att-data-wish-id="product_line.id"
+                                            t-att-data-product-id="product_line.product_id.id"
+                                            t-att-data-ref_collection_id="'%s' % collection.id">
+                                            <td class="coll_product_img">
+                                                <a t-att-href="'/shop/product/%s' % slug(product_line.product_id.product_tmpl_id)">
+                                                    <img t-attf-src="/web/image/product.product/#{product_line.product_id.id}/image_128"
+                                                         class="img img-fluid" style="margin:auto;"
+                                                         alt="Product image"/>
+                                                </a>
+                                            </td>
+                                            <td class="coll_product_add_to_cart_btn">
+                                                <div class="wishlist_product_name my-2">
+                                                    <a t-att-href="'/shop/product/%s' % slug(product_line.product_id.product_tmpl_id)">
+                                                        <t t-out="product_line.product_id.display_name"/>
+                                                    </a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </div>
+        </t>
+    </template>
+</odoo>

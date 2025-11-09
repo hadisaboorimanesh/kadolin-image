@@ -1,0 +1,64 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* artarad_account_asset_depreciation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0+e-20230917\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-10-23 13:37+0000\n"
+"PO-Revision-Date: 2023-10-23 17:08+0330\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fa_IR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Generator: Poedit 3.4\n"
+
+#. module: artarad_account_asset_depreciation
+#: model_terms:ir.ui.view,arch_db:artarad_account_asset_depreciation.view_form_res_config_settings_artarad_inherit
+msgid "<span class=\"o_form_label\">Calendar Type</span>"
+msgstr "<span class=\"o_form_label\">نوع تقویم</span>"
+
+#. module: artarad_account_asset_depreciation
+#: model:ir.model.fields,field_description:artarad_account_asset_depreciation.field_res_company__account_asset_depreciation_calendar_type
+#: model:ir.model.fields,field_description:artarad_account_asset_depreciation.field_res_config_settings__account_asset_depreciation_calendar_type
+msgid "Account Asset Depreciation Calendar Type"
+msgstr "نوع تقویم حساب استهلاک دارایی"
+
+#. module: artarad_account_asset_depreciation
+#: model_terms:ir.ui.view,arch_db:artarad_account_asset_depreciation.view_form_res_config_settings_artarad_inherit
+msgid "Asset Depreciation"
+msgstr "استهلاک دارایی"
+
+#. module: artarad_account_asset_depreciation
+#: model:ir.model,name:artarad_account_asset_depreciation.model_account_asset
+msgid "Asset/Revenue Recognition"
+msgstr "تشخیص دارایی/درآمد"
+
+#. module: artarad_account_asset_depreciation
+#: model_terms:ir.ui.view,arch_db:artarad_account_asset_depreciation.view_form_res_config_settings_artarad_inherit
+msgid "Calendar type using for creation of depreciations"
+msgstr "نوع تقویم برای ایجاد استهلاک ها استفاده می شود"
+
+#. module: artarad_account_asset_depreciation
+#: model:ir.model,name:artarad_account_asset_depreciation.model_res_company
+msgid "Companies"
+msgstr "شرکت"
+
+#. module: artarad_account_asset_depreciation
+#: model:ir.model,name:artarad_account_asset_depreciation.model_res_config_settings
+msgid "Config Settings"
+msgstr "تنظیمات پیکربندی"
+
+#. module: artarad_account_asset_depreciation
+#: model:ir.model.fields.selection,name:artarad_account_asset_depreciation.selection__res_company__account_asset_depreciation_calendar_type__gregorian
+msgid "Gregorian"
+msgstr "میلادی"
+
+#. module: artarad_account_asset_depreciation
+#: model:ir.model.fields.selection,name:artarad_account_asset_depreciation.selection__res_company__account_asset_depreciation_calendar_type__jalaali
+msgid "Jalaali"
+msgstr "شمسی"

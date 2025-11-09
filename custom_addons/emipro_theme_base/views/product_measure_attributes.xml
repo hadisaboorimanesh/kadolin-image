@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_open_attribute_popup" model="ir.actions.act_window">
+        <field name="name">Attribute Popup</field>
+        <field name="res_model">attribute.popup</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="attribute_popup_tree" model="ir.ui.view">
+        <field name="name">attribute.popup.tree</field>
+        <field name="model">attribute.popup</field>
+        <field name="arch" type="xml">
+            <list string="Attribute Popup">
+                <field name="name"/>
+                <field name="style"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="attribute_popup_form" model="ir.ui.view">
+        <field name="name">attribute.popup.form</field>
+        <field name="model">attribute.popup</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="style"/>
+                        <field name="content"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_attribute_popup">
+        <field name="name">Attribute Popup</field>
+        <field name="res_model">attribute.popup</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem name="Attribute Popup"
+              id="attribute_popup"
+              action="action_attribute_popup"
+              parent="website_sale.menu_catalog"/>
+
+</odoo>

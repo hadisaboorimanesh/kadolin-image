@@ -1,0 +1,27 @@
+<odoo>
+
+    <template id="auth_signup_phone_signup_sms_verif" inherit_id="auth_signup.signup" name="sign up login">
+        <xpath expr="//t[@t-call='auth_signup.fields']" position="after">
+            <t t-if="auth_signup_with_mobile">
+                <div class="mb-3" id="auth_signup_sms_verif_fields_mobile">
+                    <label for="mobile" class="control-label">Mobile</label>
+                    <input type="tel" name="mobile" id="mobile" placeholder="09xxxxxxxxx"
+                        class="form-control form-control-sm" required="required" />
+                </div>
+                <div class="mb-3" id="auth_signup_sms_verif_fields_code">
+                    <label for="verif_code" class="control-label">Verification Code</label>
+                    <input type="text" name="verif_code" id="verif_code" class="form-control form-control-sm"
+                        required="required" />
+                </div>
+            </t>
+        </xpath>
+
+        <xpath expr="//button" position="before">
+            <t t-if="auth_signup_with_mobile">
+                <button id="button_get_verification_code_by_SMS" type="button" class="btn btn-block">Get verification
+                    code by SMS</button>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

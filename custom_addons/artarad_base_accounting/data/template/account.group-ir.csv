@@ -1,0 +1,111 @@
+id,name,code_prefix_start,code_prefix_end
+account_group_1,دارایی جاری,1,1
+account_group_2,بانک ها,11,11
+account_group_3,بانک های ریالی,111,111
+account_group_4,بانک های ارزی,112,112
+account_group_5,حساب های معلق بانکی,114,114
+account_group_6,وجوه دریافتنی بدون تطبیق,115,115
+account_group_7,وجوه پرداختنی بدون تطبیق,116,116
+account_group_8,واسط نقدینگی,119,119
+account_group_9,صندوق,12,12
+account_group_10,صندوق ریالی,121,121
+account_group_11,صندوق ارزی,122,122
+account_group_12,حسابهای دریافتنی,13,13
+account_group_13,حسابهای دریافتنی,131,131
+account_group_14,اسناد دریافتنی,132,132
+account_group_15,سرمایه گذاری کوتاه مدت,14,14
+account_group_16,سپرده ها,141,141
+account_group_17,سرمایه گذاری بورس اوراق بهادار,142,142
+account_group_18,ضمانت نامه ها,143,143
+account_group_19,پیش پرداخت ها,15,15
+account_group_20,پیش پرداخت خرید خدمت,151,151
+account_group_21,پیش پرداخت خرید کالا,152,152
+account_group_22,پیش پرداخت مالیات,153,153
+account_group_23,پیش پرداخت خرید دارایی,154,154
+account_group_24,سایر پیش پرداخت ها,159,159
+account_group_25,موجودی مواد و محصول,16,16
+account_group_26,موجودی محصول,161,161
+account_group_27,موجودی مواد,162,162
+account_group_28,موجودی قطعات,163,163
+account_group_29,موجودی کالا و اموال سرمایه ای,164,164
+account_group_30,کالای در جریان ساخت,165,165
+account_group_31,سایر دارایی ها,17,17
+account_group_32,بهره سنوات آتی,171,171
+account_group_33,معلق خرید و فروش,172,172
+account_group_34,دارایی های ثابت,2,2
+account_group_35,دارایی های ثابت مشهود,21,21
+account_group_36,داریی ثابت غیر منقول / زمین,211,211
+account_group_37,داریی ثابت غیر منقول / ساختمان,212,212
+account_group_38,داریی ثابت منقول,215,215
+account_group_39,دارایی های ثابت نا مشهود,22,22
+account_group_40,برندها,221,221
+account_group_41,نرم افزارها,222,222
+account_group_42,انشعابات,223,223
+account_group_43,سرقفلی,224,224
+account_group_44,بدهی های جاری,3,3
+account_group_45,حسابهای پرداختنی,31,31
+account_group_46,حسابهای پرداختنی,311,311
+account_group_47,اسناد پرداختنی,32,32
+account_group_48,اسناد پرداختنی,321,321
+account_group_49,پیش دریافت ها,33,33
+account_group_50,پیش دریافت فروش خدمات,331,331
+account_group_51,پیش دریافت فروش کالا,332,332
+account_group_52,پیش دریافت مالیات,333,333
+account_group_53,پیش دریافت دارایی ها,334,334
+account_group_54,سایر پیش دریافت ها,339,339
+account_group_55,تسهیلات مالی دریافتنی,34,34
+account_group_56,تسهیلات مالی بانکی,341,341
+account_group_57,تسهیلات مالی غیربانکی,342,342
+account_group_58,ذخایر,35,35
+account_group_59,ذخیره هزینه های معوق,351,351
+account_group_60,ذخیره سنوات پرسنلی,352,352
+account_group_61,سایر ذخایر,359,359
+account_group_62,جاری شرکا,36,36
+account_group_63,جاری شرکا,361,361
+account_group_64,حقوق پرداختنی,37,37
+account_group_65,حقوق پرداختنی,371,371
+account_group_66,سایر بدهی های جاری,39,39
+account_group_67,سایر بدهی های جاری,399,399
+account_group_68,بدهی های بلند مدت,4,4
+account_group_69,حسابها و اسناد بلند مدت,41,41
+account_group_70,حسابهای پرداختنی بلند مدت,411,411
+account_group_71,اسناد پرداختنی بلند مدت,412,412
+account_group_72,تسهیلات پرداختنی بلند مدت,413,413
+account_group_73,حقوق صاحبان سهام,5,5
+account_group_74,سرمایه,51,51
+account_group_75,سرمایه,511,511
+account_group_76,اندوخته قانونی,52,52
+account_group_77,اندوخته قانونی,521,521
+account_group_78,اندوخته احتیاطی,53,53
+account_group_79,اندوخته احتیاطی,531,531
+account_group_80,سودوزیان انباشته,54,54
+account_group_81,سودوزیان انباشته,541,541
+account_group_82,مازاد تجدید ارزیابی دارایی های ثابت مشهود,55,55
+account_group_83,مازاد تجدید ارزیابی دارایی های ثابت مشهود,551,551
+account_group_84,سایر اندوخته ها,59,59
+account_group_85,اندوخته طرح و توسعه,599,599
+account_group_86,سود و زیان سال جاری,6,6
+account_group_87,فروش,61,61
+account_group_88,فروش محصولات,611,611
+account_group_89,فروش خدمات,612,612
+account_group_90,بهای تمام شده کالای فروش رفته,62,62
+account_group_91,مواد,621,621
+account_group_92,دستمزد مستقیم,622,622
+account_group_93,سربار مستقیم,623,623
+account_group_94,هزینه های فروش ، اداری و عمومی,63,63
+account_group_95,دستمزد غیر مستقیم,631,631
+account_group_96,سربار غیر مستقیم,632,632
+account_group_97,سایر درآمدها,64,64
+account_group_98,سود سپرده بانکی,641,641
+account_group_99,سود سهام,642,642
+account_group_100,سود و زیان تسعیر ارز,643,643
+account_group_101,هزینه های مالی,65,65
+account_group_102,بهره,651,651
+account_group_103,کارمزد,652,652
+account_group_104,حساب آماری,9,9
+account_group_105,حسابهای انتظامی,91,91
+account_group_106,حسابهای انتظامی  دیگران نزد ما,911,911
+account_group_107,حسابهای انتظامی ما نزد دیگران,912,912
+account_group_108,طرف حسابهای انتظامی,92,92
+account_group_109,طرف حسابهای انتظامی دیگران نزد ما,921,921
+account_group_110,طرف حسابهای انتظامی ما نزد دیگران,922,922

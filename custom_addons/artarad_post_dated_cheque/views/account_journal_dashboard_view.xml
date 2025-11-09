@@ -1,0 +1,35 @@
+<odoo>
+
+   <!-- <record id="view_kanban_account_journal_dashboard_inherit" model="ir.ui.view" >
+        <field name="name">view.kanban.account.journal.dashboard.inherit</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.account_journal_dashboard_kanban_view" />
+        <field name="arch" type="xml">
+            <xpath expr="/kanban/templates/t[1]/div/div/div[1]/t[1]" position="replace">
+                <t t-if="['bank', 'cash', 'post_dated_cheque', 'sale', 'purchase'].includes(journal_type)" t-call="JournalBodyGraph"/>
+            </xpath>
+            <xpath expr="/kanban/templates/t[1]/div/div/div[2]/t" position="replace">
+                <t t-if="['bank', 'cash', 'post_dated_cheque', 'sale', 'purchase'].includes(journal_type)" t-call="JournalBodyGraph"/>
+            </xpath>
+            <xpath expr="/kanban/templates/t[6]/div/t[1]" position="replace">
+                <t t-if="journal_type == 'bank' || journal_type == 'post_dated_cheque'">
+                    <t t-if="['undefined', 'online_sync'].includes(dashboard.bank_statements_source)">
+                        <button name="action_configure_bank_journal" type="object" class="btn btn-primary" groups="account.group_account_invoice">Connect</button>
+                    </t>
+                    <div id="transactions" class="d-flex mt-3 mt-sm-0" style="gap: 5px;">
+                        <div name="bank_journal_cta" class="w-100">
+                            <div t-if="['undefined', 'file_import'].includes(dashboard.bank_statements_source)"
+                                    name="bank_journal_transactions" class="w-100 d-flex" style="gap: 5px;">
+                                <a id="create_transaction" name="action_new_transaction" type="object" groups="account.group_account_invoice">New Transaction</a>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </xpath>
+            <xpath expr="/kanban/templates/t[8]/field" position="replace">
+                <field name="kanban_dashboard_graph" t-att-graph_type="['cash','bank','post_dated_cheque'].includes(journal_type) ? 'line' : 'bar'" widget="dashboard_graph"/>
+            </xpath>
+        </field>
+    </record>-->
+
+</odoo>

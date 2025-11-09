@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- صفحه ورود با شماره موبایل -->
+    <template id="ak_login_mobile" name="AK Mobile Login">
+        <t t-call="website.layout">
+            <main id="wrap">
+                <section class="container py-5" style="max-width:600px">
+                    <div class="card p-4">
+                        <h2 class="mb-3 text-center">ورود | ثبت‌نام</h2>
+                        <p class="text-muted text-center">شماره موبایل خود را وارد کنید</p>
+                        <form action="/ak/login/check" method="post">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" t-nocache="1"/>
+                            <div class="mb-3">
+                                <input class="form-control text-center" name="mobile" placeholder="0912xxxxxxx"
+                                       required="required" inputmode="numeric"/>
+                            </div>
+                            <button class="btn btn-danger w-100">ادامه</button>
+                        </form>
+
+
+                    </div>
+                </section>
+            </main>
+        </t>
+    </template>
+
+    <!-- صفحه رمز عبور -->
+    <template id="ak_login_password" name="AK Password">
+        <t t-call="website.layout">
+            <main id="wrap">
+                <section class="container py-5" style="max-width:600px">
+                    <div class="card p-4 position-relative">
+
+                        <a href="/ak/login"
+                           class="position-absolute"
+                           style="left: 1rem; top: 1rem; text-decoration: none; color: #dc3545; font-size: 1.4rem;">
+                            &#8594;
+
+                        </a>
+
+                        <h2 class="mb-3 text-center">رمز عبور را وارد کنید</h2>
+
+                        <t t-if="error">
+                            <div class="alert alert-danger" t-esc="error"/>
+                        </t>
+
+                        <form action="/ak/login/password/do" method="post">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <input type="hidden" name="mobile" t-att-value="mobile"/>
+                            <div class="mb-3">
+                                <input class="form-control text-center" name="password" type="password"
+                                       required="required"/>
+                            </div>
+                            <button class="btn btn-danger w-100 mb-3">تأیید</button>
+                        </form>
+
+                        <div class="d-flex justify-content-between">
+                            <a t-attf-href="/ak/login/otp?mobile={{mobile}}&amp;flow=login">ورود با کد یکبار مصرف</a>
+                            <a t-attf-href="/ak/login/reset?mobile={{mobile}}">فراموشی رمز عبور</a>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </t>
+    </template>
+
+    <!-- صفحه OTP -->
+    <template id="ak_login_otp" name="AK OTP">
+        <t t-call="website.layout">
+            <main id="wrap">
+                <section class="container py-5" style="max-width:600px">
+                    <div class="card p-4 position-relative">
+
+                        <!-- 🔙 دکمه برگشت -->
+                        <a t-attf-href="/ak/login/password?mobile={{mobile}}"
+                           class="position-absolute"
+                           style="left: 1rem; top: 1rem; text-decoration: none; color: #dc3545; font-size: 1.4rem;">
+                            &#8592;
+                        </a>
+
+                        <h2 class="mb-3 text-center">کد تأیید را وارد کنید</h2>
+                        <p class="text-muted text-center">
+                            کد تأیید برای
+                            <t t-esc="mobile"/>
+                            ارسال شد
+                        </p>
+
+                        <t t-if="error">
+                            <div class="alert alert-danger" t-esc="error"/>
+                        </t>
+
+                        <form action="/ak/login/otp/verify" method="post" class="mb-3">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <input type="hidden" name="mobile" t-att-value="mobile"/>
+                            <input type="hidden" name="flow" t-att-value="flow"/>
+                            <div class="mb-3">
+                                <input class="form-control text-center" name="otp" placeholder="کد تأیید"
+                                       required="required" inputmode="numeric"/>
+                            </div>
+                            <button class="btn btn-danger w-100">تأیید</button>
+                        </form>
+
+                        <form action="/ak/login/otp/send" method="post">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <input type="hidden" name="mobile" t-att-value="mobile"/>
+                            <input type="hidden" name="flow" t-att-value="flow"/>
+                            <button class="btn btn-link p-0">ارسال مجدد کد</button>
+                        </form>
+                    </div>
+                </section>
+            </main>
+        </t>
+    </template>
+
+    <!-- صفحه ثبت‌نام -->
+    <template id="ak_signup_form" name="AK Signup">
+        <t t-call="website.layout">
+            <main id="wrap">
+                <section class="container py-5" style="max-width:600px">
+                    <div class="card p-4">
+                        <h2 class="mb-3 text-center">ساخت حساب جدید</h2>
+                        <p class="text-muted text-center">شماره موبایل:
+                            <t t-esc="mobile"/>
+                        </p>
+                        <form action="/ak/signup/do" method="post">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <input type="hidden" name="mobile" t-att-value="mobile"/>
+                            <div class="mb-3">
+                                <input class="form-control" name="name" placeholder="نام و نام خانوادگی"
+                                       required="required"/>
+                            </div>
+                            <div class="mb-3">
+                                <input class="form-control" name="password" type="password" placeholder="رمز عبور"
+                                       required="required"/>
+                            </div>
+                            <button class="btn btn-danger w-100">ادامه</button>
+                        </form>
+                    </div>
+                </section>
+            </main>
+        </t>
+    </template>
+
+    <template id="ak_reset_mobile" name="AK Reset by Mobile">
+        <t t-call="website.layout">
+            <main id="wrap">
+                <section class="container py-5" style="max-width:600px">
+                    <div class="card p-4">
+                        <h2 class="mb-3 text-center">بازیابی رمز عبور</h2>
+                        <t t-if="error">
+                            <div class="alert alert-danger" t-esc="error"/>
+                        </t>
+
+                        <!-- ریست با OTP -->
+                        <form action="/ak/login/reset/otp" method="get" class="mb-3">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <div class="mb-3">
+                                <input class="form-control text-center" name="mobile" t-att-value="mobile or ''"
+                                       placeholder="0912xxxxxxx" required="required"/>
+                            </div>
+                            <button class="btn btn-primary w-100">ارسال کد تأیید</button>
+                        </form>
+
+                        <!-- ریست فوری (اختیاری) -->
+                        <form action="/ak/login/reset/instant" method="post">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <input type="hidden" name="mobile" t-att-value="mobile or ''"/>
+                            <div class="text-muted small mb-2">
+                                یا می‌خواهید رمز جدید برایتان پیامک شود؟
+                            </div>
+                            <button class="btn btn-outline-secondary w-100">ارسال رمز جدید با پیامک</button>
+                        </form>
+
+                    </div>
+                </section>
+            </main>
+        </t>
+    </template>
+
+    <template id="ak_reset_otp" name="AK Reset OTP">
+        <t t-call="website.layout">
+            <main id="wrap">
+                <section class="container py-5" style="max-width:600px">
+                    <div class="card p-4">
+                        <h2 class="mb-3 text-center">تأیید شماره موبایل</h2>
+                        <p class="text-muted text-center">کد تأیید برای
+                            <t t-esc="mobile"/>
+                            ارسال شد.
+                        </p>
+                        <t t-if="error">
+                            <div class="alert alert-danger" t-esc="error"/>
+                        </t>
+
+                        <form action="/ak/login/reset/verify" method="post">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <input type="hidden" name="mobile" t-att-value="mobile"/>
+                            <div class="mb-3">
+                                <input class="form-control text-center" name="otp" placeholder="کد تأیید"
+                                       required="required"/>
+                            </div>
+                            <button class="btn btn-danger w-100">تأیید و ادامه</button>
+                        </form>
+
+                    </div>
+                </section>
+            </main>
+        </t>
+    </template>
+
+    <template id="ak_reset_new_password" name="AK Reset New Password">
+        <t t-call="website.layout">
+            <main id="wrap">
+                <section class="container py-5" style="max-width:600px">
+                    <div class="card p-4">
+                        <h2 class="mb-3 text-center">تنظیم رمز جدید</h2>
+                        <p class="text-muted text-center">برای
+                            <t t-esc="mobile"/>
+                        </p>
+                        <t t-if="error">
+                            <div class="alert alert-danger" t-esc="error"/>
+                        </t>
+
+                        <form action="/ak/login/reset/do" method="post">
+                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                            <input type="hidden" name="mobile" t-att-value="mobile"/>
+                            <div class="mb-3">
+                                <input class="form-control" name="password" type="password" placeholder="رمز عبور جدید"
+                                       required="required"/>
+                            </div>
+                            <div class="mb-3">
+                                <input class="form-control" name="confirm_password" type="password"
+                                       placeholder="تکرار رمز عبور" required="required"/>
+                            </div>
+                            <button class="btn btn-success w-100">ثبت رمز جدید</button>
+                        </form>
+
+                    </div>
+                </section>
+            </main>
+        </t>
+    </template>
+
+</odoo>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_artarad_pdc_list_ent" model="ir.actions.act_window">
+        <field name="name">PDC Payments</field>
+        <field name="res_model">account.payment</field>
+        <field name="view_mode">list,form,kanban</field>
+        <field name="domain">[('payment_method_code', '=', 'cheque')]</field>
+    </record>
+
+    <record id="action_artarad_pdc_state_change_trans" model="ir.actions.act_window">
+        <field name="name">PDC State Change Transactions</field>
+        <field name="res_model">artarad.pdc.st.chg.trans</field>
+        <field name="view_mode">list</field>
+        <field name="view_id" ref="tree_artarad_pdc_st_chg_trans_2"/>
+        <field name="context">{'search_default_group_payment': 1}</field>
+    </record>
+
+    <record id="action_artarad_pdc_st_conf" model="ir.actions.act_window">
+        <field name="name">PDC States Configuration</field>
+        <field name="res_model">artarad.pdc.st</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <record id="action_artarad_pdc_init_st_conf" model="ir.actions.act_window">
+        <field name="name">PDC Initial States Configuration</field>
+        <field name="res_model">artarad.pdc.init.st</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <record id="action_artarad_pdc_st_chg_conf" model="ir.actions.act_window">
+        <field name="name">PDC State Changes Configuration</field>
+        <field name="res_model">artarad.pdc.st.chg</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <record id="action_artarad_pdc_book" model="ir.actions.act_window">
+        <field name="name">PDC Books</field>
+        <field name="res_model">artarad.pdc.book</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    ###########################################################
+
+    <menuitem id="menu_artarad_pdc_ent" name="PDCs" parent="account.menu_finance_entries" sequence="1" />
+
+    <menuitem id="menu_artarad_pdc_list_ent" name="Payments" parent="menu_artarad_pdc_ent"
+        action="action_artarad_pdc_list_ent" sequence="1" />
+
+    <menuitem id="menu_artarad_pdc_state_change_trans" name="State Change Trans." parent="menu_artarad_pdc_ent"
+        action="action_artarad_pdc_state_change_trans" sequence="2" />
+
+    <menuitem id="menu_artarad_pdc_conf" name="PDC" parent="account.menu_finance_configuration" sequence="1" />
+
+    <menuitem id="menu_artarad_pdc_st_conf" name="States" parent="menu_artarad_pdc_conf"
+        action="action_artarad_pdc_st_conf" sequence="1" groups="base.group_no_one" />
+
+    <menuitem id="menu_artarad_pdc_init_st_conf" name="Initial States" parent="menu_artarad_pdc_conf"
+        action="action_artarad_pdc_init_st_conf" sequence="2" groups="base.group_no_one" />
+
+    <menuitem id="menu_artarad_pdc_st_chg_conf" name="State Changes" parent="menu_artarad_pdc_conf"
+        action="action_artarad_pdc_st_chg_conf" sequence="3" />
+
+    <menuitem id="menu_artarad_pdc_book" name="Books" parent="menu_artarad_pdc_conf" action="action_artarad_pdc_book"
+        sequence="4" />
+
+</odoo>

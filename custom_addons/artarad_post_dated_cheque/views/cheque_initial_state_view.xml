@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="tree_artarad_pdc_init_st" model="ir.ui.view">
+        <field name="name">tree.artarad.pdc.init.st</field>
+        <field name="model">artarad.pdc.init.st</field>
+        <field name="arch" type="xml">
+            <list editable="top">
+                <field name="type" />
+                <field name="state" />
+            </list>
+        </field>
+    </record>
+
+</odoo>

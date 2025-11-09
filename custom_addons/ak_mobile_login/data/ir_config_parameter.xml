@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+  <record id="param_log_otp_only" model="ir.config_parameter">
+    <field name="key">ak_mobile_login.log_otp_only</field>
+    <field name="value">1</field>
+  </record>
+</odoo>

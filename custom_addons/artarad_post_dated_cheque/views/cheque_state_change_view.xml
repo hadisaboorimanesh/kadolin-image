@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="tree_artarad_pdc_st_chg" model="ir.ui.view">
+        <field name="name">tree.artarad.pdc.st.chg</field>
+        <field name="model">artarad.pdc.st.chg</field>
+        <field name="arch" type="xml">
+            <list editable="top">
+                <field name="from_state" />
+                <field name="to_state" />
+                <field name="default_debit_account" />
+                <field name="default_credit_account" />
+            </list>
+        </field>
+    </record>
+
+</odoo>

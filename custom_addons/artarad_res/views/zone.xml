@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+      <record id="view_artarad_res_zone_tree" model="ir.ui.view">
+        <field name="name">view.artarad.res.zone.tree</field>
+        <field name="model">artarad.res.zone</field>
+        <field name="arch" type="xml">
+            <list editable="top">
+                <field name="name"/>
+                <field name="city_id"/>
+
+            </list>
+        </field>
+    </record>
+
+
+   <record id="artarad_res_zone_action" model="ir.actions.act_window">
+            <field name="name">Zone</field>
+            <field name="res_model">artarad.res.zone</field>
+            <field name="view_mode">list</field>
+        </record>
+
+
+         <menuitem id="menu_artarad_res_zone" name="Zone" parent="contacts.res_partner_menu_config"
+            action="artarad_res_zone_action" sequence="5" />
+
+
+
+    </data>
+</odoo>

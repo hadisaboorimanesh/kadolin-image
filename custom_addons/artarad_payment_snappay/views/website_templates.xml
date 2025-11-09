@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+
+    <template id="product_snapppay" inherit_id="website_sale.product">
+
+
+        <xpath expr="//div[@id='o_product_terms_and_share']" position="before">
+            <t t-if="product.is_installment_snapp_pay and (product.qty_available &gt; 0 or product.allow_out_of_stock_order)">
+                <div class="kadolin-price-snap">
+                    <img class="rounded me-2" src="/artarad_payment_snappay/static/description/snap.png"
+                         style="width: 25px; height: 25px"/>
+                    هر قسط با اسنپ پی:
+
+                    <t t-esc="round(product.list_price/4)/10"
+                       t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                    4 قسط ماهانه. بدون سود، چک و ضامن
+                </div>
+            </t>
+
+
+        </xpath>
+
+
+    </template>
+
+
+</odoo>

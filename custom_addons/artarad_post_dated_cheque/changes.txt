@@ -1,0 +1,2 @@
+field: account -> journal_id (model: artarad.pdc.book)
+field: bank_account -> journal_id (model: artarad.pdc.st.chg.trans)

@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="sign_use_custom_font_persian" model="ir.config_parameter">
+            <field name="key">sign.use_custom_font_persian</field>
+            <field name="value">BNazanin</field>
+        </record>
+    </data>
+</odoo>

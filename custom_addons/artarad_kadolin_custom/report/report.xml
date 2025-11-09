@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="paperformat_portrait_kadolin" model="report.paperformat">
+            <field name="name">Portrait Custom</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="header_spacing">35</field>
+            <field name="margin_top">40</field>
+            <field name="margin_bottom">20</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="dpi">90</field>
+        </record>
+        <record id="paperformat_landscape_kadolin" model="report.paperformat">
+            <field name="name">Landscape Custom</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Landscape</field>
+            <field name="header_spacing">35</field>
+            <field name="margin_top">40</field>
+            <field name="margin_bottom">20</field>
+            <field name="margin_left">5</field>
+            <field name="margin_right">5</field>
+            <field name="header_line" eval="False"/>
+            <field name="dpi">90</field>
+        </record>
+
+
+        <record id="paperformat_kadolin_label" model="report.paperformat">
+            <field name="name">Kadolin Label 100x80</field>
+            <field name="default" eval="False"/>
+            <field name="format">custom</field>
+            <field name="page_height">80</field>
+            <field name="page_width">100</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">4</field>
+            <field name="margin_bottom">4</field>
+            <field name="margin_left">4</field>
+            <field name="margin_right">4</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">0</field>
+            <field name="dpi">96</field>
+        </record>
+        <record id="paperformat_label_2x4cm" model="report.paperformat">
+            <field name="name">Label Sheet 2x4cm (2-up)</field>
+            <field name="format">custom</field>
+            <field name="page_width">86</field>   <!-- کل عرض -->
+            <field name="page_height">20</field> <!-- یا طول رول -->
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">1</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">1</field>
+            <field name="disable_shrinking" eval="True"/>
+            <field name="dpi">96</field>
+        </record>
+
+        <record id="action_report_lot_label" model="ir.actions.report">
+            <field name="name">Lot/Serial Number 2*4 (PDF)</field>
+            <field name="model">stock.lot</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">artarad_kadolin_custom.report_lot_label</field>
+            <field name="report_file">artarad_kadolin_custom.report_lot_label</field>
+            <field name="paperformat_id" ref="artarad_kadolin_custom.paperformat_label_2x4cm"/>
+            <field name="print_report_name">'Label - %s' % (object.name or '')</field>
+            <field name="binding_model_id" ref="stock.model_stock_lot"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <record id="action_report_picking_kadolin_label" model="ir.actions.report">
+            <field name="name">Kadolin Shipping Label</field>
+            <field name="model">stock.picking</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">artarad_kadolin_custom.report_picking_delivery_kadolin</field>
+            <field name="paperformat_id" ref="artarad_kadolin_custom.paperformat_kadolin_label"/>
+            <field name="print_report_name">'Label - %s' % (object.name)</field>
+            <field name="binding_model_id" ref="stock.model_stock_picking"/>
+            <field name="binding_type">report</field>
+        </record>
+
+
+        <record id="action_report_sale_order" model="ir.actions.report">
+            <field name="name">پیش فاکتور</field>
+            <field name="model">sale.order</field>
+            <field name="report_type">qweb-html</field>
+            <field name="report_name">artarad_kadolin_custom.template_sale_order</field>
+            <field name="report_file">artarad_kadolin_custom.template_sale_order</field>
+            <field name="print_report_name">'Sale Order- %s' % (object.name)</field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_type">report</field>
+            <field name="paperformat_id" ref="artarad_kadolin_custom.paperformat_landscape_kadolin"/>
+        </record>
+
+
+    </data>
+</odoo>

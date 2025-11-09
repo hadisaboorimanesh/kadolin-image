@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_emipro_theme_base_product_ribbon_form_ept" model="ir.ui.view">
+        <field name="name">emipro_theme_base.product.ribbon.form.ept</field>
+        <field name="model">product.ribbon</field>
+        <field name="inherit_id" ref="website_sale.product_ribbon_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='position']" position="attributes">
+                <attribute name="widget">filterable_selection</attribute>
+            </xpath>
+            <xpath expr="//sheet" position="inside">
+                <form string="Product Ribbon Style Images">
+                    <p>
+                        <img invisible="not (position == 'left')" alt="Left" class="mw-100"
+                             src="/emipro_theme_base/static/src/img/product_label_style/left.png"/>
+                        <img invisible="not (position == 'right')" alt="Right" class="mw-100"
+                             src="/emipro_theme_base/static/src/img/product_label_style/right.png"/>
+                        <img invisible="not (position == 'o_product_label_style_1_left')"
+                             alt="Vega Edge Left" class="mw-100"
+                             src="/emipro_theme_base/static/src/img/product_label_style/vega_edge_left.png"/>
+                        <img invisible="not (position == 'o_product_label_style_1_right')"
+                             alt="Vega Edge Right" class="mw-100"
+                             src="/emipro_theme_base/static/src/img/product_label_style/vega_edge_right.png"/>
+                        <img invisible="not (position == 'o_product_label_style_2_left')"
+                             alt="Vega Square Shadow Left" class="mw-100"
+                             src="/emipro_theme_base/static/src/img/product_label_style/vega_sqr_shadow_left.png"/>
+                        <img invisible="not (position == 'o_product_label_style_2_right')"
+                             alt="Vega Square Shadow Right" class="mw-100"
+                             src="/emipro_theme_base/static/src/img/product_label_style/vega_sqr_shadow_right.png"/>
+                        <img invisible="not (position == 'o_product_label_style_3_left')"
+                             alt="Vega Tag Left" class="mw-100"
+                             src="/emipro_theme_base/static/src/img/product_label_style/vega_tag_left.png"/>
+                        <img invisible="not (position == 'o_product_label_style_3_right')"
+                             alt="Vega Tag Right" class="mw-100"
+                             src="/emipro_theme_base/static/src/img/product_label_style/vega_tag_right.png"/>
+                        <img invisible="not (position == 'o_product_label_style_4_left')"
+                             alt="Vega Round Left" class="mw-100"
+                             src="/emipro_theme_base/static/src/img/product_label_style/vega_round_left.png"/>
+                        <img invisible="not (position == 'o_product_label_style_4_right')"
+                             alt="Vega Round Right" class="mw-100"
+                             src="/emipro_theme_base/static/src/img/product_label_style/vega_round_right.png"/>
+                    </p>
+                </form>
+                <notebook>
+                    <page string="Products">
+                        <button name="set_label_wizard" class="oe_highlight" type="object"
+                                string="Configure Products"/>
+                        <button type="object" name="clear_all_products" invisible="not product_ids" confirm="Are you sure to clear all products ?" string="Clear All" class="oe_highlight float-end"/>
+                        <field name="product_ids">
+                            <list delete="false" create="false">
+                                <field name="name"/>
+                            </list>
+                        </field>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+</odoo>

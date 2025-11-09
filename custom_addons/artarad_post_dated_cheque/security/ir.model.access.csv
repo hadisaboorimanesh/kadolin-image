@@ -1,0 +1,24 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+
+"access_pdc_advisor1","artarad_pdc_st account.group_account_manager","model_artarad_pdc_st","account.group_account_manager",1,1,1,1
+"access_pdc_advisor2","artarad_pdc_st_chg account.group_account_manager","model_artarad_pdc_st_chg","account.group_account_manager",1,1,1,1
+"access_pdc_advisor3","artarad_pdc_st_chg_trans account.group_account_manager","model_artarad_pdc_st_chg_trans","account.group_account_manager",1,1,1,1
+"access_pdc_advisor4","artarad_pdc_init_st account.group_account_manager","model_artarad_pdc_init_st","account.group_account_manager",1,1,1,1
+"access_pdc_advisor5","artarad_pdc_book account.group_account_manager","model_artarad_pdc_book","account.group_account_manager",1,1,1,1
+"access_pdc_advisor6","artarad_pdc_sheet account.group_account_manager","model_artarad_pdc_sheet","account.group_account_manager",1,1,1,1
+
+"access_pdc_accountant1","artarad_pdc_st account.group_account_user","model_artarad_pdc_st","account.group_account_user",1,0,0,0
+"access_pdc_accountant2","artarad_pdc_st_chg account.group_account_user","model_artarad_pdc_st_chg","account.group_account_user",1,0,0,0
+"access_pdc_accountant3","artarad_pdc_st_chg_trans account.group_account_user","model_artarad_pdc_st_chg_trans","account.group_account_user",1,1,1,1
+"access_pdc_accountant4","artarad_pdc_init_st account.group_account_user","model_artarad_pdc_init_st","account.group_account_user",1,0,0,0
+"access_pdc_accountant5","artarad_pdc_book account.group_account_user","model_artarad_pdc_book","account.group_account_user",1,0,0,0
+"access_pdc_accountant6","artarad_pdc_sheet account.group_account_user","model_artarad_pdc_sheet","account.group_account_user",1,1,0,0
+
+"access_pdc_billing1","artarad_pdc_st account.group_account_invoice","model_artarad_pdc_st","account.group_account_invoice",1,0,0,0
+"access_pdc_billing2","artarad_pdc_st_chg account.group_account_invoice","model_artarad_pdc_st_chg","account.group_account_invoice",1,0,0,0
+"access_pdc_billing3","artarad_pdc_st_chg_trans account.group_account_invoice","model_artarad_pdc_st_chg_trans","account.group_account_invoice",1,0,0,0
+"access_pdc_billing4","artarad_pdc_init_st account.group_account_invoice","model_artarad_pdc_init_st","account.group_account_invoice",1,0,0,0
+"access_pdc_billing5","artarad_pdc_book account.group_account_invoice","model_artarad_pdc_book","account.group_account_invoice",1,0,0,0
+"access_pdc_billing6","artarad_pdc_sheet account.group_account_invoice","model_artarad_pdc_sheet","account.group_account_invoice",1,0,0,0
+access_payment_ras_wizard_user,payment.ras.wizard.user,model_payment_ras_wizard,base.group_user,1,1,1,1
+

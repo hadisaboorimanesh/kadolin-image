@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="menu_label_form_view" model="ir.ui.view">
+        <field name="name">menu.label.form</field>
+        <field name="model">menu.label</field>
+        <field name="arch" type="xml">
+            <form string="Menu Label">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field class="text-right" name="label_background_color" widget="color"/>
+                        <field class="text-right" name="label_text_color" widget="color"/>
+                    </group>
+                    <group>
+                        <field name="category_ids"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="menu_label_tree_view" model="ir.ui.view">
+        <field name="name">menu.label.tree</field>
+        <field name="model">menu.label</field>
+        <field name="arch" type="xml">
+            <list string="Menu Label">
+                <field name="name"/>
+                <field name="label_background_color" widget="color"/>
+                <field name="label_text_color" widget="color"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_menu_label" model="ir.actions.act_window">
+        <field name="name">Menu Labels</field>
+        <field name="res_model">menu.label</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+            name="Menu Labels"
+            id="menu_labels"
+            action="action_menu_label"
+            parent="website.menu_website_global_configuration"
+            sequence="12"/>
+</odoo>

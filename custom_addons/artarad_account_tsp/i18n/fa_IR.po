@@ -1,0 +1,471 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* artarad_account_tsp
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0+e-20231219\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-01-30 06:58+0000\n"
+"PO-Revision-Date: 2024-01-30 10:36+0330\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_product_product__tsp_code
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_product_template__tsp_code
+msgid "Code"
+msgstr "کد"
+
+#. module: artarad_account_tsp
+#: model:ir.model,name:artarad_account_tsp.model_res_company
+msgid "Companies"
+msgstr "شرکت‌ها"
+
+#. module: artarad_account_tsp
+#: model:ir.model,name:artarad_account_tsp.model_res_config_settings
+msgid "Config Settings"
+msgstr "تنظیمات"
+
+#. module: artarad_account_tsp
+#: model:ir.model,name:artarad_account_tsp.model_res_partner
+msgid "Contact"
+msgstr "مخاطب"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.view_form_artarad_res_partner
+msgid "Default Pattern"
+msgstr "الگوی پیش فرض"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.view_form_artarad_res_partner
+msgid "Default Type"
+msgstr "نوع پیش فرض"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_bank_statement_line__tsp_description
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_move__tsp_description
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_payment__tsp_description
+msgid "Description"
+msgstr "توضیحات"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__account_move__tsp_state__accepted_edit
+msgid "Edit Accepted"
+msgstr "اصلاح موفق"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__account_move__tsp_state__rejected_edit
+msgid "Edit Failed"
+msgstr "اصلاح ناموفق"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__account_move__tsp_state__pending_edit
+msgid "Edit Pending"
+msgstr "اصلاح در انتظار"
+
+#. module: artarad_account_tsp
+#. odoo-python
+#: code:addons/artarad_account_tsp/models/account_invoice.py:0
+#, python-format
+msgid "Fill in the Invoice Date field in the invoice!"
+msgstr "فیلد تاریخ فاکتور را در فاکتور پر کنید!"
+
+#. module: artarad_account_tsp
+#. odoo-python
+#: code:addons/artarad_account_tsp/models/account_invoice.py:0
+#, python-format
+msgid "Fill in the National Number/ID of the partner!"
+msgstr "شناسه / کد ملی طرف حساب را پر کنید!"
+
+#. module: artarad_account_tsp
+#. odoo-python
+#: code:addons/artarad_account_tsp/models/account_invoice.py:0
+#, python-format
+msgid "Fill in the National Number/ID of the your company!"
+msgstr "شناسه / کد ملی شرکت خودتان را پر کنید!"
+
+#. module: artarad_account_tsp
+#. odoo-python
+#: code:addons/artarad_account_tsp/models/account_invoice.py:0
+#, python-format
+msgid "Fill in the Pattern field in the invoice!"
+msgstr "فیلد الگو در فاکتور را پر نمایید!"
+
+#. module: artarad_account_tsp
+#. odoo-python
+#: code:addons/artarad_account_tsp/models/account_invoice.py:0
+#, python-format
+msgid "Fill in the TSP Code for all products used in the invoice!"
+msgstr ""
+"کد شناسه کالا/خدمات را برای تمام محصولات استفاده شده در فاکتور پر کنید!"
+
+#. module: artarad_account_tsp
+#. odoo-python
+#: code:addons/artarad_account_tsp/models/account_invoice.py:0
+#, python-format
+msgid "Fill in the Type field in the invoice!"
+msgstr "فیلد نوع در فاکتور را پر نمایید!"
+
+#. module: artarad_account_tsp
+#. odoo-python
+#: code:addons/artarad_account_tsp/models/account_invoice.py:0
+#, python-format
+msgid "Fill in the UniqueID and PrivateKey fields in settings of accounting!"
+msgstr ""
+"فیلدهای \"شناسه یکتای حافظه مالیاتی\" و \"کلید خصوصی\" را در تنظیمات "
+"حسابداری پر کنید!"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.res_config_settings_view_form
+msgid "Include Product Description"
+msgstr "شامل نام محصول"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.res_config_settings_view_form
+msgid "Include Product UOM"
+msgstr "شامل واحد اندازه گیری محصول"
+
+#. module: artarad_account_tsp
+#. odoo-python
+#: code:addons/artarad_account_tsp/models/account_invoice.py:0
+#, python-format
+msgid "Invalid value for PrivateKey in settings of accounting!"
+msgstr "مقدار \"کلید خصوصی\" در تنظیمات حسابداری نامعتبر است!"
+
+#. module: artarad_account_tsp
+#: model:ir.model,name:artarad_account_tsp.model_account_move
+msgid "Journal Entry"
+msgstr "داده روزنامه"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.view_form_artarad_res_partner
+msgid "National ID"
+msgstr "شناسه ملی"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_res_partner__national_number
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_res_users__national_number
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.view_form_artarad_res_partner
+msgid "National Number"
+msgstr "شماره ملی"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__account_move__tsp_state__not_sent
+msgid "Null"
+msgstr "خالی"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.view_form_account_invoice_inherit
+msgid "Pattern"
+msgstr "الگو"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__res_company__tsp_server_mode__primary
+msgid "Primary"
+msgstr "اصلی"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.res_config_settings_view_form
+msgid "Private Key"
+msgstr "کلید خصوصی"
+
+#. module: artarad_account_tsp
+#: model:ir.model,name:artarad_account_tsp.model_product_template
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__res_company__tsp_product_code_reference__product_template
+msgid "Product"
+msgstr "محصول"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.res_config_settings_view_form
+msgid "Product Description"
+msgstr "شرح محصول"
+
+#. module: artarad_account_tsp
+#: model:ir.model,name:artarad_account_tsp.model_uom_uom
+msgid "Product Unit of Measure"
+msgstr "واحد اندازه گیری محصول"
+
+#. module: artarad_account_tsp
+#: model:ir.model,name:artarad_account_tsp.model_product_product
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__res_company__tsp_product_code_reference__product_product
+msgid "Product Variant"
+msgstr "گونه محصول"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.res_config_settings_view_form
+msgid "Read Product Code From"
+msgstr "مرجع اطلاعاتی محصولات"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.view_form_account_invoice_inherit
+msgid "Reference Invoice"
+msgstr "فاکتور مرجع"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_bank_statement_line__tsp_reference_number
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_move__tsp_reference_number
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_payment__tsp_reference_number
+msgid "Reference Number"
+msgstr "شماره مرجع"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.view_form_account_invoice_inherit
+msgid "Refund Setting"
+msgstr "تنظیم بازپرداخت"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_bank_statement_line__reversed_entry_id
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_move__reversed_entry_id
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_payment__reversed_entry_id
+msgid "Reversal of"
+msgstr "معکوس"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__account_move__tsp_state__accepted_cancel
+msgid "Revoke Accepted"
+msgstr "ابطال موفق"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__account_move__tsp_state__rejected_cancel
+msgid "Revoke Failed"
+msgstr "ابطال ناموفق"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__account_move__tsp_state__pending_cancel
+msgid "Revoke Pending"
+msgstr "ابطال در انتظار"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.res_config_settings_view_form
+msgid "Server Mode"
+msgstr "حالت سرور"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.view_form_account_invoice_inherit
+msgid "State"
+msgstr "استان"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__account_move__tsp_state__accepted_send
+msgid "Submit Accepted"
+msgstr "ارسال موفق"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__account_move__tsp_state__pending_send
+msgid "Submit Pending"
+msgstr "ارسال در انتظار"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__account_move__tsp_state__rejected_send
+msgid "Submit Rejected"
+msgstr "ارسال ناموفق"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.res_config_settings_view_form
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.view_form_account_invoice_inherit
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.view_form_artarad_res_partner
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.view_form_product_product_inherit
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.view_form_product_template_inherit
+msgid "TSP"
+msgstr "سامانه مودیان مالیاتی"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_uom_uom__tsp_code
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.view_form_artarad_uom
+msgid "TSP Code"
+msgstr "کد شناسه کالا/خدمت"
+
+#. module: artarad_account_tsp
+#: model:ir.actions.server,name:artarad_account_tsp.action_tsp_inquiry
+#: model:ir.actions.server,name:artarad_account_tsp.cron_artarad_account_tsp_inquiry_ir_actions_server
+msgid "TSP Inquiry"
+msgstr "استعلام از س.م.م"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.view_tree_account_invoice_inherit
+msgid "TSP Pattern"
+msgstr "الگو س.م.م"
+
+#. module: artarad_account_tsp
+#: model:ir.actions.server,name:artarad_account_tsp.action_tsp_cancel
+msgid "TSP Send for Cancel"
+msgstr "ابطال در س.م.م"
+
+#. module: artarad_account_tsp
+#: model:ir.actions.server,name:artarad_account_tsp.action_tsp_edit
+msgid "TSP Send for Edit"
+msgstr "اصلاح در س.م.م"
+
+#. module: artarad_account_tsp
+#: model:ir.actions.server,name:artarad_account_tsp.action_tsp_send
+msgid "TSP Send for Submit"
+msgstr "اعلام به س.م.م"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.view_tree_account_invoice_inherit
+msgid "TSP State"
+msgstr "وضعیت س.م.م"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.view_tree_account_invoice_inherit
+msgid "TSP Type"
+msgstr "نوع س.م.م"
+
+#. module: artarad_account_tsp
+#. odoo-python
+#: code:addons/artarad_account_tsp/models/account_invoice.py:0
+#, python-format
+msgid "TSP server is not reachable!"
+msgstr "سرور سامانه مودیان در دسترس نیست!"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_bank_statement_line__tsp_taxid
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_move__tsp_taxid
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_payment__tsp_taxid
+msgid "TaxID"
+msgstr "شناسه مالیاتی"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_bank_statement_line__tsp_temp_taxid
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_move__tsp_temp_taxid
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_payment__tsp_temp_taxid
+msgid "Temporary TaxID"
+msgstr "شناسه مالیاتی موقت"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__res_company__tsp_server_mode__test
+msgid "Test"
+msgstr "تست"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_res_partner__tsp_default_pattern
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_res_users__tsp_default_pattern
+msgid "Tsp Default Pattern"
+msgstr "الگوی پیش فرض س.م.م"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_res_partner__tsp_default_type
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_res_users__tsp_default_type
+msgid "Tsp Default Type"
+msgstr "نوع پیش فرض س.م.م"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_res_company__tsp_include_description
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_res_config_settings__tsp_include_description
+msgid "Tsp Include Description"
+msgstr "شامل نام محصول"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_res_company__tsp_include_uom
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_res_config_settings__tsp_include_uom
+msgid "Tsp Include Uom"
+msgstr "شامل واحد اندازه گیری محصول"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_bank_statement_line__tsp_pattern
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_move__tsp_pattern
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_payment__tsp_pattern
+msgid "Tsp Pattern"
+msgstr "الگو س.م.م"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_res_company__tsp_private_key
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_res_config_settings__tsp_private_key
+msgid "Tsp Private Key"
+msgstr "کلید خصوصی س.م.م"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_res_company__tsp_product_code_reference
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_res_config_settings__tsp_product_code_reference
+msgid "Tsp Product Code Reference"
+msgstr "مرجع کد محصول س.م.م"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_res_company__tsp_server_mode
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_res_config_settings__tsp_server_mode
+msgid "Tsp Server Mode"
+msgstr "حالت سرور Tsp"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_bank_statement_line__tsp_state
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_move__tsp_state
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_payment__tsp_state
+msgid "Tsp State"
+msgstr "وضعیت س.م.م"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_bank_statement_line__tsp_type
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_move__tsp_type
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_account_payment__tsp_type
+msgid "Tsp Type"
+msgstr "نوع س.م.م"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_res_company__tsp_unique_id
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_res_config_settings__tsp_unique_id
+msgid "Tsp Unique"
+msgstr "شناسه یکتای حافظه مالیاتی س.م.م"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.view_form_account_invoice_inherit
+msgid "Type"
+msgstr "نوع"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.res_config_settings_view_form
+msgid "UOM"
+msgstr "واحد اندازه گیری"
+
+#. module: artarad_account_tsp
+#: model_terms:ir.ui.view,arch_db:artarad_account_tsp.res_config_settings_view_form
+msgid "Unique ID"
+msgstr "شناسه یکتای حافظه مالیاتی"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields,field_description:artarad_account_tsp.field_product_product__tsp_variant_code
+msgid "Variant Code"
+msgstr "شناسه گونه/خدمت"
+
+#. module: artarad_account_tsp
+#. odoo-python
+#: code:addons/artarad_account_tsp/models/account_invoice.py:0
+#, python-format
+msgid "When the type is دوم, The only valid pattern is فروش!"
+msgstr "زمانیکه نوع دوم باشد, تنها الگوی معتبر فروش است!"
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__account_move__tsp_type__1
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__res_partner__tsp_default_type__1
+msgid "اول"
+msgstr ""
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__account_move__tsp_type__2
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__res_partner__tsp_default_type__2
+msgid "دوم"
+msgstr ""
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__account_move__tsp_pattern__7
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__res_partner__tsp_default_pattern__7
+msgid "صادرات"
+msgstr ""
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__account_move__tsp_pattern__1
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__res_partner__tsp_default_pattern__1
+msgid "فروش"
+msgstr ""
+
+#. module: artarad_account_tsp
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__account_move__tsp_pattern__2
+#: model:ir.model.fields.selection,name:artarad_account_tsp.selection__res_partner__tsp_default_pattern__2
+msgid "فروش ارزی"
+msgstr ""

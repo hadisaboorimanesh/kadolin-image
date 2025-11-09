@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="view_form_sms_template_inherit" model="ir.ui.view">
+            <field name="name">view.form.sms.template.inherit</field>
+            <field name="model">sms.template</field>
+            <field name="inherit_id" ref="sms.sms_template_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='lang']/../.." position="after">
+                    <group>
+                        <field name="mobile_to" />
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

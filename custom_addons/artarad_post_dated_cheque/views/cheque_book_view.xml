@@ -1,0 +1,68 @@
+<odoo>
+
+    <record id="view_tree_artarad_pdc_book" model="ir.ui.view">
+        <field name="name">view.tree.artarad.pdc.book</field>
+        <field name="model">artarad.pdc.book</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="bank" />
+                <field name="journal_id" />
+            </list>
+        </field>
+    </record>
+
+    <record id="view_form_artarad_pdc_book" model="ir.ui.view">
+        <field name="name">view.form.artarad.pdc.book</field>
+        <field name="model">artarad.pdc.book</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="id" invisible="1" />
+                    <field name="available_journal_ids" invisible="1" />
+                    
+                    <group>
+                        <group>
+                            <field name="bank" />
+                        </group>
+                        <group>
+                            <field name="journal_id" domain="[('id', 'in', available_journal_ids)]"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <group>
+                            <field name="sequence_numbers_prefix" readonly="id > 0" />
+                        </group>
+                        <group>
+                            <field name="sequence_numbers_start" readonly="id > 0" />
+                        </group>
+                    </group>
+
+                    <group>
+                        <group>
+                            <field name="count_of_sheets" readonly="id > 0" />
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Sheets">
+                            <field name="sheets" readonly="1">
+                                <list editable="top" create="0" delete="0">
+                                    <field name="number" />
+                                    <field name="date" />
+                                    <field name="pay_to" />
+                                    <field name="amount" />
+                                    <field name="payment" />
+                                    <field name="state" />
+                                    <button name="change_state_to_damaged" string="Is Damaged" type="object"
+                                        class="oe_highlight" invisible="state == 'damaged'" />
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

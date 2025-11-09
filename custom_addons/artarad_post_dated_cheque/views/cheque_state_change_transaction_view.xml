@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_confirm" model="ir.actions.server">
+        <field name="name">Confirm</field>
+        <field name="model_id" ref="artarad_post_dated_cheque.model_artarad_pdc_st_chg_trans" />
+        <field name="binding_model_id" ref="artarad_post_dated_cheque.model_artarad_pdc_st_chg_trans" />
+        <field name="state">code</field>
+        <field name="code">
+for transaction in records:
+    transaction.action_post()
+        </field>
+    </record>
+
+    <record id="tree_artarad_pdc_st_chg_trans" model="ir.ui.view">
+        <field name="name">tree.artarad.pdc.st.chg.trans</field>
+        <field name="model">artarad.pdc.st.chg.trans</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="not active">
+                <field name="active" invisible="1" />
+                <field name="old_cheque_state" />
+                <field name="new_cheque_state" />
+                <field name="transaction_date" />
+                <field name="transaction_state" />
+            </list>
+        </field>
+    </record>
+
+    <record id="tree_artarad_pdc_st_chg_trans_2" model="ir.ui.view">
+        <field name="name">tree.artarad.pdc.st.chg.trans.2</field>
+        <field name="model">artarad.pdc.st.chg.trans</field>
+        <field name="arch" type="xml">
+            <list create="false" edit="false" delete="false">
+                <field name="payment" />
+                <field name="old_cheque_state" />
+                <field name="new_cheque_state" />
+                <field name="cheque_date" />
+                <field name="transaction_date" />
+                <field name="journal_id" />
+                <field name="debit_account" />
+                <field name="credit_account" />
+                <field name="transaction_state" />
+
+                <field name="cheque_number_description" optional="hide"/>
+                <field name="cheque_sayadi_number" optional="hide"/>
+                <field name="cheque_amount" optional="hide"/>
+                <field name="cheque_bank_id" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="form_artarad_pdc_st_chg_trans" model="ir.ui.view">
+        <field name="name">form.artarad.pdc.st.chg.trans</field>
+        <field name="model">artarad.pdc.st.chg.trans</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="transaction_state" widget="statusbar" />
+                    <button name="%(action_confirm)d" class="oe_highlight" string="Confirm" type="action"
+                        invisible="transaction_state == 'posted'" />
+                </header>
+                <sheet>
+                    <field name="payment" invisible="1" />
+                    <field name="payment_type" invisible="1" />
+                    <field name="move_partner" invisible="1" />
+                    <field name="new_cheque_state_is_spent" invisible="1" />
+                    <field name="available_new_cheque_state_ids" invisible="1" />
+                    <field name="available_journal_ids" invisible="1" />
+                    
+
+                    <group>
+                        <group>
+                            <field name="old_cheque_state" />
+                            <field name="cheque_date" />
+                        </group>
+                        <group>
+                            <field name="new_cheque_state" readonly="transaction_state == 'posted'" domain="[('id', 'in', available_new_cheque_state_ids)]"/>
+                            <field name="transaction_date" readonly="transaction_state == 'posted'" />
+                        </group>
+                    </group>
+
+                    <group invisible="new_cheque_state_is_spent == True">
+                        <group>
+                            <field name="journal_id" readonly="transaction_state == 'posted'" domain="[('id', 'in', available_journal_ids)]" />
+                        </group>
+                        <group>
+                            <field name="move" />
+                        </group>
+                    </group>
+
+                    <group invisible="new_cheque_state_is_spent == False">
+                        <group>
+                            <field name="journal_id" readonly="transaction_state == 'posted'" domain="[('id', 'in', available_journal_ids)]" />
+                        </group>
+                        <group>
+                            <field name="payment_move" />
+                        </group>
+                    </group>
+
+                    <group>
+                        <group>
+                            <field name="debit_account" readonly="transaction_state == 'posted'" domain="[('deprecated','=',False)]" />
+                        </group>
+                        <group>
+                            <field name="credit_account" readonly="transaction_state == 'posted'"  domain="[('deprecated','=',False)]"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="description" readonly="transaction_state == 'posted'" />
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="search_artarad_pdc_st_chg_trans" model="ir.ui.view">
+        <field name="name">search.artarad.pdc.st.chg.trans</field>
+        <field name="model">artarad.pdc.st.chg.trans</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="payment" />
+                <field name="journal_id" />
+                <filter name="cheque_date" string="Cheque Date" date="cheque_date"/>
+                <group expand="0" string="Group By">
+                    <filter string="Payment" name="group_payment" domain="[]" context="{'group_by':'payment'}"/>
+                    <filter string="Journal" name="group_journal" domain="[]" context="{'group_by':'journal_id'}"/>
+                    <filter string="Cheque Date" name="group_cheque_date" domain="[]" context="{'group_by':'cheque_date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>

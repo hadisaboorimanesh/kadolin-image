@@ -1,0 +1,905 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="guaranteed_safe_checkout" />
+
+    <template id="offer_timer">
+        <section class="te_time_main_div h-auto">
+            <div class="te_time_main_div timer_content_div">
+                <div class="timer_data">
+                    <div class="timer_input" />
+                </div>
+                <div id="timer_portion_content_ept"
+                    class="te_display_end_date te_prod_bottom_margin d-none">
+                    <div class='product_offer_timer d-inline-block'>
+                        <span class='text-center d-inline-block'>
+                            <div class='rounded_digit_product d-inline-block'>
+                                <span id='days' class='d-block  te_days_hr_min_sec' />
+                            </div>
+                            <div class="digit_separator d-inline-block">:</div>
+                        </span>
+                        <span class='text-center d-inline-block'>
+                            <div class='rounded_digit_product d-inline-block'>
+                                <span id='hours' class='d-block  te_days_hr_min_sec' />
+                            </div>
+                            <div class="digit_separator d-inline-block">:</div>
+                        </span>
+                        <span class='text-center d-inline-block'>
+                            <div class='rounded_digit_product d-inline-block'>
+                                <span id='minutes' class='d-block te_days_hr_min_sec' />
+                            </div>
+                            <div class="digit_separator d-inline-block">:</div>
+                        </span>
+                        <span class='text-center d-inline-block'>
+                            <div class='rounded_digit_product d-inline-block'>
+                                <span id='seconds' class='d-block te_days_hr_min_sec' />
+                            </div>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="product" inherit_id="website_sale.product">
+        <xpath expr="//div[@id='add_to_cart_wrap']" position="attributes">
+            <attribute name="t-if">website.display_add_to_cart()</attribute>
+        </xpath>
+        <xpath expr="//div[@id='add_to_cart_wrap']" position="before">
+            <!--when
+            select quantity option is disabled from editor then user can add the quantity according
+            to price table configuration-->
+            <t t-if="not is_view_active('website_sale.product_quantity')">
+                <div t-attf-class="css_quantity input-group me-2 mb-2 align-middle d-none"
+                    contenteditable="false" style="display:none !important;">
+                    <a t-attf-href="#" class="btn btn-link js_add_cart_json" aria-label="Remove one"
+                        title="Remove one">
+                        <i class="fa fa-minus" />
+                    </a>
+                    <input type="text" class="form-control quantity text-center" data-min="1"
+                        name="add_qty" t-att-value="1" />
+                    <a t-attf-href="#" class="btn btn-link float_left js_add_cart_json"
+                        aria-label="Add one" title="Add one">
+                        <i class="fa fa-plus" />
+                    </a>
+                </div>
+            </t>
+        </xpath>
+        <xpath expr="//div[@id='product_details']//a[hasclass('o_product_page_reviews_link')]"
+            position="attributes">
+            <attribute name="class" add="ept-total-review d-inline-block" separator=" " />
+        </xpath>
+        <xpath
+            expr="//t[@t-if=&quot;is_view_active(&apos;website_sale.product_comment&apos;)&quot;]"
+            position="after">
+            <div class="te_p_sku d-inline-block">
+                <div class="te_sku d-inline-block">SKU:</div>
+                <div class="js_sku_div d-inline-block" itemprop="sku">
+                    <t t-out="product_variant.default_code or 'N/A'" />
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="before">
+            <t t-if="website.display_b2b_message()" t-call="theme_clarico_vega.b2b_hide_details_msg" />
+        </xpath>
+        <xpath expr="//t[@t-call='website_sale.product_price']" position="attributes">
+            <attribute name="t-if">website.display_product_price()</attribute>
+        </xpath>
+        <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="inside">
+            <t t-set="product_sticky_cart_bar"
+                t-value="request.website.viewref('theme_clarico_vega.product_sticky_details_container').active" />
+            <t t-if="product_sticky_cart_bar">
+                <t t-call="theme_clarico_vega.product_sticky_details_container" />
+            </t>
+        </xpath>
+        <xpath expr="//section[@id='product_detail']" position="before">
+            <t t-call="theme_clarico_vega.offer_timer" />
+        </xpath>
+        <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="before">
+            <div class="te_price_table d-none" />
+        </xpath>
+        <xpath expr="//div[@id='o_product_terms_and_share']" position="attributes">
+            <attribute name="class" remove="d-flex flex-column flex-md-row align-items-md-end"
+                separator=" " />
+        </xpath>
+
+        <xpath expr="//div[@id='product_details']//h1" position="before">
+            <t t-set="ribbon"
+                t-value="product_variant.sudo().variant_ribbon_id or product.sudo().website_ribbon_id" />
+            <t t-set="bg_color" t-value="ribbon['bg_color'] or ''" />
+            <t t-set="text_color" t-value="ribbon['text_color']" />
+            <t t-set="bg_class" t-value="ribbon._get_position_class()" />
+            <t t-if="ribbon">
+                <span
+                    t-attf-class="te_prod_label d-inline-block overflow-hidden position-relative o_ribbon #{ribbon._get_position_class()}"
+                    t-attf-style="#{text_color and ('color: %s; ' % text_color)}#{bg_color and 'background-color:' + bg_color}"
+                    t-out="ribbon['name'] or ''"
+                />
+            </t>
+            <div
+                class="row g-0 justify-content-end flex-wrap align-items-center mb-2 next_prev_btn_main">
+                <div class="col-auto flex-grow-0 flex-shrink-0">
+                    <t t-set="previous_product" t-value="product.get_previous_product() or false" />
+                    <t t-set="next_product" t-value="product.get_next_prodcut() or false" />
+                    <a t-if="previous_product"
+                        data-content-id="prev" title="Previous Product"
+                        t-att-product-id="previous_product.id"
+                        t-attf-class="btn btn-link btn-sm shadow-none product_prev_btn {{'disabled' if not previous_product else ''}}"
+                        t-att-href="'/shop/'+slug(previous_product)">
+                        <i class="fa fa-angle-left" />
+                        <div class="main_product_container_append" />
+                    </a>
+                    <a class="btn btn-link btn-sm shadow-none product_home_btn p-0"
+                        title="Back to products" href="/shop">
+                        <i class="fa fa-th-large" role="img" aria-label="Shop" title="Shop" />
+                    </a>
+                    <a t-if="next_product" t-att-product-id="next_product.id"
+                        data-content-id="next" title="Next Product"
+                        t-attf-class="btn btn-link btn-sm shadow-none product_next_btn {{'disabled' if not next_product else ''}}"
+                        t-att-href="'/shop/'+slug(next_product)">
+                        <i class="fa fa-angle-right" />
+                        <div class="main_product_container_append" />
+                    </a>
+                </div>
+            </div>
+        </xpath>
+        <!--Next
+        & Prev Product Button-->
+        <xpath expr="//div[@id='product_details']//div[@t-field='product.description_ecommerce']"
+            position="attributes">
+            <attribute name="class" add="product_desc" separator=" " />
+        </xpath>
+       
+        <xpath expr="//div[@id='o_product_terms_and_share']" position="after">
+            <div class="main_payment_section col-sm-8 col-lg-12"
+                t-if="is_view_active('theme_clarico_vega.guaranteed_safe_checkout')">
+                <div class="main_payment_icons">
+                    <div class="main_payment_content">
+                        <span class="payment_middle_title text-uppercase"> Guaranteed <span
+                                class="text-success">safe</span> checkout </span>
+                        <div class="payment_icons">
+                            <span>
+                                <img class="img"
+                                    src="/theme_clarico_vega/static/src/img/product_payment_icons/master-card.jpeg" />
+                            </span>
+                            <span>
+                                <img class="img"
+                                    src="/theme_clarico_vega/static/src/img/product_payment_icons/paypal.jpeg" />
+                            </span>
+                            <span>
+                                <img class="img"
+                                    src="/theme_clarico_vega/static/src/img/product_payment_icons/maestro.jpeg" />
+                            </span>
+                            <span>
+                                <img class="img"
+                                    src="/theme_clarico_vega/static/src/img/product_payment_icons/american-express.jpeg" />
+                            </span>
+                            <span>
+                                <img class="img"
+                                    src="/theme_clarico_vega/static/src/img/product_payment_icons/bitcoin.jpeg" />
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//section[@id='product_detail']" position="after">
+            <t t-if="product">
+                <t t-call="theme_clarico_vega.html_content_tabs_ept" />
+            </t>
+        </xpath>
+        <xpath expr="//div[@id='product_full_description']" position="attributes">
+            <attribute name="class">d-none</attribute>
+        </xpath>
+        <xpath expr="//div[@id='product_detail_main']//t[@t-call='website_sale.variants']"
+            position="inside">
+            <t t-set="is_quickview" t-value="true" />
+        </xpath>
+        <xpath expr="//div[@id='product_detail_main']//t[@t-set='product_documents']"
+            position="replace" />
+        <xpath expr="//div[@id='product_detail_main']//div[@id='product_documents']"
+            position="replace" />
+        <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="after">
+            <div class="buy_now_btn_main"
+                t-if="(product.allow_out_of_stock_order or product_variant.free_qty > 0) and website.display_add_to_cart() and request.website.viewref('website_sale.product_buy_now').active">
+                <a role="button"
+                    t-attf-class="w-100 btn btn-outline-primary o_we_buy_now ms-1 #{'btn-lg' if ctaSizeBig else ''}"
+                    href="#">
+                    <i class="fa fa-bolt me-2" /> Buy now </a>
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='o_wsale_cta_wrapper']//div[@id='product_option_block']"
+            position="after">
+            <t t-set="categories"
+                t-value="product.valid_product_template_attribute_line_ids._prepare_categories_for_display()" />
+            <t t-set="product_variant_id" t-value="product._get_first_possible_variant_id()" />
+            <t
+                t-if="request.website.viewref('website_sale_comparison.product_add_to_compare').active">
+                <button t-if="product_variant_id and categories" type="button" role="button"
+                    class="d-none d-md-block btn btn-link px-0 o_add_compare_dyn"
+                    aria-label="Compare" t-att-data-product-product-id="product_variant_id"
+                    data-action="o_comparelist">
+                    <span class="fa fa-exchange" />
+                </button>
+            </t>
+
+        </xpath>
+    </template>
+
+    <!-- Product page brand-->
+    <template id="product_brand_container">
+        <t
+            t-if="product.product_brand_id and product.product_brand_id.name or product.product_brand_id.description">
+            <div class="d-block t-brand mb-2"
+                t-if="product.product_brand_id.website_id.id == request.website.id or not product.product_brand_id.website_id.id">
+                <span class="te_brand_name">Brand:</span>
+                <a
+                    t-att-href="'/shop/brands/%s-%s' %(product.product_brand_id.with_context(lang='en_US').name.replace(' ','-'),product.product_brand_id.id)">
+                    <span class="brand_dsc" t-out="product.product_brand_id.name" />
+                </a>
+            </div>
+        </t>
+        <t t-if="product.public_categ_ids">
+            <div class="d-block" t-if="len(product.public_categ_ids.ids) > 0">
+                <span>Category:</span>
+                <t t-set="categ_rec" t-value="product.public_categ_ids[0]" />
+                <a t-att-href="'/shop/category/%s' %slug(categ_rec)">
+                    <span t-out="categ_rec.name" />
+                </a>
+            </div>
+        </t>
+    </template>
+
+    <template id="product_attributes_body_ept"
+        inherit_id="website_sale_comparison.product_attributes_body">
+        <xpath expr="//section[@id='product_full_spec']" position="replace" />
+    </template>
+    <template id="product_review" inherit_id="website_sale.product_comment">
+        <xpath expr="//div[hasclass('o_shop_discussion_rating')]" position="replace" />
+    </template>
+
+    <!--===================
+    Product sticky details =====================-->
+    <template id="product_sticky_details_container">
+        <t t-if="product">
+            <div class="product_details_sticky">
+                <div class="prod_details_sticky_div">
+                    <div class="prod_details_sticky_left">
+                        <div class="prod_img">
+                            <img t-att-src="'/web/image/product.template/%s/image_256' % product.id"
+                                class="img img-fluid rounded" alt="Product Image" />
+                        </div>
+                        <div class="sticky_info">
+                            <div class="cat_name">
+                                <t t-if="product.public_categ_ids">
+                                    <t t-if="len(product.public_categ_ids.ids) > 0">
+                                        <t t-set="categ_rec" t-value="product.public_categ_ids[0]" />
+                                        <a class="text-muted text-decoration-none" target="_blank"
+                                            style="font-size:12px;"
+                                            t-att-href="'/shop/category/%s' %slug(categ_rec)">
+                                            <span t-out="categ_rec.name" />
+                                        </a>
+                                    </t>
+                                </t>
+                            </div>
+                            <div class="prod_name">
+                                <h1 t-field="product.name" class="te_product_name">Product Name</h1>
+
+                            </div>
+                            <div class="prod_price">
+                                <del
+                                    t-attf-class="te_shop_del mr-2 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                    style="white-space: nowrap;"
+                                    t-out="combination_info['list_price']"
+                                    t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
+                                <span t-if="combination_info['price']"
+                                    t-out="combination_info['price']"
+                                    t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
+                            </div>
+                        </div>
+                        <!--B2B
+                        feature is not implemented for hide add to cart-->
+                        <div class="prod_details_sticky_right" t-if="website.display_add_to_cart()">
+                            <div class="prod_add_cart">
+                                <t t-set="buy_now_show"
+                                    t-value="request.website.viewref('website_sale.product_buy_now').active" />
+                                <a role="button" id="add_to_cart"
+                                    t-attf-class="btn btn-primary a-submit btn-md mt16 te_theme_button te_add_to_cart_sticky #{'w-100' if not buy_now_show else 'w-50'} #{'disabled' if product.remove_cart_button() else ' '}"
+                                    href="#">
+                                    <span class="fa fa-shopping-cart" />
+                                    <span
+                                        class="d-inline-block d-lg-none d-md-none d-sm-inline-block">Add
+                                        to Cart</span>
+                                </a>
+                                <t t-if="buy_now_show">
+                                    <a role="button"
+                                        t-attf-class="btn btn-outline-primary btn-md mt16 d-block d-lg-none d-md-none d-sm-inline-block o_we_buy_now te_buy_now_sticky te_theme_button w-50 #{'disabled' if product.remove_cart_button() else ' '}"
+                                        href="#">
+                                        <span class="fa fa-bolt" />Buy Now </a>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!--====================
+    product page terms & conditions with share =================-->
+    <template id="product_custom_polices_text" inherit_id="website_sale.product_custom_text">
+        <xpath expr="//div[@id='o_product_terms_and_share']/p" position="replace">
+            <!-- By Husin Sajjadi -->
+            <t t-if="product.is_fake">
+                <div class="my_custom_div fake-product">
+                    غیر اصل
+                </div>
+            </t>
+
+            <t t-if="product.seo_name">
+                <div class="latin-title">
+                    <t t-esc="product.seo_name" />
+                </div>
+            </t>
+            <!-- By Husin Sajjadi -->
+            <hr />
+            <div class="te_s_shipping_info">
+                <!-- By Husin Sajjadi -->
+                <ul class="ps-0 mb-0">
+                    <li class="te_s_shipping_info_li text-muted border-right list-unstyled">
+                        <span class="share_icon fa fa-money text-black mr-1"></span>
+                        <span class="share_dsc">30-day money-back</span>
+                    </li>
+                    <li class="te_s_shipping_info_li text-muted border-right list-unstyled">
+                        <span class="share_icon fa fa-undo text-black mr-1"></span>
+                        <span class="share_dsc">7-day returns</span>
+                    </li>
+                    <li class="te_s_shipping_info_li text-muted border-right list-unstyled">
+                        <span class="share_icon fa fa-truck text-black mr-1"></span>
+                        <span class="share_dsc husin">Shipping: 2-3 Days</span>
+                    </li>
+                </ul>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="product_share_buttons_ept" inherit_id="website_sale.product_share_buttons">
+        <xpath expr="//div[hasclass('s_share')]" position="attributes">
+            <attribute name="class" add="d-inline-block" separator=" " />
+        </xpath>
+    </template>
+
+    <!--===================
+    Product Tabs ========================-->
+    <template id="html_content_tabs_ept" name="Product Tabs">
+        <section class="product_tabs_ept s_tabs">
+            <div class="container tabs_container_main">
+                <div class="row s_col_no_bgcolor">
+                    <div class="col-lg-12">
+                        <div class="bg-white">
+                            <t t-set="product_documents"
+                                t-value="product.sudo().product_document_ids.filtered(lambda doc: doc.shown_on_product_page)" />
+                            <nav class="product-header">
+                                <div class="nav nav-tabs justify-content-center" id="nav-tab"
+                                    role="tablist">
+                                    <button class="nav-link active border-0 px-2" id="nav-home-tab"
+                                        data-bs-toggle="tab" data-bs-target="#nav-home"
+                                        type="button" role="tab"
+                                        aria-controls="nav-home" aria-selected="true">
+                                        <li class="product_tab_li">
+                                            <a class="te_tab_mb_nav_link"
+                                                t-if="product.website_description or request.env.user.has_group('website.group_website_designer')">
+                                                <span class="fa fa-sliders me-2" />
+                                                <span class="nav_tab_title">Description</span>
+                                            </a>
+                                        </li>
+                                    </button>
+                                    <t t-set="categories"
+                                        t-value="product.valid_product_template_attribute_line_ids._prepare_categories_for_display()" />
+                                    <t
+                                        t-if="categories and request.website.viewref('website_sale_comparison.product_attributes_body').active">
+                                        <button class="nav-link border-0 px-2" id="nav-profile-tab"
+                                            data-bs-toggle="tab"
+                                            data-bs-target="#nav-profile" type="button" role="tab"
+                                            aria-controls="nav-profile" aria-selected="false">
+                                            <li class="product_tab_li">
+                                                <a class="te_tab_mb_nav_link"
+                                                    t-if="categories and request.env.user.has_group('website.group_website_designer') or categories and request.website.viewref('website_sale_comparison.product_attributes_body').active">
+                                                    <span class="fa fa-sort-amount-desc me-2" />
+                                                    <span class="nav_tab_title">Specification</span>
+                                                </a>
+                                            </li>
+                                        </button>
+                                    </t>
+                                    <button class="nav-link border-0 px-2"
+                                        id="nav_tabs_link_ratings" data-bs-toggle="tab"
+                                        data-bs-target="#nav-contact" type="button" role="tab"
+                                        aria-controls="nav-contact" aria-selected="false"
+                                        t-if="request.website.viewref('website_sale.product_comment').active">
+                                        <li class="product_tab_li">
+                                            <t
+                                                t-if="request.website.viewref('website_sale.product_comment').active">
+                                                <a class="te_tab_mb_nav_link">
+                                                    <span class="fa fa-star me-2" />
+                                                    <span class="nav_tab_title">Ratings and Reviews</span>
+                                                </a>
+                                            </t>
+                                        </li>
+                                    </button>
+                                    <t t-if="product_documents">
+                                        <button class="nav-link border-0 px-2" id="nav-document-tab"
+                                            data-bs-toggle="tab" data-bs-target="#nav-document"
+                                            type="button" role="tab" aria-controls="nav-contact"
+                                            aria-selected="false">
+                                            <li class="product_tab_li">
+                                                <a class=" te_tab_mb_nav_link"
+                                                    t-if="product_documents and request.env.user.has_group('website.group_website_designer') or product_documents">
+                                                    <span class="fa fa-file-text me-2" />
+                                                    <span class="nav_tab_title">Documents</span>
+                                                </a>
+                                            </li>
+                                        </button>
+                                    </t>
+                                    <t t-set="user_type"
+                                        t-value="request.env.user.has_group('website.group_website_designer')" />
+                                    <t t-set="global_tabs_domain"
+                                        t-value="[('tab_type', '=', 'global')] if user_type else [('tab_type', '=', 'global'), ('website_published', '=', True)]" />
+                                    <t t-foreach="product.tab_line_ids" t-as="tab">
+                                        <t
+                                            t-if="request.env['product.tab.line'].check_tab(website.id,tab.website_ids.ids)">
+                                            <t
+                                                t-if="request.env['product.tab.line'].sudo().check_tab_publish(tab)">
+                                                <button class="nav-link"
+                                                    t-att-id="'nav-global-tab_%s_%s' % (product.id, tab.id)"
+                                                    data-bs-toggle="tab"
+                                                    t-att-data-bs-target="'#nav-global_%s_%s' % (product.id, tab.id)"
+                                                    type="button" role="tab"
+                                                    t-att-aria-controls="'nav_tabs_content_%s_%s' % (product.id, tab.id)"
+                                                    aria-selected="false">
+                                                    <li class="product_tab_li">
+                                                        <a class="te_tab_mb_nav_link"
+                                                            t-if="tab.tab_content or request.env.user._is_admin()">
+                                                            <span t-field="tab.icon_content" />
+                                                            <span t-field="tab.tab_name"
+                                                                class="nav_tab_title" />
+                                                        </a>
+                                                    </li>
+                                                </button>
+                                            </t>
+                                        </t>
+                                    </t>
+                                </div>
+                            </nav>
+                            <div class="tab-content accordion" id="prd-tab-content">
+                                <div class="tab-pane fade show active py-3"
+                                    aria-labelledby="nav-home-tab" id="nav-home">
+                                    <div class="card-header" role="tab"
+                                        id="prd-tab-content_description">
+                                        <h6 class="mb-0">
+                                            <a class="te-tab-a collapsed" data-bs-toggle="collapse"
+                                                data-bs-target="#collapse_description"
+                                                aria-expanded="false"
+                                                aria-controls="collapse_description">
+                                                <span class="fa fa-sliders me-2" />
+                                                <span class="nav_tab_title">Description</span>
+                                            </a>
+                                        </h6>
+                                    </div>
+                                    <div id="collapse_description"
+                                        class="collapse accordion-collapse"
+                                        data-parent="#prd-tab-content"
+                                        aria-labelledby="prd-tab-content_description">
+                                        <div class="accordion-body">
+                                            <div itemprop="description"
+                                                t-field="product.website_description"
+                                                class="oe_structure" id="product_full_description" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <t t-set="categories"
+                                    t-value="product.valid_product_template_attribute_line_ids._prepare_categories_for_display()" />
+                                <t
+                                    t-if="categories and request.website.viewref('website_sale_comparison.product_attributes_body').active">
+                                    <div class="tab-pane fade py-3" id="nav-profile"
+                                        aria-labelledby="nav-profile-tab">
+                                        <div class="card-header" role="tab"
+                                            id="prd-tab-content_specification">
+                                            <h6 class="mb-0">
+                                                <a data-bs-toggle="collapse"
+                                                    class="te-tab-a collapsed"
+                                                    data-bs-target="#collapse_specifications"
+                                                    aria-expanded="false"
+                                                    aria-controls="collapse_specification">
+                                                    <span class="fa fa-sort-amount-desc me-2" />
+                                                    <span class="nav_tab_title">Specifications</span>
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapse_specifications"
+                                            class="collapse accordion-collapse"
+                                            data-parent="#prd-tab-content"
+                                            aria-labelledby="prd-tab-content_specification">
+                                            <div class="accordion-body p-0">
+                                                <section class="container-fluid te_product_spec"
+                                                    id="product_full_spec">
+                                                    <div class="row">
+                                                        <div class='col-lg-12'
+                                                            id='product_specifications'>
+                                                            <table
+                                                                class='table table-striped table-sm table-hover mb-0'>
+                                                                <t t-foreach="categories"
+                                                                    t-as="category">
+                                                                    <t t-if="len(categories) > 1">
+                                                                        <tr class="clickable "
+                                                                            data-bs-toggle="collapse"
+                                                                            t-att-aria-controls="'o_ws_category_%d' % category.id"
+                                                                            t-att-data-bs-target="'#o_ws_category_%d' % category.id"
+                                                                            aria-expanded="true">
+                                                                            <th class="text-left"
+                                                                                t-att-colspan="2">
+                                                                                <i
+                                                                                    class="fa fa-chevron-down te_ctg_icon" />
+                                                                                <span
+                                                                                    t-if="category"
+                                                                                    t-field="category.name" />
+                                                                                <span t-else="">
+                                                                                    Uncategorized</span>
+                                                                            </th>
+                                                                        </tr>
+                                                                    </t>
+                                                                    <tr
+                                                                        t-foreach="categories[category].filtered(lambda l: len(l.value_ids) > 1)"
+                                                                        t-as="ptal"
+                                                                        t-att-id="'o_ws_category_%d' % category.id"
+                                                                        t-att-class="'collapse show  o_ws_category_%d' % category.id">
+                                                                        <td class="text-capitalize">
+                                                                            <span class="att_name"
+                                                                                t-field="ptal.attribute_id.name" />
+                                                                        </td>
+                                                                        <td>
+                                                                            <t
+                                                                                t-foreach="ptal.value_ids"
+                                                                                t-as="pav">
+                                                                                <span
+                                                                                    t-field="pav.name" />
+                                                                                <t
+                                                                                    t-if="not pav_last">
+                                                                                    or </t>
+                                                                            </t>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <t
+                                                                        t-set="single_value_attributes"
+                                                                        t-value="categories[category]._prepare_single_value_for_display()" />
+                                                                    <tr
+                                                                        t-foreach="single_value_attributes"
+                                                                        t-as="attribute"
+                                                                        t-att-id="'o_ws_category_%d' % category.id"
+                                                                        t-att-class="'collapse show o_ws_category_%d' % category.id ">
+                                                                        <td>
+                                                                            <span
+                                                                                t-field="attribute.name" />
+                                                                        </td>
+                                                                        <td>
+                                                                            <t
+                                                                                t-foreach="single_value_attributes[attribute]"
+                                                                                t-as="ptal">
+                                                                                <span
+                                                                                    t-field="ptal.product_template_value_ids._only_active().name" />
+                                                                                <t
+                                                                                    t-if="not ptal_last">
+                                                                                    or </t>
+                                                                            </t>
+                                                                        </td>
+                                                                    </tr>
+                                                                </t>
+                                                            </table>
+                                                        </div>
+                                                        <t
+                                                            t-if="is_view_active('theme_clarico_vega.product_tags_ept')">
+                                                            <div class="col-lg-12">
+                                                                <table class="table product_tags">
+                                                                    <t
+                                                                        t-if="product.product_variant_ids.all_product_tag_ids">
+                                                                        <tr class="product_tag_tr">
+                                                                            <th class="text-start"
+                                                                                t-att-colspan="2">
+                                                                                <span>Tags</span>
+                                                                            </th>
+                                                                        </tr>
+                                                                        <tr class="d-flex">
+                                                                            <td
+                                                                                class="w-25 d-flex align-items-center">
+                                                                                <span>Tags</span>
+                                                                            </td>
+                                                                            <td
+                                                                                class="w-75 text-muted">
+                                                                                <t
+                                                                                    t-call="theme_clarico_vega.product_tags_ept">
+                                                                                    <t
+                                                                                        t-set="all_product_tags"
+                                                                                        t-value="product.product_variant_ids.all_product_tag_ids" />
+                                                                                </t>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </t>
+                                                                </table>
+                                                            </div>
+                                                        </t>
+                                                    </div>
+                                                </section>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                                <t
+                                    t-if="request.website.viewref('website_sale.product_comment').active">
+                                    <div class="tab-pane fade py-3" id="nav-contact"
+                                        aria-labelledby="nav_tabs_link_ratings">
+                                        <div class="card-header" role="tab"
+                                            id="prd_card_content_ratings">
+                                            <h6 class="mb-0">
+                                                <a data-bs-toggle="collapse"
+                                                    class="te-tab-a collapsed"
+                                                    data-bs-target="#collapse_ratings"
+                                                    aria-expanded="false"
+                                                    aria-controls="collapse_ratings">
+                                                    <span class="fa fa-star me-2" />
+                                                    <span class="nav_tab_title">Ratings and Reviews</span>
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapse_ratings"
+                                            class="collapse accordion-collapse"
+                                            data-parent="#prd-tab-content"
+                                            aria-labelledby="prd_card_content_ratings">
+                                            <div class="accordion-body">
+                                                <div
+                                                    class="o_shop_discussion_rating oe_overlay_options o_not_editable"
+                                                    id="shop_rating">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-lg-12 mt16">
+                                                                <t t-call="portal.message_thread">
+                                                                    <t t-set="object"
+                                                                        t-value="product" />
+                                                                    <t t-set="display_rating"
+                                                                        t-value="True" />
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                                <t t-if="product_documents">
+                                    <div class="tab-pane fade py-3" id="nav-document"
+                                        aria-labelledby="nav-document-tab">
+                                        <div class="card-header" role="tab"
+                                            id="prd_card_content_doc">
+                                            <h6 class="mb-0">
+                                                <a data-bs-toggle="collapse"
+                                                    class="collapsed te-tab-a"
+                                                    data-bs-target="#collapse_doc"
+                                                    aria-expanded="false"
+                                                    aria-controls="collapse_doc">
+                                                    <span class="fa fa-file-text me-2" />
+                                                    <span class="nav_tab_title">documents</span>
+                                                </a>
+                                            </h6>
+                                        </div>
+                                        <div id="collapse_doc" class="collapse accordion-collapse"
+                                            data-parent="#prd-tab-content"
+                                            aria-labelledby="prd_card_content_doc">
+                                            <div class="accordion-body">
+                                                <div id="product_documents"
+                                                    class="my-2 d-inline-block"
+                                                    t-if="product_documents">
+                                                    <t t-foreach="product_documents"
+                                                        t-as="document_sudo">
+                                                        <t t-set="attachment_sudo"
+                                                            t-value="document_sudo.ir_attachment_id" />
+                                                        <t t-set="target"
+                                                            t-value="attachment_sudo.type == 'url' and '_blank' or '_self'" />
+                                                        <t t-set="icon"
+                                                            t-value="attachment_sudo.type == 'url' and 'fa-link' or 'fa-download'" />
+                                                        <div
+                                                            class="product_docs_main d-inline-block">
+                                                            <a class="text-decoration-none"
+                                                                t-att-href="'/shop/' + slug(product) + '/document/' + str(document_sudo.id)"
+                                                                t-att-target="target">
+                                                                <i t-att-class="'fa ' + icon" />
+                                                                <t t-out="attachment_sudo.name" />
+                                                            </a>
+                                                        </div>
+                                                    </t>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                                <t t-set="user_type"
+                                    t-value="request.env.user.has_group('website.group_website_designer')" />
+                                <t t-set="global_tabs_domain"
+                                    t-value="[('tab_type', '=', 'global')] if user_type else [('tab_type', '=', 'global'), ('website_published', '=', True)]" />
+                                <t t-foreach="product.tab_line_ids" t-as="tab">
+                                    <t
+                                        t-if="request.env['product.tab.line'].check_tab(website.id,tab.website_ids.ids)">
+                                        <t
+                                            t-if="request.env['product.tab.line'].sudo().check_tab_publish(tab)">
+                                            <div class="tab-pane fade py-3"
+                                                t-att-id="'nav-global_%s_%s' % (product.id, tab.id)"
+                                                t-att-aria-labelledby="'nav-global-tab_%s_%s' % (product.id, tab.id)">
+                                                <div class="card-header" role="tab"
+                                                    t-att-id="'prd_card_content_%s_%s' % (product.id, tab.id)">
+                                                    <h6 class="mb-0">
+                                                        <a class="collapsed te-tab-a"
+                                                            data-bs-toggle="collapse"
+                                                            t-att-data-bs-target="'#collapse_%s_%s' % (product.id, tab.id)"
+                                                            data-bs-parent="#prd-tab-content"
+                                                            aria-expanded="false"
+                                                            t-att-aria-controls="'collapse_%s_%s' % (product.id, tab.id)">
+                                                            <span class="fa fa-info-circle me-2" />
+                                                            <span t-field="tab.tab_name"
+                                                                class="nav_tab_title" />
+                                                        </a>
+                                                    </h6>
+                                                </div>
+                                                <div
+                                                    t-att-id="'collapse_%s_%s' % (product.id, tab.id)"
+                                                    data-parent="#prd-tab-content"
+                                                    class="collapse accordion-collapse"
+                                                    t-att-aria-labelledby="'prd_card_content_%s_%s' % (product.id, tab.id)">
+                                                    <div class="accordion-body">
+                                                        <div t-field="tab.tab_content"
+                                                            class="oe_structure" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </t>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+
+    <template id="tax_indication_ept">
+        <span t-if="website.show_line_subtotals_tax_selection == 'tax_excluded'"
+            class="h6 text-muted">
+            VAT Excluded
+        </span>
+        <span t-else="" class="h6 text-muted">
+            VAT Included
+        </span>
+    </template>
+
+    <!--Product
+    page price with discount-->
+    <template id="product_price_ept" inherit_id="website_sale.product_price">
+        <xpath expr="//div[@itemprop='offers']" position="replace">
+            <div itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer"
+                t-attf-class="product_price te_prod_bottom_margin {{'d-none' if combination_info['prevent_zero_price_sale'] else 'd-inline-block'}}">
+                <t t-set="difference"
+                    t-value="round(combination_info['list_price'] - combination_info['price'],2) " />
+                <t t-set="discount"
+                    t-value="round(difference*100/combination_info['list_price'],2) if combination_info['list_price'] &gt; 0 else 0" />
+                <h3
+                    class="oe_price_h4 main_product_price wish_product_name_and_price css_editable_mode_hidden d-inline-block">
+                    <span class="oe_price text-nowrap" t-out="combination_info['price']"
+                        t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
+                    <span itemprop="price" style="display:none;" t-out="combination_info['price']" />
+                    <span itemprop="priceCurrency" style="display:none;"
+                        t-out="website.currency_id.name" />
+                    <span
+                        t-attf-class="text-danger text-decoration-line-through text-nowrap oe_default_price h5 fw-normal {{'' if combination_info['has_discounted_price'] and not combination_info['compare_list_price'] else 'd-none'}}"
+                        t-out="combination_info['list_price']"
+                        t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"
+                        itemprop="listPrice" />
+                    <t t-if="is_view_active('website_sale.tax_indication')"
+                        t-call="theme_clarico_vega.tax_indication_ept" />
+                    <del
+                        t-if="combination_info['compare_list_price'] and (combination_info['compare_list_price'] &gt; combination_info['price'])">
+                        <bdi dir="inherit">
+                            <span t-out="combination_info['compare_list_price']"
+                                groups="website_sale.group_product_price_comparison"
+                                t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
+                        </bdi>
+                    </del>
+                </h3>
+                <h3 class="css_non_editable_mode_hidden decimal_precision"
+                    t-att-data-precision="str(website.currency_id.decimal_places)">
+                    <span t-field="product.list_price"
+                        t-options="{'widget': 'monetary', 'display_currency': product.currency_id}" />
+                    <t t-if="is_view_active('website_sale.tax_indication')"
+                        t-call="theme_clarico_vega.tax_indication_ept" />
+                    <del
+                        t-if="combination_info['compare_list_price'] and (combination_info['compare_list_price'] &gt; combination_info['price'])">
+                        <bdi dir="inherit">
+                            <span t-field="product.compare_list_price"
+                                groups="website_sale.group_product_price_comparison"
+                                t-options="{'widget': 'monetary', 'display_currency': product.currency_id}" />
+                        </bdi>
+                    </del>
+                </h3>
+                <div
+                    t-attf-class="te_discount  d-inline-block {{'' if combination_info['has_discounted_price'] else 'd-none'}}">
+                    <div class="te_percentage ">
+                        <span class="percent_val" t-out="'%s'%(discount)" />% Off </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="product_buy_now_ept" inherit_id="website_sale.product_buy_now">
+        <xpath expr="//a[hasclass('o_we_buy_now')]" position="replace" />
+    </template>
+
+    <template id="product_add_to_wishlist_ept"
+        inherit_id="website_sale_wishlist.product_add_to_wishlist">
+        <xpath expr="//button[hasclass('o_add_wishlist_dyn')]" position="replace">
+            <button t-if="product_variant" type="button" role="button"
+                class="btn btn-link px-0 o_add_wishlist_dyn" t-att-disabled='in_wish or None'
+                t-att-data-product-template-id="product.id"
+                t-att-data-product-product-id="product_variant.id" data-action="o_wishlist"
+                title="Add to wishlist">
+                <i class="fa fa-heart-o me-2" role="img" aria-label="Add to wishlist" />
+            </button>
+        </xpath>
+    </template>
+
+    <template id="product_add_to_compare_ept"
+        inherit_id="website_sale_comparison.product_add_to_compare">
+        <xpath expr="//button[hasclass('o_add_compare_dyn')]" position="replace" />
+    </template>
+
+    <template id="product_add_to_compare_ept"
+        inherit_id="website_sale_comparison.product_add_to_compare">
+        <xpath expr="//button[hasclass('o_add_compare_dyn')]" position="replace" />
+    </template>
+
+    <template id="product_pager">
+        <div class="btn_next_prev_product_container">
+            <div
+                class="next_prev_product_info_card d-flex bg-white align-items-center justifu-content-start">
+                <div class="next_prev_product_img">
+                    <img class="img"
+                        t-attf-src="/web/image/product.template/#{product.id}/image_128"
+                        loading="lazy" style="" />
+                </div>
+                <div class="next_prev_product_details">
+                    <div class="next_prev_product_name">
+                        <span class="text-muted" t-out="product.name" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="product_tags_ept" inherit_id="website_sale.product_tags">
+        <xpath expr="//div[hasclass('o_product_tags')]" position="replace">
+            <div class="o_product_tags o_field_tags d-flex flex-wrap align-items-center gap-2 mb-2">
+                <span class="product_tags_title" t-if="all_product_tags">Tags:</span>
+                <t t-foreach="all_product_tags" t-as="tag">
+                    <t t-if="tag.visible_on_ecommerce">
+                        <a class="text-decoration-none product_tag_link"
+                            t-attf-href="/shop/?tags={{ tag.id}}">
+                            <span t-if="tag.image"
+                                class="order-0"
+                                t-field="tag.image"
+                                t-options="{'widget': 'image', 'class': 'o_product_tag_img rounded'}"
+                            />
+                            <span t-else="" class="position-relative order-1 py-1"
+                                t-field="tag.name" />
+                            <span class="product_tag_comma">,</span>
+                        </a>
+                    </t>
+                </t>
+            </div>
+        </xpath>
+    </template>
+</odoo>

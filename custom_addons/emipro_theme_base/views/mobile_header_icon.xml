@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="mobile_header_icon_form" model="ir.ui.view">
+        <field name="name">mobile.header.icon.form</field>
+        <field name="model">mobile.header.icon</field>
+        <field name="arch" type="xml">
+            <form string="Mobile Header Icon">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field class="text-right" name="link_url"/>
+                        <field name="header_icon" widget="image" class="oe_avatar w-100 text-right"
+                               options="{'size': [30, 30]}"/>
+                        <field name="is_dynamic_option"/>
+                        <field name="dynamic_opt_type" invisible="not is_dynamic_option" required="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="mobile_header_icon_list" model="ir.ui.view">
+        <field name="name">mobile.header.icon.list</field>
+        <field name="model">mobile.header.icon</field>
+        <field name="arch" type="xml">
+            <list string="Mobile Header Icons">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="link_url"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_open_mobile_header_icon" model="ir.actions.act_window">
+        <field name="name">Mobile Header Icon</field>
+        <field name="res_model">mobile.header.icon</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+            name="Mobile Header Icons"
+            id="mobile_header_icon"
+            action="action_open_mobile_header_icon"
+            parent="website.menu_website_global_configuration"
+            sequence="13"/>
+
+</odoo>

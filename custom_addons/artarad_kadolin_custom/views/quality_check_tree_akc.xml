@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="view_quality_check_tree_inherit_akc" model="ir.ui.view">
+    <field name="name">quality.check.tree.inherit.akc.buttons</field>
+    <field name="model">quality.check</field>
+    <field name="inherit_id" ref="quality_control.quality_check_view_tree"/>
+    <field name="arch" type="xml">
+      <xpath expr="//list" position="inside">
+        <button name="akc_button_pass" type="object" string="Pass" class="btn btn-success btn-sm"/>
+        <button name="akc_button_fail" type="object" string="Fail" class="btn btn-danger btn-sm"/>
+      </xpath>
+    </field>
+  </record>
+</odoo>

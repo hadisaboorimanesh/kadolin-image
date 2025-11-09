@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_artarad_sms_provider_setting,access artarad_sms_provider_setting,model_artarad_sms_provider_setting,,1,1,1,1

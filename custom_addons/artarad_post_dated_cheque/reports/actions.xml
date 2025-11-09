@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="paperformat_artarad_cheque_print_landscape" model="report.paperformat">
+        <field name="name">Artarad Cheque Print</field>
+        <field name="default" eval="True"/>
+        <field name="format">custom</field>
+        <field name="page_height">170</field>
+        <field name="page_width">85</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+	<record id="report_artarad_cheque_print" model="ir.actions.report">
+		<field name="name">Cheque Print</field>
+		<field name="model">account.payment</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">artarad_post_dated_cheque.template_artarad_cheque_print</field>
+		<field name="report_file">artarad_post_dated_cheque.template_artarad_cheque_print</field>
+		<field name="print_report_name">'Cheque - %s' % (object.name)</field>
+		<field name="binding_model_id" ref="account.model_account_payment" />
+		<field name="binding_type">report</field>
+		<field name="paperformat_id" ref="artarad_post_dated_cheque.paperformat_artarad_cheque_print_landscape" />
+	</record>
+
+</odoo>

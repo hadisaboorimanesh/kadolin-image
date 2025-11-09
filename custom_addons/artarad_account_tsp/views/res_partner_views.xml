@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_form_artarad_res_partner" model="ir.ui.view">
+        <field name="name">view.form.artarad.res.partner</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="national_number" string="National Number"
+                    invisible="company_type == 'company'" />
+                <field name="national_number" string="National ID"
+                    invisible="company_type == 'person'" />
+            </xpath>
+			
+            <xpath expr="//page[last()]" position="after">
+                <page string="TSP">
+                    <group>
+                        <group>
+                            <field name="tsp_default_type" string="Default Type" />
+                            <field name="tsp_default_pattern" string="Default Pattern" />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

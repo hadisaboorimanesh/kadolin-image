@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <template id="cart_popover_offcanvas">
+        <div class="offcanvas offcanvas-end offcanvas_cart oe_website_sale" tabindex="-1" id="cartoffcanvasWithBackdrop"
+             aria-labelledby="offcanvasWithBackdropLabel">
+            <div class="offcanvas-header">
+                <h6 class="offcanvas-title" id="offcanvasWithBackdropLabel">My Cart</h6>
+                <button type="button" class="te_cross" data-bs-dismiss="offcanvas"
+                        aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body"/>
+        </div>
+    </template>
+    <template id="cart_popover" inherit_id="emipro_theme_base.cart_popover">
+        <xpath expr="//div[hasclass('cart_popover_content')]" position="replace">
+            <div t-if="not website_sale_order or not website_sale_order.website_order_line" class="alert alert-info">
+                Your cart is empty!
+            </div>
+            <t t-if="website_sale_order and website_sale_order.website_order_line">
+                <div class="scrollbar oe_website_sale px-2" t-attf-class="scrollbar oe_website_sale">
+                    <t t-if="website.is_free_shipping" t-call="theme_clarico_vega.cart_free_shipping_progressbar"/>
+                    <t t-foreach="website_sale_order.website_order_line" t-as="line">
+                        <div class="row mb8 cart_line">
+                            <div class="col-sm-9 col-9">
+                                <div class="te_prod_name_info d-inline-block">
+                                    <t t-call="website_sale.cart_line_product_link">
+                                        <span class="te_cart_popover_p_name" t-out="line.name_short"/>
+                                    </t>
+                                </div>
+                                <div class="te_cart_popover_details">
+                                    <t t-if="website.show_line_subtotals_tax_selection == 'tax_excluded'"
+                                       t-set='product_price'
+                                       t-value='line.price_subtotal'/>
+                                    <t t-else=""
+                                       t-set='product_price'
+                                       t-value='line.price_total'/>
+                                    <span t-out="product_price" style="white-space: nowrap;"
+                                          t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"/>
+                                    <small t-if="not line._is_not_sellable_line() and line.product_id.base_unit_price"
+                                           class="cart_product_base_unit_price d-block text-muted"
+                                           groups="website_sale.group_show_uom_price">
+                                        <t t-call='website_sale.base_unit_price'>
+                                            <t t-set='product' t-value='line.product_id'/>
+                                            <t t-set="combination_info" t-value="line.product_id._get_combination_info_variant()"/>
+                                        </t>
+                                    </small>
+                                    <t t-set="combination_info"
+                                           t-value="line.product_id._get_combination_info_variant()"/>
+                                    <t t-set="qty" t-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>
+                                    <del t-attf-class="small text-muted {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                         style="white-space: nowrap;"
+                                         t-out="combination_info['list_price'] * qty"
+                                         t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                    <div t-attf-class="te_discount {{'' if combination_info['has_discounted_price'] else 'd-none'}} d-inline-block fw-normal">
+                                        <t t-set="difference"
+                                           t-value="round(combination_info['list_price'] - combination_info['price'],2)"/>
+                                        <t t-set="discount"
+                                           t-value="round(difference*100/combination_info['list_price']) if combination_info['list_price'] &gt; 0 else 0"/>
+                                        <div class="te_percentage small">
+                                            <span class="percent_val" t-out="'%s'%(discount)"/>% Off
+                                        </div>
+                                    </div>
+                                </div>
+                                <div t-if="not line._is_not_sellable_line()" class="te_prod_rm_info">
+                                    <div class="te_cart_popover_qty">
+                                        <div class="css_quantity input-group mx-auto">
+                                            <div class="input-group-prepend">
+                                                <a t-attf-href="#"
+                                                   class="btn btn-link js_add_cart_json d-md-inline-block"
+                                                   aria-label="Remove one" title="Remove one">
+                                                    <i class="fa fa-minus te_icon_down"/>
+                                                </a>
+                                            </div>
+                                            <input type="text"
+                                                   class="js_quantity form-control quantity p-1 text-center"
+                                                   t-att-data-line-id="line.id"
+                                                   t-att-data-product-id="line.product_id.id"
+                                                   t-att-value="int(line.product_uom_qty) == line.product_uom_qty and int(line.product_uom_qty) or line.product_uom_qty"/>
+                                            <div class="input-group-append">
+                                                <a t-attf-href="#"
+                                                   class="btn btn-link float_left js_add_cart_json d-md-inline-block"
+                                                   aria-label="Add one" title="Add one">
+                                                    <i class="fa fa-plus te_icon_up"/>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3 col-3">
+                                <span t-if="line._is_not_sellable_line() and line.product_id.image_128">
+                                    <img t-att-src="image_data_uri(line.product_id.image_128)"
+                                         class="img o_image_64_max rounded mb-2 img-fluid te_mini_img" t-att-alt="line.name_short"/>
+                                </span>
+                                <span t-else="" class="te_mini_img"
+                                      t-field="line.product_id.image_128"
+                                      t-options="{'widget': 'image', 'qweb_img_responsive': True, 'class': 'rounded o_image_64_max mb-2'}"
+                                />
+                                <a  t-if="not line._is_not_sellable_line()" href="#" aria-label="Remove from cart" title="Remove from cart" class="js_delete_product no-decoration"/>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+                <div class="text-center cart_subtotal">
+                    <span class="h6">
+                        <t t-call="website_sale.total">
+                            <t t-set="hide_promotions" t-value="True"/>
+                        </t>
+                    </span>
+                    <!-- Clear Cart Button -->
+                    <div class="te_clear_cart_popover me-3 text-end">
+                        <i class="fa fa-trash-o"/>
+                        Clear Cart
+                    </div>
+                    <div class="te_cart_btn">
+                        <a role="button" class="btn btn-primary mb-2" href="/shop/cart">
+                            Proceed to Checkout
+                        </a>
+                    </div>
+
+                </div>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="cart_page_free_shipping" inherit_id="website_sale.checkout_layout">
+        <xpath expr="//div[@id='o_cart_summary']//div[hasclass('o_total_card')]//t[@t-call='website_sale.total']" position="before">
+            <t t-if="website.is_free_shipping and not website_sale_order or website_sale_order.website_order_line" t-call="theme_clarico_vega.cart_free_shipping_progressbar"/>
+        </xpath>
+    </template>
+
+    <!--Display text on free shipping-->
+    <template id="cart_free_shipping_progressbar">
+        <t t-if="website.is_free_shipping">
+            <t t-set="free_shipping_price_val" t-value="website.free_shipping_price"/>
+            <t t-set="free_shipping_calc_price"
+               t-value="abs(website_sale_order.amount_total - free_shipping_price_val)"/>
+            <div t-attf-class="not_free_ship_text pb-1 {{'d-none' if website_sale_order.amount_total &gt; free_shipping_price_val else ''}}">
+                <div t-attf-class="first_main_freeship_price {{'d-none' if website_sale_order.amount_total &gt; free_shipping_price_val else ''}}">
+                    <span>
+                        Free Shipping for all orders of
+                        <span class="fw-bold"
+                              t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"
+                              t-out="free_shipping_price_val"/>
+                    </span>
+                </div>
+                <span t-attf-class="free_ship_not_added {{'d-none' if website_sale_order.amount_total &gt; free_shipping_price_val else ''}}">
+                    Buy
+                    <span>
+                        <span class="main_free_ship_data"
+                              t-options="{'widget': 'monetary', 'display_currency': website_sale_order.currency_id}"
+                              t-out="free_shipping_calc_price"/>
+                        <span class="offer_price d-none" t-out="free_shipping_price_val"/>
+                    </span>
+                    more to enjoy
+                    <span class="h6 fw-bold">Free Shipping</span>
+                </span>
+            </div>
+            <div t-attf-class="final_msg_ship {{'d-block' if website_sale_order.amount_total &gt; free_shipping_price_val else 'd-none'}}">
+                <span class="text-success">
+                    Your order qualifies for free shipping!
+                </span>
+            </div>
+            <div class="progress-bar overflow-visible mt-2 mb-4">
+                <div class="progress-fill position-relative"
+                     t-attf-style="width: #{min((website_sale_order.amount_total / free_shipping_price_val) * 100, 100)}%;">
+                    <i class="fa fa-truck"/>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

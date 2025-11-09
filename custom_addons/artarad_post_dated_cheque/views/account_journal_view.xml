@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="form_artarad_account_journal" model="ir.ui.view">
+        <field name="name">form.artarad.account.journal</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.view_account_journal_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='default_account_id']" position="before">
+                <label for="default_account_id" string="PDC Account" invisible="type != 'post_dated_cheque'" groups="account.group_account_readonly"/>
+            </xpath>
+            <xpath expr="//field[@name='default_account_id']" position="attributes">
+                <attribute name="required">(id and type in ('bank', 'cash', 'post_dated_cheque')) or type in ('sale', 'purchase')</attribute>
+            </xpath>
+            <xpath expr="//field[@name='suspense_account_id']" position="attributes">
+                <attribute name="required">type in ('bank', 'cash', 'post_dated_cheque')</attribute>
+                <attribute name="invisible">type not in ('bank', 'cash', 'post_dated_cheque')</attribute>
+            </xpath>
+            <xpath expr="//page[@id='inbound_payment_settings']" position="attributes">
+                <attribute name="invisible">type not in ('bank', 'cash', 'post_dated_cheque')</attribute>
+            </xpath>
+            <xpath expr="//page[@id='outbound_payment_settings']" position="attributes">
+                <attribute name="invisible">type not in ('bank', 'cash', 'post_dated_cheque')</attribute>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

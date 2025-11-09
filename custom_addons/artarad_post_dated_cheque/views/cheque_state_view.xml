@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="tree_artarad_pdc_st" model="ir.ui.view">
+        <field name="name">tree.artarad.pdc.st</field>
+        <field name="model">artarad.pdc.st</field>
+        <field name="arch" type="xml">
+            <list editable="top">
+                <field name="name" />
+                <field name="code" />
+                <field name="is_receipted" />
+                <field name="is_returned" />
+                <field name="is_spent" />
+                <field name="is_spent_no_receipt_tracking" />
+                <field name="is_spendable" />
+                <field name="company_id" />
+            </list>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!--Replace base compare button-->
+    <template id="product_comparison_wishlist_ept" inherit_id="website_sale_comparison_wishlist.product_wishlist"
+              priority="15">
+        <xpath expr="//button[hasclass('o_add_to_compare')]" position="replace"/>
+    </template>
+    <template id="product_stock_replace" inherit_id="website_sale_stock_wishlist.product_wishlist" priority="15">
+        <xpath expr="//small[hasclass('text-danger')]" position="replace"/>
+    </template>
+
+    <template id="product_wishlist_ept" inherit_id="website_sale_wishlist.product_wishlist">
+        <xpath expr="//section[hasclass('wishlist-section')]" position="attributes">
+            <attribute name="class" add="mt16" separator=" "/>
+        </xpath>
+        <xpath expr="//section[hasclass('wishlist-section')]//h3" position="replace"/>
+        <xpath expr="//section[hasclass('wishlist-section')]//table[@id='o_comparelist_table']" position="attributes">
+            <attribute name="class" remove="table-hover" separator=" "/>
+        </xpath>
+        <xpath expr="//section[hasclass('wishlist-section')]//table[@id='o_comparelist_table']//td[hasclass('td-img')]"
+               position="replace">
+            <t t-set="check_stock" t-value="website.option_out_of_stock and wish.product_id.type=='consu' and
+            (not wish.product_id.allow_out_of_stock_order) and (wish.product_id.sudo().free_qty &lt; 1)"/>
+            <td class="wish_product_img border-0 text-center align-middle">
+                <a t-att-href="wish.product_id.website_url" class="position-relative">
+                    <t t-if="website.is_lazy_load">
+                        <img t-attf-data-original="/web/image/product.product/#{wish.product_id.id}/image_256"
+                             t-attf-src="/web/image/website/#{website.id}/lazy_load_image"
+                             t-attf-class="img img-fluid lazyload #{'sold-out' if check_stock else ''}"
+                             style="margin:auto;" alt="Product image"/>
+                    </t>
+                    <t t-else="">
+                        <img t-attf-src="/web/image/product.product/#{wish.product_id.id}/image_256"
+                             t-attf-class="img img-fluid #{'sold-out' if check_stock else ''}"
+                             style="margin:auto;" alt="Product image"/>
+                    </t>
+                    <div class="te-out-of-stock-lbl" t-if="check_stock">
+                        <t t-call="theme_clarico_vega.out_of_stock_label"/>
+                    </div>
+                </a>
+            </td>
+        </xpath>
+        <xpath expr="//section[hasclass('wishlist-section')]//table[@id='o_comparelist_table']//td[hasclass('text-start')]"
+               position="attributes">
+            <attribute name="class" add="align-middle wish_product_name_and_price" separator=" "/>
+        </xpath>
+        <xpath expr="//section[hasclass('wishlist-section')]//table[@id='o_comparelist_table']//td[hasclass('wish_product_name_and_price')]//strong"
+               position="attributes">
+            <attribute name="class" add="product_name" separator=" "/>
+        </xpath>
+        <xpath expr="//section[hasclass('wishlist-section')]//table[@id='o_comparelist_table']//td[hasclass('text-start')]//small"
+               position="replace"/>
+        <xpath expr="//section[hasclass('wishlist-section')]//table[@id='o_comparelist_table']//span[@t-field='website.prevent_zero_price_sale_text']/."
+               position="replace"/>
+        <xpath expr="//section[hasclass('wishlist-section')]//table[@id='o_comparelist_table']//td[hasclass('o_wish_price')]"
+               position="replace"/>
+        <xpath expr="//section[hasclass('wishlist-section')]//table[@id='o_comparelist_table']//td[hasclass('wish_product_name_and_price')]//strong"
+               position="after">
+            <div class=" align-middle" t-if="combination_info['prevent_zero_price_sale']">
+                <span t-field="website.prevent_zero_price_sale_text"/>
+            </div>
+            <div class="align-middle" t-else="">
+
+
+                <!--Add field for product price-->
+                <t t-if="website.display_product_price()">
+                    <!-- Fix the currency issue when pricelist not set or enable on website -->
+                    <t t-out="combination_info['price']"
+                       t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                    <small t-if="combination_info['base_unit_price']"
+                           class="cart_product_base_unit_price d-block text-muted"
+                           groups="website_sale.group_show_uom_price">
+                        <t t-call='website_sale.base_unit_price'>
+                            <t t-set='product' t-value='wish.product_id'/>
+                        </t>
+                    </small>
+                </t>
+            </div>
+            <div class='td-wish-btn border-0 text-center align-middle'>
+                <input name="product_id" t-att-value="wish.product_id.id" type="hidden"/>
+                <a t-if="combination_info['prevent_zero_price_sale']"
+                   t-att-href="website.contact_us_button_url" class="btn btn-primary btn_cta">Contact Us
+                </a>
+                <div class="te_wish_btn" t-else=" ">
+                    <button id="add_to_cart_button" type="button" role="button"
+                            t-if="website.display_add_to_cart()" t-att-disabled="check_stock"
+                            class="btn btn-link btn-block o_wish_add mb4 me-2">
+                        <i class="fa fa-shopping-cart"/>
+                    </button>
+                    <t t-set="categories"
+                       t-value="wish.product_id.product_tmpl_id.valid_product_template_attribute_line_ids._prepare_categories_for_display()"/>
+                    <t t-set="product_variant_id"
+                       t-value="wish.product_id.product_tmpl_id._get_first_possible_variant_id()"/>
+                    <button t-if="is_view_active('website_sale_comparison.add_to_compare') and product_variant_id and categories"
+                            type="button" class="btn btn-link o_add_to_compare no-decoration mb4"
+                            t-att-data-product-id='wish.product_id.id'>
+                        <i t-attf-class="fa fa-exchange"/>
+                    </button>
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//section[hasclass('wishlist-section')]//table[@id='o_comparelist_table']//td[hasclass('td-wish-btn')]"
+               position="replace"/>
+
+        <!-- Show collections -->
+        <xpath expr="//section[hasclass('wishlist-section')]" position="inside">
+            <div class="wishlist_collection_list">
+                <t t-set="is_public_user"
+                   t-value="request.env.user.sudo().id == request.env.ref('base.public_user').id"/>
+                <div t-if="not is_public_user">
+                    <div class="mb-2">
+                        <h4 class="h4 me-auto mb-2 d-inline-block">Collections</h4>
+                        <a class="btn_create_collection float-end btn-outline-primary btn" title="Create collection">
+                            <span class="fa fa-plus"/>
+                            <span class='d-none d-md-inline'/>
+                            Create
+                        </a>
+                    </div>
+                    <t t-if="not collections and not is_public_user">
+                        <p>There are currently no collections for your account.</p>
+                        <br/>
+                    </t>
+                    <t t-if="collections" class="coll">
+                        <div id="cart_products" class="wishlist_lines d-flex flex-column mb32 w-100">
+                            <t t-foreach="collections" t-as="collection">
+                                <div class="mb16 collection_rec"
+                                     t-att-data-collection_id="'%s' % collection.id">
+                                    <div class="btn_grp d-flex mb-3 justify-content-between align-items-center flex-wrap">
+                                        <h5 t-out="collection.name"/>
+                                        <div>
+                                            <a class="btn_coll_remove btn-outline-primary btn btn_wish"
+                                               t-att-data-id="'%s' % collection.id"
+                                               title="Delete this collection">
+                                                <span class="fa fa-trash-o"/>
+                                                <span class='d-none d-md-inline'/>
+                                                Delete
+                                            </a>
+                                            <a class="btn_coll_share ms-2 btn-outline-primary btn btn_wish"
+                                               t-att-data-id="'%s' % collection.id"
+                                               title="Share this collection">
+                                                <span class="fa fa-share-alt"/>
+                                                <span class='d-none d-md-inline'/>
+                                                Share
+                                            </a>
+                                            <a class="btn_coll_rename ms-2 btn-outline-primary btn btn_wish"
+                                               t-att-data-id="'%s' % collection.id"
+                                               title="Rename this collection">
+                                                <span class="fa fa-edit"/>
+                                                <span class='d-none d-md-inline'/>
+                                                Rename
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <t t-foreach="collection.product_line_ids" t-as="product_line">
+                                        <t t-set="combination_info"
+                                           t-value="product_line.product_id._get_combination_info_variant()"/>
+                                        <div class="wishlist_collection_tbody border" style="display:flex;">
+                                            <div class="whole_product_line" t-att-data-wish-id="product_line.id"
+                                                 t-att-data-product-id="product_line.product_id.id"
+                                                 t-att-data-ref_collection_id="'%s' % collection.id">
+                                                <a class="text-decoration-none"
+                                                   t-att-href="'/shop/product/%s' % slug(product_line.product_id.product_tmpl_id)">
+                                                    <img t-attf-src="/web/image/product.product/#{product_line.product_id.id}/image_128"
+                                                         class="img img-fluid h-100"
+                                                         style="height: 128px;max-width: 128px !important;"
+                                                         alt="product_line.product_id.display_name"/>
+                                                </a>
+                                            </div>
+                                            <div name="o_wsale_cart_line_button_container wishlist_col">
+                                                <input name="product_line_id" t-att-value="product_line.id"
+                                                       type="hidden"/>
+                                                <div class="wishlist_product_name my-2 ps-3">
+                                                    <a t-att-href="'/shop/product/%s' % slug(product_line.product_id.product_tmpl_id)"
+                                                       style="overflow: hidden;text-overflow: ellipsis;display: -webkit-box;-webkit-line-clamp: 2;-webkit-box-orient: vertical;">
+                                                        <t t-out="product_line.product_id.display_name"/>
+                                                    </a>
+                                                </div>
+                                                <div class="mb-0 h6 ps-3">
+                                                    <t t-if="website.display_product_price()">
+                                                        <!-- Fix the currency issue when pricelist not set or enable on website -->
+                                                        <t t-out="combination_info['price']"
+                                                           t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                        <small t-if="combination_info['base_unit_price']"
+                                                               class="cart_product_base_unit_price d-block text-muted"
+                                                               groups="website_sale.group_show_uom_price">
+                                                            <t t-call='website_sale.base_unit_price'>
+                                                                <t t-set='product'
+                                                                   t-value='product_line.product_id.id'/>
+                                                            </t>
+                                                        </small>
+                                                        <del t-attf-class="small text-muted mr8 {{'' if combination_info['has_discounted_price'] else 'd-none'}}"
+                                                             style="white-space: nowrap;"
+                                                             t-out="combination_info['list_price']"
+                                                             t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                                                    </t>
+                                                </div>
+                                                <div class="product_btn">
+                                                    <button t-att-data-id="'%s' % product_line.id"
+                                                            class="btn btn-link btn-block btn_product_add_to_cart mb4"
+                                                            id="add_to_cart_button">
+                                                        <i class="fa fa-shopping-cart mr4"/>
+                                                        <span class='d-none d-md-inline'>Add to cart</span>
+                                                    </button>
+                                                    <t t-set="categories"
+                                                       t-value="product_line.product_id.product_tmpl_id.valid_product_template_attribute_line_ids._prepare_categories_for_display()"/>
+                                                    <t t-set="product_variant_id"
+                                                       t-value="product_line.product_id.product_tmpl_id._get_first_possible_variant_id()"/>
+                                                    <button t-if="is_view_active('website_sale_comparison.add_to_compare') and product_variant_id and categories"
+                                                            type="button"
+                                                            class="btn btn-link o_add_to_compare no-decoration mb4 border-start"
+                                                            t-att-data-product-id="product_line.product_id.id">
+                                                        <i t-attf-class="fa fa-exchange"></i>
+                                                        <span class='d-none d-md-inline'>Compare</span>
+                                                    </button>
+                                                    <a t-att-data-id="'%s' % product_line.id"
+                                                       class="btn btn-link btn_product_remove mb4 border-start">
+                                                        <input name="collection_id" class="collection_id"
+                                                               t-att-value="collection.id" type="hidden"/>
+                                                        <i class="fa fa-trash remove mr4"/>
+                                                        <span class='d-none d-md-inline'>Remove</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                </div>
+            </div>
+            <div class="modal fade" id="collection_delete_modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Confirmation</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"/>
+                        </div>
+                        <div class="modal-body">
+                            <p class="alert alert-danger">This collection contains some products!
+                            </p>
+                            <h4>
+                                <b>Do you still want to delete it ?</b>
+                            </h4>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary no"
+                                    data-bs-dismiss="modal"
+                                    title="Cancel this Delete Collection Operation">No
+                            </button>
+                            <button type="button" class="btn btn-primary yes"
+                                    data-bs-dismiss="modal" title="Confirm Delete Collection">Yes
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="collection_rename_modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Rename Collections</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
+                        </div>
+                        <div class="wishlist_rename_collection_body modal-body">
+                            <input class="form form-control" autocomplete="off" type="text" name="collection_name"
+                                   id="collection_name"
+                                   placeholder="Rename Collection"/>
+                            <input type="hidden" name="rnm_collection_id" id="rnm_collection_id" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" title="Cancel">
+                                Cancel
+                            </button>
+                            <button type="button" class="btn btn-primary" id="coll_rename_btn" title="Confirm">Update</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="collection_share_modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Share Collections of Wishlist Items</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
+                        </div>
+                        <div class="wishlist_collection_body modal-body">
+                            <p>Kindly provide the email address of the recipient to share the collections of wishlist
+                                items.
+                            </p>
+                            <input class="form form-control" autocomplete="off" type="text" name="recipient_email"
+                                   id="recipient_email"
+                                   placeholder="Please provide the email address of the recipient."/>
+                            <span class="badge badge-pill wishlist_collection_msg"/>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" title="Cancel">
+                                Cancel
+                            </button>
+                            <button type="button" class="btn btn-primary" id="btn_coll_send" title="Confirm">Send
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="collection_create_modal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Create Collection</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"/>
+                        </div>
+                        <div class="create_collection_body modal-body">
+                            <div id="create_collection_main">
+                                <div class="mb16 ps-0 ps-lg-3 ps-sm-0 ps-md-3">
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <input type='text' name='collection_name' placeholder="Collection Name"
+                                                   class="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" title="Cancel">
+                                Cancel
+                            </button>
+                            <button type="button" class="btn btn-primary" id="btn_collection_create" title="Confirm">
+                                Create
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,287 @@
+<odoo>
+    <data>
+
+
+        <template id="report_lot_label">
+            <t t-call="web.basic_layout">
+                <!--<main>-->
+                <div class="oe_structure"/>
+                <link rel="stylesheet" href="/artarad_kadolin_custom/static/src/css/akc_frontend.css"/>
+
+                <style type="text/css">
+
+                    table.sn-sheet { min-width: 100%; max-height: 19mm; border-spacing: 1mm 1mm; }
+
+                    td.sn-cell { max-width: 38mm; height: 18mm; ; vertical-align: top; }
+
+                    .box { box-sizing: border-box; width: 100%; height: 100%; overflow: hidden; white-space: nowrap;}
+
+                    .name {
+                    font-size: 7pt;
+                    font-weight: 600;
+                    overflow: hidden;
+                    white-space: normal;
+                    line-height: 1.1em;
+                    height: 2.2em; /* دقیقاً دو خط */
+                    text-overflow: ellipsis;
+                    word-break: break-word;
+                    overflow-wrap: anywhere;
+                    max-width: 36mm;
+                    font-family: 'nazanin', 'Vazirmatn', 'Noto Sans Arabic', 'DejaVu Sans', sans-serif;
+                    }
+                    .meta { font-size: 6.5pt; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+                    margin-top: .6mm; max-width: 36mm;}
+                    .bar {
+                    display: inline-flex;
+                    width: 39mm;
+                    height: 8mm;
+                    margin: 0 auto;
+                    }
+                    .o_body_pdf.o_css_margins{ padding: 0 !important;}
+                </style>
+
+                <div dir="rtl">
+                    <link rel="stylesheet" href="/artarad_kadolin_custom/static/src/css/akc_frontend.css"/>
+                    <!-- هر ردیف = ۲ سریال -->
+                    <t t-foreach="[docs[i:i+2] for i in range(0, len(docs), 2)]" t-as="pair">
+                        <table class="sn-sheet">
+                            <tbody>
+                                <tr>
+                                    <!-- سلول اول -->
+                                    <td class="sn-cell">
+                                        <t t-if="len(pair) &gt;= 1">
+                                            <div class="box">
+                                                <div class="name">
+                                                    <t t-esc="pair[0].product_id.name"/>
+                                                </div>
+                                                <div class="meta">
+                                                    <t t-if="pair[0].product_id.default_code">[<t
+                                                            t-esc="pair[0].product_id.default_code"/>]
+                                                    </t>
+                                                    --
+                                                    <t t-esc="pair[0].name"/>
+                                                </div>
+                                                <span class="bar" t-out="pair[0].name"
+                                                      t-options="{'widget':'barcode','symbology':'Code128','img_style':'width: 100%; height:8mm' ,'quiet': 0, 'humanreadable': False,'width': 200,
+          'height': 80,  }"/>
+
+                                            </div>
+                                        </t>
+                                    </td>
+
+                                    <!-- سلول دوم -->
+                                    <td class="sn-cell" style="padding-right:7px !important">
+                                        <t t-if="len(pair) == 2">
+                                            <div class="box" style="margin-right:7px !important">
+                                                <div class="name">
+                                                    <t t-esc="pair[1].product_id.name"/>
+                                                </div>
+                                                <div class="meta">
+                                                    <t t-if="pair[1].product_id.default_code">[<t
+                                                            t-esc="pair[1].product_id.default_code"/>]
+                                                    </t>
+                                                    --
+                                                    <t t-esc="pair[1].name"/>
+                                                </div>
+                                                <span class="bar" t-out="pair[1].name"
+                                                      t-options="{'widget':'barcode','symbology':'Code128','img_style':'width: 100%; height:8mm' ,'quiet': 0, 'humanreadable': False,'width': 200,
+          'height': 80,  }"/>
+                                            </div>
+                                        </t>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="page-break-before:always;"/>
+                    </t>
+
+                    <div class="oe_structure"/>
+                </div>
+
+            </t>
+        </template>
+
+        <template id="report_odoo_lot_label">
+
+            <t t-call="web.basic_layout">
+                <t t-set="nRows" t-value="1"/>
+                <t t-set="nCols" t-value="2"/>
+                <div class="oe_structure"/>
+                <div t-foreach="[docs[x:x + nRows * nCols] for x in range(0, len(docs), nRows * nCols)]"
+                     t-as="page_docs" class="o_label_sheet" dir="rtl">
+                    <table class="my-0 table table-sm table-borderless" t-att-style="'max-width:86mm;'">
+                        <t t-foreach="range(nRows)" t-as="row">
+                            <tr>
+                                <t t-foreach="range(nCols)" t-as="col">
+                                    <t t-set="barcode_index" t-value="(row * nCols + col)"/>
+                                    <t t-if="barcode_index &lt; len(page_docs)">
+                                        <t t-set="o" t-value="page_docs[barcode_index]"/>
+                                    </t>
+                                    <t t-else="">
+                                        <t t-set="o" t-value="page_docs[0]"/>
+                                    </t>
+                                    <td>
+                                        <div t-att-style="'height:22mm;'">
+                                            <t t-set="final_barcode" t-value="''"/>
+                                            <t t-if="env.user.has_group('stock.group_stock_lot_print_gs1')">
+                                                <t t-if="doc.product_id.valid_ean" t-set="final_barcode"
+                                                   t-value="'01' + '0' * (14 - len(doc.product_id.barcode)) + doc.product_id.barcode"/>
+                                                <t name="gs1_datamatrix_lot" t-if="doc.product_id.tracking == 'lot'"
+                                                   t-set="final_barcode"
+                                                   t-value="(final_barcode or '') + '10' + doc.name"/>
+                                                <t t-elif="doc.product_id.tracking == 'serial'" t-set="final_barcode"
+                                                   t-value="(final_barcode or '') + '21' + doc.name"/>
+                                            </t>
+                                            <div t-att-style="'padding: 0 !important;
+                line-height: 1.5;
+                font-size: 55%;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;'"
+                                                 t-if="doc.product_id.default_code"
+                                            >
+                                                [<t t-out="doc.product_id.default_code"/>]
+
+                                                [<t t-out="doc.name"/>]
+                                            </div>
+                                            <div t-att-style="'padding: 0 !important;
+                line-height: 1.5;
+                font-size: 55%;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;'" t-field="doc.product_id.name"
+                                            >Demo Product
+                                            </div>
+
+                                            <t t-if="env.user.has_group('stock.group_stock_lot_print_gs1')">
+                                                <div t-if="final_barcode"
+                                                     t-att-style="'position:absolute; right:.5px; bottom:.5px'">
+                                                    <span t-out="final_barcode"
+                                                          t-options="{'widget': 'barcode', 'symbology': 'ECC200DataMatrix', 'img_style': 'width:17mm; height:17mm'}">
+                                                        12345678901
+                                                    </span>
+                                                </div>
+                                            </t>
+                                            <t t-else="">
+                                                <span t-field="doc.name"
+                                                      t-options="{'widget': 'barcode', 'img_style': 'width:70%; height:1cm'}">
+                                                    Demo Lot/SN
+                                                </span>
+
+                                                <span t-field="doc.company_id.logo"
+                                                      t-options="{'img_style': 'width:30%; height:1cm'}">
+                                                </span>
+                                            </t>
+                                        </div>
+                                    </td>
+                                </t>
+                            </tr>
+                        </t>
+                    </table>
+                    <div class="oe_structure"/>
+                </div>
+            </t>
+        </template>
+
+
+        <template id="report_picking_delivery_kadolin">
+
+            <t t-foreach="docs" t-as="doc">
+                <t t-set="doc" t-value="doc.with_context({'lang':doc.partner_id.lang})"/>
+                <t t-call="web.basic_layout">
+                    <div class="page " style="margin:0px 0px 0px 0px; font-size:16px; font-family:nazanin;" dir="rtl">
+                        <link rel="stylesheet" href="/artarad_kadolin_custom/static/src/css/akc_frontend.css"/>
+
+                        <table style="width:100%; border-bottom:1px solid black; margin-bottom:4px; font-size:11px;"
+                               dir="rtl">
+
+                            <tr>
+                                <!-- ستون راست: فرستنده (آدرس شرکت) -->
+                                <td style="width:60%; vertical-align:top; padding:3px 6px; text-align:right;">
+                                    <strong style="font-size:12px;">فرستنده:</strong>
+                                    <span t-field="doc.company_id.partner_id.contact_address"/>
+                                </td>
+
+                                <!-- ستون چپ: لوگو و اطلاعات تماس شرکت -->
+                                <td style="width:40%; vertical-align:top; text-align:center; padding:3px 6px;">
+                                    <img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)"
+                                         style="width:3.5cm; margin-bottom:3px;" alt="Logo"/>
+                                    <div>
+                                        <t t-esc="doc.company_id.name or ''"/>
+                                    </div>
+                                    <div>
+                                        <t t-esc="doc.company_id.website or ''"/>
+                                    </div>
+                                    <div>
+                                        <t t-esc="doc.company_id.phone or ''"/>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                        <!-- Receiver info -->
+                        <table style="width:100%; border-bottom:1px solid black; margin-bottom:4px; font-size:11px;"
+                               dir="rtl">
+                            <tr style=" padding: 6px 0; font-weight: bold; font-size: 20px; border-bottom: 1px solid black;">
+                                <td sytle="text-align: right;">
+                                    <t t-esc="(doc.partner_id.city or doc.partner_id.city_id.name or '—').strip()"/>
+                                </td>
+                                <td sytle="text-align::right">
+                                    <t t-esc="doc.carrier_id.name or '—'"/>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <div style="font-size: 13px; line-height: 1.6; padding: 4px 0;">
+                            <div>
+                                <span>گیرنده:</span>
+                                <t t-esc="doc.partner_id.name or ''"/>
+
+                                <span>تلفن:</span>
+                                <t t-esc="doc.partner_id.phone or doc.partner_id.mobile or '—'"/>
+                            </div>
+
+                            <div>
+                                <span>آدرس:</span>
+                                <t t-esc="(doc.partner_id.contact_address or '')"/>
+
+                            </div>
+                        </div>
+
+                        <!-- Order reference -->
+                        <div style="text-align: center; font-size: 14px; border-top: 1px solid black; margin-top: 5px; padding-top: 3px;">
+                            <span>شماره سفارش:</span>
+                            <t t-esc="doc.origin or doc.name"/>
+                        </div>
+
+                        <!-- Barcode -->
+                        <div style="text-align: center; border-top: 1px solid black; margin-top: 5px; padding-top: 5px;">
+                            <span class="bar" t-out="doc.carrier_tracking_code" t-options="{'widget':'barcode','symbology':'Code128','img_style':'width: 100%; height:10mm' ,'quiet': 0, 'humanreadable': False,'width': 200,
+          'height': 10,  }"/>
+                            <div style="font-size: 11px; margin-top: 2px;">
+                                <t t-esc="doc.carrier_tracking_code"/>
+                            </div>
+                        </div>
+
+                        <div t-if="doc.sale_id.delivery_slot"
+                             style="text-align: center; border-top: 1px solid black; margin-top: 5px; padding-top: 5px;">
+                            <div style="font-size: 11px; margin-top: 2px;font-size: 18px;">
+
+                                <span t-esc="user.get_jalali_date(doc.sale_id.expected_date)"/>
+                                -
+                                <!--<span t-esc="doc.sale_id.delivery_slot"/>-->
+                                <span t-esc="dict(doc.sale_id.fields_get(allfields=['delivery_slot'])['delivery_slot']['selection'])[doc.sale_id.delivery_slot]"/>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                </t>
+            </t>
+
+        </template>
+
+    </data>
+</odoo>

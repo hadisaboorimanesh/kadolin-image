@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="akc_pack_01" model="stock.quant.package"><field name="name">AKC-PACK-01</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_02" model="stock.quant.package"><field name="name">AKC-PACK-02</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_03" model="stock.quant.package"><field name="name">AKC-PACK-03</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_04" model="stock.quant.package"><field name="name">AKC-PACK-04</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_05" model="stock.quant.package"><field name="name">AKC-PACK-05</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_06" model="stock.quant.package"><field name="name">AKC-PACK-06</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_07" model="stock.quant.package"><field name="name">AKC-PACK-07</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_08" model="stock.quant.package"><field name="name">AKC-PACK-08</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_09" model="stock.quant.package"><field name="name">AKC-PACK-09</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_10" model="stock.quant.package"><field name="name">AKC-PACK-10</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_11" model="stock.quant.package"><field name="name">AKC-PACK-11</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_12" model="stock.quant.package"><field name="name">AKC-PACK-12</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_13" model="stock.quant.package"><field name="name">AKC-PACK-13</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_14" model="stock.quant.package"><field name="name">AKC-PACK-14</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_15" model="stock.quant.package"><field name="name">AKC-PACK-15</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_16" model="stock.quant.package"><field name="name">AKC-PACK-16</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_17" model="stock.quant.package"><field name="name">AKC-PACK-17</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_18" model="stock.quant.package"><field name="name">AKC-PACK-18</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_19" model="stock.quant.package"><field name="name">AKC-PACK-19</field><field name="akc_reusable">1</field></record>
+  <record id="akc_pack_20" model="stock.quant.package"><field name="name">AKC-PACK-20</field><field name="akc_reusable">1</field></record>
+
+<record id="action_quality_check_pass_process" model="ir.actions.server">
+        <field name="name">Pass</field>
+        <field name="model_id" ref="quality.model_quality_check"/>
+        <field name="binding_model_id" ref="quality.model_quality_check"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.action_bulk_pass_process()
+        </field>
+    </record>
+    <record id="action_quality_check_fail_process" model="ir.actions.server">
+        <field name="name">Fail</field>
+        <field name="model_id" ref="quality.model_quality_check"/>
+        <field name="binding_model_id" ref="quality.model_quality_check"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.action_bulk_fail_process()
+        </field>
+    </record>
+
+</odoo>
