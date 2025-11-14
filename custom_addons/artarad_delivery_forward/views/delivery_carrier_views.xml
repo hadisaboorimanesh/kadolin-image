@@ -21,6 +21,8 @@
               <field name="forward_token_value" readonly="1"/>
               <field name="forward_token_cached_at" readonly="1"/>
               <field name="forward_token_ttl"/>
+              <field name="pickup_date"/>
+              <field name="shift"/>
             </group>
           </group>
         </page>

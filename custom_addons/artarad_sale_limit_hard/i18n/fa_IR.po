@@ -1,0 +1,116 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* artarad_sale_limit_hard
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e-20250408\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-11-09 09:12+0000\n"
+"PO-Revision-Date: 2025-11-09 12:46+0330\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: fa\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
+"X-Generator: Poedit 3.8\n"
+
+#. module: artarad_sale_limit_hard
+#: model_terms:ir.ui.view,arch_db:artarad_sale_limit_hard.product
+msgid ""
+"<i class=\"fa fa-shopping-cart me-2\"/>\n"
+"                    Add to cart"
+msgstr "<i class=\"fa fa-shopping-cart me-2\"/>افزودن به سبد خرید</i>"
+
+#. module: artarad_sale_limit_hard
+#: model_terms:ir.ui.view,arch_db:artarad_sale_limit_hard.cart_lines
+msgid "<sup>*</sup>Already ordered maximum"
+msgstr "‫<sup>*</sup> حداکثر سفارش داده شده"
+
+#. module: artarad_sale_limit_hard
+#: model_terms:ir.ui.view,arch_db:artarad_sale_limit_hard.product
+msgid "<sup>*</sup>Can't order too much quantity!"
+msgstr "<sup>*</sup> تعداد بالا قابل سفارش نیست!"
+
+#. module: artarad_sale_limit_hard
+#: model_terms:ir.ui.view,arch_db:artarad_sale_limit_hard.cart_lines
+msgid "<sup>*</sup>Maximum ordered quantity is"
+msgstr "<sup>*</sup> حداکثر مقدار سفارش داده شده"
+
+#. module: artarad_sale_limit_hard
+#: model_terms:ir.ui.view,arch_db:artarad_sale_limit_hard.cart_lines
+msgid "<sup>*</sup>Minimum ordered quantity is"
+msgstr "<sup>*</sup> حداقل مقدار سفارش داده شده"
+
+#. module: artarad_sale_limit_hard
+#: model:ir.model.fields,field_description:artarad_sale_limit_hard.field_product_product__apply_qty_limit
+msgid "Apply Qty Limit"
+msgstr "محدودیت تعداد"
+
+#. module: artarad_sale_limit_hard
+#: model:ir.model.fields,field_description:artarad_sale_limit_hard.field_website__enable_product_limits
+msgid "Enable Product Limits"
+msgstr "فعال کردن محدودیت‌های محصول"
+
+#. module: artarad_sale_limit_hard
+#: model:ir.model.fields,field_description:artarad_sale_limit_hard.field_product_product__max_limit
+msgid "Max Limit"
+msgstr "حداکثر محدودیت"
+
+#. module: artarad_sale_limit_hard
+#: model:ir.model.fields,field_description:artarad_sale_limit_hard.field_product_product__min_limit
+msgid "Min Limit"
+msgstr "حداقل محدودیت"
+
+#. module: artarad_sale_limit_hard
+#. odoo-python
+#: code:addons/artarad_sale_limit_hard/controllers/main.py:0
+msgid ""
+"OR You already purchased the allowed quantity of this product in previous "
+"orders , So remove the product from the cart to process the payment"
+msgstr ""
+"یا شما قبلاً تعداد مجاز این محصول را در سفارش‌های قبلی خریداری کرده‌اید، "
+"بنابراین برای پردازش پرداخت، محصول را از سبد خرید حذف کنید."
+
+#. module: artarad_sale_limit_hard
+#: model:ir.model,name:artarad_sale_limit_hard.model_product_product
+msgid "Product Variant"
+msgstr "گونه محصول"
+
+#. module: artarad_sale_limit_hard
+#: model:ir.model.fields,field_description:artarad_sale_limit_hard.field_product_product__remove_customer_limit_after
+msgid "Remove Customer Limit After"
+msgstr "حذف محدودیت بعد از "
+
+#. module: artarad_sale_limit_hard
+#: model_terms:ir.ui.view,arch_db:artarad_sale_limit_hard.product_normal_form_view
+msgid "Remove Customer Limit After(Days)"
+msgstr "حذف محدودیت بعد از "
+
+#. module: artarad_sale_limit_hard
+#: model:ir.model,name:artarad_sale_limit_hard.model_website
+msgid "Website"
+msgstr "تارنما"
+
+#. module: artarad_sale_limit_hard
+#. odoo-python
+#: code:addons/artarad_sale_limit_hard/controllers/main.py:0
+msgid ""
+"You are willing to order more than the allowed quantity for %(product)s. "
+"Maximum allowed quantity is %(max_qty)s, So reduce the quantity"
+msgstr ""
+
+#. module: artarad_sale_limit_hard
+#. odoo-python
+#: code:addons/artarad_sale_limit_hard/controllers/main.py:0
+msgid ""
+"You are willing to order too less quantity for %(product)s. Minimum allowed "
+"quantity is %(limit_min)s, So add more quantity"
+msgstr ""
+
+#. module: artarad_sale_limit_hard
+#: model_terms:ir.ui.view,arch_db:artarad_sale_limit_hard.cart_lines
+msgid "quantity!"
+msgstr "تعداد"

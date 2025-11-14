@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="action_confirm" model="ir.actions.server">
+    <record id="action_change_state_to_posted" model="ir.actions.server">
         <field name="name">Confirm</field>
         <field name="model_id" ref="artarad_post_dated_cheque.model_artarad_pdc_st_chg_trans" />
         <field name="binding_model_id" ref="artarad_post_dated_cheque.model_artarad_pdc_st_chg_trans" />
         <field name="state">code</field>
         <field name="code">
 for transaction in records:
-    transaction.action_post()
+    transaction.change_state_to_posted()
         </field>
     </record>
 
@@ -56,7 +56,7 @@ for transaction in records:
             <form>
                 <header>
                     <field name="transaction_state" widget="statusbar" />
-                    <button name="%(action_confirm)d" class="oe_highlight" string="Confirm" type="action"
+                    <button name="%(action_change_state_to_posted)d" class="oe_highlight" string="Confirm" type="action"
                         invisible="transaction_state == 'posted'" />
                 </header>
                 <sheet>
@@ -99,10 +99,10 @@ for transaction in records:
 
                     <group>
                         <group>
-                            <field name="debit_account" readonly="transaction_state == 'posted'" domain="[('deprecated','=',False)]" />
+                            <field name="debit_account" readonly="transaction_state == 'posted'" />
                         </group>
                         <group>
-                            <field name="credit_account" readonly="transaction_state == 'posted'"  domain="[('deprecated','=',False)]"/>
+                            <field name="credit_account" readonly="transaction_state == 'posted'" />
                         </group>
                     </group>
 

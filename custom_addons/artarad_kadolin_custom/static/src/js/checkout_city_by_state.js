@@ -40,7 +40,7 @@ publicWidget.registry.KadolinCheckoutCity = publicWidget.Widget.extend({
         try {
             const resp = await fetch(`/shop/cities?state_id=${encodeURIComponent(stateId)}`);
             const data = await resp.json(); // [{id, name}]
-            this.citySelect.innerHTML = '<option value="">انتخاب شهر...</option>';
+            this.citySelect.innerHTML = '<option value=""></option>';
             data.forEach(c => {
                 const opt = document.createElement('option');
                 opt.value = String(c.id);       // value = id

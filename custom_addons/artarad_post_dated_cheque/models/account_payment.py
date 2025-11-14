@@ -3,12 +3,9 @@ from odoo import models, fields, api, exceptions, _
 from odoo.addons.account.models import account_payment as ap
 
 import jdatetime
-import num2fawords
 import requests
 import json
-
 from odoo.exceptions import UserError
-
 
 class artaradAccountPaymentRegister(models.TransientModel):
     _inherit = 'account.payment.register'
@@ -130,9 +127,11 @@ class artaradAccountPayment(models.Model):
     # domain fields
     available_cheque_book_ids = fields.Many2many("artarad.pdc.book", compute="_compute_domain_fields")
     available_cheque_sheet_ids = fields.Many2many("artarad.pdc.sheet", compute="_compute_domain_fields")
+    no_receipt = fields.Boolean(compute="_compute_no_receipt",store=True)
+    no_receipt_for_out = fields.Boolean(compute="_compute_no_receipt",store=True)
 
     sayadi_cheque_status = fields.Char("Sayadi Cheque Status" ,readonly=1)  #  نتیجه استعلام
-
+    cheque_type = fields.Selection([('paper','Paper'),('electronic','Electronic')])
     def _check_cheque_status(self):
         client_id = self.env['ir.config_parameter'].sudo().get_param('finnotech.client_id')
         national_id = self.env['ir.config_parameter'].sudo().get_param('finnotech.national_id')
@@ -190,7 +189,21 @@ class artaradAccountPayment(models.Model):
             # else:
             #     payment.cheque_status = f"خطا {response.status_code}"
 
-
+    @api.depends("cheque_state_change_transactions","cheque_state")
+    def _compute_no_receipt(self):
+        for rec in self:
+            if rec.payment_type == 'inbound':
+                last = rec.cheque_state_change_transactions.filtered(lambda l: l.new_cheque_state.is_payment_validator or l.new_cheque_state.is_spent ).sorted("id")
+                if last and jdatetime.datetime.fromgregorian(date=rec.date).strftime(
+                        '%Y') == jdatetime.datetime.fromgregorian(date=last[0].transaction_date).strftime('%Y'):
+                    rec.no_receipt = False
+                else:
+                    rec.no_receipt = True
+                if rec.spent_for and jdatetime.datetime.fromgregorian(date=rec.date).strftime(
+                        '%Y') == jdatetime.datetime.fromgregorian(date=rec.spent_for.date).strftime('%Y'):
+                    rec.no_receipt = False
+            if rec.cheque_sheet and not rec.cheque_state_change_transactions_count:
+                rec.no_receipt_for_out = True
     @api.depends("journal_id", "cheque_book")
     def _compute_domain_fields(self):
         for rec in self:
@@ -213,7 +226,7 @@ class artaradAccountPayment(models.Model):
         super(artaradAccountPayment,self)._compute_reconciliation_status()
 
         for pay in self:
-            if pay.cheque_state.is_receipted:
+            if pay.cheque_state.is_payment_validator:
                 pay.is_matched = True
 
 
@@ -313,8 +326,8 @@ class artaradAccountPayment(models.Model):
                                                                             'journal_id': self.journal_id.id,
                                                                             'move_partner': self.move_id.partner_id.id,
                                                                             'old_cheque_state': cheque.cheque_state.id,
-                                                                            'new_cheque_state': self.env['artarad.pdc.st'].search(['|', ('is_spent', '=', True), ('is_spent_no_receipt_tracking', '=', True)], limit=1).id})
-                new_transaction.action_post()
+                                                                            'new_cheque_state': self.env['artarad.pdc.st'].search([("is_spent", "=", True)], limit=1).id})
+                new_transaction.change_state_to_posted()
 
                 # 2
                 credit_journal_item_name += f'{cheque.cheque_number + ("(" + cheque.cheque_number_description + ")" if cheque.cheque_number_description else "")} | {jdatetime.datetime.fromgregorian(date=cheque.cheque_date).strftime("%Y/%m/%d")} - '
@@ -348,6 +361,7 @@ class artaradAccountPayment(models.Model):
                     record.cheque_sheet.set_as_unused()
                     record.cheque_book = \
                     record.cheque_sheet = False
+
 
     @api.model
     def create(self,vals):
@@ -447,12 +461,13 @@ class artaradAccountPayment(models.Model):
                                                                                 'transaction_date': fields.Date.today(),
                                                                                 'old_cheque_state': last_transaction.new_cheque_state.id,
                                                                                 'new_cheque_state': last_transaction.old_cheque_state.id})
-                    new_transaction.action_post()
+                    new_transaction.change_state_to_posted()
                 else:
                     if payment.payment_type == 'outbound':
                         payment.cheque_state = self.env['artarad.pdc.init.st'].search([("type", "=", "IIP")]).state.id
                     elif payment.payment_type == 'inbound':
                         payment.cheque_state = self.env['artarad.pdc.init.st'].search([("type", "=", "IIS")]).state.id
+
 
     def register_multi_transaction(self, new_state_id):
         unreceiptable_cheques = {'undefined_state_change': [], 'already_in_state': []}
@@ -470,7 +485,7 @@ class artaradAccountPayment(models.Model):
                     
                     transaction._set_journal_and_partner_defaults_and_journal_domain()
                     transaction._set_default_debit_and_credit_accounts()
-                    transaction.action_post()
+                    transaction.change_state_to_posted()
                 else:
                     unreceiptable_cheques['undefined_state_change'].append(payment)
             else:
@@ -488,6 +503,7 @@ class artaradAccountPayment(models.Model):
 
         if len(message):
             raise exceptions.UserError(message)
+
 
     def update_cheque_fields(self, vals):
         for payment in self:
@@ -514,29 +530,14 @@ class artaradAccountPayment(models.Model):
             elif old_sheet and new_sheet and old_sheet != new_sheet:
                 old_sheet.set_as_unused()
                 new_sheet.set_as_used(payment)
-
-    def get_jalali_date_string(self, date):
-        j_date_obj = jdatetime.date.fromgregorian(date=date)
-        year = j_date_obj.year
-        # list_year = [int(x) for x in str(year)]
-        month = str(j_date_obj.month)
-        if len(month) == 1:
-            month="0"+month
-        day = str(j_date_obj.day)
-
-        if len(day) == 1:
-            day="0"+day
-        full_date = "  %s   %s   %s" % (
-        day, month,  year)
-        return full_date
-
-    def get_farsi_words(self, number):
-        return num2fawords.words(number)
-
-    def get_jalali_date_in_words(self, date):
-        j_date_obj = jdatetime.date.fromgregorian(date=date)
-        year = self.get_farsi_words(j_date_obj.year)
-        month = j_date_obj.j_months_fa[j_date_obj.month - 1]
-        day = self.get_farsi_words(j_date_obj.day)
-        full_date = day + ' ' + month + ' ماه سال ' + year
-        return full_date
+    def action_change_cheque_state_wizard(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': _('Change Cheque State'),
+            'res_model': 'change.cheque.state.wizard',
+            'view_mode': 'form',
+            'context': {
+                'default_payment_ids': [(6, 0, self.ids)],
+            },
+            'target': 'new',
+        }

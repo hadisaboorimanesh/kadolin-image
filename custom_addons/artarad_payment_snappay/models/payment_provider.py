@@ -11,6 +11,59 @@ from odoo.exceptions import ValidationError, UserError
 
 _logger = logging.getLogger(__name__)
 
+VERIFY_OK_STATES   = {'VERIFY', 'VERIFIED', 'VERIFY_SUCCESS'}
+SETTLED_STATES     = {'SETTLE', 'SETTLED', 'SETTLED_SUCCESS'}
+PENDING_STATES     = {'PENDING', 'VERIFY_PENDING'}
+
+def _is_success_flag(payload: dict, default=False):
+    # بعضی اندپوینت‌ها successful ندارند؛ در پرداخت بهتره default=False باشه
+    try:
+        return bool(payload.get('successful', default))
+    except Exception:
+        return False
+
+def _normalize_status(payload: dict):
+    st = payload.get('status') or payload.get('transactionStatus') or payload.get('state')
+    if isinstance(st, str):
+        return st.strip().upper()
+    return None
+
+def _must_retry(status):
+    return (status in PENDING_STATES)
+
+def _jsonify_response(resp):
+    if isinstance(resp, dict):
+        return resp
+    try:
+        return resp.json()
+    except Exception:
+        return {'raw': str(resp)}
+
+def _safe_store_settle_status(orders, payload):
+    try:
+        txt = json.dumps(payload, ensure_ascii=False)
+        orders.write({'settle_status': txt})
+    except Exception:
+        _logger.exception("Failed to write settle_status")
+
+def _poll_once_then_backoff(fetch_fn, max_attempts=2, wait_seconds=3):
+    # fetch_fn باید callable باشه که dict برگردونه
+    payload = fetch_fn()
+    if payload is None:
+        payload = {}
+    if max_attempts <= 1:
+        return payload
+
+    status = _normalize_status(payload)
+    attempts = 1
+    while attempts < max_attempts and _must_retry(status):
+        time.sleep(wait_seconds)
+        payload = fetch_fn() or {}
+        status = _normalize_status(payload)
+        attempts += 1
+    return payload
+
+
 
 class PaymentProvider(models.Model):
     _inherit = 'payment.provider'
@@ -175,10 +228,10 @@ class PaymentProvider(models.Model):
             resp.raise_for_status()
             return resp.json()
         except requests.exceptions.Timeout as e:
-            raise
+            _logger.exception("SnappPay API call failed [%s]: %s", path, e)
         except Exception as e:
             _logger.exception("SnappPay API call failed [%s]: %s", path, e)
-            raise UserError(_("SnappPay API call failed for %s: %s") % (path, e))
+            # raise UserError(_("SnappPay API call failed for %s: %s") % (path, e))
 
     # ====== سرویس‌های متداول SnappPay (برای استفاده از تراکنش) ======
 
@@ -214,116 +267,224 @@ class PaymentProvider(models.Model):
         status = (payload or {}).get('status') or res.get('status') or ''
         return str(status).upper()
 
-    def snappay_verify(self, payment_token):
-        """POST /api/online/payment/v1/verify with resiliency.
+    def snappay_verify(self, payment_token, tx):
 
-        Behaviour required by SnappPay:
-        - Use a 30–60s timeout on verify. If it times out, call status.
-        - If status shows the payment is verified, then attempt settle.
-        - If status is pending, retry verify once after a short delay.
-        """
         self.ensure_one()
-        try:
-            # Primary attempt: verify with ~30s timeout
-            res = self._snappay_request(
-                '/api/online/payment/v1/verify',
-                json_body={'paymentToken': payment_token},
-                method='POST',
-                timeout=30,
-            )
-            return res
-        except requests.exceptions.Timeout:
-            # No response within timeout → ask for status
-            status_res = self.snappay_status(payment_token)
-            st = self._snappay_extract_status(status_res)
-            if st in {'VERIFY', 'VERIFIED', 'VERIFY_SUCCESS'}:
-                # Verified at provider → try to settle once
-                try:
-                    settle_res = self.snappay_settle(payment_token, timeout_sec=30)
-                    return settle_res
-                except requests.exceptions.Timeout:
-                    # If settle also times out, return last known status
-                    return status_res
-            elif st in {'PENDING', 'VERIFY_PENDING'}:
-                # Give verify one more chance after a short wait
-                time.sleep(3)
-                try:
-                    return self._snappay_request(
-                        '/api/online/payment/v1/verify',
-                        json_body={'paymentToken': payment_token},
-                        method='POST',
-                        timeout=30,
-                    )
-                except requests.exceptions.Timeout:
-                    return status_res
-            else:
-                return status_res
 
-    def snappay_revert(self, payment_token):
-        """POST /api/online/payment/v1/revert"""
+        def _verify_call():
+            try:
+                res = self._snappay_request(
+                    '/api/online/payment/v1/verify',
+                    json_body={'paymentToken': payment_token},
+                    method='POST',
+                    timeout=60,
+                )
+                return _jsonify_response(res)
+            except requests.exceptions.Timeout:
+                _logger.warning("SnappPay verify timeout for token %s", payment_token)
+                return {'error': 'timeout'}
+            except requests.RequestException:
+                _logger.exception("SnappPay verify request error")
+                return {'error': 'request_error'}
+
+        # 1) تلاش اول verify
+        verify_payload = _verify_call()
+
+        # اگر explicit موفق (successful=True) بود → برو برای settle
+        if _is_success_flag(verify_payload, default=False):
+            settle_payload = self.snappay_settle(payment_token, tx, timeout_sec=30)
+            return _jsonify_response(settle_payload)
+
+        # اگر timeout یا unsuccessful → وضعیت را چک کن
+        status_payload = self.snappay_status(payment_token) or {}
+        status = _normalize_status(status_payload)
+
+        if status in VERIFY_OK_STATES:
+            # قابل ستل‌کردن است
+            settle_payload = self.snappay_settle(payment_token, tx, timeout_sec=30)
+            return _jsonify_response(settle_payload)
+
+        if status in PENDING_STATES:
+            # یک بک‌آف کوتاه: دوباره verify
+            def _verify_again():
+                return _verify_call()
+
+            verify_payload = _poll_once_then_backoff(_verify_again, max_attempts=2, wait_seconds=3)
+            if _is_success_flag(verify_payload, default=False):
+                settle_payload = self.snappay_settle(payment_token, tx, timeout_sec=30)
+                return _jsonify_response(settle_payload)
+            # همچنان نه؟ آخرین وضعیت را برگردان
+            return _jsonify_response(verify_payload or status_payload)
+
+        # در غیر اینصورت همون status را برگردون
+        return _jsonify_response(status_payload)
+
+    def snappay_settle(self, payment_token, tx, timeout_sec=30):
+
         self.ensure_one()
-        res = self._snappay_request('/api/online/payment/v1/revert',
-                                    json_body={"paymentToken": payment_token}, method='POST')
-        return res
 
-    def snappay_settle(self, payment_token, timeout_sec=30):
-        """POST /api/online/payment/v1/settle with status fallback.
-
-        - If settle response is False/empty or times out: call status.
-        - If status is VERIFIED: retry settle once.
-        - If status is SETTLED: consider success and return status.
-        """
-        self.ensure_one()
-        try:
-            res = self._snappay_request(
+        def _settle_call():
+            return self._snappay_request(
                 '/api/online/payment/v1/settle',
                 json_body={'paymentToken': payment_token},
                 method='POST',
                 timeout=timeout_sec,
             )
+
+        # تلاش اول
+        try:
+            res = _settle_call()
+            payload = _jsonify_response(res)
         except requests.exceptions.Timeout:
-            # Timeout → look at status
-            status_res = self.snappay_status(payment_token)
-            st = self._snappay_extract_status(status_res)
-            if st in {'VERIFY', 'VERIFIED', 'VERIFY_SUCCESS'}:
-                # Try one more settle
+            _logger.warning("SnappPay settle timeout for token %s", payment_token)
+            # Timeout → وضعیت را چک کن
+            status_payload = self.snappay_status(payment_token) or {}
+            st = _normalize_status(status_payload)
+            if st in VERIFY_OK_STATES:
+                # یک تلاش دیگر
                 time.sleep(2)
                 try:
-                    return self._snappay_request(
-                        '/api/online/payment/v1/settle',
-                        json_body={'paymentToken': payment_token},
-                        method='POST',
-                        timeout=timeout_sec,
-                    )
+                    res2 = _settle_call()
+                    payload = _jsonify_response(res2)
                 except requests.exceptions.Timeout:
-                    return status_res
-            elif st in {'SETTLE', 'SETTLED', 'SETTLED_SUCCESS'}:
-                # Already settled upstream → accept as success
-                return status_res
+                    return _jsonify_response(status_payload)
+            elif st in SETTLED_STATES:
+                # بالادست ستل شده → موفق
+                payload = _jsonify_response(status_payload)
             else:
-                return status_res
-        else:
-            # We got a response, but it could be unsuccessful/False
-            ok = False
-            if isinstance(res, dict):
-                ok = bool(res.get('successful', True))  # some endpoints don't return this flag
-            if ok:
-                return res
-            # Not clearly successful → check status
-            status_res = self.snappay_status(payment_token)
-            st = self._snappay_extract_status(status_res)
-            if st in {'VERIFY', 'VERIFIED', 'VERIFY_SUCCESS'}:
-                # Try one more settle
+                return _jsonify_response(status_payload)
+        except requests.RequestException:
+            _logger.exception("SnappPay settle request error")
+            return {'error': 'request_error'}
+
+        # اینجا پاسخ داریم؛ بررسی موفقیت
+        ok = _is_success_flag(payload, default=False)
+        if not ok:
+            # نامشخص → وضعیت را چک کن
+            status_payload = self.snappay_status(payment_token) or {}
+            st = _normalize_status(status_payload)
+            if st in VERIFY_OK_STATES:
+                # یک بار دیگر settle
                 time.sleep(2)
-                return self._snappay_request(
-                    '/api/online/payment/v1/settle',
-                    json_body={'paymentToken': payment_token},
-                    method='POST',
-                    timeout=timeout_sec,
-                )
-            elif st in {'SETTLE', 'SETTLED', 'SETTLED_SUCCESS'}:
-                return status_res
-            return res
+                try:
+                    res3 = _settle_call()
+                    payload = _jsonify_response(res3)
+                    ok = _is_success_flag(payload, default=False)
+                except requests.exceptions.Timeout:
+                    # اگر باز هم timeout، آخرین وضعیت را برگردان
+                    return _jsonify_response(status_payload)
+            elif st in SETTLED_STATES:
+                payload = _jsonify_response(status_payload)
+                ok = True
+
+        # ست کردن وضعیت تراکنش/سفارش
+        if ok:
+            try:
+                tx._set_done()
+            except Exception:
+                _logger.exception("Failed to set tx done for %s", tx)
+            _safe_store_settle_status(tx.sudo().sale_order_ids, payload)
+        else:
+            # تصمیم‌گیری با شماست: اینجا set_canceled نکن؛ چون ممکنه قابل پیگیری باشد
+            _safe_store_settle_status(tx.sudo().sale_order_ids, payload)
+
+        return payload
+
+    # def snappay_verify(self, payment_token,tx):
+    #     self.ensure_one()
+    #     token = self._snappay_get_jwt(force_refresh=True)
+    #     headers = {
+    #         'Authorization': f'Bearer {token}',
+    #         'Content-Type': 'application/json',
+    #         'Accept': 'application/json',
+    #     }
+    #     url = self._snappay_api_url("/api/online/payment/v1/verify")
+    #     res = requests.post(url, headers=headers, json={'paymentToken': payment_token}, timeout=60)
+    #     if bool(res.get('successful', False)):
+    #         self.snappay_settle(payment_token,tx, timeout_sec=30)
+    #         return res
+    #
+    #     status_res = self.snappay_status(payment_token)
+    #     st = self._snappay_extract_status(status_res)
+    #     if st in {'VERIFY', 'VERIFIED', 'VERIFY_SUCCESS'}:
+    #             settle_res = self.snappay_settle(payment_token,tx, timeout_sec=30)
+    #             if bool(settle_res.get('successful', False)):
+    #                 return settle_res
+    #
+    #     elif st in {'PENDING', 'VERIFY_PENDING'}:
+    #         time.sleep(5)
+    #         res = requests.post(url, headers=headers, json={'paymentToken': payment_token}, timeout=60)
+    #         if bool(res.get('successful', False)):
+    #             self.snappay_settle(payment_token, tx, timeout_sec=60)
+    #             tx._set_done()
+    #             return res
+    #         else:
+    #             tx._set_canceled()
+    #
+    #     else:
+    #
+    #         return status_res
+    # def snappay_settle(self, payment_token ,tx, timeout_sec=30):
+    #
+    #     self.ensure_one()
+    #     try:
+    #         res = self._snappay_request(
+    #             '/api/online/payment/v1/settle',
+    #             json_body={'paymentToken': payment_token},
+    #             method='POST',
+    #             timeout=timeout_sec,
+    #         )
+    #         tx._set_done()
+    #         tx.sudo().sale_order_ids.settle_status = res
+    #
+    #     except requests.exceptions.Timeout:
+    #         # Timeout → look at status
+    #         status_res = self.snappay_status(payment_token)
+    #         st = self._snappay_extract_status(status_res)
+    #         if st in {'VERIFY', 'VERIFIED', 'VERIFY_SUCCESS'}:
+    #             # Try one more settle
+    #             time.sleep(2)
+    #             try:
+    #                res = self._snappay_request(
+    #                     '/api/online/payment/v1/settle',
+    #                     json_body={'paymentToken': payment_token},
+    #                     method='POST',
+    #                     timeout=timeout_sec,
+    #                 )
+    #                tx.sudo().sale_order_ids.settle_status = res
+    #                tx._set_done()
+    #             except requests.exceptions.Timeout:
+    #                 return status_res
+    #         elif st in {'SETTLE', 'SETTLED', 'SETTLED_SUCCESS'}:
+    #             # Already settled upstream → accept as success
+    #             return status_res
+    #         else:
+    #             return status_res
+    #     else:
+    #         # We got a response, but it could be unsuccessful/False
+    #         ok = False
+    #         if isinstance(res, dict):
+    #             ok = bool(res.get('successful', True))  # some endpoints don't return this flag
+    #         if ok:
+    #             return res
+    #         # Not clearly successful → check status
+    #         status_res = self.snappay_status(payment_token)
+    #         st = self._snappay_extract_status(status_res)
+    #         if st in {'VERIFY', 'VERIFIED', 'VERIFY_SUCCESS'}:
+    #             # Try one more settle
+    #             time.sleep(2)
+    #
+    #             res = self._snappay_request(
+    #                 '/api/online/payment/v1/settle',
+    #                 json_body={'paymentToken': payment_token},
+    #                 method='POST',
+    #                 timeout=timeout_sec,
+    #             )
+    #             tx.sudo().sale_order_ids.settle_status = res
+    #             tx._set_done()
+    #         elif st in {'SETTLE', 'SETTLED', 'SETTLED_SUCCESS'}:
+    #             return status_res
+    #         return res
 
     def snappay_status(self, payment_token):
         """GET /api/online/payment/v1/status?paymentToken=..."""

@@ -29,7 +29,7 @@
             <field name="name">Receipted</field>
             <field name="code">REC</field>
             <field name="company_id" ref="base.main_company" />
-            <field name="is_receipted">True</field>
+            <field name="is_payment_validator">True</field>
         </record>
 
         <record id="pdc_state_claimed" model="artarad.pdc.st">
@@ -56,13 +56,6 @@
             <field name="code">SPE</field>
             <field name="company_id" ref="base.main_company" />
             <field name="is_spent">True</field>
-        </record>
-
-        <record id="pdc_state_spent_no_receipt_tracking" model="artarad.pdc.st">
-            <field name="name">Spent (No Receipt Tracking)</field>
-            <field name="code">SPE-NRC</field>
-            <field name="company_id" ref="base.main_company" />
-            <field name="is_spent_no_receipt_tracking">True</field>
         </record>
 
         #############################################################################
@@ -194,6 +187,15 @@
             <field name="to_state" ref="artarad_post_dated_cheque.pdc_state_in_cash" />
             <field name="default_debit_account"></field>
             <field name="default_credit_account"></field>
+        </record>
+
+        <record id="action_server_change_cheque_state" model="ir.actions.server">
+            <field name="name">Change Cheque State</field>
+            <field name="model_id" ref="account.model_account_payment"/>
+            <field name="binding_model_id" ref="account.model_account_payment"/>
+            <field name="binding_view_types">list</field>
+            <field name="state">code</field>
+            <field name="code">action = records.action_change_cheque_state_wizard()</field>
         </record>
 
     </data>

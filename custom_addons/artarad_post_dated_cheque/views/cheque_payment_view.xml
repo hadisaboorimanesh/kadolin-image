@@ -6,13 +6,13 @@
         <field name="model">account.payment</field>
         <field name="arch" type="xml">
             <list>
-                <field name="date" />
-                <field name="payment_type" />
-                <field name="partner_id" />
-                <field name="amount" />
-                <field name="journal_id" />
-                <field name="cheque_date" />
-                <field name="cheque_state" />
+                <field name="date"/>
+                <field name="payment_type"/>
+                <field name="partner_id"/>
+                <field name="amount"/>
+                <field name="journal_id"/>
+                <field name="cheque_date"/>
+                <field name="cheque_state"/>
             </list>
         </field>
     </record>
@@ -22,27 +22,32 @@
         <field name="model">account.payment</field>
         <field name="arch" type="xml">
             <kanban default_group_by="cheque_state">
-                <field name="cheque_state" />
-                <field name="partner_id" />
-                <field name="amount" />
-                <field name="cheque_date" />
+                <field name="cheque_state"/>
+                <field name="partner_id"/>
+                <field name="amount"/>
+                <field name="cheque_date"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="oe_kanban_global_click">
                             <div class="row mb4">
                                 <div class="col-xs-6">
-                                    <strong><span>
-                                            <field name="partner_id" /></span></strong>
+                                    <strong>
+                                        <span>
+                                            <field name="partner_id"/>
+                                        </span>
+                                    </strong>
                                 </div>
                                 <div class="col-xs-6 text-right">
-                                    <strong><i class="fa fa-clock-o" />
-                                        <field name="cheque_date" /></strong>
+                                    <strong>
+                                        <i class="fa fa-clock-o"/>
+                                        <field name="cheque_date"/>
+                                    </strong>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12">
                                     <span class="pull-right label label-default">
-                                        <field name="amount" widget="monetary" />
+                                        <field name="amount" widget="monetary"/>
                                     </span>
                                 </div>
                             </div>

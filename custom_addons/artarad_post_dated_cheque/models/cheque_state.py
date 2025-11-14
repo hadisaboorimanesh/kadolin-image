@@ -11,9 +11,8 @@ class artaradPDCState(models.Model):
     # main fields
     name = fields.Char(required=True, translate=True)
     code = fields.Char(required=True)
-    is_receipted = fields.Boolean()
+    is_payment_validator = fields.Boolean()
     is_returned = fields.Boolean()
     is_spent = fields.Boolean()
-    is_spent_no_receipt_tracking = fields.Boolean(string="Is Spent (No Receipt Tracking)")
     is_spendable = fields.Boolean()
     company_id = fields.Many2one("res.company", required=True, readonly=True, default=lambda self: self.env.company)

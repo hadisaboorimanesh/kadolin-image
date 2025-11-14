@@ -87,15 +87,18 @@ this._unbinders.push(onDoc("click", "a[href='/shop/confirm_order'], #o_payment_f
     const slotEl = document.querySelector("#delivery_slot_input");
 
     const dateVal = (dateEl && typeof dateEl.value === 'string') ? dateEl.value.trim() : "";
+    const slotVal = (slotEl && typeof slotEl.value === 'string') ? slotEl.value.trim() : "";
 
-    let needSlot = false;
-    let slotVal = "";
-    if (slotEl && !slotEl.disabled && slotEl.offsetParent !== null) {
-        needSlot = true;
-        slotVal = (typeof slotEl.value === 'string') ? slotEl.value.trim() : "";
-    }
 
-    if (!dateVal || (needSlot && !slotVal)) {
+//    let needSlot = false;
+//    let slotVal = "";
+//    if (slotEl && !slotEl.disabled && slotEl.offsetParent !== null) {
+//        needSlot = true;
+//        slotVal = (typeof slotEl.value === 'string') ? slotEl.value.trim() : "";
+//    }
+
+
+    if (!dateVal ||  !slotVal) {
         ev.preventDefault();
         alert(!dateVal ? "لطفاً ابتدا روز تحویل را انتخاب کنید."
                        : "لطفاً بازه‌ی زمانی تحویل را هم انتخاب کنید.");
@@ -184,7 +187,8 @@ this._unbinders.push(onDoc("change", "input[name='delivery_slot']", (ev) => {
             } catch (_) {}
 //            dlog("_refresh(): city result", { city });
 
-            const isTehran = /تهران|Tehran/i.test(city);
+//            const isTehran = /تهران|Tehran/i.test(city);
+            const isTehran = /تهران|Tehran|کرج|Karaj/i.test(city);
 //            dlog("_refresh(): isTehran?", isTehran);
             self.el.classList.toggle("d-none", !isTehran);
                             // ← این خط جدید

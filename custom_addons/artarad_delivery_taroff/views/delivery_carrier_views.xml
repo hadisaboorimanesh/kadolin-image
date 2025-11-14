@@ -1,29 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="view_delivery_carrier_form_taroff" model="ir.ui.view">
-    <field name="name">delivery.carrier.form.taroff</field>
-    <field name="model">delivery.carrier</field>
-    <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
-    <field name="arch" type="xml">
-      <xpath expr="//sheet/notebook" position="inside">
-        <page string="Taroff" invisible="delivery_type != 'taroff'">
-          <group>
-            <group string="Credentials">
-              <field name="taroff_base_url" placeholder="https://api.taroffexpress.com/api"/>
-              <field name="taroff_api_key" password="True"/>
-            </group>
-            <group string="Defaults">
-              <field name="taroff_default_shift"/>
-              <field name="taroff_default_order_type"/>
-              <field name="taroff_default_vol"/>
-              <field name="taroff_default_packing"/>
-              <field name="taroff_cod"/>
-              <field name="taroff_sender_wh_code"/>
-              <field name="taroff_use_mobile_as_phone"/>
-            </group>
-          </group>
-        </page>
-      </xpath>
-    </field>
-  </record>
+    <record id="view_delivery_carrier_form_taroff" model="ir.ui.view">
+        <field name="name">delivery.carrier.form.taroff</field>
+        <field name="model">delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="Taroff" invisible="delivery_type != 'taroff'">
+                    <group>
+                        <group string="Credentials">
+                            <field name="taroff_base_url" placeholder="https://api.taroffexpress.com/api"/>
+                            <field name="taroff_api_key" password="True"/>
+                        </group>
+                        <group string="Defaults">
+                            <field name="taroff_default_shift"/>
+                            <field name="taroff_default_order_type"/>
+                            <field name="taroff_default_vol"/>
+                            <field name="taroff_default_packing"/>
+                            <field name="taroff_cod"/>
+                            <field name="taroff_sender_wh_code"/>
+                            <field name="taroff_use_mobile_as_phone"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_city_treeـtaroff" model="ir.ui.view">
+        <field name="name">view.city.tree.taroff</field>
+        <field name="model">res.city</field>
+        <field name="inherit_id" ref="base_address_extended.view_city_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='zipcode']"  position="after">
+                <field name="taarof_code"/>
+            </xpath>
+        </field>
+    </record>
+
+
 </odoo>
+
+

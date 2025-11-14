@@ -7,6 +7,7 @@
                 <group>
                         <field name="base_date"/>
                         <field name="ras_date" force_save="1"/>
+                        <field name="diff_days"/>
                         <field name="payment_ids" widget="many2many_tags"/>
 
                 </group>

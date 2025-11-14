@@ -23,9 +23,9 @@ class artaradAccountJournal(models.Model):
             else:
                 journal.default_account_type = False
 
-    def _compute_available_payment_method_ids(self):
-        super()._compute_available_payment_method_ids()
-
-        for rec in self:
-            if rec.type in ['bank', 'cash', 'post_dated_cheque']:
-                rec.available_payment_method_ids = [(4, self.env.ref('artarad_post_dated_cheque.account_payment_method_cheque_in').id), (4, self.env.ref('artarad_post_dated_cheque.account_payment_method_cheque_out').id)]
+    # def _compute_available_payment_method_ids(self):
+    #     super()._compute_available_payment_method_ids()
+    #
+    #     for rec in self:
+    #         if rec.type in ['bank', 'cash', 'post_dated_cheque']:
+    #             rec.available_payment_method_ids = [(4, self.env.ref('artarad_post_dated_cheque.account_payment_method_cheque_in').id), (4, self.env.ref('artarad_post_dated_cheque.account_payment_method_cheque_out').id)]

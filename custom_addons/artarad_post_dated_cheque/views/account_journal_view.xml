@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="account.view_account_journal_form" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='default_account_id']" position="before">
-                <label for="default_account_id" string="PDC Account" invisible="type != 'post_dated_cheque'" groups="account.group_account_readonly"/>
+                <label for="default_account_id" string="PDC Account" invisible="type != 'post_dated_cheque'"/>
             </xpath>
             <xpath expr="//field[@name='default_account_id']" position="attributes">
                 <attribute name="required">(id and type in ('bank', 'cash', 'post_dated_cheque')) or type in ('sale', 'purchase')</attribute>

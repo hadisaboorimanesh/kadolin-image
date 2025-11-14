@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields
+from odoo import models, fields,api
 from datetime import timedelta
 
 class SaleOrder(models.Model):
@@ -14,6 +14,26 @@ class SaleOrder(models.Model):
         ('morning', '9 تا 15'),
         ('evening', '15 تا 21'),
     ], string="Delivery Slot", tracking=True,help="زمان‌بندی تحویل برای مشتری در شهر تهران",index=True,)
+
+    @api.depends('order_line.customer_lead', 'date_order', 'state')
+    def _compute_expected_date(self):
+        """ For service and consumable, we only take the min dates. This method is extended in sale_stock to
+            take the picking_policy of SO into account.
+        """
+        self.mapped("order_line")  # Prefetch indication
+        for order in self:
+            if order.state == 'cancel':
+                order.expected_date = False
+                continue
+            dates_list = order.order_line.filtered(
+                lambda line: not line.display_type and not line._is_delivery()
+            ).mapped(lambda line: line and line._expected_date())
+            if dates_list:
+                order.expected_date = order._select_expected_date(dates_list)
+            else:
+                order.expected_date = False
+            if order.select_deliver_date:
+                order.expected_date = order.select_deliver_date
 
     def action_confirm(self):
         ICP = self.env['ir.config_parameter'].sudo()

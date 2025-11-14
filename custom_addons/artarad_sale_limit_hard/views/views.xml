@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="website_form_view_inherit_product_limit">
+            <field name="name">website.form.inherit.limit</field>
+            <field name="model">website</field>
+            <field name="inherit_id" ref="website.view_website_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='default_lang_id']" position="after">
+                    <field name="enable_product_limits"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="product_normal_form_view">
+            <field name="name">product.product.form.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='description_sale']/../.." position="before">
+                    <group groups="sales_team.group_sale_manager">
+                        <field name="apply_qty_limit"/>
+                        <field name="min_limit"/>
+                        <field name="max_limit"/>
+                        <field name="remove_customer_limit_after" string="Remove Customer Limit After(Days)"/>
+                    </group>
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

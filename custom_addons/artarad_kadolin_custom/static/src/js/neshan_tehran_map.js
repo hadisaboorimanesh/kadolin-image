@@ -43,13 +43,28 @@
         return { value: '', text: '' };
     }
 
-    function isTargetCitySelected(form, targetName, targetId) {
-        const cur = getCitySelection(form);
-        if (!cur.value && !cur.text) return false;
-        if (targetId && cur.value === String(targetId)) return true;
-        if (targetName && cur.text.includes(targetName)) return true;
-        return false;
-    }
+//    function isTargetCitySelected(form, targetName, targetId) {
+//        const cur = getCitySelection(form);
+//        if (!cur.value && !cur.text) return false;
+//        if (targetId && cur.value === String(targetId)) return true;
+//        if (targetName && cur.text.includes(targetName)) return true;
+//        return false;
+//    }
+function isTargetCitySelected(form, targetName, targetId) {
+    const cur = getCitySelection(form);
+    if (!cur.value && !cur.text) return false;
+
+    if (targetId && cur.value === String(targetId)) return true;
+
+    const text = (cur.text || "").trim();
+
+    const isTehranOrKaraj = /تهران|Tehran|کرج|Karaj/i.test(text);
+    if (isTehranOrKaraj) return true;
+
+    if (targetName && text.includes(targetName)) return true;
+
+    return false;
+}
 
     function boot() {
         const form = document.querySelector('form[action*="/shop/address"]');

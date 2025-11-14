@@ -5,15 +5,15 @@ from odoo.addons.stock_barcode.controllers.stock_barcode import StockBarcodeCont
 from odoo.tools.safe_eval import safe_eval
 import logging
 import json
-from odoo import http
-from odoo.http import request
+from math import ceil
 from datetime import datetime, timedelta
 _logger = logging.getLogger(__name__)
 from odoo.addons.payment.controllers import portal as payment_portal
 from odoo.addons.website_sale.controllers.delivery import Delivery
 from odoo import http, fields
 from odoo.http import request, Response
-from odoo.tools import html2plaintext
+from werkzeug.urls import url_encode
+
 def _attr_summary_from_template(p_tmpl):
     parts = []
     # ترتیب بر اساس sequence خود خط و sequence ویژگی
@@ -42,6 +42,7 @@ class WebsiteSaleDeliveryCapacity(Delivery):
         # 2) ضمیمه‌کردن ظرفیت/روزها برای رندرِ فوری سمت JS
         try:
             order = request.website.sale_get_order()
+            order.sudo.select_deliver_date= False
             carrier = None
             if delivery_method_id:
                 carrier = request.env['delivery.carrier'].sudo().browse(int(delivery_method_id))
@@ -63,6 +64,7 @@ class WebsiteSaleDeliveryCapacity(Delivery):
             pass
 
         return base_resp
+
 class CityLookup(http.Controller):
 
     @http.route('/shop/delivery_slot/availability', type='json', auth='public', website=True, csrf=False)
@@ -130,52 +132,101 @@ class CityLookup(http.Controller):
             }
         return res
 
-    @http.route('/torobapi/published_products', type='json', auth='public', methods=['POST', 'GET'])
-    def get_torob_published_products(self):
-        base = request.httprequest.host_url.rstrip('/')
-        products = request.env['product.template'].sudo().search([('website_published', '=', True)])
-        data = []
-        for p in products:
-            rel = getattr(p, 'website_url', False)
-            product_url = base + rel if rel else base + f"/shop/product/{p.id}"
-            image_url = f"{base}/web/image/product.template/{p.id}/image_512"
-            data.append({
-                'product_id': p.default_code,
-                'title': p.name,
-                'availability': 'instock' if (p.qty_available>0 or p.allow_out_of_stock_order ) else 'out_of_stock',
-                'page_url': product_url,
-                # 'image_link': image_url,
-                'price': p.list_price,
-                'old_price': p.compare_list_price,
-            })
-        return data
+    @http.route('/torobapi/published_products', type='http', auth='public', methods=['POST', 'GET'], csrf=False)
+    def get_torob_published_products(self, **kwargs):
+        args = dict(request.httprequest.args)
+        args.update(kwargs or {})
+        def _int(v, d):
+            try:
+                return int(v)
+            except:
+                return d
+        page = max(1, _int(args.get('page', 1), 1))
+        page_size = max(1, min(100, _int(args.get('page_size', args.get('limit', 50)), 50)))
+        offset = (page - 1) * page_size
+        domain = [('website_published', '=', True)]
+        if getattr(request, 'website', False):
+            domain.append(('website_id', 'in', [False, request.website.id]))
 
-    # @http.route('/snappayapi/published_products', type='json', auth='public', methods=['POST','GET'])
-    # def get_snapppay_published_products(self):
-    #     base = request.httprequest.host_url.rstrip('/')
-    #     products = request.env['product.template'].sudo().search([('website_published', '=', True)])
-    #     data = []
-    #     for p in products:
-    #         rel = getattr(p, 'website_url', False)
-    #         product_url = base + rel if rel else base + f"/shop/product/{p.id}"
-    #         image_url = f"{base}/web/image/product.template/{p.id}/image_512"
-    #         data.append({
-    #             'title': p.name,
-    #             'is_available': p.qty_available>0 or p.allow_out_of_stock_order ,
-    #             'url': product_url,
-    #             'image_link': image_url,
-    #             'price': p.list_price,
-    #             'old_price': p.compare_list_price,
-    #          })
-    #     return data
+        fields = [
+            'id', 'name', 'default_code', 'website_url',
+            'list_price', 'qty_available', 'allow_out_of_stock_order',
+            'compare_list_price',
+        ]
+
+        env = request.env['product.template'].sudo()
+
+
+        total = env.search_count(domain)
+        total_pages = ceil(total / page_size) if total else 0
+        records = env.search_read(domain, fields=fields, limit=page_size, offset=offset, order='id desc') \
+            if (total == 0 or page <= total_pages) else []
+        base = request.httprequest.host_url.rstrip('/')
+
+        def _map(p):
+            rel = p.get('website_url')
+            product_url = f"{base}{rel}" if rel else f"{base}/shop/product/{p['id']}"
+            # Torob معمولاً عدد صحیح می‌پسندد
+            price = int(round(p.get('list_price') or 0))
+            old_price = int(round(p.get('compare_list_price') or 0))
+            in_stock = (p.get('qty_available') or 0) > 0 or bool(p.get('allow_out_of_stock_order'))
+            return {
+                'product_id': p.get('default_code') or str(p['id']),
+                'title': p.get('name') or '',
+                'availability': 'instock' if in_stock else 'out_of_stock',
+                'page_url': product_url,
+                # اگر لازم شد، این رو باز کن:
+                # 'image_link': f"{base}/web/image/product.template/{p['id']}/image_512",
+                'price': price,
+                'old_price': old_price,
+            }
+
+        items = [_map(p) for p in records]
+        payload= {
+
+            'products': items,
+        }
+        body = json.dumps(payload, ensure_ascii=True)
+        return Response(body, content_type='application/json; charset=utf-8', status=200)
+
+
     @http.route('/snappayapi/published_products', type='http', auth='public', methods=['GET', 'POST'], csrf=False)
     def get_snapppay_published_products(self, **kwargs):
+        # ورودی‌ها را از هر دو مسیر GET/POST برداریم
+        params = dict(request.httprequest.args)  # query string
+        params.update(kwargs or {})  # body form/json
+
+        # صفحه و اندازه صفحه با اعتبارسنجی
+        try:
+            page = int(params.get('page', 1))
+        except Exception:
+            page = 1
+        try:
+            page_size = int(params.get('page_size', params.get('limit', 20)))
+        except Exception:
+            page_size = 20
+
+        if page < 1:
+            page = 1
+        # سقف منطقی برای کارایی
+        if page_size < 1:
+            page_size = 1
+        if page_size > 100:
+            page_size = 100
+
+        offset = (page - 1) * page_size
+
+        env = request.env['product.template'].sudo()
+        domain = [('website_published', '=', True)]
+
+        total = env.search_count(domain)
+        total_pages = ceil(total / page_size) if total else 0
+
+        # اگر صفحه از انتها رد شده، لیست خالی بدهیم (همسان با خیلی از APIها)
+        products = env.search(domain, limit=page_size, offset=offset, order='id desc') if (
+                    total == 0 or page <= total_pages) else env.browse()
+
         base = request.httprequest.host_url.rstrip('/')
-
-        products = request.env['product.template'].sudo().search([
-            ('website_published', '=', True)
-        ])
-
         items = []
         for p in products:
             rel = (p.website_url or f"/shop/product/{p.id}")
@@ -183,10 +234,8 @@ class CityLookup(http.Controller):
             image_url = f"{base}/web/image/product.template/{p.id}/image_512"
 
             attrs_txt = _attr_summary_from_template(p)
-
             short_desc_txt = f" {attrs_txt} " if attrs_txt else ""
 
-            # قیمت‌ها را به عدد صحیح تبدیل می‌کنیم تا مثل نمونه بدون اعشار باشند
             price = int(round(p.list_price or 0))
             old_price = int(round(getattr(p, 'compare_list_price', 0) or 0))
 
@@ -198,16 +247,37 @@ class CityLookup(http.Controller):
                 "image_link": image_url,
                 "short_description": short_desc_txt,
                 "is_available": bool(
-                    (getattr(p, 'qty_available', 0) or 0) > 0 or getattr(p, 'allow_out_of_stock_order', False)),
+                    (getattr(p, 'qty_available', 0) or 0) > 0
+                    or getattr(p, 'allow_out_of_stock_order', False)
+                ),
             })
 
-        payload = {"products": items}
-        body = json.dumps(payload, ensure_ascii=True)  # ← خروجی دقیقاً با \u… مثل نمونه
-        return Response(
-            body,
-            content_type='application/json; charset=utf-8',
-            status=200
-        )
+        # لینک‌های پیمایش (self/next/prev)
+        def _page_link(target_page):
+            if target_page < 1:
+                return None
+            if total_pages and target_page > total_pages:
+                return None
+            q = dict(request.httprequest.args)
+            q['page'] = target_page
+            q['page_size'] = page_size
+            return f"{request.httprequest.base_url}?{url_encode(q)}"
+
+        # links = {
+        #     "self": _page_link(page),
+        #     "next": _page_link(page + 1) if (total and page < total_pages) else None,
+        #     "prev": _page_link(page - 1) if page > 1 else None,
+        # }
+
+        payload = {
+
+            "products": items,
+        }
+
+        body = json.dumps(payload, ensure_ascii=True)
+        return Response(body, content_type='application/json; charset=utf-8', status=200)
+
+
     @http.route('/shop/cities', type='http', auth='public', website=True, methods=['GET'])
     def shop_cities(self, state_id=None, **kw):
         try:
@@ -220,12 +290,12 @@ class CityLookup(http.Controller):
         return request.make_response(payload, headers=[('Content-Type', 'application/json')])
 
 
-
-
     @http.route('/shop/delivery_availability', type='json', auth='public', website=True, csrf=False)
     def get_delivery_availability(self, days=10):
         """برمی‌گرداند [{date: '2025-10-29', remaining: 4, full: false}, ...]"""
         order = request.website.sale_get_order()
+        order.sudo().select_deliver_date = False
+        order.sudo()._compute_expected_date()
         if not order or not order.carrier_id:
             return []
 
@@ -264,46 +334,7 @@ class CityLookup(http.Controller):
         shown = results[first_idx:first_idx + 10]  # مثلاً تا ۵ روز آزاد بعدی + بینشان
         return shown[:10]
 
-    # @http.route('/shop/delivery_slot', type='json', auth='public', website=True, csrf=False)
-    # def save_delivery_slot(self, date_str=None, slot=None):
-    #     order = request.website.sale_get_order()
-    #     if not order:
-    #         return {'ok': False}
-    #
-    #     vals = {}
-    #     if date_str:
-    #         try:
-    #             expected = datetime.strptime(date_str, '%Y-%m-%d').date()
-    #             vals['select_deliver_date'] = expected
-    #         except Exception:
-    #             return {'ok': False, 'error': 'bad_date'}
-    #
-    #         carrier = order.carrier_id.sudo()
-    #         capacity = carrier.daily_capacity or 0
-    #         delivery_product = carrier.product_id
-    #
-    #         if capacity > 0:
-    #             domain = [
-    #                 ('state', 'in', ('sale', 'done')),
-    #                 ('order_line.product_id', '=', delivery_product.id),
-    #                 ('select_deliver_date', '=', expected),
-    #             ]
-    #             count = request.env['sale.order'].sudo().search_count(domain)
-    #             if count >= capacity:
-    #                 return {
-    #                     'ok': False,
-    #                     'error': 'capacity_reached',
-    #                     'remaining': 0,
-    #                     'taken': count,
-    #                     'capacity': capacity,
-    #                 }
-    #
-    #     if slot is not None:
-    #         vals['delivery_slot'] = slot or False
-    #
-    #     if vals:
-    #         order.sudo().write(vals)
-    #     return {'ok': True}
+
 
     @http.route('/shop/delivery_slot', type='json', auth='public', website=True, csrf=False)
     def save_delivery_slot(self, date_str=None, slot=None):
@@ -363,41 +394,15 @@ class WebsiteSale(payment_portal.PaymentPortal):
         field_names.discard('zip')
         return field_names
 
-    # @route(
-    #     '/shop/address/submit', type='http', methods=['POST'], auth='public', website=True,
-    #     sitemap=False
-    # )
-    # def shop_address_submit(
-    #         self, partner_id=None, address_type='billing', use_delivery_as_billing=None, callback=None,
-    #         required_fields=None, **form_data
-    # ):
-    #
-    #
-    #     required_field = required_fields
-    #     if form_data['city'] == "تهران" and not form_data['partner_latitude']:
-    #         required_field = "partner_latitude"
-    #     res = super().shop_address_submit( partner_id=None, address_type='billing', use_delivery_as_billing=None, callback=None,
-    #         required_fields=required_field, **form_data)
-    #     order_sudo = request.website.sale_get_order()
-    #     if partner_id:
-    #         partner_id = request.env['res.partner'].sudo().browse(int(partner_id))
-    #         partner_id.sudo().write({
-    #             'partner_latitude':form_data['partner_latitude'] if form_data['partner_latitude'] else False ,
-    #             'partner_longitude':form_data['partner_longitude'] if form_data['partner_longitude'] else False,
-    #             'city_id': int(form_data['city_id']) or False,
-    #                                     })
-    #
-    #     return res
-    @http.route(
-        '/shop/address/submit', type='http', methods=['POST'], auth='public', website=True, sitemap=False
-    )
+
+    @http.route('/shop/address/submit', type='http', methods=['POST'], auth='public', website=True, sitemap=False)
     def shop_address_submit(
             self, partner_id=None, address_type='billing', use_delivery_as_billing=None,
-            callback=None, required_fields=None, **form_data
-    ):
+            callback=None, required_fields=None, **form_data):
+
         # شرط ویژه برای تهران و موقعیت نقشه
         required_field = required_fields
-        if form_data.get('city') == "تهران" and not form_data.get('partner_latitude'):
+        if (form_data.get('city') == "کرج" or form_data.get('city') == "تهران") and not form_data.get('partner_latitude'):
             required_field = "partner_latitude"
 
         # اجرای منطق اصلی اودو
@@ -420,8 +425,8 @@ class WebsiteSale(payment_portal.PaymentPortal):
             submitted_partner = request.env['res.partner'].sudo().browse(int(partner_id))
 
         # اگر آدرس جدید ساخته شد (در checkout)
-        elif order_sudo and order_sudo.partner_shipping_id:
-            submitted_partner = order_sudo.partner_shipping_id.sudo()
+        # elif order_sudo and order_sudo.partner_shipping_id:
+        #     submitted_partner = order_sudo.partner_shipping_id.sudo()
 
         if not submitted_partner:
             return res  # ایمنی
@@ -455,24 +460,22 @@ class WebsiteSale(payment_portal.PaymentPortal):
             if sync_vals:
                 partner_sudo.write(sync_vals)
 
-            # آدرس‌های فاکتور و تحویل را هم پر کن اگر خالی هستند
-            for addr_type in ['partner_shipping_id', 'partner_invoice_id']:
-                addr = getattr(order_sudo, addr_type, None)
-                if addr:
-                    addr_sync_vals = {}
-                    for field in fields_to_sync:
-                        if not addr[field] and submitted_partner[field]:
-                            addr_sync_vals[field] = (
-                                submitted_partner[field].id
-                                if hasattr(submitted_partner[field], 'id')
-                                else submitted_partner[field]
-                            )
-                    if addr_sync_vals:
-                        addr.write(addr_sync_vals)
+            # # آدرس‌های فاکتور و تحویل را هم پر کن اگر خالی هستند
+            # for addr_type in ['partner_shipping_id', 'partner_invoice_id']:
+            #     addr = getattr(order_sudo, addr_type, None)
+            #     if addr:
+            #         addr_sync_vals = {}
+            #         for field in fields_to_sync:
+            #             if not addr[field] and submitted_partner[field]:
+            #                 addr_sync_vals[field] = (
+            #                     submitted_partner[field].id
+            #                     if hasattr(submitted_partner[field], 'id')
+            #                     else submitted_partner[field]
+            #                 )
+            #         if addr_sync_vals:
+            #             addr.write(addr_sync_vals)
 
         return res
-
-
 
 class StockBarcodeController(CoreBarcodeController):
 
@@ -582,18 +585,6 @@ class StockBarcodeController(CoreBarcodeController):
             return {"warning": _("No picking or product corresponding to barcode %(barcode)s", barcode=barcode)}
 
 class WebsiteSaleDynamicETA(WebsiteSale):
-
-    # @http.route('/shop/states', type='json', auth='public', website=True, csrf=False)
-    # def shop_states(self, country_code='IR', **kw):
-    #     Country = request.env['res.country'].sudo()
-    #     State = request.env['res.country.state'].sudo()
-    #     country = Country.search([('code', '=', country_code)], limit=1)
-    #     if not country:
-    #         return []
-    #     states = State.search([('country_id', '=', country.id)], order='name asc')
-    #     return [{'id': s.id, 'name': s.name} for s in states]
-
-
 
 
     @http.route(['/shop/checkout'], type='http', auth='public', website=True, sitemap=False)

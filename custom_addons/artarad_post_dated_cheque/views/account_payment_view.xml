@@ -28,7 +28,7 @@
                     <field name="spending_cheques"
                         required="payment_method_code == 'cheque' or payment_type in ('outbound', 'transfer') or cheque_outbound_mode == 'spend'"
                         widget='many2many' options="{'no_create': True}"
-                        domain="[('payment_method_code', '=', 'cheque'), ('payment_type', 'in', ['inbound', 'transfer']), ('state', 'in', ['in_process','paid']), ('cheque_state.is_spendable', '=', True), ('spent_for', 'in', [False])]">
+                        domain="[('payment_method_code', '=', 'cheque'), ('payment_type', 'in', ['inbound', 'transfer']), ('state', 'in', ('paid','in_process')), ('cheque_state.is_spendable', '=', True), ('spent_for', 'in', [False])]">
                         <list>
                             <field name="cheque_number" />
                             <field name="cheque_number_description" />
@@ -129,7 +129,7 @@
                     <field name="spending_cheques"
                         required="payment_method_code == 'cheque' and payment_type in ('outbound', 'transfer') and cheque_outbound_mode == 'spend'"
                         readonly="state == 'posted'" widget='many2many' options="{'no_create': True}"
-                        domain="[('payment_method_code', '=', 'cheque'), ('payment_type', 'in', ['inbound', 'transfer']), ('state', 'in', ['in_process','paid']), ('cheque_state.is_spendable', '=', True), ('spent_for', 'in', [False])]">
+                        domain="[('payment_method_code', '=', 'cheque'), ('payment_type', 'in', ['inbound', 'transfer']), ('state', 'in', ('paid','in_process')), ('cheque_state.is_spendable', '=', True), ('spent_for', 'in', [False])]">
                         <list>
                             <field name="cheque_number" />
                             <field name="cheque_number_description" />
@@ -139,6 +139,8 @@
                             <field name="partner_id" />
                             <field name="cheque_date" />
                             <field name="cheque_state" />
+                             <field name="sayadi_cheque_status"/>
+                             <field name="cheque_type"/>
                         </list>
                     </field>
                 </group>
@@ -154,6 +156,8 @@
                             readonly="state == 'posted'"
                             domain="[('id', 'in', available_cheque_book_ids)]" />
                         <field name="cheque_sayadi_number" />
+                         <field name="sayadi_cheque_status" />
+                         <field name="cheque_type" />
                     </group>
                     <group>
                         <field name="cheque_date"
@@ -182,6 +186,8 @@
                             readonly="state == 'posted'" />
                         <field name="cheque_number_description" readonly="state == 'posted'" />
                         <field name="cheque_bank_id" readonly="state == 'posted'" />
+                         <field name="sayadi_cheque_status" readonly="state == 'posted'"/>
+                         <field name="cheque_type" readonly="state == 'posted'"/>
                     </group>
                 </group>
             </xpath>

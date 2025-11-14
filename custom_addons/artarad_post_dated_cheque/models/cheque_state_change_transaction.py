@@ -52,28 +52,6 @@ class artaradPDCStateChangeTransaction(models.Model):
     available_journal_ids = fields.Many2many("account.journal", compute="_compute_domain_fields")
 
 
-    def get_reciept_account(self):
-        if self.journal_id.type == 'post_dated_cheque':
-            raise exceptions.UserError(_("You can not choose a cheque journal!"))
-        if self.payment.payment_type=='inbound':
-
-            debit=self.journal_id.inbound_payment_method_line_ids[0].payment_account_id
-            last_transaction =  self.payment.cheque_state_change_transactions.filtered(lambda l:l.move and l.active).sorted('id',reverse=True)
-            if last_transaction:
-                credit = last_transaction[0].debit_account
-            else:
-                credit = self.payment.move_id.line_ids.filtered(lambda l: l.debit != 0).account_id
-            return debit,credit
-        elif self.payment.payment_type=='outbound':
-
-            debit=self.journal_id.outbound_payment_method_line_ids[0].payment_account_id
-            last_transaction =  self.payment.cheque_state_change_transactions.filtered(lambda l:l.move and l.active).sorted('id',reverse=True)
-            if last_transaction:
-                credit = last_transaction[0].debit_account
-            else:
-                credit = self.payment.move_id.line_ids.filtered(lambda l: l.debit != 0).account_id
-            return debit,credit
-
     @api.depends("old_cheque_state")
     def _compute_domain_fields(self):
         for rec in self:
@@ -149,41 +127,98 @@ class artaradPDCStateChangeTransaction(models.Model):
         res = super(artaradPDCStateChangeTransaction, self).action_archive()
 
         if self.move:
-            #self.move.button_draft()
+            # self.move.button_draft()
             self.move.button_cancel()
 
         self.payment.cheque_state = self.old_cheque_state.id
-        for invoice in self.payment.reconciled_invoice_ids + self.payment.reconciled_bill_ids:
-            invoice._compute_payment_state()
         return res
 
     def action_unarchive(self):
         raise exceptions.UserError(_("You can not unarchive a transaction!"))
 
-    def action_post(self):
-        # check constraints
+    def get_reciept_account(self):
+        if self.journal_id.type == 'post_dated_cheque':
+            raise exceptions.UserError(_("You can not choose a cheque journal!"))
+
+        debit=self.journal_id.inbound_payment_method_line_ids[0].payment_account_id
+        last_transaction =  self.payment.cheque_state_change_transactions.filtered(lambda l:l.move and l.active).sorted('id',reverse=True)
+        if last_transaction:
+            credit = last_transaction[0].debit_account
+        else:
+            credit = self.payment.move_id.line_ids.filtered(lambda l: l.debit != 0).account_id
+        return debit,credit
+
+
+    def change_state_to_posted(self):
         otherTransactions = self.env['artarad.pdc.st.chg.trans'].search(
             [('payment', '=', self.payment.id), ('id', '!=', self.id)])
         for otherTransaction in otherTransactions:
             if otherTransaction.transaction_date < self.transaction_date and \
                     otherTransaction.transaction_state != "posted":
                 raise exceptions.UserError(_("You must first confirm older transactions!"))
-        if self.new_cheque_state.is_receipted and not self.new_cheque_state.is_spent_no_receipt_tracking:
-            debit, credit = self.get_reciept_account()
-            self.debit_account = debit
-            self.credit_account = credit
 
         if (self.debit_account.id == False and self.credit_account.id != False) or \
                 (self.debit_account.id != False and self.credit_account.id == False):
             raise exceptions.UserError(_("Either both or none of accounts must be filled!"))
 
-        # create move and move lines
-        if self.debit_account.id and self.credit_account.id:
-            self.create_move()
+        if (self.debit_account.id and self.credit_account.id) or (self.new_cheque_state.is_payment_validator):
+            if  self.debit_account.id==False and self.new_cheque_state.is_payment_validator:
+                debit,credit = self.get_reciept_account()
+                self.debit_account = debit
+                self.credit_account = credit
+
+            move_vals = {
+                'date': self.transaction_date,
+                'ref': self.payment.name,
+                'company_id': self.payment.company_id.id,
+                'journal_id': self.journal_id.id,
+                'partner_id': self.move_partner.id,
+                'payment_ids': False,
+            }
+
+            self.move = self.env['account.move'].create(move_vals)
+            ####################################################
+            move_line_vals = {
+                'partner_id': self.move_partner.id,
+                'move_id': self.move.id,
+                'name': self.payment.name,
+                'journal_id': self.journal_id.id,
+                'currency_id': self.payment.currency_id.id,
+            }
+            ####################################################
+            amount_in_company_currency = self.payment.currency_id._convert(self.payment.amount, self.company_id.currency_id, self.company_id, self.payment.date, False)
+            ####################################################
+            move_line_vals.update({'credit': amount_in_company_currency})
+            move_line_vals.update({'debit': 0})
+            move_line_vals.update({'amount_currency': -self.payment.amount})
+            move_line_vals.update({'account_id': self.credit_account.id})
+            credit_move_line = self.env['account.move.line'].with_context(check_move_validity=False).create(
+                move_line_vals)
+            ####################################################
+            move_line_vals.update({'credit': 0})
+            move_line_vals.update({'debit': amount_in_company_currency})
+            move_line_vals.update({'amount_currency': self.payment.amount})
+            move_line_vals.update({'account_id': self.debit_account.id})
+            debit_move_line = self.env['account.move.line'].with_context(check_move_validity=False).create(
+                move_line_vals)
+            ####################################################
+            self.move.action_post()
+            ####################################################
+            credit_move_line.payment_id = self.payment.id
+            debit_move_line.payment_id = self.payment.id
 
         self.payment.cheque_state = self.new_cheque_state
 
-        if self.payment.cheque_state.is_receipted:
+
+        if self.payment.cheque_state.is_returned:
+            for invoice in self.payment.reconciled_invoice_ids + self.payment.reconciled_bill_ids:
+                for rpi in invoice.invoice_payments_widget['content']:
+                    if rpi['account_payment_id'] == self.payment.id:
+                        invoice.js_remove_outstanding_partial(rpi['partial_id'])
+                invoice._compute_amount()
+
+
+        if self.payment.cheque_state.is_payment_validator:
             self.payment.is_matched = True
             
             # 1 - update related invoices state
@@ -195,7 +230,7 @@ class artaradPDCStateChangeTransaction(models.Model):
                 # 2.1 - update related invoices state of that payment, if all spent cheques in that payment are validated
                 all_are_validated = True
                 for payment in self.payment.spent_for.spending_cheques:
-                    if not payment.cheque_state.is_receipted:
+                    if not payment.cheque_state.is_payment_validator:
                         all_are_validated = False
                         break
                 if all_are_validated:
@@ -203,98 +238,39 @@ class artaradPDCStateChangeTransaction(models.Model):
                     for invoice in self.payment.spent_for.reconciled_invoice_ids + self.payment.spent_for.reconciled_bill_ids:
                         invoice._compute_amount()
 
-            # 3 - check if previous state was SPENT
-            if self.old_cheque_state.is_spent:
-                self.create_spent_to_receipt_move()
-            #     اگر وضعیت چک خرج شده هم وصولی باشه
-            if self.new_cheque_state.is_spent_no_receipt_tracking:
-                self.create_spent_to_receipt_move()
-        
-        elif self.payment.cheque_state.is_spent_no_receipt_tracking:
-            self.create_spent_to_receipt_move()
 
-        elif self.payment.cheque_state.is_returned:
-            for invoice in self.payment.reconciled_invoice_ids + self.payment.reconciled_bill_ids:
-                for rpi in invoice.invoice_payments_widget['content']:
-                    if rpi['account_payment_id'] == self.payment.id:
-                        invoice.js_remove_outstanding_partial(rpi['partial_id'])
-                invoice._compute_amount()
+        if self.old_cheque_state.is_spent and self.new_cheque_state.is_payment_validator:
+            # create final account move lines
+            move_vals = {
+                'date': self.transaction_date,
+                'ref': self.payment.name,
+                'company_id': self.payment.company_id.id,
+                'journal_id': self.payment.spent_for.journal_id.id,
+            }
+
+            self.move = self.env['account.move'].create(move_vals)
+            ####################################################
+            move_line_vals = {
+                'move_id': self.move.id,
+                'debit': 0,
+                'credit': 0,
+                'amount_currency': 0.0,
+                'name': self.payment.name,
+                'journal_id': self.payment.spent_for.journal_id.id,
+            }
+            ####################################################
+            move_line_vals.update({'account_id': self.payment.move_id.line_ids.filtered(lambda l: l.debit > 0).account_id.id})
+            move_line_vals.update({'credit': self.payment.amount})
+            move_line_vals.update({'debit': 0})
+            move_line_vals.update({'partner_id': self.payment.move_id.line_ids.filtered(lambda l: l.debit > 0).partner_id.id})
+            credit_move_line = self.env['account.move.line'].with_context(check_move_validity=False).create(move_line_vals)
+            ####################################################
+            move_line_vals.update({'account_id': self.payment.spent_for.move_id.line_ids.filtered(lambda l: l.credit > 0).account_id.id})
+            move_line_vals.update({'credit': 0})
+            move_line_vals.update({'debit': self.payment.amount})
+            move_line_vals.update({'partner_id': self.payment.spent_for.move_id.line_ids.filtered(lambda l: l.credit > 0).partner_id.id})
+            debit_move_line = self.env['account.move.line'].with_context(check_move_validity=False).create(move_line_vals)
+            ####################################################
+            self.move.action_post()
 
         self.transaction_state = "posted"
-
-    def create_move(self):
-        move_vals = {
-            'date': self.transaction_date,
-            'ref': self.payment.name,
-            'company_id': self.payment.company_id.id,
-            'journal_id': self.journal_id.id,
-            'partner_id': self.move_partner.id,
-        }
-
-        self.move = self.env['account.move'].create(move_vals)
-        ####################################################
-        move_line_vals = {
-            'partner_id': self.move_partner.id,
-            'move_id': self.move.id,
-            'name': self.payment.name,
-            'journal_id': self.journal_id.id,
-            'currency_id': self.payment.currency_id.id,
-        }
-        ####################################################
-        amount_in_company_currency = self.payment.currency_id._convert(self.payment.amount, self.company_id.currency_id, self.company_id, self.payment.date, False)
-        ####################################################
-        move_line_vals.update({'credit': amount_in_company_currency})
-        move_line_vals.update({'debit': 0})
-        move_line_vals.update({'amount_currency': -self.payment.amount})
-        move_line_vals.update({'account_id': self.credit_account.id})
-        credit_move_line = self.env['account.move.line'].with_context(check_move_validity=False).create(
-            move_line_vals)
-        ####################################################
-        move_line_vals.update({'credit': 0})
-        move_line_vals.update({'debit': amount_in_company_currency})
-        move_line_vals.update({'amount_currency': self.payment.amount})
-        move_line_vals.update({'account_id': self.debit_account.id})
-        debit_move_line = self.env['account.move.line'].with_context(check_move_validity=False).create(
-            move_line_vals)
-        ####################################################
-        self.move.action_post()
-        ####################################################
-        credit_move_line.payment_id = self.payment.id
-        debit_move_line.payment_id = self.payment.id
-
-    def create_spent_to_receipt_move(self):
-        move_vals = {
-            'date': self.transaction_date,
-            'ref': self.payment.name,
-            'company_id': self.payment.company_id.id,
-            'journal_id': self.payment.spent_for.journal_id.id,
-        }
-
-        self.move = self.env['account.move'].create(move_vals)
-        ####################################################
-        move_line_vals = {
-            'move_id': self.move.id,
-            'debit': 0,
-            'credit': 0,
-            'amount_currency': 0.0,
-            'name': self.payment.name,
-            'journal_id': self.payment.spent_for.journal_id.id,
-        }
-        ####################################################
-        amount_in_company_currency = self.payment.currency_id._convert(self.payment.amount, self.company_id.currency_id, self.company_id, self.payment.date, False)
-        ####################################################
-        move_line_vals.update({'credit': amount_in_company_currency})
-        move_line_vals.update({'debit': 0})
-        move_line_vals.update({'amount_currency': -self.payment.amount})
-        move_line_vals.update({'account_id': self.payment.move_id.line_ids.filtered(lambda l: l.debit > 0).account_id.id})
-        move_line_vals.update({'partner_id': self.payment.move_id.line_ids.filtered(lambda l: l.debit > 0).partner_id.id})
-        credit_move_line = self.env['account.move.line'].with_context(check_move_validity=False).create(move_line_vals)
-        ####################################################
-        move_line_vals.update({'credit': 0})
-        move_line_vals.update({'debit': amount_in_company_currency})
-        move_line_vals.update({'amount_currency': self.payment.amount})
-        move_line_vals.update({'account_id': self.payment.spent_for.move_id.line_ids.filtered(lambda l: l.credit > 0).account_id.id})
-        move_line_vals.update({'partner_id': self.payment.spent_for.move_id.line_ids.filtered(lambda l: l.credit > 0).partner_id.id})
-        debit_move_line = self.env['account.move.line'].with_context(check_move_validity=False).create(move_line_vals)
-        ####################################################
-        self.move.action_post()

@@ -320,12 +320,36 @@ class StockPicking(models.Model):
             self.akc_target_package_id = package.id
             return True
 
+    @api.depends('move_ids.state', 'move_ids.date', 'move_type')
+    def _compute_scheduled_date(self):
+        for picking in self:
+            moves_dates = picking.move_ids.filtered(lambda move: move.state not in ('done', 'cancel')).mapped('date')
+            if picking.move_type == 'direct':
+                picking.scheduled_date = min(moves_dates, default=picking.scheduled_date or fields.Datetime.now())
+            else:
+                picking.scheduled_date = max(moves_dates, default=picking.scheduled_date or fields.Datetime.now())
+            if picking.sale_id:
+                picking.scheduled_date = picking.sale_id.expected_date
+
+    @api.depends('move_ids.date_deadline', 'move_type')
+    def _compute_date_deadline(self):
+        for picking in self:
+            if picking.move_type == 'direct':
+                picking.date_deadline = min(picking.move_ids.filtered('date_deadline').mapped('date_deadline'),
+                                            default=False)
+            else:
+                picking.date_deadline = max(picking.move_ids.filtered('date_deadline').mapped('date_deadline'),
+                                            default=False)
+            if picking.sale_id:
+                picking.date_deadline = picking.sale_id.expected_date
+
     @api.model_create_multi
     def create(self, vals_list):
         recs = super().create(vals_list)
         recs._assign_pack_carrier()
-        if recs.sale_id and recs.sale_id.delivery_slot:
-            recs.delivery_slot = recs.sale_id.delivery_slot
+        for rec in recs:
+            if rec.sale_id and rec.sale_id.delivery_slot:
+                rec.delivery_slot = rec.sale_id.delivery_slot
         recs._is_pack().filtered(lambda p: p.state in ('assigned', 'confirmed', 'waiting'))._akc_auto_put_in_pack_now()
         return recs
 

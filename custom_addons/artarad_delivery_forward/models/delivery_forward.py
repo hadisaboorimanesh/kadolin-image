@@ -40,50 +40,12 @@ def _guess_shift_by_hour(hour):
     return 1  # خارج از بازه‌ها
 
 def compute_forward_pickup_and_delivery(picking, carrier):
-    """برمی‌گرداند: (pickup_date_j, pickup_shift, delivery_date_j, delivery_shift) — همهٔ فیلدها پر می‌شوند."""
-    now_local = fields.Datetime.context_timestamp(picking, fields.Datetime.now())
-    base_utc = picking.sale_id.select_deliver_date
-
     scheduled_date = picking.scheduled_date or fields.Datetime.now()
-    # base_local = _to_local(picking, base_utc)
+    base_local = _to_local(picking, scheduled_date)
+    delivery_shift = 2 if  picking.sale_id.select_deliver_date=='evening' else 1
+    delivery_date_j = _jalali(base_local)
 
-    # اگر روی carrier شیفت پیش‌فرض داری، از همان شروع کن وگرنه بر اساس ساعت فعلی حدس بزن
-    # start_shift = int(getattr(carrier, "forward_pickup_shift", 0) or 0) or _guess_shift_by_hour(base_local.hour)
-    if base_utc:
-      day_local = base_utc
-    else:
-      day_local = base_utc.date()
-    # shift = start_shift
-
-    # پیدا کردن نزدیک‌ترین شیفت معتبر با بافر ۶ ساعت
-    # while True:
-    #     shift_start_dt = datetime(
-    #         year=day_local.year, month=day_local.month, day=day_local.day,
-    #         hour=SHIFT_START[shift], minute=0, second=0, tzinfo=now_local.tzinfo
-    #     )
-    #     ref_dt = max(now_local, base_local)
-    #     if shift_start_dt - ref_dt >= timedelta(hours=MIN_BUFFER_HOURS):
-    #         pickup_date_j = _jalali(shift_start_dt.date())
-    #         pickup_shift = shift
-    #         break
-    #     if shift < 4:
-    #         shift += 1
-    #     else:
-    #         day_local = day_local + timedelta(days=1)
-    #         shift = 1
-    #
-    # # تحویل اجباری: اگر pickup شیفت 1/2 باشد => همان روز شیفت بعدی؛ اگر 3/4 => فردا شیفت 2
-    # if pickup_shift in (1, 2):
-    #     delivery_day = day_local
-    #     delivery_shift = pickup_shift + 1
-    # else:
-    #     delivery_day = day_local + timedelta(days=1)
-    #     delivery_shift = 2
-    pickup_shift =1 if  picking.sale_id.select_deliver_date=='morning' else 2
-    delivery_shift = pickup_shift
-    delivery_date_j = _jalali(day_local)
-    pickup_date_j = _jalali(day_local- timedelta(days=1))
-    return pickup_date_j, int(pickup_shift), delivery_date_j, int(delivery_shift)
+    return  delivery_date_j, int(delivery_shift)
 
 
 class DeliveryCarrier(models.Model):
@@ -108,6 +70,9 @@ class DeliveryCarrier(models.Model):
     forward_token_cached_at = fields.Float(readonly=True)
     forward_token_ttl = fields.Integer(string="Token TTL (sec)", default=86000)
     forward_token_value = fields.Char(readonly=True)
+
+    pickup_date = fields.Date()
+    shift =fields.Selection([("1","صبح"),("2","بعد از ظهر")])
 
     def _get_token(self, carrier):
         ICP = self.env['ir.config_parameter'].sudo()
@@ -411,12 +376,22 @@ class DeliveryAdapterForward(models.AbstractModel):
             picking, picking.scheduled_date or fields.Datetime.now()
         )
 
-        pickup_date, pickup_shift, delivery_date, delivery_shift = compute_forward_pickup_and_delivery(picking, carrier)
+        pickup_date= _jalali(carrier.pickup_date)
+        pickup_shift =int(carrier.shift)
+
+        delivery_date, delivery_shift = compute_forward_pickup_and_delivery(picking, carrier)
 
         # مختصات (اگر داری)
         receiver_location = None
         if getattr(partner, "partner_latitude", False) and getattr(partner, "partner_longitude", False):
             receiver_location = f"{partner.partner_latitude}, {partner.partner_longitude}"
+
+        mobile = (partner.phone or partner.mobile or "").strip()
+        if mobile:
+            if mobile.startswith('+98'):
+                mobile = '0' + mobile[3:]
+            elif not mobile.startswith('0'):
+                mobile = '0' + mobile
 
         payload = {
             "orders": [{
@@ -426,16 +401,15 @@ class DeliveryAdapterForward(models.AbstractModel):
                 "receiverProvinceId": province_id,
                 "receiverCityId": city_id,
                 "receiverTitle": partner.display_name or (partner.name or ""),
-                # "receiverPhone": partner.mobile or partner.phone or "",
-                "receiverPhone": "09359724338",
+                "receiverPhone": mobile.replace(" ","") or "",
                 "receiverAddress": partner.contact_address_complete or partner.street or "",
                 "receiverLocation": receiver_location,
                 "receiverPostalCode": partner.zip or None,
                 "boxSize": int(carrier.forward_box_size or 1),
                 "pickupDate": pickup_date,
                 "pickupShift": pickup_shift,
-                "deliveryDate": delivery_date,
-                "deliveryShift": delivery_shift,
+                "deliveryDate": delivery_date if partner.city== "تهران" else None,
+                "deliveryShift": delivery_shift if partner.city== "تهران" else None,
                 "boxContentId": int(carrier.forward_box_content_id or 501),
             }]
         }

@@ -1,0 +1,75 @@
+<odoo>
+    <data>
+        <template id="product" inherit_id="website_sale.product">
+            <xpath expr="//a[@id='add_to_cart']" position="after">
+                <a role="button" id="add_to_cart_dummy"
+                   class="disabled d-none  btn btn-primary js_check_product a-submit flex-grow-1"
+                   href="#">
+                    <i class="fa fa-shopping-cart me-2"/>
+                    Add to cart
+                </a>
+            </xpath>
+            <xpath expr="//div[@id='product_option_block']" position="after">
+
+
+                <div id="qty_limit_error" class="d-none  mt-2"><sup>*</sup>Can't order too much quantity!
+                </div>
+
+            </xpath>
+        </template>
+
+        <template id="product_quantity" inherit_id="website_sale.product_quantity">
+            <xpath expr="//input[hasclass('quantity')]" position="attributes">
+<!--                <attribute name="t-att-data-apply_qty_limit">product_variant.apply_qty_limit</attribute>-->
+<!--                <attribute name="t-att-data-min">product_variant.min_limit if product_variant.apply_qty_limit else add_qty or 1</attribute>-->
+<!--                <attribute name="t-att-data-limit_max">product_variant.max_limit if product_variant.apply_qty_limit else 0</attribute>-->
+<!--                <attribute name="t-att-value">product_variant.min_limit if product_variant.apply_qty_limit else add_qty or 1</attribute>-->
+                <attribute name="t-att-data-limit_reached"></attribute>
+            </xpath>
+        </template>
+
+        <template id="cart_lines" inherit_id="website_sale.cart_lines">
+            <xpath expr="//input[@class='js_quantity form-control quantity']" position="before">
+                <t t-set="variant_qty_limit" t-value="line.product_id and line.product_id.get_variant_qty_limit()"/>
+            </xpath>
+            <xpath expr="//input[@class='js_quantity quantity form-control']" position="attributes">
+                                <attribute name="t-att-data-max">line.product_id.max_limit</attribute>
+                 <attribute name="t-att-data-apply_qty_limit">line.product_id and line.product_id.apply_qty_limit</attribute>
+                <attribute name="t-att-data-min">variant_qty_limit.get('limit_min', 1) if variant_qty_limit else  0</attribute>
+                <attribute name="t-att-data-limit_max">variant_qty_limit.get('limit_max', 0) if variant_qty_limit else 0</attribute>
+                <attribute name="t-att-data-limit_reached">variant_qty_limit.get('limit_reached', "low") if variant_qty_limit else "low"</attribute>
+
+            </xpath>
+            <xpath expr="//div[@name='website_sale_cart_line_quantity']" position="after">
+                <t t-if="line.product_id and line.product_id.apply_qty_limit">
+                    <t t-set="qty_limit" t-value="line.product_id.get_variant_qty_limit(line.product_uom_qty)"/>
+                    <div id="max_qty_info"
+                         t-if="qty_limit.get('limit_reached', 'low')  == 'crossed'"
+                         class="text-danger mt-1">
+                        <sup>*</sup>Already ordered maximum
+                        <t t-esc="int(qty_limit.get('limit_max'))"/>
+                        quantity!
+                    </div>
+
+                    <div id="max_qty_info"
+                         t-elif="qty_limit.get('limit_reached', 'low')  == 'equal'"
+                         class="text-warning mt-1">
+                        <sup>*</sup>Maximum ordered quantity is
+                        <t t-esc="int(qty_limit.get('limit_max'))"/>
+                    </div>
+                    <!--                <div class="qty_limit_error ">-->
+                    <div id="min_qty_info"
+                         t-elif="qty_limit.get('limit_reached', 'low')  == 'low' and int(qty_limit.get('limit_min')) == line.product_uom_qty"
+                         class="text-info mt-1">
+                        <sup>*</sup>Minimum ordered quantity is
+                        <t t-esc="int(qty_limit.get('limit_min'))"/>
+                    </div>
+                </t>
+                <!--                </div>-->
+
+                <!--                <div id="qty_limit_error" class="text-danger mt-2">-->
+                <!--                </div>-->
+            </xpath>
+        </template>
+    </data>
+</odoo>

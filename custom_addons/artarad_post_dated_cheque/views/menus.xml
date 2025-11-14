@@ -44,7 +44,7 @@
 
     <menuitem id="menu_artarad_pdc_ent" name="PDCs" parent="account.menu_finance_entries" sequence="1" />
 
-    <menuitem id="menu_artarad_pdc_list_ent" name="Payments" parent="menu_artarad_pdc_ent"
+    <menuitem id="menu_artarad_pdc_list_ent" name="Cheque List" parent="menu_artarad_pdc_ent"
         action="action_artarad_pdc_list_ent" sequence="1" />
 
     <menuitem id="menu_artarad_pdc_state_change_trans" name="State Change Trans." parent="menu_artarad_pdc_ent"

@@ -9,7 +9,7 @@
             <field name="categ_id" position="after">
                 <field
                     name="allow_negative_stock"
-                    invisible="type != 'product'"
+                    invisible="type != 'consu'"
                 />
             </field>
         </field>

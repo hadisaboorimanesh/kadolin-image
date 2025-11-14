@@ -54,7 +54,8 @@ class PaymentTransaction(models.Model):
             'isTaxIncluded': True,
         }]
 
-        transaction_id =self.reference
+        transaction_id = self.reference
+        # transaction_id = f"{self.reference}-{uuid.uuid4().hex[:8]}"
         mobile = (self.partner_id.phone or self.partner_id.mobile or "").strip()
         if mobile:
             if mobile.startswith('0'):
@@ -85,15 +86,6 @@ class PaymentTransaction(models.Model):
             'snappay_payment_token': payment_token or False,
             'provider_reference': payment_token or False,
         })
-        # parts = urlsplit(payment_page_url)
-        # api_base = f"{parts.scheme}://{parts.netloc}{parts.path}"
-        # # لیست تاپل‌ها: [(key, value), ...]  → برای حفظ ترتیب و پشتیبانی از پارام‌های تکراری
-        # url_params = parse_qsl(parts.query, keep_blank_values=True)
-
-        self.write({
-            'snappay_payment_token': payment_token or False,
-            'provider_reference': payment_token or False,
-        })
 
         u = wkurls.url_parse(payment_page_url)  # werkzeug.urls.Url
         api_base = f"{u.scheme}://{u.netloc}{u.path}"
@@ -107,12 +99,6 @@ class PaymentTransaction(models.Model):
             'api_base': api_base,
             'url_params': url_params,
         }
-
-        # rendering_values.update({
-        #
-        #     'api_url': payment_page_url,
-        # })
-        # return rendering_values
 
     # ====== Finding the transaction on return/webhook ======
     def _get_tx_from_notification_data(self, provider_code, notification_data):
@@ -170,35 +156,14 @@ class PaymentTransaction(models.Model):
             # بدون توکن نمی‌توان verify/revert کرد
             raise ValidationError("SnappPay: " + _("Missing payment token on transaction."))
 
-        # تصمیم‌گیری براساس state
         if state == 'OK':
-            # طبق داکیومنت باید verify شود
-
-            verify_res = provider.snappay_verify(self.snappay_payment_token)
-
-            # Verify ok → done
+            # verify_res = provider.snappay_verify(self.snappay_payment_token)
             self._set_done()
-            try:
-                res = provider.snappay_settle(self.snappay_payment_token)
-                if not (res or {}).get('successful'):
-                    for sale in self.sale_order_ids:
-                        sale.settle_status = res
-                else:
-                    for sale in self.sale_order_ids:
-                        sale.settle_status = res
-
-            except Exception:
-                for sale in self.sale_order_ids:
-                    sale.settle_status = res
-                self._set_error(_("Payment Settle failed."))
-
             return
-
-
-
         else:
             _logger.warning("SnappPay: Unknown state '%s' for reference %s", state, self.reference)
             self._set_error(_("Unknown payment state received: %s") % state)
+            self._set_canceled()
 
     def _snappay_verify(self):
         """POST /api/online/payment/v1/verify با paymentToken"""
@@ -209,52 +174,33 @@ class PaymentTransaction(models.Model):
         if not token:
             raise ValidationError(_("Missing SnappPay payment token on transaction."))
 
-        self.provider_id._snappay_request('/api/online/payment/v1/verify', {
-            'paymentToken': token
-        })
-        # اگر بدون خطا بود یعنی موفق
-        self._set_done()
-        # اینجا می‌تونی در صورت نیاز چیزی لاگ یا فیلدی ست کنی
-        return True
+        self.provider_id.snappay_verify(token,self)
 
-    def _snappay_settle(self):
-        """POST /api/online/payment/v1/settle (بعداً، پایان روز)"""
-        self.ensure_one()
-        if self.provider_code != 'snappay':
-            raise ValidationError(_("Wrong provider for _snappay_settle"))
-        token = self.snappay_payment_token or self.provider_reference
-        if not token:
-            raise ValidationError(_("Missing SnappPay payment token on transaction."))
-        # self.provider_id._snappay_request('/api/online/payment/v1/settle', {
-        #     'paymentToken': token
-        # })
-        try:
-            res = self.provider_id.snappay_settle(token)
-            if not (res or {}).get('successful'):
-                for sale in self.sale_order_ids:
-                    sale.settle_status = res
-            else:
-                for sale in self.sale_order_ids:
-                    sale.settle_status = res
 
-        except Exception:
-            for sale in self.sale_order_ids:
-                sale.settle_status = res
-            self._set_error(_("Payment Settle failed."))
-
-    def _snappay_revert(self):
-        """POST /api/online/payment/v1/revert"""
-        self.ensure_one()
-        if self.provider_code != 'snappay':
-            raise ValidationError(_("Wrong provider for _snappay_revert"))
-        token = self.snappay_payment_token or self.provider_reference
-        if not token:
-            raise ValidationError(_("Missing SnappPay payment token on transaction."))
-        self.provider_id._snappay_request('/api/online/payment/v1/revert', {
-            'paymentToken': token
-        })
-        self._set_canceled(_("SnappPay: transaction reverted."))
-        return True
+    # def _snappay_settle(self):
+    #     """POST /api/online/payment/v1/settle (بعداً، پایان روز)"""
+    #     self.ensure_one()
+    #     if self.provider_code != 'snappay':
+    #         raise ValidationError(_("Wrong provider for _snappay_settle"))
+    #     token = self.snappay_payment_token or self.provider_reference
+    #     if not token:
+    #         raise ValidationError(_("Missing SnappPay payment token on transaction."))
+    #     # self.provider_id._snappay_request('/api/online/payment/v1/settle', {
+    #     #     'paymentToken': token
+    #     # })
+    #     try:
+    #         res = self.provider_id.snappay_settle(token)
+    #         if not (res or {}).get('successful'):
+    #             for sale in self.sale_order_ids:
+    #                 sale.settle_status = res
+    #         else:
+    #             for sale in self.sale_order_ids:
+    #                 sale.settle_status = res
+    #
+    #     except Exception:
+    #         for sale in self.sale_order_ids:
+    #             sale.settle_status = res
+    #         self._set_error(_("Payment Settle failed."))
 
     def snappay_update_payment(self):
 

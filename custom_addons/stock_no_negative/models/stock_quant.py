@@ -3,25 +3,6 @@ from odoo.exceptions import UserError
 from odoo.tools import config, float_compare
 
 
-class StockMoveLine(models.Model):
-    _inherit = "stock.move.line"
-
-    @api.onchange('lot_id')
-    def _onchange_lot_id(self):
-        base_location = self.move_id.picking_id.location_id or self.location_id
-        quants = self.env['stock.quant'].sudo().search([
-            ('product_id', '=', self.product_id.id),
-            ('lot_id', '=', self.lot_id.id),
-            ('quantity', '!=', 0),
-            ('location_id.usage', 'in', ('internal', 'transit', 'customer')),
-            ('location_id', 'not any', [('location_id', 'child_of', base_location.id)])
-        ])
-
-        if quants:
-               raise UserError(_('Unavailable Serial numbers. Please correct the serial numbers encoded'))
-
-
-
 class StockMove(models.Model):
     _inherit = "stock.move"
 
@@ -74,14 +55,14 @@ class StockQuant(models.Model):
             disallowed_by_location = not quant.location_id.allow_negative_stock
             if (
                 float_compare(quant.quantity, 0, precision_digits=p) == -1
-                and quant.product_id.type == "product"
+                and quant.product_id.type == "consu"
                 and quant.location_id.usage in ["internal", "transit"]
                 and disallowed_by_product
                 and disallowed_by_location
             ):
                 msg_add = ""
                 if quant.lot_id:
-                    msg_add = _(" lot {}").format(quant.lot_id.name_get()[0][1])
+                    msg_add = _(" lot {}").format(quant.lot_id.name)
                 raise exceptions.ValidationError(
                     _(
                         "You cannot validate this stock operation because the "

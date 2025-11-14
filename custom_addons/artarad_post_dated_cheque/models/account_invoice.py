@@ -3,20 +3,34 @@ from odoo import models, fields, api, exceptions, _
 
 import jdatetime
 
+PAYMENT_STATE_SELECTION = [
+    ('not_paid', 'Not Paid'),
+    ('in_payment', 'In Payment'),
+    ('paid', 'Paid'),
+    ("partial_pdc", "Partial PDC"),
+    ("pdc", "PDC"),
+    ('partial', 'Partially Paid'),
+    ('reversed', 'Reversed'),
+    ('blocked', 'Blocked'),
+    ('invoicing_legacy', 'Invoicing App Legacy'),
+]
+
 
 class artaradAccountMove(models.Model):
     _inherit = "account.move"
-    
+
     def button_draft(self):
         for rec in self:
             # 1
             cheque_state_change_transaction = self.env['artarad.pdc.st.chg.trans'].search([('move', '=', rec.id)])
             if cheque_state_change_transaction:
-                raise exceptions.UserError(_(f"You can not set to draft, because the entry is related to a state transaction of cheque: {cheque_state_change_transaction.payment.display_name}"))
+                raise exceptions.UserError(
+                    _(f"You can not set to draft, because the entry is related to a state transaction of cheque: {cheque_state_change_transaction.payment.display_name}"))
 
             # 2
             if self.env['artarad.pdc.st.chg.trans'].search([('payment', '=', rec.origin_payment_id.id)]):
-                raise exceptions.UserError(_(f"You can not set to draft, because the entry is related to a cheque that has state transactions: {rec.payment_id.display_name}"))
+                raise exceptions.UserError(
+                    _(f"You can not set to draft, because the entry is related to a cheque that has state transactions: {rec.payment_id.display_name}"))
 
         return super(artaradAccountMove, self).button_draft()
 
@@ -25,9 +39,21 @@ class artaradAccountInvoice(models.Model):
     _inherit = "account.move"
 
     # overrided fields
-    payment_state = fields.Selection(selection_add=[("partial_pdc", "Partial PDC"), ("pdc", "PDC"), ("paid",)],
-                                     ondelete={"partial_pdc": lambda recs: recs.write({"payment_state": "partial"}), "pdc": lambda recs: recs.write({"payment_state": "paid"})})
-
+    payment_state = fields.Selection(
+        selection=PAYMENT_STATE_SELECTION,
+        string="Payment Status",
+        compute='_compute_payment_state', store=True, readonly=True,
+        copy=False,
+        tracking=True,
+    )
+    status_in_payment = fields.Selection(
+        selection=PAYMENT_STATE_SELECTION + [
+            ('draft', "Draft"),
+            ('cancel', "Cancelled"),
+        ],
+        compute='_compute_status_in_payment',
+        copy=False,
+    )
 
     def get_cheques_data(self):
         has_inprogress_pdc = False
@@ -35,25 +61,26 @@ class artaradAccountInvoice(models.Model):
 
         has_inprogress_cheque = False
 
-        payments = self.env['account.payment'].browse([item['account_payment_id'] for item in self.invoice_payments_widget['content']] if self.invoice_payments_widget else [])
+        payments = self.env['account.payment'].browse([item['account_payment_id'] for item in
+                                                       self.invoice_payments_widget[
+                                                           'content']] if self.invoice_payments_widget else [])
         for payment in payments:
             if payment.payment_method_id.code == 'cheque':
                 if payment.payment_type == 'inbound':
-                    if not payment.cheque_state.is_receipted:
+                    if not payment.cheque_state.is_payment_validator:
                         has_inprogress_cheque = True
                         break
 
                 elif payment.payment_type == 'outbound':
                     if payment.cheque_outbound_mode == 'draw':
-                        if not payment.cheque_state.is_receipted:
+                        if not payment.cheque_state.is_payment_validator:
                             has_inprogress_cheque = True
                             break
                     elif payment.cheque_outbound_mode == 'spend':
                         for spending_cheque in payment.spending_cheques:
-                            if not spending_cheque.cheque_state.is_receipted:
+                            if not spending_cheque.cheque_state.is_payment_validator:
                                 has_inprogress_cheque = True
                                 break
-
 
         if has_inprogress_cheque:
             if self.amount_residual:
@@ -88,7 +115,6 @@ class artaradAccountInvoice(models.Model):
             ########## ######### ##########
             m.suitable_journal_ids = self.env['account.journal'].search(domain)
 
-
     def _compute_payments_widget_to_reconcile_info(self):
         for move in self:
             move.invoice_outstanding_credits_debits_widget = False
@@ -107,7 +133,7 @@ class artaradAccountInvoice(models.Model):
                 continue
             ########## ######### ##########
 
-            pay_term_lines = move.line_ids\
+            pay_term_lines = move.line_ids \
                 .filtered(lambda line: line.account_id.account_type in ('asset_receivable', 'liability_payable'))
 
             domain = [
@@ -117,12 +143,15 @@ class artaradAccountInvoice(models.Model):
                 ('reconciled', '=', False),
                 '|', ('amount_residual', '!=', 0.0), ('amount_residual_currency', '!=', 0.0),
             ]
-            
+
             ########## overrided ##########
             if move.is_inbound():
-                domain += [('id', 'not in', self.env['artarad.pdc.st.chg.trans'].search([('new_cheque_state.is_returned', '=', True)]).mapped("payment.move_id.line_ids").ids)]
+                domain += [('id', 'not in', self.env['account.payment'].search([('cheque_state.is_returned', '=', True)]).mapped(
+                                "move_id.line_ids").ids)]
             elif move.state == 'out_invoice':
-                domain += [('id', 'not in', self.env['artarad.pdc.st.chg.trans'].search([('old_cheque_state.is_spent', '=', True), ('new_cheque_state.code', '=', 'ICA')]).mapped("payment.move_id.line_ids").ids)]
+                domain += [('id', 'not in', self.env['account.payment'].search(
+                    [('cheque_state.is_spent', '=', True), ('cheque_state.code', '=', 'ICA')]).mapped(
+                    "move_id.line_ids").ids)]
             ########## ######### ##########
 
             payments_widget_vals = {'outstanding': True, 'content': [], 'move_id': move.id}

@@ -8,10 +8,9 @@
             <list editable="top">
                 <field name="name" />
                 <field name="code" />
-                <field name="is_receipted" />
+                <field name="is_payment_validator" />
                 <field name="is_returned" />
                 <field name="is_spent" />
-                <field name="is_spent_no_receipt_tracking" />
                 <field name="is_spendable" />
                 <field name="company_id" />
             </list>

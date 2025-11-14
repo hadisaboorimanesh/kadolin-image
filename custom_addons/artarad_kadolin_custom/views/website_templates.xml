@@ -75,7 +75,7 @@
                     <div id="div_city_select" class="col-lg-6 mb-2">
                         <label class="col-form-label" for="o_city_select">شهر</label>
                         <select id="o_city_select" name="city_id" class="form-select">
-                            <option value="">انتخاب شهر...</option>
+                            <option value=""></option>
                             <t t-if="state_id">
                                 <t t-foreach="request.env['res.city'].sudo().search([('state_id','=', state_id)], order='name asc')"
                                    t-as="ct">
@@ -195,6 +195,7 @@
                 <i class="fa fa-truck me-2" aria-hidden="true"/>
                 <strong class="me-2">زمان تحویل برآوردی:</strong>
                 <span t-esc="order.create_uid.get_jalali_date(order.expected_date)"/>
+                    به بعد
             </div>
 
             <t t-set="exp_date" t-value="(order.expected_date or '')"/>

@@ -1,3 +1,6 @@
+
+FROM postgres:17 AS pgclient
+
 FROM haditsn/odoo18:base
 
 #COPY custom_addons /usr/lib/python3/dist-packages/odoo/custom_addons
@@ -25,6 +28,16 @@ RUN apt-get update && \
     apt-get install -y --only-upgrade libtiff6 && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN pip install --upgrade s3fs --break-system-packages
+
+# اضافه کردن مخزن PostgreSQL برای Debian 12/13
+#RUN echo "deb http://apt.postgresql.org/pub/repos/apt bookworm-pgdg main" > /etc/apt/sources.list.d/pgdg.list \
+#    && curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | gpg --dearmor > /etc/apt/trusted.gpg.d/pgdg.gpg \
+#    && apt-get update \
+#    && apt-get install -y postgresql-client-17 \
+#    && rm -rf /var/lib/apt/lists/*
+
+
+COPY --from=pgclient /usr/lib/postgresql/17/bin/pg_dump /usr/local/bin/pg_dump
 
 COPY GeoLite2-City.mmdb /usr/share/GeoIP/GeoLite2-City.mmdb
 COPY custom_addons /usr/lib/python3/dist-packages/odoo/custom_addons

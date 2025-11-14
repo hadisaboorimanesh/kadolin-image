@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <record id="akc_pack_01" model="stock.quant.package"><field name="name">AKC-PACK-01</field><field name="akc_reusable">1</field></record>
+    <data noupdate="1">
+  <record  id="akc_pack_01" model="stock.quant.package"><field name="name">AKC-PACK-01</field><field name="akc_reusable">1</field></record>
   <record id="akc_pack_02" model="stock.quant.package"><field name="name">AKC-PACK-02</field><field name="akc_reusable">1</field></record>
   <record id="akc_pack_03" model="stock.quant.package"><field name="name">AKC-PACK-03</field><field name="akc_reusable">1</field></record>
   <record id="akc_pack_04" model="stock.quant.package"><field name="name">AKC-PACK-04</field><field name="akc_reusable">1</field></record>
@@ -39,5 +40,5 @@
             action = records.action_bulk_fail_process()
         </field>
     </record>
-
+   </data>
 </odoo>

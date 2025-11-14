@@ -30,6 +30,11 @@ def _to_jdate_str(dt):
        jd = jdatetime.datetime.fromgregorian(date=dt)
     return jd.strftime("%Y/%m/%d")
 
+class ResCity(models.Model):
+    _inherit = "res.city"
+
+    taarof_code = fields.Char(string="کد تعارف")
+
 class DeliveryCarrier(models.Model):
     _inherit = "delivery.carrier"
 
@@ -100,7 +105,6 @@ class DeliveryAdapterTaroff(models.AbstractModel):
     def _api_post(self, carrier, path, payload):
         url = self._api_url(carrier, path)
         headers = {"Content-Type": "application/json"}
-        # بیشتر سرویس‌های Taroff «key» را داخل body می‌خواهند نه Header
         if isinstance(payload, dict) and carrier.taroff_api_key:
             payload = {**payload, "key": carrier.taroff_api_key}
 
@@ -113,18 +117,15 @@ class DeliveryAdapterTaroff(models.AbstractModel):
 
         txt = resp.text or ""
         _logger.info("Taroff RESP %s: %s", url, txt)
-        # Taroff اغلب 200 می‌دهد حتی خطا؛ پس بدنه را چک می‌کنیم
         try:
             body = resp.json()
         except Exception:
             body = {}
-        # قرارداد PDF: فیلدهای error / error_code / msg
         if body and (body.get("error") or body.get("error_code")):
             raise UserError(_("Taroff API error: %s") % (body.get("msg") or body))
         return body or txt
 
     def _split_name(self, name):
-        """نام را به name/lastname ساده تقسیم کن."""
         if not name:
             return ("", "")
         parts = str(name).strip().split()
@@ -148,7 +149,7 @@ class DeliveryAdapterTaroff(models.AbstractModel):
     def _build_import_payload(self, carrier, picking):
         partner = picking.partner_id.commercial_partner_id
         name, last = self._split_name(partner.name or "")
-        city = (partner.city or "").strip()
+        city = (partner.city_id.name  or partner.city or "").strip()
         phone = (partner.mobile or partner.phone or "").strip()
         cell = phone if carrier.taroff_use_mobile_as_phone else (partner.mobile or "")
         addr = ", ".join(filter(None, [partner._display_address().replace("\n", " ")]))
@@ -170,11 +171,12 @@ class DeliveryAdapterTaroff(models.AbstractModel):
             shift = 2
             req_dt = _to_jdate_str(local_dt)
 
+        city_code = self.env['res.city'].sudo().search([('name','=',city)],limit=1).mapped("taarof_code")
         payload = {
             # کلید API در _api_post تزریق می‌شود
             "name": name or partner.name or "",
             "lastname": last,
-            "city": city,
+            "city": city_code,
             "phone": phone.replace(" ",""),
             "cell": cell.replace(" ",""),
             "addr": addr,

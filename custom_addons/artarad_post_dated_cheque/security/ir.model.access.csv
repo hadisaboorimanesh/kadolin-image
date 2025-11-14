@@ -12,7 +12,7 @@
 "access_pdc_accountant3","artarad_pdc_st_chg_trans account.group_account_user","model_artarad_pdc_st_chg_trans","account.group_account_user",1,1,1,1
 "access_pdc_accountant4","artarad_pdc_init_st account.group_account_user","model_artarad_pdc_init_st","account.group_account_user",1,0,0,0
 "access_pdc_accountant5","artarad_pdc_book account.group_account_user","model_artarad_pdc_book","account.group_account_user",1,0,0,0
-"access_pdc_accountant6","artarad_pdc_sheet account.group_account_user","model_artarad_pdc_sheet","account.group_account_user",1,1,0,0
+"access_pdc_accountant6","artarad_pdc_sheet account.group_account_user","model_artarad_pdc_sheet","account.group_account_user",1,0,0,0
 
 "access_pdc_billing1","artarad_pdc_st account.group_account_invoice","model_artarad_pdc_st","account.group_account_invoice",1,0,0,0
 "access_pdc_billing2","artarad_pdc_st_chg account.group_account_invoice","model_artarad_pdc_st_chg","account.group_account_invoice",1,0,0,0
@@ -20,5 +20,5 @@
 "access_pdc_billing4","artarad_pdc_init_st account.group_account_invoice","model_artarad_pdc_init_st","account.group_account_invoice",1,0,0,0
 "access_pdc_billing5","artarad_pdc_book account.group_account_invoice","model_artarad_pdc_book","account.group_account_invoice",1,0,0,0
 "access_pdc_billing6","artarad_pdc_sheet account.group_account_invoice","model_artarad_pdc_sheet","account.group_account_invoice",1,0,0,0
+access_change_cheque_state_wizard_user,change.cheque.state.wizard.user,model_change_cheque_state_wizard,base.group_user,1,1,1,1
 access_payment_ras_wizard_user,payment.ras.wizard.user,model_payment_ras_wizard,base.group_user,1,1,1,1
-

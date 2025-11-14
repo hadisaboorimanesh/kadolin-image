@@ -8,6 +8,7 @@ class AccountBankStatementLine(models.Model):
     def _get_default_amls_matching_domain(self):
         domain = super(AccountBankStatementLine, self)._get_default_amls_matching_domain()
         # domain += [("move_id.payment_id.payment_method_line_id.payment_method_id.code", "!=", "cheque")]
+        domain += [("move_id.journal_id.id", "=", self.journal_id.id)]
         return domain
 
     def reconcile(self, lines_vals_list, to_check=False, allow_partial=False):
@@ -21,8 +22,8 @@ class AccountBankStatementLine(models.Model):
                                                                             'journal_id': last_transaction.journal_id.id,
                                                                             'transaction_date': fields.Date.today(),
                                                                             'old_cheque_state': payment.cheque_state.id,
-                                                                            'new_cheque_state': self.env['artarad.pdc.st'].search([("is_receipted", "=", True)], limit=1).id})
-                new_transaction.action_post()
+                                                                            'new_cheque_state': self.env['artarad.pdc.st'].search([("is_payment_validator", "=", True)], limit=1).id})
+                new_transaction.change_state_to_posted()
 
     def button_undo_reconciliation(self):
         for line in self.line_ids.full_reconcile_id.reconciled_line_ids.filtered(lambda line: line.payment_id):
