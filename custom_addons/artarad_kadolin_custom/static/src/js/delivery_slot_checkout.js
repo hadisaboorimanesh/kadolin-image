@@ -71,9 +71,14 @@ publicWidget.registry.KadolinDeliverySlot = publicWidget.Widget.extend({
         const widget = this;
         // هر بار که کاربر آدرس یا روش ارسال را تغییر دهد → بررسی مجدد
 //        dlog("start(): binding click on address_card");
-        this._unbinders.push(onDoc("click", "div[name='address_card']", async () => {
-    setTimeout(() => this._refresh(true), 400);
-}));
+//        this._unbinders.push(onDoc("click", "div[name='address_card']", async () => {
+//                setTimeout(() => this._refresh(true), 400);
+//           }));
+
+        this._unbinders.push(onDoc("click", "div[name='address_card']", (ev, el) => {
+            const city = (el && el.dataset && el.dataset.city) ? el.dataset.city.trim() : "";
+            this._refresh(true, city);   // city را مستقیم پاس می‌دهیم
+        }));
 // جلوگیری از ادامه checkout بدون انتخاب روز و اسلات
 this._unbinders.push(onDoc("click", "a[href='/shop/confirm_order'], #o_payment_form_pay", (ev) => {
     // اگر تهران نیست اصلاً محدودیتی اعمال نکن
@@ -168,51 +173,76 @@ this._unbinders.push(onDoc("change", "input[name='delivery_slot']", (ev) => {
     //----------------------------------------------------------------------
     // Core logic
     //----------------------------------------------------------------------
-    _refresh: function (force) {
-//        dlog("_refresh(): entered", { force });
-        const self = this;
+//    _refresh: function (force) {
+//        const self = this;
+//
+//        setTimeout(async function () {
+//            if (!self.el || !document.body.contains(self.el)) return;
+//
+//            let city = "";
+//            try {
+//                const resp = await rpc("/shop/current_shipping_city", {});
+//                city = (resp && (resp.city || (resp.result && resp.result.city))) || "";
+//            } catch (_) {}
+//
+//            const isTehran = /تهران|Tehran|کرج|Karaj/i.test(city);
+//            self.el.classList.toggle("d-none", !isTehran);
+//
+//            if (!isTehran) {
+//                return;
+//            }
+//             self._isTehran = isTehran;
+//            const changed = self._lastCity !== city;
+//            self._lastCity = city;
+//            const needRender = force || changed || !self.el.querySelector(".ds-day");
+//            if (needRender) {
+//                self._renderDays();
+//            }
+//        }, 150);
+//
+//
+//    },
 
-        // با delay کوچک تا وقتی DOM تازه رندر شد، درست عمل کند
-        setTimeout(async function () {
-//            dlog("_refresh(): timeout tick");
-            if (!self.el || !document.body.contains(self.el)) return;
-//            dlog("_refresh(): element present?", !!self.el, "inDOM?", !!(self.el && document.body.contains(self.el)));
 
-            // شهر از سرور
-            let city = "";
-//            dlog("_refresh(): fetching current city");
+    _refresh: function (force, presetCity) {
+    const self = this;
+
+    // دیگه setTimeout داخلی لازم نداریم، بیرونی‌ها اگر خواستی خودت نگه‌دار
+    (async function () {
+        if (!self.el || !document.body.contains(self.el)) {
+            return;
+        }
+
+        // ۱) اگر از DOM شهر را گرفته‌ایم، از همان استفاده کن
+        let city = (presetCity || "").trim();
+
+        // ۲) اگر presetCity نداشتیم (مثلاً اولین بار در start یا تغییر carrier)
+        // از RPC قبلی استفاده می‌کنیم
+        if (!city) {
             try {
                 const resp = await rpc("/shop/current_shipping_city", {});
                 city = (resp && (resp.city || (resp.result && resp.result.city))) || "";
-            } catch (_) {}
-//            dlog("_refresh(): city result", { city });
-
-//            const isTehran = /تهران|Tehran/i.test(city);
-            const isTehran = /تهران|Tehran|کرج|Karaj/i.test(city);
-//            dlog("_refresh(): isTehran?", isTehran);
-            self.el.classList.toggle("d-none", !isTehran);
-                            // ← این خط جدید
-
-//            dlog("_refresh(): toggled visibility", { hidden: !isTehran });
-            if (!isTehran) {
-//                dlog("_refresh(): not Tehran -> bail");
-                return;
+            } catch (_) {
+                city = "";
             }
-             self._isTehran = isTehran;
-            // فقط وقتی لازم باشد روزها را رندر کن
-//            dlog("_refresh(): computing needRender...");
-            const changed = self._lastCity !== city;
-            self._lastCity = city;
-            const needRender = force || changed || !self.el.querySelector(".ds-day");
-//            dlog("_refresh(): flags", { changed, needRender, hasDayButtons: !!self.el.querySelector(".ds-day") });
-            if (needRender) {
-//                dlog("_refresh(): calling _renderDays()");
-                self._renderDays();
-            }
-        }, 150);
+        }
 
+        const isTehran = /تهران|Tehran|کرج|Karaj/i.test(city);
+        self._isTehran = isTehran;   // حتماً state داخلی را ست کن
+        self.el.classList.toggle("d-none", !isTehran);
 
-    },
+        if (!isTehran) {
+            return;
+        }
+
+        const changed = self._lastCity !== city;
+        self._lastCity = city;
+        const needRender = force || changed || !self.el.querySelector(".ds-day");
+        if (needRender) {
+            self._renderDays();
+        }
+    })();
+},
 
     _renderDays: function () {
     const cont = this.el.querySelector("#ds-days");

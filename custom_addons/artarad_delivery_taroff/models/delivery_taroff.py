@@ -171,11 +171,14 @@ class DeliveryAdapterTaroff(models.AbstractModel):
             shift = 2
             req_dt = _to_jdate_str(local_dt)
 
-        city_code = self.env['res.city'].sudo().search([('name','=',city)],limit=1).mapped("taarof_code")
+        city_code = False
+        city_id = self.env['res.city'].sudo().search([('name','=',city)],limit=1)
+        if city_id:
+            city_code= city_id.taarof_code
         payload = {
             # کلید API در _api_post تزریق می‌شود
-            "name": name or partner.name or "",
-            "lastname": last,
+            "name": name or partner.name or ".",
+            "lastname": last or "." ,
             "city": city_code,
             "phone": phone.replace(" ",""),
             "cell": cell.replace(" ",""),

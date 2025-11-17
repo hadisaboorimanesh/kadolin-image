@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 
+    <template id="website_sale_artarad_address_kanban" inherit_id="website_sale.address_kanban">
+
+        <div name="address_card" position="attributes">
+            <attribute name="t-att-data-city">contact.city</attribute>
+
+        </div>
+    </template>
+
+
     <template id="checkout_neshan_map_conditional" inherit_id="website_sale.address" customize_show="True">
         <xpath expr="//input[@name='required_fields']" position="replace">
             <!-- لیست را به‌صورت امن به آرایه تبدیل می‌کنیم -->

@@ -22,11 +22,28 @@ class artaradServerActions(models.Model):
             if self.model_id.is_mail_thread:
                 subtype_id = self.env['ir.model.data']._xmlid_to_res_id('mail.mt_note')
                 messages = self.env['mail.message']
+
                 for record in records:
-                    messages |= record._message_sms(
-                        self.sms_template_id._render_field("body", [record.id], compute_lang=True)[record.id],
+                    mobile_to = self.sms_template_id._render_field("mobile_to", [record.id], compute_lang=True)[record.id]
+                    body = self.sms_template_id._render_field("body", [record.id], compute_lang=True)[record.id]
+
+                    if not mobile_to or not body:
+                        continue
+                    msg = record.with_context(
+                        mail_create_nosubscribe=True,
+                        mail_post_autofollow=False,
+                    )._message_sms(
+                        body,
                         subtype_id=subtype_id,
-                        sms_numbers=[self.sms_template_id._render_field("mobile_to", [record.id], compute_lang=True)[record.id]])
+                        sms_numbers=[mobile_to],
+                    )
+                    messages |= msg
+
+
+                    # messages |= record._message_sms(
+                    #     self.sms_template_id._render_field("body", [record.id], compute_lang=True)[record.id],
+                    #     subtype_id=subtype_id,
+                    #     sms_numbers=[self.sms_template_id._render_field("mobile_to", [record.id], compute_lang=True)[record.id]])
             else:
                 sms_provider_id = self.env["artarad.sms.provider.setting"].search([], order="sequence asc", limit=1)
                 for record in records:

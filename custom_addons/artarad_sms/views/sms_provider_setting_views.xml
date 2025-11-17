@@ -13,6 +13,7 @@
                     <field name="from_number" />
                     <field name="username" />
                     <field name="password"/>
+                    <field name="domain" />
                 </list>
             </field>
         </record>

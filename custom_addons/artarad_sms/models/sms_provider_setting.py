@@ -10,6 +10,7 @@ from zeep import Client, Settings, helpers
 from zeep.transports import Transport
 import requests
 from urllib.parse import urlencode
+from typing import List, Dict, Optional
 
 import logging
 
@@ -27,6 +28,7 @@ api_urls = {"smsir": "",
             "asanak": "https://panel.asanak.com/webservice/v1rest/sendsms",
             "kaveh": "https://api.kavenegar.com/v1",
             "rahyab": "http://www.linepayamak.ir/Post/Send.asmx?wsdl",
+            "mehrafraz": "https://mehrafraz.com/fullrest/api/Send",
             }
 
 
@@ -39,12 +41,13 @@ class artaradSmsProviderSetting(models.Model):
     provider = fields.Selection([("smsir", "SMS.IR"), ("farapayamak", "Farapayamak"),
                                  ("sepahansms", "SepahanSMS"), ("adp", "Atieh Dadeh Pardaz"), ("mavi", "MaviSMS"),
                                  ("faraz", "FarazSMS"), ("hooshmand", "SMSHooshmand"), ("amoot", "AmootSMS"),
-                                 ("asanak", "Asanak"), ("ahra", "Ahra"),
+                                 ("asanak", "Asanak"), ("ahra", "Ahra"), ("mehrafraz", "MehrAfraz"),
                                  ("rahyab", "Rahyab"), ("kaveh", "Kaveh Negar")], required="True")
     api_url = fields.Char("API URL", required="True")
     from_number = fields.Char(required="True")
     username = fields.Char(required="True")
     password = fields.Char(required="True")
+    domain = fields.Char()
 
     @api.onchange("provider")
     def onchange_provider(self):
@@ -52,6 +55,46 @@ class artaradSmsProviderSetting(models.Model):
 
     def send_sms(self, number, message):
         return getattr(self, f"send_sms_by_{self.provider}")(number, message)
+
+    def send_sms_by_mehrafraz(self, number, message):
+
+        url =self.api_url
+        mobiles = number if isinstance(number, (list, tuple)) else [number]
+        client_id =0
+        payload = {
+            "UserName": self.username,
+            "Password": self.password,
+            "DomainName": self.domain,
+            "Smsbody": message,
+            "Mobiles": mobiles,
+            "SenderNumber":self.from_number,
+            "Id": client_id,
+        }
+
+        headers = {"Content-Type": "application/json"}
+
+        try:
+            resp = requests.post(url, data=json.dumps(payload), headers=headers, timeout=20)
+            resp.raise_for_status()
+        except Exception as e:
+            _logger.exception("Mehrafraz: HTTP error while sending SMS to %s: %s", mobiles, e)
+            return False
+        try:
+            data = resp.json()
+        except Exception:
+            _logger.error("Mehrafraz: non-JSON response (body=%s)", resp.text)
+            return False
+        status = data.get("Status")
+        ok = (status == 0) and bool(data.get("ReturnCodes"))
+        if ok:
+            _logger.info("Mehrafraz: SMS sent to %s, return_codes=%s, id=%s",
+                         mobiles, data.get("ReturnCodes"), client_id)
+            return True
+        else:
+            msg = data.get("Messege") or data.get("Message") or "Unknown error"
+            _logger.error("Mehrafraz: failed to send SMS. status=%s, message=%s, body=%s, id=%s",
+                          status, msg, data, client_id)
+            return False
 
     def send_sms_by_rahyab(self, number, message):
 
